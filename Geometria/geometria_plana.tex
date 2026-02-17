@@ -1,0 +1,92 @@
+% !TEX program = lualatex
+\documentclass[a4paper,12pt]{article}
+
+% ===== Idioma / Layout =====
+\usepackage[portuguese]{babel}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{float}
+
+% ===== Matemática / Teoremas =====
+\usepackage{amsmath,amsthm,amssymb}
+\newtheorem{exercicio}{Exercício}[subsection]
+
+% ===== TikZ =====
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{calc,angles,quotes,intersections}
+
+% --- Cores ---
+\definecolor{azulmarinho}{RGB}{0,0,139}
+\definecolor{angVerde}{RGB}{0,140,0}
+\definecolor{angLaranja}{RGB}{220,120,0}
+\definecolor{angRoxo}{RGB}{120,0,180}
+
+% --- Macro setor (tem ; interno, não esquece) ---
+% uso: \Setor[<estilo>]{(x,y)}{raio}{ang_ini}{ang_fim}
+\newcommand{\Setor}[5][]{%
+  \filldraw[#1] #2 -- ++(#4:#3) arc (#4:#5:#3) -- cycle;
+}
+
+\begin{document}
+
+\begin{exercicio}
+Exercício de geometria básica.
+
+Considere a figura abaixo.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    % Quadrado
+    \draw[azulmarinho, ultra thick, name path=quad] (0,0) rectangle (6,6);
+
+    % Segmentos
+    \draw[blue, thick] (0,0) -- (-3,0);
+    \draw[blue, thick] (6,6) -- (10,6);
+    \draw[red, thick] (-3,0) -- (10,6);
+    \draw[red, dashed, thick] (0,1.4) -- (6,1.4);
+
+    % Ângulos como setores preenchidos
+    \Setor[fill=red!50, draw=red!70!black]{(-3,0)}{1}{0}{25}
+    \Setor[fill=red!50, draw=red!70!black]{(0,1.4)}{1}{0}{25}
+    \Setor[fill=red!50, draw=red!70!black]{(10,6)}{1}{-180}{-155}
+
+    % Nós / rótulos
+    \node[anchor=north east] at(-1.5,1.1){1};
+    \node[anchor=north east] at (3,3.2){3};
+    \node[anchor=north east] at (7.5,5.3){2};
+    \node[anchor=north east] at (3.5,1.9){\(6x\)};
+    \node[anchor=north east] at (0,0) {A};
+    \node[anchor=north east] at (0,6.5){B};
+    \node[anchor=north east] at (6.5,6.5){C};
+    \node[anchor=north east] at (6.5,0){D};
+    \node[anchor=north east] at (0.5,2.2){E};
+    \node[anchor=north east] at (6.5,2){F};
+    \node[anchor=north east, rotate=90] at (5.4,1){\(x\)};
+    \node[anchor=north east, rotate=90] at (5.4,3.2){\(3x\)};
+    \node[anchor=north east, rotate=90] at (5.4,5.2){\(2x\)};
+  \end{tikzpicture}
+\end{figure}
+
+Se considerarmos a proporção entre o triângulo de hipotenusa 1 e o triângulo interno ao quadrado, temos:
+\[
+  \frac{1}{x}=\frac{3}{3x}
+\]
+
+Da mesma forma, considerando a proporção dos triângulos externos, temos:
+\[
+  \frac{1}{x}=\frac{2}{2x}
+\]
+
+Então, o lado \(L\) do quadrado é igual a \(x+2x+3x=6x\).
+Por Pitágoras, temos:
+\begin{align*}
+  9 &= 36x^2+9x^2\\
+  9 &= 45x^2\\
+  x^2 &= \frac{1}{5}\therefore\, x=\sqrt{\frac{1}{5}}\\
+  L &= 6\sqrt{\frac{1}{5}}\\
+  A &= \frac{36}{5}\approx \boxed{7{,}2\text{ u.a.}}
+\end{align*}
+
+\end{exercicio}
+\end{document}
