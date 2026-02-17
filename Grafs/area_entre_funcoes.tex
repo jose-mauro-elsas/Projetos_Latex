@@ -1,0 +1,43 @@
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      xmin=0, xmax=2,
+      ymin=-3, ymax=4,
+      axis x line=middle,
+      axis y line=middle,
+      axis line style={-},
+      tick align=outside,
+      minor tick num=1,
+      xlabel={$x$},
+      ylabel={$y$},
+      title={$f(x)$}
+    ]
+      % Curva 1 (seno), com "name path" no próprio plot:
+      \addplot[domain=0:1.5, samples=200, name path=A]
+        {cos(deg(2*x))+2}
+        node[pos=0.5, above, xshift=60pt] {$y=cos(2x)+2$};
+
+      % Curva 2 (a reta), também como plot (em vez de \draw):
+      \addplot[domain=0:1.5, samples=200, name path=B]
+        {2x+1} 
+        node[pos=.6, above, yshift=-48pt] {$y=x^2-2$};
+       
+
+     % Sombreado ENTRE as duas curvas:
+    \addplot[gray!20, draw=none, fill opacity=0.35] fill between[of=A and B];
+
+
+
+      % Suas marcações verticais (podem ficar como estão):
+      %\draw[line width=0.6pt] (0.4,0) -- (0.4,1.95);
+      %\draw[line width=0.6pt] (1.2,0) -- (1.2,1.85);
+
+      % Se você quiser manter a reta desenhada também, pode (opcional),
+      % mas ela já está representada pelo plot acima.
+      %\draw[line width=0.6pt] (0.4,0.5) -- (1.2,1);
+
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Área entre curvas.}
+\end{figure}

@@ -1,0 +1,63 @@
+\begin{figure}[hbt]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  axis x line=middle, 
+  axis y line=middle, 
+  axis line style={->},
+  xlabel={$x$}, ylabel={$y$}, 
+  xmin=-2, xmax=2, ymin=-1.5, ymax=1.5,
+  title={Caso 3: mudança de sinal em $[a,b]$},
+    % --- CONFIGURAÇÃO DA SETA ---
+  % Definimos que a seta (>) terá comprimento (length) de 4.5pt 
+  % e largura (width) de 1.5pt (proporção 3:1)
+  axis line style={-{Stealth[length=9pt, width=3pt]}},
+  % ----------------------------
+  axis on top
+]
+  \def\a{-1.5} 
+  \def\b{1.5}
+  
+  % 1. Caminhos para hachura (invisíveis)
+  \addplot[name path=curva, draw=none, domain=\a:\b, samples=200] {-x^2+1};
+  \addplot[name path=eixo, draw=none, domain=\a:\b] {0};
+
+  % 2. Aplicar hachuras por domínio
+  \addplot[pattern=north east lines, pattern color=gray!60] 
+    fill between[of=curva and eixo, soft clip={domain=\a:-1}];
+    
+  \addplot[pattern=north west lines, pattern color=blue!40] 
+    fill between[of=curva and eixo, soft clip={domain=-1:1}];
+    
+  \addplot[pattern=north east lines, pattern color=gray!60] 
+    fill between[of=curva and eixo, soft clip={domain=1:\b}];
+
+  % 3. Desenhar a curva real
+  \addplot[thick, blue, domain=\a:\b, samples=200] {-x^2+1};
+  
+  % Pontos de interseção
+  \addplot[only marks, mark=*, mark size=1.5pt] coordinates {(-1,0) (1,0)};
+  
+  % --- CORREÇÃO DAS LINHAS VERTICAIS ---
+  % Linha em a: desce do eixo (0) até o valor negativo da função
+  \draw[dash pattern=on 5pt off 3pt, line width=0.6pt, gray] 
+    (axis cs:\a,0) -- (axis cs:\a,{-(\a)^2+1});
+    
+  % Linha em b: desce do eixo (0) até o valor negativo da função
+  \draw[dash pattern=on 5pt off 3pt, line width=0.6pt, gray] 
+    (axis cs:\b,0) -- (axis cs:\b,{-(\b)^2+1});
+
+  % Rótulos ajustados para não sobrepor
+  \node[above left] at (axis cs:\a,0) {$a$};
+  \node[above right] at (axis cs:\b,0) {$b$};
+  \node[above right, blue] at (axis cs:0,1) {$f(x)$};
+\end{axis}
+\end{tikzpicture}
+\caption{Áreas em lados alternados do eixo x}
+\end{figure}
+
+\subsection{Área abaixo do Eixo X}
+Quando a função $f(x)$ é negativa ($f(x) < 0$), tratamos o eixo $x$ ($y=0$) como o teto e a curva como o chão.
+\begin{equation}
+A = \int_{a}^{b} [0 - f(x)] \, dx = -\int_{a}^{b} f(x) \, dx
+\end{equation}

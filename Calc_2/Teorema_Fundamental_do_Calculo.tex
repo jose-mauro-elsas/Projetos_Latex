@@ -25,7 +25,7 @@ U(P_n,f)=\sum_{i=1}^n \frac{i}{n}\cdot\frac{1}{n}
 Como \(L(P_n,f), U(P_n,f) \to \tfrac{1}{2}\), conclui-se que \(\displaystyle 
 \int_0^1 x\,dx = \tfrac{1}{2}\).
 
-\subsubsection{Relação com a integral definida (TFC)}
+\subsubsection{Relação do TFC com as integrais definidas}
 Se \(F\) é uma primitiva de \(f\) (\(F'=f\)), então:
 \[
 \int_a^b f(x)\,dx = F(b)-F(a).
@@ -35,9 +35,9 @@ Se \(F\) é uma primitiva de \(f\) (\(F'=f\)), então:
 Se \(f\) não é limitada em \([a,b]\) ou se o intervalo é infinito, define-se por limites:
 \[
 \int_a^b f(x)\,dx
-:=\lim_{t\to b^-}\int_a^t f(x)\,dx,\qquad
+=\lim_{t\to b^-}\int_a^t f(x)\,dx,\qquad
 \int_a^{+\infty} f(x)\,dx
-:=\lim_{t\to +\infty}\int_a^{t} f(x)\,dx.
+=\lim_{t\to +\infty}\int_a^{t} f(x)\,dx.
 \]
 
 \subsubsection{Propriedades úteis}
@@ -57,12 +57,12 @@ f: [a,b] \to \mathbb{R}, \quad f \geq 0
   \begin{tikzpicture}
     \begin{axis}[
       xmin=0.5, xmax=3,
-      ymin=0, ymax=1.1,
+      ymin=0.6, ymax=1.1,
       axis x line=middle,
       axis y line=middle,
       axis line style={-{Stealth[length=3mm,width=1.5mm]}},
       tick align=outside,
-      minor tick num=1,
+      minor tick num=3,
       xlabel={$x$}, 
       ylabel={$y$},
       xlabel style={at={(axis description cs:1,-0.08)},anchor=north},
@@ -158,28 +158,67 @@ Calcule a integral definida:
   \caption{Função $f(x)=x^2-2x$ e a área (abaixo do eixo $x$).}
 \end{figure}
 
+\subsubsection{O Teorema Fundamental do Cálculo (Parte 1)}
+
+O TFC estabelece que a derivada de uma função definida por uma integral é o próprio integrando avaliado no limite de integração superior. Quando o limite superior é uma função $g(x)$, aplicamos a Regra da Cadeia:
+
+\[ 
+\frac{d}{dx} \int_{a}^{g(x)} f(t) \, dt = f(g(x)) \cdot g'(x)
+\]
+
+\begin{exercicio}
+      Encontre a derivada da função:
+      \[
+        F(x) = \int_{3}^{x^2} \ln(t + 1) \, dt.
+      \]
+      \medskip
+      \begin{enumerate}[label=\alph*.]
+        \item Identificamos o integrando $f(t) = \ln(t + 1)$ e o limite superior $g(x) = x^2$.
+        \item Substituímos $t$ por $g(x)$ na função:
+        $$f(g(x)) = \ln(x^2 + 1)$$
+        \item Multiplicamos pela derivada de $g(x)$, sendo 
+              \begin{align*}
+                &g'(x) = 2x:\\
+                &F'(x) = \ln(x^2 + 1) \cdot 2x\\
+          \end{align*}
+      \end{enumerate}
+      \[
+      F'(x) = 2x \ln(x^2 + 1)
+      \]
+\end{exercicio}
+
+\subsubsection{Caso Geral -- Ambos os limites são funções}
+
+Se a função possui variáveis em ambos os limites de integração:
+\[
+  F(x) = \int_{h(x)}^{g(x)} f(t) \, dt
+\]
+A derivada é dada por:
+  \[
+    F'(x) = f(g(x)) \cdot g'(x) - f(h(x)) \cdot h'(x)
+  \]
   \begin{exercicio}
     Seja \(f(x)=x^2-4\) e \(g(x)=(-x^2-2x)\) calcule a área sob as curvas entre os limites [-3,0]
 
     \begin{figure}[H]
   \centering
-  \begin{tikzpicture}
-    \begin{axis}[
-      xmin=-3.5, xmax=0.5,
-      ymin=0, ymax=5.5,
-      axis x line=middle,
-      axis y line=middle,
-      axis line style={-{Stealth[length=3mm,width=1.5mm]}},
-      xlabel={$x$},
-      ylabel={$y$},
-          ]
-      \addplot[red, domain=-3:-2, samples=200, thick] {x^2-4};
-      \addplot[blue, domain=-2.5:0, samples=200, thick] {-x^2-2*x};
-      \draw[azulmarinho, dashed] (-3,0) -- (-3,5);
-      \addplot[domain=-3:-2, samples=200, draw=none, fill=gray!20, opacity=.35] {x^2-4} \closedcycle;
-      \addplot[domain=-2:0, samples=200, draw=none, fill=gray!20, opacity=.35] {-x^2-2*x} \closedcycle;
-    \end{axis}
-  \end{tikzpicture}
+      \begin{tikzpicture}
+          \begin{axis}[
+            xmin=-3.5, xmax=0.5,
+            ymin=0, ymax=5.5,
+            axis x line=middle,
+            axis y line=middle,
+            axis line style={-{Stealth[length=3mm,width=1.5mm]}},
+            xlabel={$x$},
+            ylabel={$y$},
+                ]
+            \addplot[red, domain=-3:-2, samples=200, thick] {x^2-4};
+            \addplot[blue, domain=-2.5:0, samples=200, thick] {-x^2-2*x};
+            \draw[azulmarinho, dashed] (-3,0) -- (-3,5);
+            \addplot[domain=-3:-2, samples=200, draw=none, fill=gray!20, opacity=.35] {x^2-4} \closedcycle;
+            \addplot[domain=-2:0, samples=200, draw=none, fill=gray!20, opacity=.35] {-x^2-2*x} \closedcycle;
+          \end{axis}
+      \end{tikzpicture}
   \caption{Função $f(x)=x^2-4$ e $g(x)=-x^2-2x$.}
 \end{figure}
 \begin{align*}

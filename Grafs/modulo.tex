@@ -1,0 +1,24 @@
+%---------------------
+% Função mmódulo
+%---------------------
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      xmin=-4, xmax=4,
+      ymin=-0.5, ymax=4,
+      axis x line=middle,
+      axis y line=middle,
+      axis line style={->},
+      tick align=outside,
+      %grid=both,
+      minor tick num=1,
+      xlabel={$x$},
+      ylabel={$y$},
+      title={$f(x)=|x|$}
+    ]
+      \addplot[blue, domain=-4:4, samples=200] {abs(x)};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Função módulo $f(x)=|x|$.}
+\end{figure}

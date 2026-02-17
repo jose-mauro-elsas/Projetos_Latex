@@ -1,0 +1,54 @@
+% ===== DESENHO (arquivo chamado via \input{...}) =====
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \def\R{3}
+    \coordinate (O) at (0,0);
+
+    % círculo
+    \draw[thick] (O) circle (\R);
+
+    % pontos nas extremidades dos raios
+    \coordinate (A) at ( 60:\R);
+    \coordinate (B) at ( 90:\R);
+    \coordinate (C) at (120:\R);
+    \coordinate (D) at (150:\R);
+
+    % raios
+    \draw[thick] (O)--(A);
+    \draw[thick] (O)--(B);
+    \draw[thick] (O)--(C);
+    \draw[thick] (O)--(D);
+
+    % cordas (segmentos entre extremidades)
+    \draw[thick] (A)--(B)--(C)--(D);
+
+    % marcar e rotular A,B,C,D
+    \fill (A) circle (1.2pt) node[above right] {$A$};
+    \fill (B) circle (1.2pt) node[above]       {$B$};
+    \fill (C) circle (1.2pt) node[above left]  {$C$};
+    \fill (D) circle (1.2pt) node[left]        {$D$};
+
+    % --- apótemas dos triângulos OAB, OBC, OCD ---
+    % pés das perpendiculares do centro O nas cordas AB, BC, CD
+    \coordinate (HAB) at ($(A)!(O)!(B)$);
+    \coordinate (HBC) at ($(B)!(O)!(C)$);
+    \coordinate (HCD) at ($(C)!(O)!(D)$);
+    % hachura do triângulo OAB
+\fill[pattern=north east lines, pattern color=black] (O)--(A)--(B)--cycle;
+
+    % desenhar as apótemas
+    \draw[thick] (O)--(HAB);
+    \draw[thick] (O)--(HBC);
+    \draw[thick] (O)--(HCD);
+
+    % marcar os pés (opcional) e rotular (opcional)
+\fill (HAB) circle (1.0pt) node[below right, xshift=-6pt, yshift=20pt] {$H_{AB}$};
+\fill (HBC) circle (1.0pt) node[below right, xshift=-20pt, yshift=24pt] {$H_{BC}$};
+\fill (HCD) circle (1.0pt) node[below right, xshift=-26pt, yshift=24pt] {$H_{CD}$};
+
+
+  \end{tikzpicture}
+  \caption{Raios, cordas e apótemas dos triângulos $OAB$, $OBC$ e $OCD$.}
+\end{figure}
+

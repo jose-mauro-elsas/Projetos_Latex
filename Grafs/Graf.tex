@@ -1,0 +1,135 @@
+\documentclass[a4paper,12pt]{article}
+
+% ===== Básico =====
+\usepackage[T1]{fontenc}
+%\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage[margin=3cm,tmargin=3cm,rmargin=2cm,bmargin=2cm]{geometry}
+\usepackage{indentfirst}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{booktabs}
+
+% ===== Matemática / fontes =====
+\usepackage{lmodern}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,dsfont,mathtools}
+\usepackage{cancel}
+
+% ===== Figuras / Gráficos =====
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{tabularx}
+% PGFPlots (já carrega o TikZ)
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18, width=11cm}
+\usepgfplotslibrary{fillbetween}
+\usetikzlibrary{arrows.meta,intersections}
+\usepackage{float}
+\usepackage{tabularx}
+\usetikzlibrary{calc}
+
+\usepackage{pgfplots}          % carrega TikZ indiretamente
+\pgfplotsset{compat=1.18, width=11cm}
+
+\usetikzlibrary{patterns}      % agora OK
+\usepgfplotslibrary{fillbetween}
+
+\renewcommand{\CancelColor}{\color{red}}
+\newcommand{\dif}{\,\mathrm{d}}
+\newcommand{\sen}{\operatorname{sen}}
+
+
+
+\usetikzlibrary{patterns}      % agora OK
+\usepgfplotslibrary{fillbetween}
+
+
+% ... (seu preâmbulo permanece igual) ...
+
+\begin{document}
+\begin{titlepage}
+  \centering
+  \vspace*{\fill}
+  {\Huge \textbf{Gráficos de funções e desenhos}}
+  \vfill
+  \today
+\end{titlepage}
+
+\clearpage
+
+\section{Gráficos de funções elementares}
+
+% ... (outras subseções) ...
+
+\subsection{Área entre as curvas I}
+
+% Mova o código da figura para ANTES do \end{document}
+% Ou garanta que este código esteja dentro do arquivo area_entre_funcoes.tex
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    xmin=0.5, xmax=4,
+    ymin=0.5, ymax=3,
+    axis x line=middle,
+    axis y line=middle,
+    samples=200,
+    xlabel={$x$},
+    ylabel={$y$}
+]
+    % 1. Definimos a curva e damos um nome a ela
+    \addplot[blue, thick, domain=1:3.75, name path=curva] {0.5*(x-2)^2+1};
+    
+    % 2. reta 
+    \addplot[red, thick, domain=1:3.75, name path=reta]{.5*x+0.5};
+
+    % 3. Preenchimento
+    %\addplot[blue!20] fill between[of=curva and reta];
+\end{axis}
+\end{tikzpicture}
+\caption{Função positiva em todo o intervalo.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    xmin=0.5, xmax=4,
+    ymin=0.5, ymax=3,
+    axis x line=middle,
+    axis y line=middle,
+    samples=200,
+    xlabel={$x$},
+    ylabel={$y$}
+]
+    % 1. Parábola
+    \addplot[blue, thick, domain=1:3.75, name path=curva] {0.5*(x-2)^2+1};
+    
+    % 2. Reta 
+    \addplot[red, thick, domain=1:3.75, name path=reta]{.5*x+0.5};
+
+    % 3. Preenchimento hachurado apenas entre as intersecções
+    \addplot [
+        % Define o padrão de hachurado
+        pattern=north east lines, 
+        pattern color=gray,
+    ] fill between [
+        of=curva and reta,
+        split, % Divide a área nos pontos de cruzamento
+        % Estiliza apenas o segmento desejado (o do meio)
+        every segment no 0/.style={transparent},
+        every segment no 1/.style={pattern=north east lines},
+        every segment no 2/.style={transparent}
+    ];
+\end{axis}
+\end{tikzpicture}
+\caption{Área hachurada entre as intersecções.}
+\end{figure}
+
+\subsection{Completar Quadrados.}
+\input{completar_quadrados.tex}
+\input{caso_2.tex}
+\input{Caso_3.tex}
+\input{Triângulo_por_coordenadas.tex}
+\end{document}
