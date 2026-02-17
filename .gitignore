@@ -16,3 +16,15 @@
 *.snm
 *.vrb
 externalized/
+
+# --- Extra ignores (LaTeX/TikZ) ---
+
+# TikZ/PGF externalization artefacts (when generated in-place)
+*.md5
+*.dpth
+*-figure*.pdf
+*.auxlock
+
+# Compiled PDFs (OPTIONAL) - descomente se NÃO quiser versionar PDFs finais
+# *.pdf
+
