@@ -1,0 +1,572 @@
+
+Já vimos que a mediana separa uma série em duas partes iguais, cada uma contendo o mesmo número de elementos. Contudo, uma série também pode ser dividida em um número maior de partes, todas compostas por quantidades iguais de elementos. Nesse caso, o nome da medida separatriz é atribuído conforme a quantidade de partes onde a série é dividida:
+
+\begin{itemize}
+    \item quartil: divide uma série em quatro partes iguais \(Q_1 , Q_2 , Q_3\);
+    \item quintil: divide uma série em cinco partes iguais \(Qt_1 , Qt_2 , \dots, Qt_5\);
+    \item decil: divide uma série em dez partes iguais \(D_1 , D_2 , \dots, D_9\);
+    \item percentil: divide uma série em cem partes iguais \(P_1 , P_2 , \dots, P_{99}\).
+\end{itemize}
+\subsection{Quartis}
+
+Denominamos de quartis os valores de uma série que a dividem em quatro partes iguais, isto é, quatro partes contendo o mesmo número de elementos (25\%). A imagem a seguir mostra os quartis de uma
+distribuição hipotética:
+\medskip
+\begin{figure}[h]
+    \centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=12cm, height=6cm,
+  axis lines=left,
+  xlabel={$x$}, ylabel={$f(x)$},
+  axis line style={-{Stealth[length=3mm,width=2mm]}},
+  domain=-4:4, samples=300,
+  ymin=0,
+  ymax=0.6,
+  grid=both
+]
+
+% linhas verticais
+\addplot [blue, thick] {(1/sqrt(2*pi) * exp(-x^2/2))+0.05};
+\draw [red, thick] (-2,0) -- (-2,0.103);
+\draw [red, thick] (0,0) -- (0,0.448);
+\draw [red, thick] (2,0) -- (2,0.103);
+
+
+% rótulos embaixo do eixo x
+\node[font=\itshape] at (0,0.5) {Md=\(Q_2\)};
+\node[font=\itshape] at (2,0.16) {\(Q_3\)};
+\node[font=\itshape] at (-2,0.16) {\(Q_1\)};
+\end{axis}
+\end{tikzpicture}
+\caption{Quartis}
+\end{figure}
+
+Temos, então, 3 quartis \(Q_1\,, Q_2 \,\text{e}\, Q_3\) para dividir uma série em quatro partes iguais:
+\begin{itemize}[label=\diamond]
+    \item o primeiro quartil corresponde à separação dos primeiros 25\% de elementos da série;
+    \item o segundo quartil corresponde à separação de metade dos elementos da série, coincidindo com a mediana \(Q_2= M_d\);
+    \item o terceiro quartil corresponde à separação dos primeiros 75\% de elementos da série, ou dos últimos 25\% de elementos da série.
+\end{itemize}
+
+Para o cálculo dos quartis, empregaremos a mesma fórmula adotada no cálculo da mediana, somente substituindo a expressão \(\frac{\sum f_i}{2}\) por \(\frac{k\times \sum f_i}{4}\) em que \textit{k} indica a ordem do quartil e assume valores inteiros no intervalo de 1 a 3.
+
+\subsubsection{Quartil para dados Não Agrupados}
+
+O cálculo do quartil para dados não-agrupados é realizado, aproximadamente, por meio das etapas descritas a seguir:
+
+\begin{itemize}
+    \item \textbf{primeira etapa}: determinamos a posição do quartil, por meio da expressão:
+    \[
+        P_{Q_k}=\frac{k\times n}{4}\quad (k=1,\,2,\,3)
+    \]
+    \item \textbf{segunda etapa}: identificamos a posição do quartil na coluna de frequências acumuladas, isto é, a frequência acumulada imediatamente igual ou superior à posição do quartil;
+    \item \textbf{terceira etapa}: verificamos o valor da variável que corresponde a essa posição.
+\end{itemize}
+
+Sempre que houver necessidade, teremos que incluir uma coluna de frequências acumuladas.
+
+\fbox{\parbox{.9\linewidth}{
+Embora fórmula anterior possa ser utilizada para o cálculo da posição de \(Q_2\), por depender de uma aproximação, nem sempre o valor do segundo quartil  resultará no valor convencionado para a mediana. Por isso, para o cálculo de \(Q_2\), vamos adotar o procedimento utilizado para encontrar a mediana. Isto é, se o número de elementos for ímpar, \(Q_2\) será representado pelo elemento que
+ocupar a posição central, \(\frac{n}{2}\). Se o número de elementos do conjunto for par, \(Q_2\) será representado pela média aritmética entre os elementos que ocuparem as posições centrais \(\frac{n}{2}\) e \(\frac{n}{2}+1\)}}
+
+\begin{align*}
+    Q_k=l_{inf_{Q_k}}+\Bigg[\frac{\frac{k\times \sum f_i}{4}-f_{ac_{ant}}}{f_{Q_k}}\Bigg]\times h_{Q_k}
+\end{align*}
+onde:
+\begin{itemize}
+    \item \(l_{inf_{Q_k}}=\,\text{limite inferior da classe do quartil considerado}\);
+    \item \(f_{ac_{ant}}\) =  frequência acumulada da classe anterior à classe do quartil considerado;
+    \item \({Q_k}\) = amplitude do intervalo de classe do quartil considerado;
+    \item \(f_{Q_k}\) = frequência simples da classe do quartil considerado.
+\end{itemize}
+
+\subsection{Decis}
+Denominamos de decis os valores de uma série que a dividem em dez partes iguais, isto é, dez partes contendo o mesmo número de elementos (10\%). A imagem a seguir mostra os decis de uma distribuição hipotética:
+
+\begin{figure}[hbt]
+    \centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=12cm, height=6cm,
+  axis lines=left,
+  xlabel={$x$}, ylabel={$f(x)$},
+  axis line style={-{Stealth[length=3mm,width=2mm]}},
+  domain=-4:4, samples=300,
+  ymin=0,
+  ymax=0.6,
+  grid=both
+]
+\addplot [blue, thick] {(1/sqrt(2*pi) * exp(-x^2/2)+0.05)};
+\draw [red, thick] (-0.8,0) -- (-0.8,0.3396);
+\draw [red, thick] (-1.6,0) -- (-1.6,0.16);
+\draw [red, thick] (-2.4,0) -- (-2.4,0.07);
+\draw [red, thick] (-3.2,0) -- (-3.2,0.052);
+\draw [red, thick] (0,0) -- (0,0.448);
+\draw [red, thick] (0.8,0) -- (0.8,0.3396);
+\draw [red, thick] (1.6,0) -- (1.6,0.16);
+\draw [red, thick] (2.4,0) -- (2.4,0.07);
+\draw [red, thick] (3.2,0) -- (3.2,0.052);
+
+
+
+% rótulos embaixo do eixo x
+\node[font=\itshape] at (3.6,0.1) {\(D_{10}\)};
+\node[font=\itshape] at (-3.6,0.1) {\(D_1\)};
+
+\node[font=\itshape] at (2.7,0.12) {\(D_9\)};
+\node[font=\itshape] at (-2.7,0.12) {\(D_2\)};
+
+\node[font=\itshape] at (2,0.16) {\(D_8\)};
+\node[font=\itshape] at (-2,0.16) {\(D_3\)};
+
+\node[font=\itshape] at (1.28,0.3) {\(D_7\)};
+\node[font=\itshape] at (-1.28,0.3) {\(D_4\)};
+
+\node[font=\itshape] at (0,0.48) {\(D_5=Md\)};
+
+\end{axis}
+\end{tikzpicture}
+\caption{Decis}
+\end{figure}
+
+Temos, então, 9 decis \(D_1 , D_2,\dots, D_9\) para dividir uma série em dez partes iguais:
+
+\begin{itemize}
+    \item \(D_1\): o primeiro decil corresponde à separação dos primeiros 10\% de elementos da série;
+    \item \(D_5\): o quinto decil corresponde à separação de metade dos elementos da série, coincidindo com a mediana \(D_5 = Md\);
+    \item \(D_9\): o nono decil corresponde à separação dos primeiros 90\% de elementos da série, ou dos últimos 10\% de elementos da série.
+\end{itemize}
+
+Para o cálculo dos decis, empregaremos a mesma fórmula adotada no cálculo da mediana, somente substituindo a expressão \(\sum \frac{\Sigma f_i}{2}\) por \(k \times\sum \frac{\Sigma f_i}{10}\), em que k indica a ordem do decil e assume valores inteiros no intervalo de 1 a 9.
+
+\subsubsection{Decis para dados Não Agrupados}
+
+O cálculo do decil segue o mesmo raciocínio empregado no cálculo do quartil para dados não-agrupados. A primeira tarefa que devemos realizar, se houver necessidade, é organizar o conjunto de valores por ordem
+de magnitude. Depois disso, procedemos conforme as seguintes etapas:
+
+\begin{itemize}
+    \item \textbf{primeira etapa}: determinados a posição do decil conforme a seguinte fórmula:
+    \[
+        P_{D_k}=\frac{k\times n}{10}\,(k=1,2,\dots, 9);
+    \]
+    \item \textbf{segunda etapa}: identificamos a posição mais próxima ao rol;
+    \item \textbf{terceira etapa}: verificamoso o valor que está ocupando essa posição.
+\end{itemize}
+
+\textbf{Exemplo}
+
+Calcular os decís \(D_1\,\text{e}\,  D_8\) para o seguinte conjunto de valores:
+\begin{center}
+    (5, 12, 15, 20, 2, 3, 4, 18, 10, 22)
+\end{center}
+
+Note que os valores não estão organizados. Portanto, nossa primeira tarefa será colocá-los em ordem de magnitude (rol):
+
+    \begin{center}
+        (\textbf{2}, 3, 4, 5, 10, 12, 15, 18, 20, 22)
+    \end{center}
+\begin{enumerate}[label=\alph*.]
+    \item     Cálculo de \(D_1\):
+    \[
+     P_{D_1}=\frac{1\times 10}{10}=1  
+    \]
+    Depois, identificamos a posição mais próxima no rol. Como o resultado foi um número inteiro, a posição mais próxima coincidirá com o valor encontrado, não havendo necessidade de aproximação.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{llllllllll}
+            \toprule
+            $x_1$&$x_2$&$x_3$&$x_4$&$x_5$&$x_6$&$x_7$&$x_8$&$x_9$&$x_{10}$\\
+            \midrule
+            2& 3& 4& 5& 10& 12& 15& 18& 20& 22\\
+            \bottomrule
+            \end{tabular}
+            \caption{Rol em ordem crescente}
+    \end{table}
+
+    Portanto, o valor 2 corresponde a 10\% do rol.
+
+    \item Calcular o decil \(D_8\)
+O rol é o mesmo:
+\begin{center}
+    (2, 3, 4, 5, 10, 12, 15, 18, 20, 22)
+\end{center}
+    
+Cálculo de \(D_1\):
+    \[
+     P_{D_8}=\frac{8\times 10}{10}=8 
+    \]
+    Depois, identificamos a posição mais próxima no rol. Como o resultado foi um número inteiro, a posição mais próxima coincidirá com o valor encontrado, não havendo necessidade de aproximação.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{llllllllll}
+            \toprule
+            $x_1$&$x_2$&$x_3$&$x_4$&$x_5$&$x_6$&$x_7$&$x_8$&$x_9$&$x_{10}$\\
+            \midrule
+            2& 3& 4& 5& 10& 12& 15& \textbf{18}& 20& 22\\
+            \bottomrule
+            \end{tabular}
+            \caption{Rol em ordem crescente}
+    \end{table}
+
+    Portanto, o valor 8 corresponde a 80\% do rol.
+\end{enumerate}
+
+\subsubsection{Decil para dados agrupados sem intervalos de classe.}
+
+O cálculo do decil para dados agrupados sem intervalos de classe será realizado por meio das etapas descritas a seguir:
+
+ em que \(\sum f_i\) é a soma das frequências simples;
+
+\begin{itemize}
+    \item \textbf{primeira etapa}:etapa: determinamos a posição do decil, por meio da expressão:
+   \[
+        P_{D_k}=\frac{k\times n}{10}\,(k=1,2,\dots, 9);
+    \]
+    \item \textbf{segunda etapa}: identificamos a posição do decil na coluna de frequências acumuladas, isto é, a frequência acumulada imediatamente igual ou superior à posição do decil;
+    \item \textbf{terceira etapa}: verificamos o valor da variável que corresponde a essa posição.
+\end{itemize}
+
+Sempre que houver necessidade, teremos que incluir uma coluna de frequências acumuladas.
+
+Vamos calcular \(D_3\) e  \(D_8\) da tabela de frequências a seguir, que representa a quantidade de filhos de um grupo de pessoas:
+
+\begin{table}[hbt]
+    \centering
+\begin{tabular}{ccc}
+\toprule
+\makecell{Filhos} &
+\makecell{Frequência \\\(f_i\)} &
+\makecell{Frequência \\ Acumulada\\\(f_{ac}\)}\\
+\midrule
+0 & 18 & 18  \\ 
+\arrayrulecolor{red}\hline
+1 & 35 & \(53(\ge 51)\)  \\
+\arrayrulecolor{red}\hline
+2 & 46 & 99  \\
+3 & 28 & 127 \\
+4 & 25 & 152 \\
+5 & 10 & 162 \\
+6 & 5  & 167 \\
+7 & 3  & 170 \\
+\arrayrulecolor{black}\hline
+Total & &170\\
+\bottomrule
+\end{tabular}
+\caption{Cálculo de decis}
+\label{tab: Calculo_D3_ }
+\end{table}
+\begin{enumerate}[label=\alph*.]
+    \item Determinar a posição de \(D_3\);
+    \[
+        P_{D_3}=\frac{3\times 170}{10}=51
+    \]
+
+    Portanto, a quantidade de 1 filho corresponde a 30\% do rol.
+
+    \item Cálculo de \(D_8\):
+  \[
+        P_{D_8}=\frac{8\times 170}{10}=136
+    \]
+\begin{table}[H]
+    \centering
+\begin{tabular}{ccc}
+\toprule
+\makecell{Filhos} &
+\makecell{Frequência \\\(f_i\)} &
+\makecell{Frequência \\ Acumulada\\\(f_{ac}\)}\\
+\midrule
+0 & 18 & 18  \\ 
+1 & 35 & 53  \\
+2 & 46 & 99  \\
+3 & 28 & 127 \\
+\arrayrulecolor{red}\hline
+4 & 25 & \(152\ge 136\) \\
+\arrayrulecolor{red}\hline
+5 & 10 & 162 \\
+6 & 5  & 167 \\
+7 & 3  & 170 \\
+\arrayrulecolor{black}\hline
+Total & &170\\
+\bottomrule
+\end{tabular}
+\caption{Cálculo de decis}
+\label{tab: Calculo_D8 }
+\end{table}
+\end{enumerate}
+
+\subsubsection{Decil para dados agrupados em classes}
+
+O cálculo do decil para dados agrupados em classes será realizado por meio das seguintes etapas:
+
+\begin{itemize}
+    \item \textbf{primeira etapa}: determinamos a posição do decil, por meio da expressão:
+   \[
+        P_{D_k}=\frac{k\times n}{10}\,(k=1,2,\dots, 9);
+    \]
+    em que:
+
+    \(\sum f_i =\) somatório das frequências simples.\\
+    \(k=\) índice do decil.
+\medskip
+    \item \textbf{segunda etapa}: identificamos a posição do decil na coluna de frequências acumuladas, isto é, a frequência acumulada imediatamente igual ou superior à posição do decil;
+    \item \textbf{terceira etapa} verificamos as informações referentes à classe correspondente a essa posição; e
+    \item \textbf{quarta etapa} calculamos o valor do decil por meio da fórmula apresentada a seguir, que consiste em uma variação da fórmula da mediana para dados agrupados em classes, mudando-se somente o \(\frac{k\times \sum f_i}{10}\)
+
+\end{itemize}
+
+\begin{align*}
+    Q_k=l_{inf_{Q_k}}+\Bigg[\frac{\frac{k\times \sum f_i}{4}-f_{ac_{ant}}}{f_{Q_k}}\Bigg]\times h_{Q_k}
+\end{align*}
+
+em que:
+\begin{itemize}
+    \item \(l_{inf_{Q_k}}\) = limite inferior da classe do quartil considerado;
+    \item \(f_{ac_{ant}}\) = frequência acumulada da classe anterior à classe do quartil;
+    \item \(h_{Q_k}\) = amplitude do intervalo de classe do quartil considerado;
+    \item \(f_{Q_k}\) = frequência simples da classe do quartil considerado.
+\end{itemize}
+
+Sempre que houver necessidade, teremos que incluir uma coluna de frequências acumuladas.
+\begin{table}[hbt]
+    \centering
+    \begin{tabular}{ccccc}
+        \toprule
+        \makecell {i} & 
+        \makecell{Altura \\(cm)} & 
+        \makecell {Frequência \\\(f_i\)} &
+        \makecell{Frequência \\ Acumulada \\\(f_{ac}\)} &
+        \makecell{Comentários}\\
+                \midrule
+                1 & 120 \vdash 128 &  6  &  \(6\ge 5,4\)   & Classe considerada\\
+                2 & 128 \vdash 136 & 12  & 18   &\\
+                3 & 136 \vdash 144 & 16  & 34   &\\
+                4 & 144 \vdash 152 & 13  & 47   &\\
+                5 & 152 \vdash 160 &  7  & 54   &\\
+                \midrule
+                    Total & & & 54\\
+            \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{enumerate}[label=\alph*.]
+    \item Calcular \(Q_1\)
+    Calcular a posição de \(Q_1\) por:
+    \[
+        P_{D_1}=\frac{1\times 54}{10}=5,4
+     \]
+
+onde o limite inferior é 120 cm e a frequência é 6.
+
+\begin{align*}
+   & D_1=l_{inf_{Q_1}}+\Bigg[\frac{\frac{k\times \sum f_i}{10}-f_{ac_{ant}}}{f_{Q_1}}\Bigg]\times h_{Q_1}\\\\
+   &D_1=120+\frac{5,4-0}{6}\times 8 = \SI{127,5}{\centi\meter}\\
+\end{align*}
+
+\item Calcular \(D_2\):
+
+Para começar vamos achar a posição de \(D_2\)
+
+    \[
+        P_{D_2}=\frac{2\times 54}{10}=10,5
+    \]
+\begin{table}[hbt]
+    \centering
+    \begin{tabular}{ccccc}
+        \toprule
+        \makecell {i} & 
+        \makecell{Altura \\(cm)} & 
+        \makecell {Frequência \\\(f_i\)} &
+        \makecell{Frequência \\ Acumulada \\\(f_{ac}\)} &
+        \makecell{Comentários}\\
+                \midrule
+                1 & 120 \vdash 128 &  6  &  6   & F. acumulada anterior\\
+                \arrayrulecolor{red}\hline
+                2 & 128 \vdash 136 & 12  & \(18\ge 10,5\) & Classe considerada\\
+                \arrayrulecolor{red}\hline
+                3 & 136 \vdash 144 & 16  & 34   &\\
+                4 & 144 \vdash 152 & 13  & 47   &\\
+                5 & 152 \vdash 160 &  7  & 54   &\\
+                \arrayrulecolor{black}\hline
+                Total & & $\longrightarrow$ & 54\\
+            \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{align*}
+   & D_2=l_{inf_{Q_2}}+\Bigg[\frac{\frac{k\times \sum f_2}{10}-f_{ac_{ant}}}{f_{Q_2}}\Bigg]\times h_{Q_2}\\\\
+   &D_1=128+\frac{10,8-6}{12}\times 8 = \SI{131,2}{\centi\meter}\\
+\end{align*}
+
+\item Cálculo para \(D_7\):
+
+Para começar vamos achar a posição de \(D_7\)
+
+    \[
+        P_{D_7}=\frac{7\times 54}{10}=37,8
+    \]
+\begin{table}[hbt]
+    \centering
+    \begin{tabular}{ccccc}
+        \toprule
+        \makecell {i} & 
+        \makecell{Altura \\(cm)} & 
+        \makecell {Frequência \\\(f_i\)} &
+        \makecell{Frequência \\ Acumulada \\\(f_{ac}\)} &
+        \makecell{Comentários}\\
+                \midrule
+                1 & 120 \vdash 128 &  6  &  6   & \\
+                2 & 128 \vdash 136 & 12  &  18  & \\
+                3 & 136 \vdash 144 & 16  &  34   &F. acumulada anterior\\
+                \arrayrulecolor{red}\hline
+                4 & 144 \vdash 152 & 13  &  47   & Classe considerada\\
+                \arrayrulecolor{red}\hline
+                5 & 152 \vdash 160 &  7  &  54   &\\
+                \arrayrulecolor{black}\hline
+                Total & & $\longrightarrow$ & 54\\
+            \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{align*}
+   & D_7=l_{inf_{D_7}}+\Bigg[\frac{\frac{k\times \sum f_7}{10}-f_{ac_{ant}}}{f_{D_7}}\Bigg]\times h_{D_7}\\\\
+   &D_1=144+\frac{37,8-34}{13}\times 8 = \SI{146,3}{\centi\meter}\\
+\end{align*}
+
+\end{enumerate}
+
+\subsection{Percentis}
+
+Denominamos de percentis os valores de uma série que a dividem em cem partes iguais, isto é, cem partes
+contendo o mesmo número de elementos (1\%). A imagem a seguir mostra os percentis de uma distribuição
+hipotética:
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=0.8 \linewidth]{percentis.png}
+\end{figure}
+
+Temos, então, 99 percentis \(P_1 , P_2, \dots, P_{99}\) para dividir uma série em cem partes iguais:
+\begin{itemize}
+    \item \(P_1\): o primeiro percentil corresponde à separação do primeiro 1\% de elementos da série;
+    \item \(P_50\): o quinquagésimo percentil corresponde à separação de metade dos elementos da série, coincidindo com a mediana \(P_{𝟓𝟎 = Md}\);
+    \item \(P_99\): o nonagésimo nono percentil corresponde à separação dos primeiros 99\% de elementos da série, ou do último 1\% de elementos da série.
+\end{itemize}
+
+Para o cálculo dos percentis, empregaremos a mesma fórmula adotada no cálculo da mediana, somente substituindo a expressão \(\frac{sum f_i}{2}\) por \(\frac{k\times sum f_i}{100}\), em que 𝑘 indica a ordem do percentil e assume valores inteiros no
+intervalo de 1 a 99.
+
+\subsubsection{Percentil para dados não-agrupados}
+
+O cálculo do percentil segue o mesmo raciocínio empregado nos cálculos do quartil e do decil para dados não-agrupados. A primeira tarefa que devemos realizar, se houver necessidade, é organizar o conjunto de valores por ordem de magnitude. Depois disso, colocamos em prática as seguintes etapas:
+    \begin{itemize}
+    \item \textbf{primeira etapa}: determinamos a posição do percentil, por meio da expressão:
+\[
+    P{P_k}=\frac{k\times n}{100}\, (k= 1,\,2,\,\dots.\,99);
+\]
+    \item \textbf{segunda etapa}: identificamos a posição mais próxima do rol;
+    \item \textbf{terceira etapa}: verificamos o valor que está ocupando essa posição.
+\end{itemize}
+
+\textbf{Exemplo}
+Calcularemos os percentis \(P_{27} \text{e} P_{83}\) para o seguinte conjunto de valores:
+\begin{center}
+    {\{15, 2, 4, 6, 10, 12, 13, 7, 21, 18, 20\}}
+\end{center}
+Reparem que os valores não estão organizados. Portanto, nossa primeira tarefa será colocá-los em ordem de magnitude (rol):
+\begin{center}
+    \{{2, 4, 6, 7, 10, 12, 13, 15, 18, 20, 21}\}
+\end{center}
+
+\begin{enumerate} [label=\alph*.]
+    \item Cálculo de \(P_{27}\)
+
+    Primeiramente determina-se a posição de \(P_27\)
+    \[
+        P_27=\frac{27\times 11}{100}=2,97
+    \]
+    Depois, identificamos a posição mais próxima no rol:
+    \[
+        P_{27}=3
+    \]
+    Em seguida, verificamos o valor que está ocupando essa posição.
+
+    Em seguida, seguida, verificamos o valor que está ocupando essa posição.
+
+        \begin{table}[H]
+        \centering
+        \begin{tabular}{lllllllllll}
+            \toprule
+            $x_1$&$x_2$&$x_3$&$x_4$&$x_5$&$x_6$&$x_7$&$x_8$&$x_9$&$x_{10}$&$x_11$\\
+            \midrule
+            2& 4& \textbf{6}& 7& 10& 12& 13& 15& 18& 20& 21\\
+            \bottomrule
+            \end{tabular}
+            \caption{Rol em ordem crescente}
+    \end{table}
+    Portanto, o valor 6 corresponde a 27\% do rol.
+
+    \item Determinar a posição \(P_{83}\)
+    
+    Determina-se Primeiramente a posição de \(P_83\)
+    \[
+        P_83=\frac{83\times 11}{100}=9,13
+    \]
+
+    Depois, identificamos a posição mais próxima no rol:
+    \[
+        P_{83}=9
+    \]
+
+    Em seguida, verificamos o valor que está ocupando essa posição.
+
+            \begin{table}[H]
+        \centering
+        \begin{tabular}{lllllllllll}
+            \toprule
+            $x_1$&$x_2$&$x_3$&$x_4$&$x_5$&$x_6$&$x_7$&$x_8$&$x_9$&$x_{10}$&$x_11$\\
+            \midrule
+            2& 4& 6& 7& 10& 12& 13& 15& \textbf{18}& 20& 21\\
+            \bottomrule
+            \end{tabular}
+            \caption{Rol em ordem crescente}
+    \end{table}
+\end{enumerate}
+
+\subsubsection{Percentil para dados agrupados em classes}
+
+O cálculo do percentil para dados agrupados em classes será realizado por meio das seguintes etapas:
+
+\begin{itemize}
+    \item \textbf{primeira etapa}: determinamos a posição do percentil, por meio da expressão:
+
+\[
+    P{P_k}=\frac{k\times n}{100}\, (k= 1,\,2,\,\dots.\,99);
+\]
+em que:
+
+    \(k=\text{índice do percentil}\)\\
+    \(\sum f_i=\text{somatório das frequencias simples}\)
+
+    \item \textbf{segunda etapa}: identificamos a posição do percentil na coluna de frequências acumuladas, isto é, a
+frequência acumulada imediatamente igual ou superior à posição do percentil;
+    \item \textbf{terceira etapa}: verificamos as informações referentes à classe correspondente a essa posição; e
+    \item \textbf{quarta etapa}: calculamos o valor do percentil por meio da fórmula apresentada a seguir, que consiste
+em uma variação da fórmula da mediana para dados agrupados em classes, mudando-se somente o \(\frac{k\times \sum f_i}{100}\)
+\[
+    P_k=l_{inf_{Pk}}+
+    \Bigg[
+    \frac{\frac{k\times \sum f_i}{100}-f_{ac_{ant}}}{f{P_k}}
+    \Bigg]
+    \times h_{P_k}
+\]
+\end{itemize}
+
+em que:
+\begin{itemize}
+    \item \(l_{inf_{Pk}}\) = limite inferior da classe do percentil considerado;
+    \item \(f_{ac_{ant}}\) = frequência acumulada;
+    \item \(f{P_k}\) = amplitude do intervalo de classe do percentil considerado;
+    \item \(h_{P_k}\) = frequência simples da classe do percentil considerado. 
+\end{itemize}
+
+Sempre que houver necessidade, teremos que incluir uma coluna de frequências acumuladas.

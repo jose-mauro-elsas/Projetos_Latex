@@ -1,0 +1,229 @@
+Em estatística, os dados podem ser definidos como informações que representam os atributos qualitativos ou quantitativos de uma variável, ou de um conjunto de variáveis. Esses dados podem ser classificados em agrupados e não-agrupados. Normalmente, logo após a etapa de coleta, temos dados
+não-agrupados ou dados brutos.
+
+Por exemplo, suponha que o Estratégia Concursos esteja realizando um experimento com um grupo de dez alunos, para mensurar o tempo médio de resposta a uma questão de estatística. Logo após a coleta, os dados continuam brutos, pois não passaram por nenhuma análise nem foram agrupados de alguma forma. Então, teríamos uma tabela similar a seguinte:
+
+\begin{table}[H]
+    \centering
+\begin{tabular}{lcccccccccc}
+\toprule
+Aluno       &1&2&3&4&5&6&7&8&9&10\\
+\midrule
+Tempo Médio &2&3&5&7&9&6&6&5&3&9\\
+\bottomrule
+\end{tabular}
+\caption{Tempos.}
+\end{table}
+
+Por sua vez, os dados agrupados são aqueles que passaram por algum nível de análise, o que significa que já não são brutos. Os dados agrupados podem ser organizados por frequência de um determinado valor ou por intervalos de classes. Quando por frequência de valor, os dados são organizados de forma ascendente e suas ocorrências são contabilizadas:
+
+\begin{table}[H]
+    \centering
+\begin{tabular}{cc}
+\toprule
+\shortstack{Tempo \\Médio \(X_i\)} &Frequência \(f_i\)\\
+\midrule
+1      &1\\
+3      &2\\
+5      &2\\
+6      &2\\
+7      &1\\
+9      &2\\
+\bottomrule
+\end{tabular}
+\caption{Frequências.}
+\end{table}
+
+Quando por intervalos de classes, os dados também são organizados de forma ascendente, porém, em classes preestabelecidas, e as ocorrências de cada classe são contabilizadas:
+
+\begin{table}[H]
+    \centering
+\begin{tabular}{lc}
+\toprule
+\shortstack{Tempo \\Médio \(X_i\)} &Frequência \(f_i\)\\
+\midrule
+0\(\leq x \le 2\)      &1\\
+2\(\leq x \le 4\)      &2\\
+4\(\leq x \le 6\)      &2\\
+6\(\leq x \le 8\)      &3\\
+8\(\leq x \le 10\)     &2\\
+\bottomrule
+\end{tabular}
+\caption{Frequências.}
+\end{table}
+
+Para dados agrupados e apresentados como diagramas ou tabelas, a definição da média permanece inalterada, então, tudo o que estudamos até o momento permanece válido, mas teremos métodos específicos para obtenção da média. A seguir, veremos como proceder em cada caso.
+
+\subsection{Média para Dados Agrupados por Valor}
+
+Dando continuidade ao nosso exemplo, vamos a calcular a média aritmética de dados agrupados por valor. Os dados foram organizados na tabela a seguir:
+
+\begin{table}[H]
+    \centering
+\begin{tabular}{cc}
+\toprule
+\shortstack{Tempo \\Médio \(X_i\)} &Frequência \(f_i\)\\
+\midrule
+1      &1\\
+3      &2\\
+5      &2\\
+6      &2\\
+7      &1\\
+9      &2\\
+\bottomrule
+\end{tabular}
+\caption{Frequências.}
+\end{table}
+
+Como podemos interpretar essa tabela? Basta você saber que as frequências refletem o número de repetições de cada valor da nossa variável tempo médio. Isto é, um aluno conseguiu responder à questão em 1 minuto, dois alunos conseguiram em 3 minutos, dois alunos conseguiram em 5 minutos, e assim
+sucessivamente.
+
+Para calcularmos a média a partir de uma tabela de frequências como esta, devemos utilizar a seguinte fórmula:
+
+\[
+    \bar{x}=\frac{\sum_{i=1}^{n}(X_i\times f_i)}{\sum_{i=1}^{n}\,f_i}
+\]
+
+A aplicação dessa fórmula é bem simples. O raciocínio é o mesmo adotado para a média ponderada, sendo que, agora, o peso é representado pela frequência. Desse modo, vamos multiplicar cada valor por sua respectiva frequência, somar tudo e dividir pela soma das frequências:
+
+\begin{table}[H]
+    \centering
+\begin{tabular}{ccl}
+\toprule
+\shortstack{Tempo \\Médio \(X_i\)} &Frequência \(f_i\)  &\(f_i\times X_i\)\\
+\midrule
+1      &1   &\(1\times 1 =1\)\\
+3      &2   &\(2\times 3 =2\)\\
+5      &2   &\(2\times 5 =10\)\\
+6      &2   &\(2\times 6 =12\)\\
+7      &1   &\(1\times 7 =7\)\\
+9      &2   &\(2\times 9 =18\)\\
+\bottomrule
+\end{tabular}
+\caption{\text{\(f_i\times X_i\)}}
+\end{table}
+
+Após isso, somaremos todos os valores da coluna \(X_i\times f_i\), obtendo o termo \(\sum_{i=1}^{n} X_i\times f_i\), e também somaremos os termos da coluna \(f_1\) , obtendo o termo \(\sum_{i=1}^{n} f_i\). Veja a última linha da tabela:
+
+\begin{table}[H]
+    \centering
+\begin{tabular}{lll}
+\toprule
+\shortstack{Tempo \\Médio \(X_i\)} &Frequência \(f_i\)  &\(f_i\times X_i\)\\
+\midrule
+1      &1   &\(1\times 1 =1\)\\
+3      &2   &\(2\times 3 =2\)\\
+5      &2   &\(2\times 5 =10\)\\
+6      &2   &\(2\times 6 =12\)\\
+7      &1   &\(1\times 7 =7\)\\
+9      &2   &\(2\times 9 =18\)\\
+\midrule
+Totais &10  &54\\
+\bottomrule
+\end{tabular}
+\caption{\text{\(f_i\times X_i\)}}
+\end{table}
+
+Agora, basta dividirmos um valor pelo outro, obtendo:
+
+\[
+    \bar{x}=\frac{\sum_{i=1}^{n}(X_i\times f_i)}{\sum_{i=1}^{n}\,f_i}=\frac{54}{10}=5,4
+\]
+
+Portanto, a média dos dados apresentados na tabela é 5,4.
+
+\subsection{Média para Dados Agrupados por Classe}
+
+Retomando nosso exemplo, vamos calcular a média aritmética de dados agrupados por classe. Os dados foram organizados na tabela a seguir:
+
+\begin{table}[H]
+    \centering
+\begin{tabular}{lc}
+\toprule
+\shortstack{Tempo \\Médio \(X_i\)} &Frequência \(f_i\)\\
+\midrule
+0\(\leq x \le 2\)      &1\\
+2\(\leq x \le 4\)      &2\\
+4\(\leq x \le 6\)      &2\\
+6\(\leq x \le 8\)      &3\\
+8\(\leq x \le 10\)     &2\\
+\bottomrule
+\end{tabular}
+\caption{Separação por classe.}
+\end{table}
+
+Como podemos interpretar essa tabela? Basta sabermos que as frequências refletem o número de ocorrências em cada um dos intervalos definidos para a variável tempo médio. Isto é, um aluno respondeu à questão com tempo médio abaixo de 2 minutos, dois responderam com tempo médio entre 2 e 4 minutos, dois com tempo médio entre 4 e 6 minutos, e assim sucessivamente.
+
+Ao agruparmos os dados em classes, precisaremos fazer uma modificação em relação ao cálculo anterior: substituir os intervalos pelos seus respectivos pontos médios. Como assim? Ao invés de considerarmos o intervalo de 0 a 2 minutos, por exemplo, substituiremos pelo valor de 1 minuto.
+
+Em nosso exemplo, a identificação dos pontos médios é relativamente fácil. Mas é possível que você encontre situações em que isso não seja tão trivial. Como fazer nesses casos? Devemos calcular a média dos dois extremos do intervalo. Assim, o ponto médio \(PM\) é calculado pela seguinte expressão:
+
+\[
+  PM=\frac{l_{sup}+l_{inf}}{2}
+\]
+
+em que \(l_inf\) e \(l_sup\) são, respectivamente, os limites inferior e superior do intervalo considerado.
+
+Na tabela abaixo, repare que foi incluída uma nova coluna para o cálculo dos pontos médios:
+
+\begin{table}[H]
+    \centering
+\begin{tabular}{lcc}
+\toprule
+\shortstack{Tempo \\Médio \(X_i\)} & \shortstack{Ponto Médio \\\(PM_i\)} &Frequência \(f_i\)\\
+\midrule
+0\(\leq x \le 2\)    &1  &1\\
+2\(\leq x \le 4\)    &3  &2\\
+4\(\leq x \le 6\)    &5  &2\\
+6\(\leq x \le 8\)    &7  &3\\
+8\(\leq x \le 10\)   &9  &2\\
+\bottomrule
+\end{tabular}
+\caption{Separação por classe.}
+\end{table}
+
+O próximo passo consiste em calcular os valores das multiplicações \(PM_i\times f_i\) multiplicando essas duas colunas. Vamos ver:
+\begin{table}[H]
+    \centering
+\begin{tabular}{lccc}
+\toprule
+\shortstack{Tempo \\Médio \(X_i\)} & \shortstack{Ponto Médio \\\(PM_i\)} &Frequência \(f_i\)    & \(PM_i\times f_i\)\\
+\midrule
+0\(\leq x \le 2\)    &1  &1 &\(1\times1=1\)\\
+2\(\leq x \le 4\)    &3  &2 &\(3\times2=6\)\\
+4\(\leq x \le 6\)    &5  &2 &\(5\times2=10\)\\
+6\(\leq x \le 8\)    &7  &3 &\(7\times3=21\)\\
+8\(\leq x \le 10\)   &9  &2 &\(9\times2=18\)\\
+\bottomrule
+\end{tabular}
+\caption{Separação por classe.}
+\end{table}
+
+Após isso, somaremos todos os valores da coluna \(PM_i\times f_i\), obtendo o termo \(\sum_{i=1}^{n}\,PM_i\times f_i\) , e também somaremos os termos da coluna \(f_i\), obtendo o termo \(\sum_{i=1}^{n}\,f_i\). Veja a última linha da tabela:
+
+\begin{table}[H]
+    \centering
+\begin{tabular}{lccc}
+\toprule
+\shortstack{Tempo \\Médio \(X_i\)} & \shortstack{Ponto Médio \\\(PM_i\)} &Frequência \(f_i\)    & \(PM_i\times f_i\)\\
+\midrule
+0\(\leq x \le 2\)    &1  &1 &\(1\times1=1\)\\
+2\(\leq x \le 4\)    &3  &2 &\(3\times2=6\)\\
+4\(\leq x \le 6\)    &5  &2 &\(5\times2=10\)\\
+6\(\leq x \le 8\)    &7  &3 &\(7\times3=21\)\\
+8\(\leq x \le 10\)   &9  &2 &\(9\times2=18\)\\
+\midrule
+Total & & 10 & 56\\
+\bottomrule
+\end{tabular}
+\caption{Separação por classe.}
+\end{table}
+
+Agora, basta dividirmos um valor pelo outro, obtendo:
+
+\[
+    \bar{x}=\frac{\sum_{i=1}^{n}(PM_i\times f_i)}{\sum_{i=1}^{n}f_i}=\frac{56}{10}=5,6
+\]
+
+Finalmente, note que a média de dados agrupados por classe (5,6) foi diferente da média de dados agrupados por valor (5,4). Por que isso ocorreu? Isso ocorreu porque, ao agruparmos os valores da
+variável em classes, perdemos detalhes que eram relevantes para o cálculo exato da média, embora a forma de apresentação tenha sido simplificada.

@@ -1,0 +1,519 @@
+%!TEX root = C:/LaTex_Projects/Calc_2/Caderno_de_Calc_II.tex
+%!TEX program = lualatex
+% LTeX: language=pt-BR
+
+Nesta seção, "área entre curvas" significa \textbf{área geométrica} (sempre não-negativa), calculada por integrais definidas. Em todos os casos, a ideia central é somar a área de tiras (verticais ou horizontais) que preenchem a região.
+O cálculo de áreas utilizando integrais baseia-se no princípio fundamental de somar infinitos retângulos de altura infinitesimal. A altura de cada retângulo é definida pela diferença entre o "teto" (limite superior) e o "chão" (limite inferior) da região. Abaixo, detalhamos os quatro cenários principais.
+
+\subsection{Área sob uma Curva (Acima do Eixo X)}
+Conforme visto na seção\, \ref{subsec:integral-riemann} sobre integral de Riemann, quando uma função $f(x)$ é contínua e positiva em um intervalo $[a,b]$, a área é calculada entre a curva e o eixo $x$. Neste caso, o eixo $x$ atua como o limite inferior ($y = 0$).
+
+\begin{equation}
+A = \int_{a}^{b} f(x) \, dx
+\end{equation}
+
+\begin{figure}[hbt]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  axis x line=middle,
+  axis y line=middle,
+  axis line style={-{Stealth[length=3mm,width=2mm]}},
+  xlabel={$x$},
+  ylabel={$y$},
+  xmin=0, xmax=4,
+  ymin=0, ymax=5,
+  title={Caso 1: $f(x) \ge 0$ em $[a,b]$},
+]
+  \def\a{0.5} \def\b{3.5}
+  \addplot[name path=curva, thick, blue, domain=\a:\b, samples=200] {0.5*(x-2)^2+1};
+  \addplot[name path=eixo, draw=none, domain=\a:\b] {0};
+  \addplot[fill=gray!20, draw=none] fill between[of=curva and eixo];
+  \draw[line width=0.6pt] (axis cs:\a,0) -- (axis cs:\a,{0.5*(\a-2)^2+1});
+  \draw[line width=0.6pt] (axis cs:\b,0) -- (axis cs:\b,{0.5*(\b-2)^2+1});
+  \node[below] at (axis cs:\a,0) {$a$};
+  \node[below] at (axis cs:\b,0) {$b$};
+\end{axis}
+\end{tikzpicture}
+\caption{Se $f(x)\ge 0$, então $A=\int_a^b f(x)\,dx$.}
+\end{figure}
+
+\subsection{Área entre Duas Curvas (integralmente no primeiro quadraente)}
+Quando temos duas funções $f(x)$ e $g(x)$ em um intervalo $[a, b]$, onde $f(x) \geq g(x)$ para todo $x$, a área da região delimitada por elas é a integral da diferença entre a função superior e a inferior.
+\begin{equation}
+A = \int_{a}^{b} [f(x) - g(x)] \, dx
+\end{equation}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      axis x line=middle,
+      axis y line=middle,
+      axis line style={-{Stealth[length=3mm,width=1.5mm]}},
+      xlabel={$x$},
+      ylabel={$y$},
+      xmin=0, xmax=2,
+      ymin=0, ymax=6,
+      title={$\sin(x)$ e $e^x$ em $[0,\pi/2]$},
+      xtick={0, 1.57079}, xticklabels={$0$, $\frac{\pi}{2}$},
+    ]
+      \addplot[name path=A, thick, blue, domain=0:pi/2, samples=200] {sin(deg(x))};
+      \addplot[name path=B, thick, red,  domain=0:pi/2, samples=200] {exp(x)};
+      \addplot[fill=gray!20, draw=none] fill between[of=B and A];
+      \node[anchor=west] at (axis cs:0.9,3.2) {$e^x$};
+      \node[anchor=west] at (axis cs:1.35,1.0) {$\sin(x)$};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Área entre $e^x$ e $\sin(x)$ no intervalo $[0,\pi/2]$.}
+\end{figure}
+
+Se \(f(x)=e^x\) e \(g(x)=\sin(x)\) em \([0,\frac{\pi}{2}]\), então a área entre
+essas duas curvas é dada por:
+\begin{align*}
+A
+&=\int_0^{\frac{\pi}{2}}\bigl(e^x-\sin(x)\bigr)\,dx\\
+&=\int_0^{\frac{\pi}{2}}e^x\,dx-\int_0^{\frac{\pi}{2}}\sin(x)\,dx.
+\end{align*}
+
+Primeira integral:
+\begin{align*}
+\int_0^{\frac{\pi}{2}}e^x\,dx
+&=\Big[e^x\Big]_0^{\frac{\pi}{2}}
+=e^{\frac{\pi}{2}}-1.
+\end{align*}
+
+Segunda integral:
+\begin{align*}
+-\int_0^{\frac{\pi}{2}}\sin(x)\,dx
+&=-\Big[-\cos(x)\Big]_0^{\frac{\pi}{2}}
+=\Big[\cos(x)\Big]_0^{\frac{\pi}{2}}
+=\cos\Big(\frac{\pi}{2}\Big)-\cos(0)\\
+&=0-1=-1.
+\end{align*}
+
+Assim, a área entre as curvas é:
+\begin{align*}
+A
+&=\bigl(e^{\frac{\pi}{2}}-1\bigr)+(-1)
+=e^{\frac{\pi}{2}}-2
+\approx 2{,}81\ \text{u.a.}
+\end{align*}
+
+\begin{exercicio}\label{Ex_curvas_cruzadas}
+  sejam \(f(x)=4x-x^2\) e \(g(x)=x^2\), calcular a área entre as curvas.
+  Embora não seja obrigatório, vou fazer o gráfico para ter uma noção maior do problema.
+
+  \begin{figure}
+    \centering
+    \tikzsetnextfilename{area_entre_curvas_1}
+    \begin{tikzpicture}
+      \begin{axis}
+        [
+          xmin=0, xmax=5,
+          ymin=0, ymax=10,
+          axis x line=middle,
+          axis y line=middle,
+          xlabel=\(x\),
+          ylabel=\(y\),
+          grid=both,
+          tick align=outside,
+          minor tick num=1,
+          axis line style={-{Stealth[length=3mm,width=1.5mm]}},
+          title={Funções \(y=4x-x^2\) e \(y=x^2\)},
+        ]
+          \addplot[red, domain=0:3, samples=200, thick, name path=A] {4*x-x^2}; 
+          \addplot[azulmarinho, domain=0:3, samples=200, thick, name path=B] {x^2};
+          \node at (axis cs:3.5,3.5) {(3,3)};
+          \node at (axis cs:2.5,9) {(3,9)};
+          \draw[red, dashed] (3,3) -- (3,9);  
+          %0..2: A acima de B
+          \addplot[fill=gray!20, draw=none]
+          fill between[of=A and B, soft clip={domain=0:2}];
+
+          % 2..3: B acima de A
+          \addplot[fill=gray!20, draw=none]
+          fill between[of=B and A, soft clip={domain=2:3}];
+      \end{axis}
+    \end{tikzpicture}
+    \caption{Área entre as curvas que se cruzam}
+  \end{figure}
+  Pelo gráfico, a interseção entre as curvas parece ser em (0,0 e)(2,4) mas isso precisa ser demontrado algebricamente. As interseções são no pontos onde as funções são iguais.
+
+  Então:
+  \begin{align*}
+    &f(x)=g(x)\\
+    &4x-x^2=x^2\\
+    &-2x^2+4x=0\\
+    &x(-2x+4)=0\\
+    &x'=0\\
+    &2x=4\,\therefore \, x"=2\\
+  \end{align*}
+
+  conforme mostrado no gráfico, podemos dizer que os limites da primeira integral é dado por: [0,2] e para a segunda integral é [2,2,5]
+
+  Primeira Integral
+  \begin{align*}
+    &\int_{0}^{2} (4x-x^2)\,dx-\int_{0}^{2}x^2\,dx\\
+    &=\Bigg[2x^2-\frac{x^3}{3}\Bigg]_0^2-\Bigg[\frac{x^3}{3}\Bigg]_0^2\\
+    &=\Bigg[2(2^2)-\frac{2^3}{3}\Bigg]-0-\Bigg[\frac{2^3}{3}\Bigg]-0\\
+    &=\Bigg[8-\frac{8}{3}\Bigg]-\Bigg[\frac{8}{3}\Bigg]=\frac{24}{3}-\frac{8}{3}=\boxed{\frac{16}{3}}\\
+  \end{align*}
+
+  Segunda Integral
+  \begin{align*}
+    & \int_{2}^{3}x^2\,dx-\int_{2}^{3}(4x-x^2)\,dx\\
+    &=\Bigg[\frac{x^3}{3}\Bigg]_2^{3}-\Bigg[2x^2-\frac{x^3}{3}\Bigg]_2^{3}\\
+    & =\Bigg[\frac{(3)^3}{3}-\frac{2^3}{3}\Bigg]-
+    \Bigg[\Big[2({3}^2)-\frac{3^3}{3}\Big]-\Big[2({2}^2)-\frac{2^3}{3}\Big]\Bigg]\\
+    &=\frac{19}{3}-\Big[18-\frac{27}{3}-\Big(8-\frac{8}{3}\Big)\Big]\\
+    &=\frac{19}{3}-\Big[\frac{54}{3}-\frac{27}{3}-\frac{16}{3}\Big]\\
+    &=\frac{19}{3}-\frac{11}{3}=\frac{8}{3}\\
+  \end{align*}
+  
+  então a área total é,
+
+  \begin{align*}
+    \frac{16}{3}+\frac{8}{3}=\frac{24}{3}=\boxed{8\text{u.a.}}
+  \end{align*}
+\end{exercicio}
+
+\subsection{Tipo 1: Uma função sempre acima da outra (posição relativa fixa)}
+Considere duas funções contínuas \(f\) e \(g\) em \([a,b]\) tais que, para todo \(x\in[a,b]\), vale
+\[
+f(x)\ge g(x).
+\]
+Nesse caso, a região entre as curvas \(y=f(x)\) (curva superior) e \(y=g(x)\) (curva inferior), limitada pelas retas \(x=a\) e \(x=b\), tem área dada por
+\[
+A=\int_a^b \big(f(x)-g(x)\big)\,dx.
+\]
+\textbf{Exemplo (sem números):} área limitada superiormente por \(y=f(x)\), inferiormente por \(y=g(x)\) e lateralmente por \(x=a\) e \(x=b\), sem que as curvas se cruzem no intervalo.
+
+\medskip
+\textbf{Observação importante.} Não importa se \(f\) e \(g\) estão acima ou abaixo do eixo \(x\). O que importa é somente qual delas está \emph{acima da outra}. Mesmo que \(f(x)\) e \(g(x)\) sejam negativos, a área continua sendo \(\int ( \text{superior} - \text{inferior})\,dx\).
+
+\subsection{Tipo 2: As curvas se entrecruzam (troca de quem está por cima)}
+Suponha que \(f\) e \(g\) sejam contínuas em \([a,b]\) e que existam pontos de interseção:\\
+ \(c_1,\, c\,_2, \dots,c_n\) no intervalo, isto é,
+\[
+f(c_k)=g(c_k)\quad (k=1,2,\dots,n),
+\]
+de modo que a posição relativa (quem está acima) pode mudar de um subintervalo para outro. Nesse caso, a área geométrica deve ser calculada \textbf{particionando o intervalo} nos pontos de interseção e somando as contribuições:
+\[
+A=\sum_{k=0}^{n}\int_{c_k}^{c_{k+1}} \big(\text{curva superior} - \text{curva inferior}\big)\,dx,
+\]
+onde \(c_0=a\) e \(c_{n+1}=b\), e em cada subintervalo \([c_k,c_{k+1}]\) escolhe-se corretamente qual função é a superior.
+
+Uma forma compacta (quando só há duas curvas) é
+\[
+A=\int_a^b \big|f(x)-g(x)\big|\,dx,
+\]
+mas, na prática, a forma particionada é a mais segura, pois explicita a troca de posição.
+
+\textbf{Exemplo (sem números):} duas curvas que se cruzam uma vez dentro de \([a,b]\), sendo \(f\) superior em \([a,c]\) e \(g\) superior em \([c,b]\). A área é a soma de duas integrais, uma em cada trecho.
+
+\subsection{Tipo 3: Área em relação ao eixo \texorpdfstring{\(x\)}{x} (curva(s) acima/abaixo do eixo)}
+
+Quando o problema envolve o eixo \(x\) como fronteira (por exemplo, "área entre a curva e o eixo \(x\)"), a mudança de sinal passa a ser essencial. Para uma função contínua \(f\) em \([a,b]\):
+
+\subsubsection*{(a) Curva toda acima do eixo}
+Se \(f(x)\ge 0\) em \([a,b]\), então a área entre \(y=f(x)\) e o eixo \(x\) é
+\[
+A=\int_a^b f(x)\,dx.
+\]
+\textbf{Exemplo (sem números):} região limitada por \(y=f(x)\), pelo eixo \(x\) e pelas retas \(x=a\) e \(x=b\), com \(f\) sempre positiva.
+
+\subsubsection*{(b) Curva toda abaixo do eixo}
+Se \(f(x)\le 0\) em \([a,b]\), a área geométrica é
+\[
+A=\int_a^b |f(x)|\,dx \;=\; -\int_a^b f(x)\,dx.
+\]
+\textbf{Exemplo (sem números):} região limitada por \(y=f(x)\), pelo eixo \(x\) e por \(x=a\), \(x=b\), com \(f\) sempre negativa.
+
+\subsubsection*{(c) Curva cruza o eixo (muda de sinal)}
+Se existem pontos \(r_1,r_2,\dots,r_m\) em \([a,b]\) tais que \(f(r_j)=0\), então deve-se \textbf{particionar} o intervalo nesses zeros e somar as áreas positivas:
+\[
+A=\sum_{j=0}^{m}\int_{r_j}^{r_{j+1}} |f(x)|\,dx,
+\]
+com \(r_0=a\) e \(r_{m+1}=b\).
+\textbf{Exemplo (sem números):} uma curva que cruza o eixo \(x\) uma vez: calcula-se a integral em dois trechos e somam-se os módulos.
+
+\subsection{Resumo operacional}
+\begin{itemize}
+  \item \textbf{Entre duas curvas:} em cada trecho, use \(\text{superior} - \text{inferior}\). Se cruzarem, \textbf{parta} nos pontos de interseção.
+  \item \textbf{Com o eixo \(x\):} use \(|f(x)|\) ou parta nos zeros de \(f\) e some áreas positivas.
+  \item O eixo \(x\) \textbf{só importa} quando ele é fronteira do problema. \newline Caso contrário, "acima/abaixo do eixo" não altera a fórmula: o critério é sempre \textbf{quem está acima de quem}.
+\end{itemize}
+
+
+\subsection{Curvas que se Cruzam}
+Se as funções $f(x)$ e $g(x)$ se cruzam em um ponto $c$, a posição relativa de "teto" e "chão" se inverte. Para calcular a área total, devemos dividir a integral nos pontos de interseção.
+\begin{equation}
+A = \int_{a}^{c} [f(x) - g(x)] \, dx + \int_{c}^{b} [g(x) - f(x)] \, dx
+\end{equation}
+
+\begin{figure}[hbt]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    xmin=-1, xmax=5,
+    ymin=0.5, ymax=5.5,
+    axis x line=middle,
+    axis y line=middle,
+    samples=200,
+    xlabel={$x$},
+    ylabel={$y$},
+    axis line style={-{Stealth[length=3mm,width=1.5mm]}},
+    axis on top
+]
+    \addplot[blue, thick, domain=-1:4.5, name path=curva] {(x-2)^2+1};
+    \addplot[red,  thick, domain=-1:4.5, name path=reta ] {x+1};
+
+    \addplot [
+        pattern=north east lines,
+        pattern color=gray,
+    ] fill between [
+        of=curva and reta,
+        split,
+        every segment no 0/.style={transparent},
+        every segment no 1/.style={pattern=north east lines},
+        every segment no 2/.style={transparent}
+    ];
+\end{axis}
+\end{tikzpicture}
+\caption{Área entre curvas que se cruzam.}
+\label{Fig_funcoes_cruzadas}
+\end{figure}
+
+\begin{exercicio}
+  
+No caso da área da Figura \ref{Fig_funcoes_cruzadas}, as funções \(f(x)\) e \(g(x)\) são:
+\begin{align*}
+f(x)&=(x-2)^2+1,\\
+g(x)&=x+1.
+\end{align*}
+
+Nesse caso, diferentemente do que já foi feito no Exercício \ref{Ex_curvas_cruzadas}o cálculo será feito entre os pontos de interseção das funções, sem incluir parte entre 0 e o primeiro cruzamento das funções. (Esse exercício pode ser revisado porsteriormente.)
+
+\begin{align*}
+f(x)&=g(x)\\
+(x-2)^2+1&=x+1\\
+(x-2)^2&=x\\
+x^2-4x+4&=x\\
+x^2-5x+4&=0\\
+x^2-5x&=-4\\
+x^2-5x+\frac{25}{4}&=-4+\frac{25}{4}\\
+\left(x-\frac{5}{2}\right)^2&=\frac{9}{4}\\
+x-\frac{5}{2}&=\pm\frac{3}{2}\\
+x&=\frac{5}{2}\pm\frac{3}{2}
+\ \Rightarrow\
+\begin{cases}
+x_1=1\\
+x_2=4
+\end{cases}
+\quad \text{\LARGE$\checkmark$}
+\end{align*}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      xmin=0, xmax=6,
+      ymin=0, ymax=6,
+      axis x line=middle,
+      axis y line=middle,
+      axis line style={-{Stealth[length=3mm,width=2mm]}},
+      tick align=outside,
+      grid=none,
+      minor tick num=1,
+      xlabel={$x$},
+      ylabel={$y$},
+      xtick=\empty,
+      ytick=\empty,
+    ]
+    \draw[red,  thick] (axis cs:1,1) -- (axis cs:1,4);
+    \draw[red,  thick] (axis cs:1,4) -- (axis cs:4,4);
+    \draw[red,  thick] (axis cs:4,4) -- (axis cs:4,1);
+    \draw[red,  thick] (axis cs:4,1) -- (axis cs:1,1);
+
+    \draw[blue, thick] (axis cs:1,4) -- (axis cs:1,5);
+    \draw[blue, thick] (axis cs:1,5) -- (axis cs:4,5);
+    \draw[blue, thick] (axis cs:4,5) -- (axis cs:4,4);
+
+    \draw[black, thick] (axis cs:4,1) -- (axis cs:5,1);
+    \draw[black, thick] (axis cs:5,1) -- (axis cs:5,4);
+    \draw[black, thick] (axis cs:5,4) -- (axis cs:4,4);
+
+    \draw[black, dashed, thick] (axis cs:5,4) -- (axis cs:5,5);
+    \draw[black, dashed, thick] (axis cs:5,5) -- (axis cs:4,5);
+
+    \fill[pattern=north east lines]
+      (axis cs:1,1) -- (axis cs:1,4) -- (axis cs:4,4) -- (axis cs:4,1) -- cycle;
+
+    \node at (axis cs:2.6,2.6) {\Large{$x^2$}};
+    \node at (axis cs:2.6,5.2) {\Large{$x$}};
+    \node at (axis cs:5.2,2.6) {\Large{$x$}};
+    \node at (axis cs:4.5,0.5) {\Large{$\frac{5}{2}$}};
+    \node at (axis cs:0.5,4.5) {\Large{$\frac{5}{2}$}};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Completar quadrados.}
+\end{figure}
+
+Assim, fica definido que a área entre os pontos de interseção das curvas é calculada por:
+\[
+  \int_{1}^{4}(x+1)\,dx-\int_{1}^{4}\bigl((x-2)^2+1\bigr)\,dx
+\]
+
+\begin{align*}
+  &\int_{1}^{4}(x+1)\,dx-\int_{1}^{4}\bigl((x-2)^2+1\bigr)\,dx\\
+  &=\int_{1}^{4}x\,dx+\int_{1}^{4}1\,dx-\left(\int_{1}^{4}(x-2)^2\,dx+\int_{1}^{4}1\,dx \right)\\
+  &=\int_{1}^{4}x\,dx-\int_{1}^{4}(x-2)^2\,dx\\
+  &=\left[\frac{x^2}{2}\right]_{1}^{4}-\left[\frac{x^3}{3}-2x^2+4x\right]_{1}^{4}\\
+  &=\left(\frac{16}{2}-\frac{1}{2}\right)-\left(\frac{64}{3}-\frac{1}{3}\right)
+  +\left(2\cdot16-2\cdot1\right)-(16-4)\\
+  &=\frac{15}{2}-21+18=\frac{9}{2}.
+\end{align*}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    xmin=0.5, xmax=4,
+    ymin=-3,  ymax=.5,
+    axis x line=middle,
+    axis y line=middle,
+    axis line style={-{Stealth[length=3mm,width=2mm]}},
+    samples=200,
+    xlabel={$x$},
+    ylabel={$y$}
+]
+    \addplot[blue, thick, domain=1:3.75, name path=curva] {-(0.5*(x-2)^2+1)};
+    \addplot[red,  thick, domain=1:3.75, name path=reta ] {-(.5*x+0.5)};
+
+    \addplot[
+        pattern=north east lines,
+        pattern color=gray,
+    ] fill between[
+        of=curva and reta,
+        split,
+        every segment no 0/.style={transparent},
+        every segment no 1/.style={pattern=north east lines},
+        every segment no 2/.style={transparent}
+    ];
+\end{axis}
+\end{tikzpicture}
+\caption{Área hachurada entre as intersecções.}
+\end{figure}
+
+No segundo caso, as funções são:
+\begin{align*}
+f(x)&=-\bigl(0{,}5(x-2)^2+1\bigr)=-0{,}5x^2+2x-3,\\
+g(x)&=-\bigl(0{,}5x+0{,}5\bigr).
+\end{align*}
+
+Cálculo dos pontos de interseção:
+\begin{align*}
+f(x)&=g(x)\\
+-0{,}5x^2+2x-3&=-(0{,}5x+0{,}5)\\
+-0{,}5x^2+2{,}5x&=2{,}5\\
+0{,}5x^2-2{,}5x&=-2{,}5\\
+x^2-5x&=-5\\
+x^2-5x+\frac{25}{4}&=-5+\frac{25}{4}\\
+\left(x-\frac{5}{2}\right)^2&=\frac{5}{4}\\
+x&=\frac{5}{2}\pm\sqrt{\frac{5}{4}}=\frac{5\pm\sqrt5}{2}.
+\end{align*}
+
+Assim, a área é calculada por:
+\begin{align*}
+A
+&=\int_{x_1}^{x_2}\bigl(f(x)-g(x)\bigr)\,dx\\
+&=\int_{\frac{5-\sqrt5}{2}}^{\frac{5+\sqrt5}{2}}
+\left[\left(-\frac12x^2+2x-3\right)-\left(-\frac12x-\frac12\right)\right]dx\\
+&=\int_{\frac{5-\sqrt5}{2}}^{\frac{5+\sqrt5}{2}}
+\left(-\frac12x^2+\frac52x-\frac52\right)dx\\
+&=\left[-\frac{x^3}{6}+\frac{5x^2}{4}-\frac{5x}{2}\right]_{\frac{5-\sqrt5}{2}}^{\frac{5+\sqrt5}{2}}\\
+&=\frac{5\sqrt5}{12}\approx 0{,}932.
+\end{align*}
+
+\subsection*{Resumo Prático}
+A fórmula será sempre:
+\[
+  \int_{\text{esquerda}}^{\text{direita}} (\text{Teto} - \text{Chão}) \,dx
+\]
+
+\end{exercicio}
+
+\subsubsection*{Exercício 4.}
+Calcular a área entre a curva e o eixo \(x\) para o intervalo \([2,5]\).
+\[
+f(x)=4x-x^2
+\]
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      xmin=1.5, xmax=5.5,
+      ymin=-6,  ymax=5,
+      axis x line=middle,
+      axis y line=middle,
+      axis line style={-{Stealth[length=3mm,width=1.5mm]}},
+      xlabel={$x$},
+      ylabel={$y$},
+      title={$f(x)=4x-x^2$},
+      samples=200,
+    ]
+      \addplot[red, domain=2:5, thick] {4*x-x^2};
+
+      % Sombreado acima do eixo (2 a 4)
+      \addplot[fill=gray!20, opacity=0.5, domain=2:4] {4*x-x^2} \closedcycle;
+
+      % Sombreado abaixo do eixo (4 a 5)
+      \addplot[fill=gray!40, opacity=0.5, domain=4:5] {4*x-x^2} \closedcycle;
+
+      \draw[dashed] (axis cs:2,0) -- (axis cs:2,4);
+      \draw[dashed] (axis cs:5,0) -- (axis cs:5,-5);
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Área entre $f(x)$ e o eixo $x$ no intervalo $[2,5]$.}
+  \label{area1}
+\end{figure}
+
+Como parte da curva fica abaixo do eixo \(x\), separamos a área em dois trechos:
+\([2,4]\) (acima do eixo) e \([4,5]\) (abaixo do eixo). Assim:
+\[
+A=\int_{2}^{4}(4x-x^2)\,dx-\int_{4}^{5}(4x-x^2)\,dx.
+\]
+
+Primeira integral:
+\begin{align*}
+\int_{2}^{4}(4x-x^2)\,dx
+&=\Big[2x^2-\frac{x^3}{3}\Big]_{2}^{4}
+=\left(32-\frac{64}{3}\right)-\left(8-\frac{8}{3}\right)
+=\frac{16}{3}.
+\end{align*}
+
+Segunda integral (com sinal de área):
+\begin{align*}
+-\int_{4}^{5}(4x-x^2)\,dx
+&=-\Big[2x^2-\frac{x^3}{3}\Big]_{4}^{5}
+=-\left(\left(50-\frac{125}{3}\right)-\left(32-\frac{64}{3}\right)\right)\\
+&=-\left(\frac{25}{3}-\frac{32}{3}\right)
+=\frac{7}{3}.
+\end{align*}
+
+Logo, a área total sob a curva no intervalo \([2,5]\) é:
+\[
+A=\frac{16}{3}+\frac{7}{3}=\boxed{\frac{23}{3}\,\text{u.a.}}
+\]
+
+
+
+
+
+
+
+
+
+

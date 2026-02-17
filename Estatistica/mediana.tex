@@ -1,0 +1,348 @@
+
+\subsection{Medidas Separatrizes}
+As separatrizes são medidas que dividem (ou separam) uma série ordenada em duas ou mais partes, cada uma contendo a mesma quantidade de elementos. Nesse caso, o nome da medida separatriz é definido conforme a quantidade de partes onde a série é dividida:
+
+\begin{itemize}
+    \item mediana: divide uma série ordenada em duas partes iguais, cada uma contendo 50\% dos valores da sequência;
+    \item quartis: dividem uma série ordenada em quatro partes iguais, cada uma contendo 25\% dos valores da sequência;
+    \item quintis: dividem uma série ordenada em cinco partes iguais, cada uma contendo 20\% dos valores da sequência;
+    \item decis: dividem uma série ordenada em dez partes iguais, cada uma contendo 10\% dos valores da sequência; e
+    \item percentis: dividem uma série ordenada em cem partes iguais, cada uma contendo 1\% dos valores da sequência.
+\end{itemize}
+
+Ao longo da aula, vamos estudar a mediana, os quartis, os decis e os percentis. Os quintis, por não serem tão explorados em provas de concurso, não serão abordados.
+
+\subsection{Mediana}
+
+A mediana é, simultaneamente, uma MEDIDA DE POSIÇÃO, de TENDÊNCIA CENTRAL e SEPARATRIZ. Ela caracteriza a posição central de uma série de valores. Além disso, também separa uma série de valores em duas partes de tamanhos iguais, cada uma contendo o mesmo número de elementos. Muitas vezes, a mediana é designada como valor mediano, sendo representada pelos símbolos \(M_d\) ou, em menor frequência, \(\tilde{x}\)
+
+\subsubsection{Mediana para Dados não Agrupados}
+O método para determinação da mediana envolve a realização de uma etapa anterior, que consiste na ordenação do conjunto de dados. Feito isso, a mediana é o elemento que ocupa a POSIÇÃO CENTRAL de uma série de observações ORDENADA segundo suas grandezas (isto é, dados brutos organizados em rol crescente ou decrescente).
+
+Por exemplo, vamos determinar a mediana da seguinte série de valores:
+
+\[
+    \{3, 17, 13, 19, 2, 5, 7, 1, 8, 21, 9\}
+\]
+
+Conforme a definição da mediana, a primeira etapa consiste na ordenação (crescente ou decrescente) da série de valores. Desse modo, obtemos:
+
+\[
+    \{1, 2, 3, 5, 7, 8, 9, 13, 17, 19, 21\}
+\]
+
+Agora, determinaremos o elemento que ocupa a posição central desse conjunto de dados. Para isso, devemos encontrar o termo que possui o mesmo número de elementos tanto à sua esquerda quanto à sua direita. Em nosso exemplo, esse valor é o 8, pois existem cinco elementos antes dele e cinco após ele.
+
+\[
+    \underbrace{1, 2, 3, 5, 7}_{\text{5 elementos antes}}, \underbrace{8}_{\text{Elemento central}}, \underbrace{9, 13, 17, 19, 21}_{\text{5 elementos depois}}
+\]
+
+É importante notarmos que essa série possui um número ímpar de elementos. Quando isso acontece, isto é, quando uma série possui um NÚMERO ÍMPAR de elementos, a MEDIANA SEMPRE COINCIDE com o ELEMENTO CENTRAL do conjunto de dados. Portanto, temos:
+
+\begin{center}
+    \(M_d=8\)
+\end{center}
+Contudo, se porventura a série tivesse um número par de elementos, POR CONVENÇÃO, a MEDIANA seria a MÉDIA ARITMÉTICA dos dois termos centrais. Assim, caso dicionássemos o número 23 ao conjunto de dados apresentado anteriormente, teríamos a seguinte situação:
+
+\[
+    \underbrace{1, 2, 3, 5, 7}_{\text{5 elementos antes}}, \underbrace{8, 9}_{\text{Elemento central}}, \underbrace{ 13, 17, 19, 21, 23}_{\text{5 elementos depois}}
+\]
+Nesse caso, em que temos um número par de elementos, a mediana é definida como a média aritmética dos termos centrais, sendo os números 8 e 9. Assim,
+\[
+    M_d=\frac{8+9}{2}=8,5
+\]
+Note que, quando o número é ímpar, o termo central sempre ocupa a posição \(\frac{n+1}{2}\). Por outro lado, quando o número de termos é par, existem dois termos centrais, sendo que o primeiro ocupa a posição \(\frac{n}{2}\); e o
+segundo ocupa a posição imediatamente seguinte, ou seja, \(\frac{n}{2}+1\).
+
+Essas relações são importantes porque nem sempre conseguiremos identificar a posição central tão facilmente. Por exemplo, se tivermos uma série composta por 501 elementos, podemos afirmar que o termo central será o elemento ocupando a posição \(\frac{n+1}{2}=\frac{501+1}{2}=251\), sem precisar recorrer a qualquer outro
+método. Logo, a mediana terá o mesmo valor do termo central:
+\[
+    M_d=x_{251}
+\]
+Vejamos a disposição do termo central em relação aos demais elementos da série:
+\[
+    \underbrace{x_1, x_2, \dots, x_{250}}_{\text{250 elementos antes}}, \underbrace{x_{251}}_{\text{Termo central}}, \underbrace{ x_{252}, x_{253}, \dots, x_{501}}_{\text{250 elementos depois}}
+\]
+Agora, se tivermos uma série composta por 500 elementos, os termos centrais serão os elementos ocupando as posições:
+
+\[
+    \frac{n}{2}=\frac{500}{2}=250\,\text{e}\,\frac{n}{2}+1=\frac{500}{2}+1=251
+\]
+Vejamos a disposição dos termos centrais em relação aos demais elementos da série:
+\[
+    \underbrace{x_1, x_2, \dots, x_{249}}_{\text{250 elementos antes}}, \underbrace{x_{250}, x_{251}}_{\text{Termo central}}, \underbrace{ x_{252}, x_{253}, \dots, x_{500}}_{\text{250 elementos depois}}
+\]
+Nessa situação, por convenção, a mediana será a média aritmética entre os termos centrais,
+\[
+    M_d=\frac{x_{250}+x_{251}}{2},
+\]
+Portanto, podemos estabelecer que a mediana de um conjunto composto por \(n\)elementos ordenados de forma crescente ou decrescente será:
+\begin{enumerate}[label=\alph *.]
+    \item se \(n\) for impar, o termo de ordem \(\frac{n+1}{2}\), isto é:
+    \[
+        M_d=\frac{x_n+1}{2}
+    \]
+    \item se \(n\) for par, a média aritmética dos termos de ordem \(\frac{n}{2}\) e \(\frac{n}{2}+1\), isto é:
+    \[
+        M_d=\frac{\frac{x_n}{2}+\frac{x_n}{2}+1}{2}
+    \]
+\end{enumerate}
+Como vimos, a mediana depende somente do termo que ocupa a posição central em um conjunto de dados, e não dos valores de todos os elementos que compõem a série. Por isso, dizemos que a mediana não sofre tanta influência pela presença de valores extremos/discrepantes quanto à média. Essa é, inclusive, uma das principais diferenças entre essas duas medidas.
+
+Podemos constatar essa propriedade da mediana por meio de um exemplo. Considere que tenhamos inicialmente a seguinte série:
+\[
+    \{1, 2, 4, 6, 7, 9, 10, 11, 13\}
+\]
+A média aritmética desses valores é:
+
+\[
+    \bar{x}=\frac{1+2+4+6+7+9+10+11-13}{9}=\frac{63}{9}=7
+\]
+Como o número de elementos é ímpar, \(n\)= 9, a mediana será o elemento que ocupa a posição:
+
+\[
+    \frac{n}{2}+1=\frac{9}{2}+1=\frac{10}{2}=5
+\]
+
+\[
+    M_d=x_5\Rightarrow M_d=7
+\]
+
+Agora, considere que o elemento de valor 13 tenha sido alterado para 130.000. Veja o que acontece com a média aritmética desse conjunto:
+
+\[
+    \bar{x}=\frac{1+2+4+6+7+9+10+11-130.000}{9}=14.450
+\]
+Mas como o número de elementos é o mesmo assim como o elemento central, a mediada continua sendo 7.
+
+Portanto, a alteração no valor de um único elemento do conjunto de dados causou um impacto significativo na média, ao passo que a mediana permaneceu inalterada. Por isso, dizemos que a média é mais influenciada pela presença de valores extremos que a mediana.
+
+\subsubsection{Mediana para dados Agrupados sem Intervalos de Classe}
+
+O raciocínio adotado no cálculo da mediana para dados agrupados por valor (sem intervalos de classe) é similar ao empregado no caso dos dados não-agrupados. Basicamente, teremos que encontrar um valor que dividirá a distribuição de frequências em duas partes contendo o mesmo número de elementos.
+
+Considere a seguinte situação hipotética: uma empresa realizou uma pesquisa para medir o nível de satisfação dos clientes com relação ao seu atendimento. Os clientes puderam atribuir notas de 0 a 5 no que diz respeito ao nível de satisfação, resultando na seguinte distribuição de frequências:
+\pgfplotstableread{
+Xi fi
+0  5
+1  5
+2  8
+3  10
+4  13
+5  10
+}\Satisf
+
+% ===== TABELA (gerada dos dados) =====
+\begin{table}[H]
+  \centering
+  \pgfplotstabletypeset[
+    columns={Xi,fi},
+    columns/Xi/.style={column name=\shortstack{Nível de\\Satisfação \(X_i\)}},
+    columns/fi/.style={column name=\shortstack{Frequência\\\(f_i\)}},
+    every head row/.style={before row=\toprule, after row=\midrule},
+    every last row/.style={after row=\bottomrule},
+    col sep=space,
+  ]{\Satisf}
+  \caption{Frequência de níveis de Satisfação}
+\end{table}
+
+
+O total de clientes entrevistados foi de:
+\[
+    5+5+8+10+13+10=49
+\]
+Como o número de entrevistados é ímpar, \(n\) = 49, a mediana será o termo que ocupa a posição de ordem:
+\[
+    \frac{n}{2}+1=\frac{49}{2}+1=\frac{50}{2}=25
+\]
+Em outros termos, a mediana será o elemento que ocupa a vigésima quinta posição. Para chegarmos a esse elemento, precisamos percorrer cada um dos níveis de satisfação. Reparem que três clientes atribuíram a nota 0 (zero); cinco atribuíram a nota 1 (um); e oito atribuíram a nota 2 (dois). Portanto, até esse ponto, temos um total de 16 avaliações:
+\[
+    3+5+8=16
+\]
+Vejam que ainda não chegamos na posição desejada, isto é, na vigésima quinta. Contudo, sabemos que o próximo nível de satisfação, referente à nota 3 (três), teve frequência absoluta igual a 10. Se somarmos essas dez novas avaliações com o total obtido anteriormente, chegaremos a um valor que ultrapassa a posição
+procurada (16 + 10 = 26). Assim, descobrimos que a mediana está localizada nessa faixa de avaliação. Portanto,
+\[
+    M_d=x_25=3
+\]
+Esse procedimento pode ser simplificado com a introdução de uma coluna adicional para armazenar as frequências acumuladas. Já vimos que, para calcularmos a frequência acumulada, devemos repetir a primeira frequência e somar as frequências subsequentes, exibindo os resultados a cada linha. Observem:
+
+\begin{table}
+    \centering
+    \begin{tabular}{cccl}
+        \toprule
+        \shortstack{Nivel de \\Satisfação \\\(X_i\)} & \shortstack{Frequênia \\\(f_i\)} & \shortstack{Frequência \\Acumulada} &\shortstack{Memória de \\Cálculo}\\
+        \midrule
+        0 & 3&  3&  0+3=3\\
+        1 & 5&  8&  3+5=8\\
+        2 & 8&  16& 8+8=16\\
+        3 & 10& 26& 16+10=26\\
+        4 & 13& 39& 26+13=39\\
+        5 & 10& 49& 39+10=49\\
+        \bottomrule
+    \end{tabular}
+    \caption{Frequência Acumulada}
+\end{table}
+
+Vamos remover a memória de cálculo para simplificar a tabela:
+
+\begin{table}
+    \centering
+    \begin{tabular}{ccc}
+        \toprule
+        \shortstack{Nivel de \\Satisfação \\\(X_i\)} & \shortstack{Frequênia \\\(f_i\)} & \shortstack{Frequência \\Acumulada}\\
+        \midrule
+        0 & 3&  3\\
+        1 & 5&  8\\
+        2 & 8&  16\\
+        3 & 10& 26\\
+        4 & 13& 39\\
+        5 & 10& 49\\
+        \bottomrule
+    \end{tabular}
+    \caption{Frequência Acumulada}
+\end{table}
+Reparem que o número 16, na terceira linha da coluna de frequências acumuladas, representa a soma das frequências absolutas simples das três primeiras linhas, isto é, 3 + 5 + 8. Assim, concluímos que 16 clientes avaliaram o atendimento da empresa com nota igual ou inferior a 2. De forma análoga, como 49 clientes
+participaram da pesquisa, podemos afirmar que 33 avaliaram o atendimento com nota igual ou superior a 3.
+
+Observem que a introdução da coluna de frequências acumuladas permite calcularmos a mediana de forma praticamente imediata. Nesse sentido, se n for ímpar, basta identificarmos o valor da variável correspondente à primeira frequência acumulada imediatamente igual ou superior à posição de ordem \(\frac{n+1}{2}\) ; e, se n for par, basta identificarmos os dois valores correspondentes às frequências acumuladas imediatamente iguais ou superiores às posições de ordens\(\frac{n}{2}\) e \(\frac{n+1}{2}\), respectivamente, e tirarmos a média
+aritmética desses dois valores.
+
+Em nosso exemplo, como a frequência total é ímpar, teremos que buscar pela posição \(\frac{n+1}{2}=\frac{49+1}{2}=25\)A mediana será o valor da variável correspondente à primeira frequência acumulada maior ou igual a essa posição, portanto, \(M_d=3\). Vejamos:
+
+\begin{table}
+    \centering
+    \begin{tabular}{ccc}
+        \toprule
+        \shortstack{Nivel de \\Satisfação \\\(X_i\)} & \shortstack{Frequênia \\\(f_i\)} & \shortstack{Frequência \\Acumulada}\\
+        \midrule
+        0 & 3&  3\\
+        1 & 5&  8\\
+        2 & 8&  16\\
+        3 & 10& 26\,\ge\,25\\
+        4 & 13& 39\\
+        5 & 10& 49\\
+        \bottomrule
+    \end{tabular}
+    \caption{Frequência Acumulada}
+\end{table}
+Assim, podemos estabelecer que a mediana de uma tabela de frequências composta por um total de \(n\) elementos será:
+
+\begin{itemize}[label=\alph*.]
+    \item se \(n\) for ímpar, o valor identificado na tabela correspondente à frequência acumulada imediatamente igual ou superior à posição de ordem \(\frac{n+1}{2}\), isto é,
+    \[
+        M-d=\frac{X_n+1}{2}
+    \]
+    \item se \(n\) for par, a média aritmética dos valores identificados na tabela correspondentes às frequências acumuladas imediatamente iguais ou superiores às posições de ordens \(\frac{n}{2}\) e \(\frac{n}{2}+1\), isto é,
+     \[
+        M_d=\frac{\frac{x_n}{2}+\frac{x_n}{2}+1}{2}
+    \]
+\end{itemize}
+
+\subsubsection{Mediana para dados agrupados em classes}
+
+O raciocínio adotado no cálculo da mediana para dados agrupados em classes é muito similar ao empregado no tópico anterior. Agora, contudo, não nos importaremos com o número de elementos da série.
+Adotaremos um único procedimento de cálculo, independentemente de termos um número par ou ímpar de elementos.
+
+Considere a distribuição de frequências descrita a seguir, que resume as idades de um grupo de 50 pessoas:
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lc}
+        \toprule
+        Idade & \shortstack{Frequência \(f_i\)}\\
+        \(23\vdash16\)  &3\\
+        \(26\vdash29\)  &4\\
+        \(29\vdash32\)  &10\\
+        \(32\vdash35\)  &13\\
+        \(35\vdash38\)  &10\\
+        \(38\vdash41\)  &6\\
+        \(41\vdash44\)  &4\\
+        \midrule
+        Total           &50\\
+        \bottomrule     
+    \end{tabular}
+    \caption{Distribuição de Frequência de Idades}
+    \label{Tab:~dist_freq_idades}
+\end{table}
+A etapa inicial do cálculo da mediana consiste na construção da coluna de frequências a partir da tabela %\ref{Tab:~dist_freq_idades} 
+das frequências acumuladas:
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lcc}
+\toprule
+\makecell{Idade} &
+\makecell{Frequência\\ \(f_i\)} &
+\makecell{Frequência\\ Acumulada \(f_{ac}\)}\\
+\midrule
+        \(23\vdash16\)  &3  & 3\\
+        \(26\vdash29\)  &4  & 7\\
+        \(29\vdash32\)  &10 & 17\\
+        \(32\vdash35\)  &13 & 30\\
+        \(35\vdash38\)  &10 & 40\\
+        \(38\vdash41\)  &6  & 46\\
+        \(41\vdash44\)  &4  & 50\\
+        \midrule
+        Total           &50\\
+        \bottomrule     
+    \end{tabular}
+    \caption{Cáculo da mediana}
+    \label{Tab:~calc_mediana_I}
+\end{table}
+Para calcular a mediana de dados agrupados por intervalo de classes, precisamos identificar a lasse em que se encontra a mediana, a chamada classe mediana, que corresponde à frequência acumulada imediatamente igual ou superior à metade da frequência total, ou seja, metade da soma das frequências simples, \(\sum \frac{f_i}{2}\). Em nosso exemplo, temos:
+\[
+    \frac{\sum f_i}{2}=\frac{50}{2}=25
+\]
+Agora, devemos comparar o valor encontrado com os valores presentes na coluna de frequências acumuladas, percorrendo-os de cima para baixo. A classe mediana será a primeira classe onde a frequência acumulada for igual ou superior a 25. Assim, teremos que analisar o seguinte:
+
+\begin{itemize}
+    \item a primeira frequência acumulada (3) é maior ou igual a 25? Não;
+    \item a segunda frequência acumulada (7) é maior ou igual a 25? Não;
+    \item a terceira frequência acumulada (17) é maior ou igual a 25? Não;
+    \item a quarta frequência acumulada (30) é maior ou igual a 25? Sim.
+\end{itemize}
+Pronto, encontramos a classe mediana. Nesse ponto, paramos a comparação e verificamos que a mediana se encontra na quarta classe, isto é, no intervalo entre 32 e 35.
+
+Conhecendo a classe mediana, podemos aplicar a fórmula da mediana, a seguir:
+
+\[
+    M_d=l_{inf}+\Bigg[\frac{\Big(\frac{\sum{f_i}}{2}\Big)-f_{ac_{ant}}}{f_i}\Bigg]\times h
+\]
+
+onde:
+\begin{itemize}
+    \item \(l_{inf}\) é o limite inferior da classe mediana;
+    \item \(l_{fac_{ant}}\) é a frequência acumulada da classe anterior à classe mediana;
+    \item \(l_{i}\) é a frequência simples da classe mediana; e
+    \item \textit{h} é a amplitude do intervalo da classe mediana.
+    \end{itemize}
+
+    Já sabemos que a amplitude é a diferença entre os limites da classe. Assim, temos:
+    \[
+        h=35-32=3
+    \]
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8 \linewidth]{limites_de_classes.png}
+        \caption{classe mediana}
+    \end{figure}
+
+    Após identificarmos os elementos, precisamos aplicá-los na fórmula evidenciada anteriormente:
+\begin{align*}
+   &M_d=l_{inf}+\Bigg[\frac{\Big(\frac{\sum{f_i}}{2}\Big)-}{f_i}\Bigg]\times h\\
+   &M_d=32+\Bigg[\frac{\Big(\frac{50}{2}\Big)-17}{13}\Bigg]\times 3\\
+   &M_d=32+\frac{8}{13}\times 3\approx 33,85\\
+\end{align*}
+
+\subsubsection{Propriedades da Mediana}
+
+\begin{propriedade}
+    Somando-se (ou subtraindo-se) uma constante \textit{c} a todos os valores de uma variável, a mediana do conjunto fica aumentada (ou diminuída) dessa constante.
+\end{propriedade}
+\begin{propriedade}
+    Multiplicando-se (ou dividindo-se) todos os valores de uma variável por uma constante \textit{c}, a mediana do conjunto fica multiplicada (ou dividida) por esta constante.
+\end{propriedade}
+\begin{propriedade}
+    A soma dos desvios absolutos de uma sequência de números, em relação a um número \textit{a}, é mínima quando \textit{a} é a mediana dos números.
+\end{propriedade}

@@ -1,0 +1,577 @@
+
+Vimos anteriormente que, logo após a coleta de dados, temos o que denominamos de dados brutos. Como exemplo de dados brutos, citamos uma pesquisa de tempo médio de estudo diário, em minutos, envolvendo 50 alunos do Estratégia, onde os alunos foram escolhidos de maneira aleatória, não havendo nenhuma organização dos valores observados. Por serem apresentados na forma em que foram coletados, são denominados de dados brutos.
+
+\begin{table}[hbt]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l r r r r r r r r r}
+\toprule
+Aluno & Tempo & Aluno & Tempo & Aluno & Tempo & Aluno & Tempo & Aluno & Tempo\\
+\midrule
+1  & 143 & 11 & 113 & 21 & 170 & 31 & 124 & 41 & 105\\
+2  & 142 & 12 & 143 & 22 & 158 & 32 & 137 & 42 & 154\\
+3  & 161 & 13 & 159 & 23 & 123 & 33 & 153 & 43 & 99\\
+4  & 126 & 14 & 168 & 24 & 96  & 34 & 129 & 44 & 114\\
+5  & 134 & 15 & 123 & 25 & 98  & 35 & 148 & 45 & 161\\
+6  & 137 & 16 & 135 & 26 & 135 & 36 & 173 & 46 & 128\\
+7  & 171 & 17 & 135 & 27 & 129 & 37 & 126 & 47 & 175\\
+8  & 85  & 18 & 175 & 28 & 126 & 38 & 104 & 48 & 137\\
+9  & 155 & 19 & 115 & 29 & 103 & 39 & 157 & 49 & 165\\
+10 & 171 & 20 & 89  & 30 & 171 & 40 & 127 & 50 & 115\\
+\bottomrule
+\end{tabular}%
+}
+\caption{Dados brutos.}
+\label{tab:dados_brutos_1}
+\end{table}
+
+Normalmente, esses dados fornecem pouca informação ao leitor, sendo necessário organizá-los, com o propósito de aumentar sua capacidade informativa. A simples organização dos dados em um rol crescente já ajuda bastante nesse sentido. Com os dados organizados em rol, conseguimos verificar que o menor tempo observado foi de 85 minutos, e o maior, de 175 minutos, o que nos fornece uma amplitude total (\(AT = 175 - 85 = 90\)) de variação da ordem de 90 minutos.
+
+\begin{table}[hbt]
+    \centering
+    \caption*{Rol em ordem crescente}
+    \begin{tabular}{lrrrr}
+        \toprule
+        85  &115 &129 &143 &161\\
+        89  &115 &129 &143 &165\\
+        96  &123 &134 &148 &168\\
+        98  &123 &135 &153 &170\\
+        99  &124 &135 &154 &171\\
+        104 &126 &137 &157 &171\\
+        105 &126 &137 &158 &173\\
+        113 &127 &137 &159 &175\\
+        114 &128 &142 &161 &175\\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Outra informação que conseguimos extrair dos dados organizados em rol crescente é que alguns tempos, como 126 min, 135 min, 137 min e 171 min, foram mais frequentes, ou seja, apareceram mais vezes durante a pesquisa.
+Uma maneira mais concisa de mostrar os dados do rol é apresentar cada valor juntamente com o número de vezes em que ocorre, em vez de repeti-los. O número de ocorrências de um determinado valor recebe o nome de frequência. A tabela que contém todos os valores com suas respectivas frequências é denominada de distribuição de frequências.
+
+Uma distribuição de frequências também pode ser definida como uma série estatística na qual permanecem constantes o fato, o local e a época. Ela pode ser classificada em dois tipos: distribuição de frequências pontual (ou discreta) e distribuição de frequências intervalar (ou contínua). Na distribuição de frequências pontual, são apresentados todos os dados coletados juntamente com suas respectivas frequências, não havendo perda de valores. Contudo, esse processo pode exigir muito espaço, especialmente quando o número de valores da variável tende a aumentar.
+
+\begin{table}[H]
+\centering
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{cc cc cc cc}
+\toprule
+\textbf{Tempo (min)} & \textbf{Freq.} &
+\textbf{Tempo (min)} & \textbf{Freq.} &
+\textbf{Tempo (min)} & \textbf{Freq.} &
+\textbf{Tempo (min)} & \textbf{Freq.} \\
+\midrule
+85  & 1 & 114 & 1 & 135 & 3 & 158 & 1 \\
+89  & 1 & 115 & 2 & 137 & 3 & 159 & 1 \\
+96  & 1 & 123 & 2 & 142 & 1 & 161 & 2 \\
+98  & 1 & 124 & 1 & 143 & 2 & 165 & 1 \\
+99  & 1 & 126 & 3 & 148 & 1 & 168 & 1 \\
+103 & 1 & 127 & 1 & 153 & 1 & 170 & 1 \\
+104 & 1 & 128 & 1 & 154 & 1 & 171 & 3 \\
+105 & 1 & 129 & 2 & 155 & 1 & 173 & 1 \\
+113 & 1 & 134 & 1 & 157 & 1 & 175 & 2 \\
+\bottomrule
+\end{tabular}
+\caption{Distribuição de frequências do tempo (min).}
+\label{tab:tempo_freq}
+\end{table}
+
+Nesse caso, quando a variável é contínua, o mais recomendável é agrupar os valores por intervalos de classe. Desse modo, em vez de listar cada um dos valores que ocorrem, utilizamos uma distribuição de frequências intervalar, listando os intervalos de classe e as frequências correspondentes.
+
+\begin{table}[H]
+\centering
+\caption{Distribuição de frequências do tempo médio.}
+%\label{tab:tempo_medio_freq}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{lc}
+\toprule
+\textbf{Tempo médio ($X_i$)} & \textbf{Frequência ($f_i$)} \\
+\midrule
+$85 \le x < 100$   & 5  \\
+$100 \le x < 115$  & 5  \\
+$115 \le x < 130$  & 12 \\
+$130 \le x < 145$  & 10 \\
+$145 \le x < 160$  & 7  \\
+$160 \le x < 175$  & 9  \\
+$175 \le x < 190$  & 2  \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Procedendo dessa forma, perdemos a informação detalhada dos tempos médios, mas ganhamos em termos de praticidade, o que simplifica o processo de análise de dados. Examinando a Tabela~\ref{tab:tempo_medio_freq}, percebemos facilmente que a maioria dos alunos estuda diariamente entre 115 e 130 minutos, enquanto uma minoria alcança entre 175 e 190 minutos.
+
+Para identificar uma classe, temos que conhecer os valores dos limites inferior e superior da classe, que delimitam um intervalo de classe. Desse modo, precisamos definir a natureza do intervalo de classe, se aberto ou fechado. Portanto, temos as seguintes notações para os diferentes tipos de intervalos:
+
+\begin{table}[H]
+\centering
+\caption{Tipos de intervalos e suas notações.}
+\label{tab:intervalos}
+\setlength{\tabcolsep}{11pt}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{p{3.6cm} p{2.5cm} p{2.4cm} p{4.8cm}}
+\toprule
+\textbf{\shortstack{Tipo de \\intervalo}} &
+\textbf{\shortstack{Notação \\matemática}} &
+\textbf{\shortstack{Notação \\estatística}} &
+\textbf{Significado} \\
+\midrule
+Intervalo aberto &
+$a < x < b$ &
+$(a,b)$ &
+Engloba todos os elementos entre $a$ e $b$, mas não engloba $a$ nem $b$. \\
+
+Fechado à esquerda e aberto à direita &
+$a \le x < b$ &
+$[a,b)$ &
+Engloba todos os elementos entre $a$ e $b$, inclusive $a$ mas não $b$. \\
+
+Aberto à esquerda e fechado à direita &
+$a < x \le b$ &
+$(a,b]$ &
+Engloba todos os elementos entre $a$ e $b$, inclusive $b$ mas não $a$. \\
+
+Intervalo fechado &
+$a \le x \le b$ &
+$[a,b]$ &
+Engloba todos os elementos entre $a$ e $b$, inclusive $a$ e $b$. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Por fim, é importante salientarmos que, em análises estatísticas, constantemente encontramos distribuições de frequências intervalares, pois o objetivo da estatística é justamente fazer um apanhado geral das características de um conjunto de dados, sem adentrar em detalhes de casos particulares.
+
+\subsection{Elementos de uma Distribuição de Frequências}
+Agora, analisaremos detalhadamente cada elemento de uma distribuição de frequências. 
+
+\begin{table}[H]
+\centering
+\caption{Distribuição de frequências do tempo médio.}
+\label{tab:tempo_medio_freq}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{lc}
+\toprule
+\textbf{Tempo médio ($X_i$)} & \textbf{Frequência ($f_i$)} \\
+\midrule
+$\,85 \le x < 100$   & 5  \\
+$100 \le x < 115$  & 5  \\
+$115 \le x < 130$  & 12 \\
+$130 \le x < 145$  & 10 \\
+$145 \le x < 160$  & 7  \\
+$160 \le x < 175$  & 9  \\
+$175 \le x < 190$  & 2  \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Classe}
+As classes são os intervalos nos quais o fenômeno é subdividido. Podemos dizer que as classes são os intervalos ou subdivisões dos elementos que compõem um conjunto de dados. Na Tabela~\ref{tab:tempo_medio_freq}, as classes são:
+\(85 \le x < 100\),
+\(100 \le x < 115\),
+\(115 \le x < 130\),
+\(130 \le x < 145\),
+\(145 \le x < 160\),
+\(160 \le x < 175\),
+\(175 \le x < 190\).
+
+Existem duas maneiras de determinar o número "ideal" de classes, \(k\), em função do número de dados da tabela, \(n\). A primeira consiste em utilizar a fórmula de Sturges:
+\[
+k = 1 + 3{,}3\log n.
+\]
+Outra abordagem, utilizada quando o número de dados é menor ou igual a 50, é:
+\[
+k=\sqrt{n}.
+\]
+
+\subsection{Limite de Classe}
+Cada classe tem um limite inferior de classe \(l_{inf}\), sendo o menor número que pode pertencer à classe, e um limite superior de classe \(l_{sup}\), sendo o maior número que pode pertencer à classe. Os limites de uma classe são seus valores extremos.
+
+\begin{table}[H]
+\centering
+\caption{Classes e respectivos limites inferior e superior.}
+\label{tab:classes_limites}
+\setlength{\tabcolsep}{12pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Classes} & \textbf& \textbf{\shortstack{Limite \\Inferior ($l_{\mathrm{inf}}$)}} & \textbf{\shortstack{Limite \\Superior ($l_{\mathrm{sup}}$)}} \\
+\midrule
+Pimeira classe  & $85  \le x < 100$   & 85  & 100 \\
+Segunda Classe  & $100 \le x < 115$  & 100 & 115 \\
+Terceira Classe & $115 \le x < 130$  & 115 & 130 \\
+Quarta Classe   & $130 \le x < 145$  & 130 & 145 \\
+Quinta Classe   & $145 \le x < 160$  & 145 & 160 \\
+Sexta Classe    & $160 \le x < 175$  & 160 & 175 \\
+Sétima Classe   & $175 \le x < 190$  & 175 & 190 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Amplitude de um Intervalo de Classe}
+A amplitude de um intervalo de classe, ou simplesmente intervalo de classe, é a distância entre os limites inferiores (ou superiores) de classes consecutivas. Ela é obtida pela diferença entre dois limites inferiores (ou superiores) consecutivos:
+\[
+h=l_{sup}-l_{inf},
+\]
+em que \(l_{inf}\) é o limite inferior do intervalo de classe e \(l_{sup}\) é o limite superior do intervalo de classe.
+
+\begin{table}[H]
+\centering
+\caption{Limites e amplitude das classes.}
+\label{tab:classes_limites_amplitude}
+\setlength{\tabcolsep}{8pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{l c c c}
+\toprule
+\textbf{Classes} &
+\textbf{\shortstack{Limite Inferior\\($l_{\mathrm{inf}}$)}} &
+\textbf{\shortstack{Limite Superior\\($l_{\mathrm{sup}}$)}} &
+\textbf{\shortstack{Amplitude\\($h$)}} \\
+\midrule
+$85 \le x < 100$   & 85  & 100 & 15 \\
+$100 \le x < 115$  & 100 & 115 & 15 \\
+$115 \le x < 130$  & 115 & 130 & 15 \\
+$130 \le x < 145$  & 130 & 145 & 15 \\
+$145 \le x < 160$  & 145 & 160 & 15 \\
+$160 \le x < 175$  & 160 & 175 & 15 \\
+$175 \le x < 190$  & 175 & 190 & 15 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Embora seja desejável, a amplitude do intervalo de classe nem sempre será constante ao longo de toda a distribuição de frequências intervalar.
+
+\subsection{Amplitude Total}
+A amplitude total é a diferença entre o limite superior da última classe (limite superior máximo) e o limite inferior da primeira classe (limite inferior mínimo). Portanto, corresponde à diferença entre o último e o primeiro elemento de um conjunto de dados ordenado crescentemente:
+\[
+AT=l_{max}-l_{min}.
+\]
+Note que, quando todas as classes possuem a mesma amplitude, também podemos determinar o valor da amplitude total multiplicando o valor do intervalo de classe \(h\) pela quantidade de classes da distribuição \(k\):
+\[
+AT=h\times k.
+\]
+
+\subsection{Ponto médio da classe}
+O ponto médio é a média aritmética simples dos valores extremos de uma classe, ou seja, a soma dos limites inferior e superior dividida por dois. Esse ponto divide a classe em duas partes iguais. Também costuma ser chamado de marca ou representante da classe:
+\[
+PM=\frac{l_{sup}+l_{inf}}{2}.
+\]
+
+\begin{table}[H]
+\centering
+\caption{Limites e ponto médio das classes.}
+\label{tab:Ponto_medio}
+\setlength{\tabcolsep}{8pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{l c c c}
+\toprule
+\textbf{Classes} &
+\textbf{\shortstack{Limite Inferior\\($l_{\mathrm{inf}}$)}} &
+\textbf{\shortstack{Limite Superior\\($l_{\mathrm{sup}}$)}} &
+\textbf{\shortstack{Ponto médio\\($PM$)}} \\
+\midrule
+$85 \le x < 100$   & 85  & 100 & 92,5 \\
+$100 \le x < 115$  & 100 & 115 & 107,5 \\
+$115 \le x < 130$  & 115 & 130 & 122,5 \\
+$130 \le x < 145$  & 130 & 145 & 137,5 \\
+$145 \le x < 160$  & 145 & 160 & 152,5 \\
+$160 \le x < 175$  & 160 & 175 & 167,5 \\
+$175 \le x < 190$  & 175 & 190 & 182,5 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Veja que os pontos médios formaram uma progressão aritmética, pois a diferença entre dois pontos médios consecutivos foi constante e igual a 15. Isso ocorreu porque o intervalo de classe \(h\) também foi constante (e igual a 15) em toda a distribuição. Assim, quando o intervalo de classes é constante, a diferença entre os pontos médios também será constante e igual ao intervalo de classe.
+
+Adicionalmente, sabendo que o ponto médio divide a classe em duas partes iguais, podemos derivar outras relações envolvendo o próprio ponto médio, a amplitude de classe e os limites inferior e superior.
+
+\begin{figure}[hbt]
+  \centering
+  \begin{tikzpicture}[
+  >=Stealth,
+  br/.style={decorate, decoration={brace, amplitude=6pt}, thick, draw=blue!70!black},
+  axis/.style={very thick, draw=blue!70!black},
+  lab/.style={blue!70!black}
+]
+  \coordinate (A) at (0,0);
+  \coordinate (B) at (10,0);
+  \coordinate (M) at ($(A)!0.5!(B)$);
+
+  \draw[axis, <->] (A) -- (B);
+
+  \fill[blue!70!black] (M) circle (3pt);
+  \node[lab, below=6pt] at (M) {PM};
+
+  \node[lab, below=10pt] at (A) {$l_{\inf}$};
+  \node[lab, below=10pt] at (B) {$l_{\sup}$};
+
+  \draw[br] ($(A)+(0,0.9)$) -- ($(M)+(0,0.9)$)
+    node[midway, above=8pt, lab] {$h/2$};
+  \draw[br] ($(M)+(0,0.9)$) -- ($(B)+(0,0.9)$)
+    node[midway, above=8pt, lab] {$h/2$};
+
+  \draw[lab, thick] ($(A)!0.5!(M)+(0,0.9)$) -- ++(0,0.18);
+  \draw[lab, thick] ($(M)!0.5!(B)+(0,0.9)$) -- ++(0,0.18);
+
+  \draw[br, decoration={brace, mirror, amplitude=6pt}]
+    ($(A)+(0,-0.9)$) -- ($(B)+(0,-0.9)$)
+    node[midway, below=8pt, lab] {$h$};
+\end{tikzpicture}
+\end{figure}
+
+Dada a figura anterior, podemos obter os limites de uma classe por meio das seguintes expressões:
+\[
+l_{inf}=PM-\frac{h}{2}
+\qquad\text{e}\qquad
+l_{sup}=PM+\frac{h}{2}.
+\]
+Além disso, podemos encontrar o ponto médio de uma classe a partir das seguintes relações:
+\[
+PM=l_{inf}+\frac{h}{2}
+\qquad\text{e}\qquad
+PM=l_{sup}-\frac{h}{2}.
+\]
+
+\subsection{Frequência}
+Ao longo dessa aula, em várias oportunidades abordamos conceitos relacionados à frequência, isto é, ao número de ocorrências de um determinado valor ou de uma certa classe. Esse conceito é de grande relevância para a estatística descritiva e deve ser estudado de forma mais aprofundada. Nesse contexto, é importante sabermos que existem quatro tipos de frequência, os quais serão analisados nas subseções seguintes:
+
+\begin{enumerate}[label=\alph*.]
+  \item Frequência absoluta simples (\(f_i\))
+  \item Frequência absoluta acumulada (\(f_{ac}\) e \(f_{ad}\))
+  \item Frequência relativa simples (\(F_i\))
+  \item Frequência relativa acumulada (\(F_{ac}\) e \(F_{ad}\))
+\end{enumerate}
+
+\subsection{Frequência Absoluta Simples}
+A frequência absoluta simples corresponde ao número de observações correspondentes a uma determinada classe ou a um determinado valor.
+
+\begin{table}[H]
+  \centering
+\begin{tabular}{llc}
+  \toprule
+i & \shortstack{Tempos \\(min)}  & \shortstack{Frequência \\\(f_i\)} \\
+\midrule
+1 & \(85\vdash100\)   & 5\\
+2 & \(100\vdash115\)  & 5\\
+3 & \(115\vdash130\)  & 12\\
+4 & \(130\vdash145\)  & 10\\
+5 & \(145\vdash160\)  & 7\\
+6 & \(160\vdash175\)  & 9\\
+\bottomrule
+\end{tabular}
+\caption{Frequência Absoluta Simples}
+\label{tab:freq_abs-simp}
+\end{table}
+
+No exemplo, temos: \(f_1=5\), \(f_2=5\), \(f_3=12\), \(f_4=10\), \(f_5=7\), \(f_6=9\), \(f_7=2\).
+
+A soma de todas as frequências é igual ao número total de dados analisados:
+
+\[
+  \sum_{i=1}^{k} f_i = n,
+\]
+em que a notação \(\sum_{i=1}^{k} f_i\) representa o somatório das frequências de cada uma das \(k\) classes.
+
+\subsection{Frequência Absoluta Acumulada}
+A frequência absoluta acumulada crescente \(f_{ac}\) é a soma das frequências de todos os valores inferiores ao limite superior do intervalo de uma determinada classe. Assim,
+\[
+  f_{ac,i}=f_1+f_2+\cdots+f_i.
+\]
+
+A frequência absoluta acumulada decrescente \(f_{ad}\) é a soma das frequências de todos os valores superiores ao limite inferior do intervalo de uma determinada classe. Assim,
+\[
+  f_{ad,i}=f_i+f_{i+1}+\cdots+f_k.
+\]
+
+A Tabela \ref{tab:freq_abs} apresenta a frequência absoluta simples e as frequências absolutas acumuladas (crescente e decrescente) para o exemplo.
+
+\begin{table}[H]
+  \centering
+  \caption{Frequência absoluta simples e acumuladas (crescente e decrescente).}
+  \label{tab:freq_abs}
+  \begin{tabular}{lcccc}
+    \toprule
+    $\mathbf{i}$ &
+    \textbf{\makecell{Tempos\\(min.)}} &
+    \textbf{\makecell{Frequência\\($f_i$)}} &
+    \textbf{\makecell{Frequência\\Acum. crescente ($f_{ac}$)}} &
+    \textbf{\makecell{Frequência\\Acum. decrescente ($f_{ad}$)}} \\
+    \midrule
+    1 & $85 \le x < 100$   & 5  & 5  & 50 \\
+    2 & $100 \le x < 115$  & 5  & 10 & 45 \\
+    3 & $115 \le x < 130$  & 12 & 22 & 40 \\
+    4 & $130 \le x < 145$  & 10 & 32 & 28 \\
+    5 & $145 \le x < 160$  & 7  & 39 & 18 \\
+    6 & $160 \le x < 175$  & 9  & 48 & 11 \\
+    7 & $175 \le x < 190$  & 2  & 50 & 2  \\
+    \midrule
+    \multicolumn{2}{r}{\textbf{$n$}} & \textbf{50} & \textbf{50} & \textbf{50} \\
+    \bottomrule
+  \end{tabular}
+  \label{tab:freq_absl}
+\end{table}
+
+\subsection{Frequência Relativa Simples}
+A frequência relativa simples corresponde à proporção de dados existentes em uma determinada classe. Para calcular a frequência relativa de uma classe, dividimos a frequência absoluta simples \(f_i\) pela frequência total:
+\[
+  F_i=\frac{f_i}{n}.
+\]
+Para representar esses valores em termos de porcentagem, basta multiplicarmos por 100\%.
+
+Repare que a soma de todas as frequências relativas deve ser igual a 100\%:
+\[
+  \sum_{i=1}^{k} F_i = 100\%.
+\]
+
+\subsection{Frequência Relativa Acumulada}
+A frequência relativa acumulada crescente \(F_{ac}\) é a proporção de valores inferiores ao limite superior do intervalo de uma dada classe:
+\[
+  F_{ac,i}=F_1+F_2+\cdots+F_i.
+\]
+A frequência relativa acumulada decrescente \(F_{ad}\) é a proporção de valores superiores ao limite inferior do intervalo de uma dada classe:
+\[
+  F_{ad,i}=F_i+F_{i+1}+\cdots+F_k.
+\]
+
+A Tabela apresenta as frequências relativas simples e acumuladas (crescente e decrescente) para o exemplo.
+
+\begin{table}[H]
+  \centering
+  \caption{Frequências relativas simples e acumuladas (em \%).}
+  \label{tab:freq_rel}
+  \begin{tabular}{lcccc}
+    \toprule
+    $\mathbf{i}$ &
+    \textbf{\shortstack{Tempos\\(min.)}} &
+    \textbf{\shortstack{Frequência\\Relativa ($F_i$)}} &
+    \textbf{\shortstack{Frequência Rel.\\Acum. crescente ($F_{ac}$)}} &
+    \textbf{\shortstack{Frequência Rel.\\Acum. decrescente ($F_{ad}$)}}\\
+    \midrule
+    1 & $85 \le x < 100$   & 10\% & 10\%  & 100\% \\
+    2 & $100 \le x < 115$  & 10\% & 20\%  & 90\%  \\
+    3 & $115 \le x < 130$  & 24\% & 44\%  & 80\%  \\
+    4 & $130 \le x < 145$  & 20\% & 64\%  & 56\%  \\
+    5 & $145 \le x < 160$  & 14\% & 78\%  & 36\%  \\
+    6 & $160 \le x < 175$  & 18\% & 96\%  & 22\%  \\
+    7 & $175 \le x < 190$  & 4\%  & 100\% & 4\%   \\
+    \midrule
+    \multicolumn{2}{r}{\(\sum f_i = 50\)} & \(\sum F_i = 100\%\) & & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Densidade de Frequência}
+A densidade de frequência de uma classe consiste no quociente entre a frequência da classe (absoluta ou relativa) e sua amplitude:
+\[
+ \text{densidade}=\frac{\text{frequência}}{\text{amplitude}}.
+\]
+Usando a frequência absoluta e a amplitude do intervalo \(h_i\), temos:
+\[
+  d_i=\frac{f_i}{h_i}.
+\]
+
+\begin{table}[H]
+  \centering
+  \caption{Densidade de frequência (para $h_i=15$).}
+  \label{tab:densidade_freq}
+  \begin{tabular}{lccc}
+    \toprule
+    $\mathbf{i}$ &
+    \textbf{\shortstack{Tempos\\(min.)}} &
+    \textbf{\shortstack{Frequência\\($f_i$)}} &
+    \textbf{\shortstack{Densidade de\\Frequência ($d_i$)}}\\
+    \midrule
+    1 & $85 \le x < 100$   & 5  & \(d_1=\frac{5}{15}=0{,}33\)\\
+    2 & $100 \le x < 115$  & 5  & \(d_2=\frac{5}{15}=0{,}33\)\\
+    3 & $115 \le x < 130$  & 12 & \(d_3=\frac{12}{15}=0{,}80\)\\
+    4 & $130 \le x < 145$  & 10 & \(d_4=\frac{10}{15}=0{,}67\)\\
+    5 & $145 \le x < 160$  & 7  & \(d_5=\frac{7}{15}=0{,}47\)\\
+    6 & $160 \le x < 175$  & 9  & \(d_6=\frac{9}{15}=0{,}60\)\\
+    7 & $175 \le x < 190$  & 2  & \(d_7=\frac{2}{15}=0{,}13\)\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Principais conceitos e notações da distribuição de frequências.}
+\label{tab:conceitos_freq}
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{
+  >{\raggedright\arraybackslash}p{3.1cm}
+  >{\raggedright\arraybackslash}p{6.1cm}
+  >{\raggedright\arraybackslash}p{6.0cm}
+}
+\toprule
+\textbf{Item} & \textbf{Definição} & \textbf{Símbolos e fórmulas} \\
+\midrule
+Número de classes &
+As classes são os intervalos nos quais o fenômeno é subdividido. &
+\(\displaystyle
+k = 1 + 3{,}3 \log n
+\quad \text{ou} \quad
+k = \sqrt{n}
+\)
+\\
+Limites de classe &
+Correspondem aos valores extremos de cada classe. &
+\(\displaystyle
+l_{\mathrm{inf}} \quad \text{e} \quad l_{\mathrm{sup}}
+\)
+\\
+Amplitude de um intervalo de classe &
+Distância entre os limites inferiores (ou superiores) de classes consecutivas. &
+\(\displaystyle
+h = l_{\mathrm{sup}} - l_{\mathrm{inf}}
+\)
+\\
+Amplitude total &
+Diferença entre o limite superior máximo e o limite inferior mínimo. &
+\(\displaystyle
+AT = l_{\max} - l_{\min}
+\quad \text{ou} \quad
+AT = h \times k
+\)
+\\
+Ponto médio &
+Média aritmética simples dos valores extremos de uma classe. &
+\(\displaystyle
+\begin{aligned}
+PM &= \frac{l_{\mathrm{inf}} + l_{\mathrm{sup}}}{2}\\
+PM &= l_{\mathrm{inf}} + \frac{h}{2}
+     ,\quad
+PM = l_{\mathrm{sup}} - \frac{h}{2}
+\end{aligned}
+\)
+\\
+Frequência absoluta simples &
+Número de observações correspondentes a uma classe. &
+\(\displaystyle f_i\)
+\\
+Frequência absoluta acumulada &
+Soma das frequências até a classe considerada. &
+\(\displaystyle
+f_{ac,i} = f_1 + f_2 + \cdots + f_i
+\)
+\\
+Frequência relativa simples &
+Proporção de dados existentes em uma classe. &
+\(\displaystyle
+F_i = \frac{f_i}{n}
+\)
+\\
+Frequência relativa acumulada &
+Proporção acumulada até a classe considerada. &
+\(\displaystyle
+F_{ac,i} = F_1 + F_2 + \cdots + F_i
+\)
+\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Quartil para dados agrupados em classes}
+
+O cálculo do quartil para dados agrupados em classes será realizado por meio das seguintes etapas:
+

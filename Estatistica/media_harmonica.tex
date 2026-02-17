@@ -1,0 +1,35 @@
+
+A média harmônica é muito utilizada quando precisamos trabalhar com grandezas inversamente proporcionais. É o caso de problemas clássicos, como o cálculo da velocidade média de um automóvel ou da vazão de torneiras (quanto tempo duas ou mais torneiras levam para encher um tanque).
+
+Essa medida é definida, para o conjunto de números positivos, como o inverso da média
+aritmética dos inversos. A propriedade principal dessa média é preservar a soma dos inversos dos elementos de um conjunto de números.
+
+O raciocínio para encontrarmos a fórmula da média harmônica é similar ao adotado para as médias aritmética e geométrica. Dada uma lista de \textit{x} números, \({x_1, x_2, \dots, x_n}\), a soma dos inversos de seus termos é igual a:
+
+\[
+    \underbrace{\frac{1}{x_1}+\frac{1}{x_2}+\dots+\frac{1}{x_n}}_{\text{n fatores}}
+\]
+
+A média harmônica dessa lista é um número \textit{H}, tal que, se todos os elementos forem substituídos por \textit{H}, a soma dos inversos permanecerá preservada. Assim, substituindo todos os elementos por H, teremos uma lista, \(H, H, \dots, H\), cuja soma dos inversos é:
+
+\[
+    \underbrace{\frac{1}{H}+\frac{1}{H}+\dots+\frac{1}{H}}_{\text{n fatores}}=\frac{n}{H}
+\]
+
+Como as somas dos inversos das duas listas são iguais, temos:
+
+\[
+    \frac{n}{H}=\frac{1}{x_1}+\frac{1}{x_2}+\dots+\frac{1}{n}
+\]
+
+\[
+    n=H\times \Bigg(\frac{1}{x_1}+\frac{1}{x_2}+\dots+\frac{1}{n}\Bigg)
+\]
+
+\[
+    H=\frac{n}{\frac{1}{x_1}+\frac{1}{x_2}+\dots+\frac{1}{n}}
+\]
+
+Como vimos no início, muitas vezes, a média harmônica é descrita como o inverso da média
+aritmética dos inversos. Isso porque a fórmula acima também pode ser escrita na forma mostrada a
+seguir, em que \((\frac{1}{x_1}+\frac{1}{x_2}+\dots+\frac{1}{n})/n\) corresponde à média aritmética dos inversos.

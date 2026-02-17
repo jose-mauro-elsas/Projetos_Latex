@@ -1,0 +1,63 @@
+\begin{table}[H]
+    \centering
+    \begin{tabular}{cc}
+        \toprule
+        \shortstack{Nível de \\Satisfação \(X_i\)} & \shortstack{Frequência \\\(f_i\)}\\
+        \midrule
+        0   & 5\\
+        1   & 5\\
+        2   & 8\\
+        3   & 10\\
+        4   & 13\\
+        5   & 10\\
+        \bottomrule
+    \end{tabular}
+    \caption{Frequência de níveis de Satisfação}
+\end{table}
+
+%================================
+% ===== Fonte única de dados =====
+\pgfplotstableread{
+Xi fi
+0  5
+1  5
+2  8
+3  10
+4  13
+5  10
+}\Satisf
+
+% ===== TABELA (gerada dos dados) =====
+\begin{table}[H]
+  \centering
+  \pgfplotstabletypeset[
+    columns={Xi,fi},
+    columns/Xi/.style={column name=\shortstack{Nível de\\Satisfação \(X_i\)}},
+    columns/fi/.style={column name=\shortstack{Frequência\\\(f_i\)}},
+    every head row/.style={before row=\toprule, after row=\midrule},
+    every last row/.style={after row=\bottomrule},
+    col sep=space,
+  ]{\Satisf}
+  \caption{Frequência de níveis de Satisfação}
+\end{table}
+
+% ===== GRÁFICO (gerado dos mesmos dados) =====
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      ybar,
+      width=11cm,
+      height=6.5cm,
+      bar width=28pt,
+      grid=both,
+      xlabel={Nível de Satisfação (\(X_i\))},
+      ylabel={Frequência (\(f_i\))},
+      xtick=data,
+      ymin=0,
+    ]
+      \addplot table[x=Xi, y=fi] {\Satisf};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Gráfico de barras da frequência por nível de satisfação}
+\end{figure}

@@ -1,0 +1,80 @@
+
+Muitas vezes, certos elementos de um conjunto de dados possuem relevância maior que os demais. Nessa situação, para calcular a média de tais conjuntos, devemos encontrar uma média ponderada. Uma média ponderada é a média de um conjunto de dados cujos valores possuem pesos variados.
+
+Ela é calculada pela igualdade a seguir, em que \(p\) é o peso de cada valor de \(x\):
+\medskip
+\[
+    \bar{x}=\frac{\sum_{i=1}^{n}(x_i\times p_1)}{\sum_{i=1}^{n}p_i}
+\]
+
+Observe que no numerador cada valor será multiplicado pelo seu respectivo peso, enquanto no denominador teremos a soma de todos os pesos.
+
+Suponha que um candidato tenha prestado um concurso público para o cargo de Auditor Fiscal, alcançando as seguintes notas:
+
+\begin{table}[H]
+    \centering
+\begin{tabular}{lr}
+\toprule
+Disciplina                  &Nota \(x_i\)\\
+\midrule
+Língua Portuguesa           &4,0\\
+Direito Administrativo      &4,0\\
+Direito Constitucional      &4,0\\
+Direito Tributário          &7,0\\
+Legislação Tributária       &7,0\\
+Contabilidade               &8,0\\
+Auditoria                   &8,0\\
+\bottomrule
+\end{tabular}
+\caption{Notas.}
+\end{table}
+
+Considere, também, que o edital desse concurso previa que algumas disciplinas teriam importância maior do que outras, por isso foram atribuídos pesos diferentes às várias disciplinas. Digamos que os
+pesos tenham sido distribuídos da seguinte forma:
+
+\begin{table}[H]
+    \centering
+\begin{tabular}{lr}
+\toprule
+Disciplina                  &Peso \(p_i\)\\
+\midrule
+Língua Portuguesa           &1\\
+Direito Administrativo      &2\\
+Direito Constitucional      &2\\
+Direito Tributário          &3\\
+Legislação Tributária       &3\\
+Contabilidade               &3\\
+Auditoria                   &4\\
+\bottomrule
+\end{tabular}
+\caption{Pesos.}
+\end{table}
+
+Agora, admita que o candidato deveria alcançar uma nota 7,0 ou superior na prova objetiva para que fosse convocado para a etapa discursiva. Se você fosse um dos avaliadores desse concurso, você consideraria o candidato aprovado na prova objetiva?
+
+Para responder a esse questionamento, devemos calcular a média aritmética ponderada desse candidato, considerando os pesos de cada disciplina. Dessa forma, devemos multiplicar cada nota pelo seu respectivo peso, somar esses produtos e dividir pela soma dos pesos.
+
+\begin{table}[H]
+    \centering
+\begin{tabular}{lccc}
+\toprule
+Disciplina                  &Notas \(x_i\)& Pesos \(p_i\) &\(x_i\times p_i\)\\
+\midrule
+Língua Portuguesa           &4,0         &1 & \(4,0\times 1\)=4,0\\
+Direito Administrativo      &4,0         &2 & \(4,0\times 2\)=8,0\\
+Direito Constitucional      &4,0         &2 & \(4,0\times 2\)=8,0\\
+Direito Tributário          &6,0         &3 & \(7,0\times 3\)=18,0\\
+Legislação Tributária       &6,0         &3 & \(7,0\times 3\)=18,0\\
+Contabilidade               &7,0         &3 & \(8,0\times 3\)=21,0\\
+Auditoria                   &7,0         &3 & \(8,0\times 3\)=21,0\\
+\bottomrule
+\end{tabular}
+\caption{Notas.}
+\end{table}
+
+Nesse ponto, temos uma lista contendo todos os produtos de notas e pesos. Então, a média aritmética
+ponderada é dada por:
+
+\[
+    \bar{x}=\frac{\sum_{i=1}^{n}(x_i\times p_1)}{\sum_{i=1}^{n}}=\frac{4,0+8,0+8,0+18,0+18,0+21,0+21,0}{1+2+2+3+3+3+3}=\frac{98}{17}=5,76
+\]

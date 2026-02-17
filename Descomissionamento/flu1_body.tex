@@ -1,0 +1,33 @@
+% Arquivo: flu1_body.tex
+% Somente o ambiente tikzpicture (sem \begin{document})
+
+\begin{tikzpicture}[
+  node distance=1.0cm and 0.9cm
+]
+% ===== Linha 1 (esq -> dir) =====
+\node (s1) [process] {1. Estudos de engenharia, impacto ambiental e documentação};
+\node (s2) [process, right=of s1] {2. Abandono dos poços conectados};
+
+% ===== Linha 2 (dir -> esq) =====
+\node (s4) [process, below=of s2] {4. Remoção da estrutura (jaqueta, ancoragem ou GBS)};
+\node (s3) [process, left=of s4] {3. Desmobilização do \textit{topside} (produção, habitação, energia)};
+
+% ===== Linha 3 (esq -> dir) =====
+\node (s5) [process, below=of s3] {5. Remoção de linhas, manifolds e válvulas};
+\node (s6) [process, right=of s5] {6. Resíduos, limpeza e recuperação da área};
+
+% ===== Linha 4 (final centralizado) =====
+\node (s7) [process_final, below=of s6, xshift=-3.45cm] {7. Desmantelamento e reciclagem em terra};
+
+% ===== Setas (fluxo serpente) =====
+\draw [arrow] (s1) -- (s2);
+
+\draw [arrow] (s2) -- (s4);
+\draw [arrow] (s4) -- (s3);
+
+\draw [arrow] (s3) -- (s5);
+\draw [arrow] (s5) -- (s6);
+
+\draw [arrow] (s6) -- (s7);
+
+\end{tikzpicture}

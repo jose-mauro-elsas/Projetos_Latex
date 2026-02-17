@@ -1,0 +1,102 @@
+\raggedbottom
+
+A origem da estatística remonta às civilizações antigas, em que vários povos coletavam e registravam dados populacionais e econômicos de interesse do Estado. 
+
+Nessa época, também eram realizadas estimativas das riquezas individuais e familiares, as quais eram utilizadas para determinar o montante de impostos a serem pagos pela população.
+
+O termo estatística se originou da palavra \textit{status}, que significa Estado em latim. O termo era utilizado para designar um conjunto de dados, relativos aos Estados, que os governantes utilizavam para controle fiscal e segurança nacional. O primeiro a utilizar a palavra foi Schneider, ainda no século XVII, em latim. Depois, foi adotada pelo acadêmico alemão Godofredo Achenwall.
+
+A Estatística pode ser definida como a ciência que estuda os processos de coleta, organização, análise e interpretação de dados numéricos variáveis referentes a qualquer fenômeno. Ou ainda, podemos conceituá-la como um conjunto de técnicas de coleta, organização, análise e interpretação de dados, aplicáveis a várias áreas do conhecimento, que auxiliam no processo de tomada de decisão.
+
+Os avanços computacionais tornaram a Estatística mais acessível e permitiram aplicações mais sofisticadas em diferentes áreas do conhecimento. Nesse cenário, os softwares estatísticos passaram a disponibilizar ferramentas antes inimagináveis, voltadas para planejamento de experimentos, teste de hipóteses, cálculos de confiabilidade, criação de gráficos complexos e elaboração de modelos preditivos.
+A Estatística pode ser dividida em três grandes ramos: Estatística Descritiva (ou dedutiva), Estatística Probabilística e Estatística Inferencial (ou indutiva). Alguns autores, porém, consideram a Estatística Probabilística como parte da Estatística Inferencial.
+
+A Estatística Descritiva (ou Dedutiva) é responsável pela coleta, organização, descrição e resumo dos dados observados. A partir de um determinado conjunto de dados, a Estatística Descritiva busca organizá-los em tabelas (ou gráficos) e estabelecer um sumário por meio de medidas descritivas como a média, os valores mínimo e máximo, o desvio padrão, entre outras.
+A Estatística Probabilística é responsável por estabelecer o modelo matemático probabilístico adotado para explicar os fenômenos aleatórios investigados pela Estatística. Os resultados desses fenômenos aleatórios podem variar de uma observação para outra, dificultando muito a previsão de um resultado futuro. Por isso, a Teoria da Probabilidade é usada para medir a chance de ocorrência de determinados eventos.
+
+A Estatística Inferencial (ou Indutiva) é responsável pela análise e interpretação dos dados. A partir da análise de dados de uma amostra, a Estatística Indutiva estabelece inferências e previsões sobre a população, auxiliando na tomada decisões. Além disso, busca generalizar conclusões a respeito da população a partir de uma amostra, analisando a representatividade, a significância e a confiabilidade dos resultados obtidos.
+
+\subsection{Conceitos Iniciais}
+Neste tópico, apresentaremos alguns conceitos iniciais da estatística que costumam ser abordados em provas de concursos públicos, dentre os quais podemos citar: população, amostra, censo, amostragem, parâmetros e estatísticas.
+
+\subsection{População}
+Uma POPULAÇÃO é um conjunto que contém TODOS OS INDIVÍDUOS, OBJETOS OU ELEMENTOS a serem estudados, que apresentam uma ou mais características em comum. A população pode ser finita, quando apresenta um número pequeno ou limitado de observações; ou infinita, quando apresenta um número muito grande ou ilimitado de observações.
+
+\subsection{Amostra}
+Uma AMOSTRA é um SUBCONJUNTO EXTRAÍDO DA POPULAÇÃO para análise, devendo ser representativo daquele grupo. A partir das informações colhidas da amostra, os resultados obtidos podem ser utilizados para generalizar, inferir ou tirar conclusões acerca da população. Como exemplo, podemos citar as pesquisas eleitorais, em que uma amostra de eleitores deve ser extraída conforme a proporcionalidade de gênero, idade, grau de instrução e classe social.
+
+\subsection{Censo}
+O CENSO, ou recenseamento, é um estudo dos dados relativos a TODOS os elementos de uma população. O censo pode custar muito caro e demandar um tempo considerável, de forma que um estudo considerando somente uma parcela da população pode ser uma alternativa mais simples, rápida e menos onerosa. Como exemplos, podemos citar a pesquisa sobre o grau de escolaridade dos habitantes brasileiros, o estudo sobre a renda dos brasileiros e a pesquisa de emprego.
+
+\subsection{Amostragem}
+A AMOSTRAGEM é um processo que consiste na SELEÇÃO CRITERIOSA dos elementos a serem submetidos à investigação. Se forem cometidos erros no processo de seleção da amostra, muito provavelmente, o estudo ficará comprometido e os resultados serão tendenciosos. Portanto, devemos garantir que a amostra seja representativa da população. Isso significa que, com exceção de pequenas discrepâncias inerentes à aleatoriedade existente no processo de amostragem, uma amostra deve possuir as mesmas características básicas da população, no que diz respeito às variáveis que desejamos pesquisar.
+
+\subsection{Parâmetros}
+Os \textbf{PARÂMETROS} são \textbf{DESCRIÇÕES NUMÉRICAS} de \textbf{CARACTERÍSTICAS POPULACIONAIS} que raramente são
+conhecidas. Em geral, é muito caro ou demorado obter os dados da população inteira. Assim, algumas medidas precisam ser estimadas a partir de critérios ou métodos definidos pelo pesquisador, para representar características desconhecidas de uma população (por exemplo, a proporção de homens e mulheres na população brasileira). Normalmente, os parâmetros populacionais são constantes para uma população.
+
+\subsection{Estatística (ou estimador)}
+As ESTATÍSTICAS são MEDIDAS NUMÉRICAS OBTIDAS DE AMOSTRAS representativas extraídas da população. A partir das informações colhidas da amostra, as estatísticas amostrais obtidas podem ser utilizadas para inferir ou tirar conclusões acerca dos parâmetros populacionais, como a proporção de homens e mulheres na população brasileira. Resumidamente, as estatísticas (ou estimadores) são descrições numéricas de características amostrais. Normalmente, as estatísticas amostrais diferem de uma amostra para outra.
+
+\begin{figure}[hbt]
+    \centering
+
+
+\begin{tikzpicture}[
+    xmark/.style={blue!70!black, font=\small},
+    pop/.style={draw=blue!70!black, fill=blue!20, thick},
+    sample/.style={draw=blue!70!black, fill=blue!10, thick},
+    arrow/.style={-Stealth, very thick, blue!70!black}
+]
+
+% =========================
+% População (círculo grande)
+% =========================
+\draw[pop] (0,0) circle (4);
+\node[blue!70!black, font=\large\bfseries] at (0,4.6) {População};
+
+% X aleatórios na população
+\foreach \x/\y in {
+ -2.5/2, -1/2.8, 1.5/2.5, 2.8/1.2,
+ -3/0.5, -1.8/1.5, 0/2, 2/0.8,
+ -2.2/-1, -0.5/-2.5, 1.5/-2,
+ 3/-0.8, -1/-0.2, 0.8/1,
+ 2.2/-1.8, -3/-2, 0/-1.2
+}{
+  \node[xmark] at (\x,\y) {x};
+}
+
+% =========================
+% Subconjunto destacado
+% =========================
+\draw[sample] (1.2,-0.8) circle (1.8);
+
+\foreach \x/\y in {
+ 0.8/-0.2, 1.5/-0.5, 1/-1.2, 1.8/-1,
+ 0.9/-1.6
+}{
+  \node[xmark] at (\x,\y) {x};
+}
+
+% =========================
+% Amostragem (seta)
+% =========================
+\draw[arrow] (2.5,-2.2) .. controls (4,-3.5) and (6,-3.5) .. (7.5,-1.8);
+\node[blue!70!black, font=\large\bfseries] at (5,-4.2) {Amostragem};
+
+% =========================
+% Amostra (círculo menor)
+% =========================
+\draw[sample] (9,0) circle (1.8);
+\node[blue!70!black, font=\large\bfseries] at (9,2.6) {Amostra};
+
+\foreach \x/\y in {
+ 8.5/0.5, 9.2/0.8, 9.5/-0.3, 8.8/-0.7, 9.1/-1.1
+}{
+  \node[xmark] at (\x,\y) {x};
+}
+
+\end{tikzpicture}
+\end{figure}
+
+

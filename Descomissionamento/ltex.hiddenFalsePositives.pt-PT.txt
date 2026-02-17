@@ -1,0 +1,8 @@
+{"rule":"PT_AGREEMENT_REPLACE_RECEPTORES","sentence":"^\\QIdentificar principais impactos e receptores ambientais marinhos ao longo das etapas do descomissionamento.\\E$"}
+{"rule":"PT_AGREEMENT_REPLACE_ASPECTOS","sentence":"^\\QMatriz de aspectos/impactos e medidas de mitigação.\\E$"}
+{"rule":"DOUBLE_PUNCTUATION_XML","sentence":"^\\QA.672(16)) \\E(?:Dummy|Ina|Jimmy-|Dummy-|Maniquí-|Maniquíes-|Dummy\\+|Dummy's\\+)[0-9]+\\Q.\\E$"}
+{"rule":"NUMBER_ABREVIATION","sentence":"^\\QRegulação nacional (exemplo de base) ANP: Resolução nº 817/2020: regras para descomissionamento, devolução de áreas e reversão de bens \\E(?:Dummy|Ina|Jimmy-|Dummy-|Maniquí-|Maniquíes-|Dummy\\+|Dummy's\\+)[0-9]+\\Q.\\E$"}
+{"rule":"PT_AGREEMENT_REPLACE_ASPECTOS","sentence":"^\\QConvenção de Hong Kong (reciclagem de navios) — relevante para destinos/rotas de sucateamento e aspectos ambientais \\E(?:Dummy|Ina|Jimmy-|Dummy-|Maniquí-|Maniquíes-|Dummy\\+|Dummy's\\+)[0-9]+\\Q.\\E$"}
+{"rule":"UNLIKELY_OPENING_PUNCTUATION","sentence":"^\\Q: P&A (poços), descomissionamento de dutos/risers, manifolds, umbilicais, árvores, estruturas.\\E$"}
+{"rule":"SPACE_BEFORE_PUNCTUATION2","sentence":"^\\QProblema (formulação) Como organizar uma proposta de avaliação técnica, ambiental e regulatória para o descomissionamento de s e sistemas , no contexto brasileiro, conciliando requisitos normativos e boas práticas internacionais?\\E$"}
+{"rule":"SPACE_BEFORE_PUNCTUATION2","sentence":"^\\QProblema Como alvaliar se uma operação de descomissionamento pode ser feita com minimo impacto ambiental seguindo a documentação regulatória em e sistemas , no contexto brasileiro, conciliando requisitos normativos e boas práticas internacionais?\\E$"}

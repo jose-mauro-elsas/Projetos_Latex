@@ -1,0 +1,156 @@
+Muitas vezes, queremos resumir um conjunto de dados apresentando um ou alguns valores que sejam representativos de uma série toda. As medidas de posição são estatísticas que caracterizam o comportamento dos elementos de uma série de dados, orientando quanto à posição da
+distribuição em relação ao eixo horizontal do gráfico da curva de frequência.
+
+Em outras palavras, podemos dizer que as medidas de posição indicam a tendência de concentração dos elementos de uma série, apontando o valor que melhor representa o conjunto de dados. Por exemplo, podemos ter uma medida para representar a posição de maior frequência de uma distribuição:
+\medskip
+\begin{tikzpicture}
+\begin{axis}[
+  width=0.8\linewidth,
+  height=6cm,
+  axis lines=middle,
+  axis line style={-{Stealth[length=3mm,width=2mm]}},
+  xmin=0, xmax=16,
+  ymin=0,
+  xtick=\empty,
+  ytick=\empty,
+  xlabel={Variável},
+  ylabel={Frequência},
+  enlargelimits=false,
+  clip=false,
+  % deixa o visual “limpo”
+  every axis x label/.style={at={(axis description cs:1,0)}, anchor=west},
+  every axis y label/.style={at={(axis description cs:0,1)}, anchor=south},
+]
+
+% --- (1) Barras (histograma estilizado) ---
+% Cada coordinate é (centro da barra, altura)
+\addplot[
+  ybar,
+  bar width=0.9,
+  fill=blue!15,
+  draw=blue!30,
+] coordinates {
+  (1,0.2) (2,0.9) (3,2.0) (4,3.0) (5,3.6)
+  (6,3.9) (7,3.7) (8,3.2) (9,2.6) (10,2.0)
+  (11,1.5) (12,1.1) (13,0.8) (14,0.55) (15,0.35)
+};
+
+% --- (2) Curva suave por cima (estilo “densidade”) ---
+% Aqui eu estou desenhando uma curva manual (coordenadas suavizadas).
+\addplot[
+  smooth,
+  very thick,
+  blue!70!black,
+] coordinates {
+  (0,0.05) (1,0.2) (2,0.9) (3,2.0) (4,3.0) (5,3.6)
+  (6,3.95) (7,3.7) (8,3.2) (9,2.6) (10,2.0)
+  (11,1.5) (12,1.1) (13,0.8) (14,0.55) (15,0.35) (16,0.25)
+};
+
+% --- (3) Linhas: Moda, Mediana, Média ---
+% Ajuste os x conforme sua distribuição.
+\def\xModa{6}
+\def\xMediana{8}
+\def\xMedia{10}
+
+% linhas verticais tracejadas até o topo do gráfico
+\addplot[blue!70!black, dashed, thick] coordinates {(\xModa,0) (\xModa,4.1)};
+%\addplot[blue!70!black, dashed, thick] coordinates {(\xMediana,0) (\xMediana,3.2)};
+%\addplot[blue!70!black, dashed, thick] coordinates {(\xMedia,0) (\xMedia,2.0)};
+
+% rótulos embaixo do eixo x
+\node[font=\itshape] at (axis cs:\xModa,-0.35) {Medida Central};
+%\node[font=\itshape] at (axis cs:\xMediana,-0.35) {Mediana};
+%\node[font=\itshape] at (axis cs:\xMedia,-0.35) {Média};
+
+\end{axis}
+\end{tikzpicture}
+
+As medidas de posição podem ser divididas em:
+\begin{enumerate}[label=\alph*.]
+    \item medidas de tendência central: representam o ponto central ou o valor típico de um conjunto de dados, indicando onde está localizada a maioria dos valores de uma distribuição.
+    \begin{itemize}
+        \item média aritmética: é a medida de posição mais utilizada, sendo o valor resultante da divisão entre a soma de todos os valores de uma série de observações e o número de observações;
+        \item mediana: valor que ocupa a posição central de uma série de observações, quando organizadas em ordem crescente ou decrescente; e
+        \item moda: valor mais frequente em uma série de observações,
+    \end{itemize}
+\end{enumerate}
+
+Somente a título de exemplo, vejamos como as medidas de tendência central se posicionam em relação a
+uma distribuição de frequências. Notem que essas medidas tendem a ocupar as posições centrais da
+distribuição, sendo denominadas de medidas de tendência central.
+\medskip
+
+\begin{tikzpicture}
+\begin{axis}[
+  width=0.8\linewidth,
+  height=6cm,
+  axis lines=middle,
+  axis line style={-{Stealth[length=3mm,width=2mm]}},
+  xmin=0, xmax=16,
+  ymin=0,
+  xtick=\empty,
+  ytick=\empty,
+  xlabel={Variável},
+  ylabel={Frequência},
+  enlargelimits=false,
+  clip=false,
+  % deixa o visual “limpo”
+  every axis x label/.style={at={(axis description cs:1,0)}, anchor=west},
+  every axis y label/.style={at={(axis description cs:0,1)}, anchor=south},
+]
+
+% --- (1) Barras (histograma estilizado) ---
+% Cada coordinate é (centro da barra, altura)
+\addplot[
+  ybar,
+  bar width=0.9,
+  fill=blue!15,
+  draw=blue!30,
+] coordinates {
+  (1,0.2) (2,0.9) (3,2.0) (4,3.0) (5,3.6)
+  (6,3.9) (7,3.7) (8,3.2) (9,2.6) (10,2.0)
+  (11,1.5) (12,1.1) (13,0.8) (14,0.55) (15,0.35)
+};
+
+% --- (2) Curva suave por cima (estilo “densidade”) ---
+% Aqui eu estou desenhando uma curva manual (coordenadas suavizadas).
+\addplot[
+  smooth,
+  very thick,
+  blue!70!black,
+] coordinates {
+  (0,0.05) (1,0.2) (2,0.9) (3,2.0) (4,3.0) (5,3.6)
+  (6,3.95) (7,3.7) (8,3.2) (9,2.6) (10,2.0)
+  (11,1.5) (12,1.1) (13,0.8) (14,0.55) (15,0.35) (16,0.25)
+};
+
+% --- (3) Linhas: Moda, Mediana, Média ---
+% Ajuste os x conforme sua distribuição.
+\def\xModa{6}
+\def\xMediana{8}
+\def\xMedia{10}
+
+% linhas verticais tracejadas até o topo do gráfico
+\addplot[blue!70!black, dashed, thick] coordinates {(\xModa,0) (\xModa,4.1)};
+\addplot[blue!70!black, dashed, thick] coordinates {(\xMediana,0) (\xMediana,3.2)};
+\addplot[blue!70!black, dashed, thick] coordinates {(\xMedia,0) (\xMedia,2.0)};
+
+% rótulos embaixo do eixo x
+\node[font=\itshape] at (axis cs:\xModa,-0.35) {Moda};
+\node[font=\itshape] at (axis cs:\xMediana,-0.35) {Mediana};
+\node[font=\itshape] at (axis cs:\xMedia,-0.35) {Média};
+
+\end{axis}
+\end{tikzpicture}
+
+\begin{enumerate}[label=\alph*., start=2]
+    \item medidas separatrizes: dividem (ou separam) uma série em duas ou mais partes, cada uma contendo a mesma quantidade de elementos. As medidas mais utilizadas são:
+    \begin{itemize}
+        \item mediana: divide uma série em duas partes iguais. Reparem que, além de ser uma medida separatriz, a mediana também é uma medida de tendência central;
+        \item quartis: dividem uma série em quatro partes iguais;
+        \item decis: dividem uma série em dez partes iguais; e
+        \item percentis: dividem uma série em cem partes iguais.
+    \end{itemize}
+\end{enumerate}
+

@@ -1,0 +1,200 @@
+%!TEX root = Caderno_de_Calc_II.tex
+%!TEX program = lualatex
+% LTeX: language=pt-BR
+% \tikzexternalize[prefix=externalized/]
+
+
+
+\documentclass[a4paper,12pt]{article}
+
+% ===== Básico =====
+%\usepackage[T1]{fontenc}
+% \usepackage[utf8]{inputenc}    % (REMOVER no LuaLaTeX)
+\usepackage[portuguese]{babel}
+\usepackage[margin=3cm,tmargin=3cm,rmargin=2cm,bmargin=2cm]{geometry}
+\usepackage{indentfirst}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{textcomp} 
+\usepackage[official]{eurosym}
+\usepackage{adjustbox}
+
+% ===== Cores =====
+\usepackage[dvipsnames]{xcolor}
+% Define a cor azul escuro (DarkBlue ou customizado)
+\definecolor{azulmarinho}{RGB}{0, 0, 139} % Opção 1: Customizado
+
+% ===== Matemática / Fontes =====
+\usepackage{lmodern}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,dsfont,mathtools}
+\usepackage{cancel}
+
+\renewcommand{\CancelColor}{\color{red}}
+\newtheorem{theorem}{Teorema}
+\newtheorem*{definicao}{Definição}
+\newtheorem*{classificacao}{Classificação de pontos críticos}
+
+\newcommand{\dif}{\,\mathrm{d}}
+\newcommand{\sen}{\operatorname{sen}}
+
+% ===== Figuras / Gráficos =====
+\usepackage{graphicx}
+\graphicspath{{Images/}{./}}
+\usepackage{float}
+\usepackage{tabularx}
+
+%\usepackage{showframe}
+
+% ===== PGFPlots/TikZ =====
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{angles,quotes}
+\usetikzlibrary{external, arrows.meta,intersections,patterns,calc,positioning,shapes.geometric}
+
+\pgfplotsset{compat=1.18}
+\usepgfplotslibrary{fillbetween}
+
+% ===== PGFPlots/TikZ =====
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% --- TikZ externalization (cache) ---
+\usetikzlibrary{external}
+\tikzexternalize[
+  prefix=externalized/,
+  up to date check=diff
+]
+
+% (opcional, mas eu recomendo no Windows)
+\tikzset{external/system call={
+  lualatex -shell-escape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"
+}}
+
+
+% Chamada externa explícita (evita variações do ambiente)
+\tikzset{external/system call={
+  lualatex -shell-escape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"
+}}
+
+
+% ===== Estilos para gráficos de área =====
+\newcommand{\CorCurvaSup}{red}          
+\newcommand{\CorCurvaInf}{blue}         
+\newcommand{\CorSombra}{fill=gray!20}   
+\newcommand{\MarcarAB}[4]{%
+  \draw[line width=0.6pt] (axis cs:#1,#3) -- (axis cs:#1,#4);
+  \draw[line width=0.6pt] (axis cs:#2,#3) -- (axis cs:#2,#4);
+  \node[below] at (axis cs:#1,#3) {$a$};
+  \node[below] at (axis cs:#2,#3) {$b$};
+}
+\pgfplotsset{
+  AreaAxisStyle/.style={
+    axis x line=middle,
+    axis y line=middle,
+    axis line style={->},
+    tick align=outside,
+    minor tick num=1,
+    grid=none,
+    clip=false,
+    xlabel={$x$},
+    ylabel={$y$},
+  }
+}
+
+% ===== Hyperref por último =====
+\usepackage{hyperref}
+\hypersetup{hypertexnames=false}
+
+\title{\textbf{Notas e Exercícios}}
+\author{Jose Mauro Xavier Elsas}
+\date{outubro de 2025}
+
+\newcommand{\leftdisplay}[1]{%
+  \[
+  \makebox[\linewidth][l]{%
+    \begin{aligned}
+      #1
+    \end{aligned}}
+  \]%
+}
+\newtheorem{exercicio}{Exercício}[subsection]
+
+% ===== MACROS GLOBAIS =====
+% uso: \Setor[<estilo>]{(x,y)}{raio}{ang_ini}{ang_fim}
+\newcommand{\Setor}[5][]{%
+  \begin{scope}
+    \path[#1] #2 -- ++(#4:#3) arc[start angle=#4, end angle=#5, radius=#3] -- cycle;
+  \end{scope}%
+}
+
+\begin{document}
+    
+% ----------------------------------------------------------
+% PÁGINA DE ROSTO
+% ----------------------------------------------------------
+\begin{titlepage}
+  \centering
+  {\Large\textbf{Universidade do Estado do Rio de Janeiro}}\\[0.2cm]
+  {\large Instituto de Oceanografia}\\[1.5cm]
+
+  {\huge\bfseries CÁLCULO II}\\[0.2cm]
+  {\Large Notas, Exercícios e Aplicações}\\[2cm]
+
+  \vfill
+  \textbf{J. Mauro Xavier Elsas}\\[0.3cm]
+\end{titlepage}
+
+% ----------------------------------------------------------
+% SUMÁRIO AUTOMÁTICO
+% ----------------------------------------------------------
+\tableofcontents
+\newpage
+
+
+
+\onehalfspacing
+\setlist{nosep}
+\setlength{\parindent}{0pt}
+
+\section*{Ementa de Cálculo II}
+\input{Ementa_Calc_II.tex}
+\newpage
+\section{Integral Definida: Aplicações}
+\subsection{Cálculo de área sob uma curva}
+\input{Calculo_de_area_sob_uma_curva.tex}
+
+
+\subsection{Integral de Riemann}\label{subsec:integral-riemann}
+\input{Integral_de_Riemann.tex}
+
+\subsection{Teorema Fundamental do Cálculo}
+\input{Teorema_Fundamental_do_Calculo.tex}
+
+\subsection{Área entre curvas}
+  \input{Area_entre_curvas.tex}
+  
+\subsection{Funções no espaço tridimensional}
+\input{Funcoes_no_espaco_tridimensional.tex}
+
+\subsubsection{Interpretação Geométrica}
+\input{Interpretacao_Geometrica.tex}
+
+\subsubsection{Exercício 5 da Lista 2}
+
+\section {Derivadas Parciais}
+\subsection {Funções de duas ou mais variáveis, limite, continuidade}
+\subsection {Curva de nível}
+\subsection {Derivada direcional e gradiente}
+\subsection {Plano tangente}
+\subsection {A Regra da Cadeia}
+\subsection {Diferencial total}
+\subsection {Derivadas de ordem superior}
+\subsection {Máximos e Mínimos; Multiplicadores de Lagrange}
+\subsection{Otimização Condicionada}
+\input{Otimizacao_Condicionada.tex}
+\subsection {Integrais Múltiplas}
+\subsection {Integral dupla; Área}
+\subsection {Coordenadas polares}
+\end{document}

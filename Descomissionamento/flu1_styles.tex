@@ -1,0 +1,33 @@
+% =========================================================
+% Arquivo: flu1_styles.tex
+% Requer no main:
+%   \usepackage[dvipsnames]{xcolor}
+%   \usepackage{tikz}
+%   \usetikzlibrary{shapes.geometric, arrows.meta, positioning}
+% =========================================================
+
+\tikzset{
+  process/.style = {
+    rectangle,
+    rounded corners,
+    minimum width=6.0cm,
+    minimum height=1.05cm,
+    text centered,
+    text width=5.7cm,
+    draw=blue!70!black,
+    fill=blue!5,
+    line width=0.9pt
+  },
+  process_final/.style = {
+    process,
+    fill=green!6,
+    draw=green!45!black
+  },
+  arrow/.style = {
+    thick,
+    ->,
+    >=Stealth,
+    line width=1.1pt,
+    draw=gray!80
+  }
+}

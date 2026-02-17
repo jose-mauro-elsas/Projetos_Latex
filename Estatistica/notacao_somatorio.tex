@@ -1,0 +1,210 @@
+
+Com frequência, as fórmulas matemáticas exigem a adição de muitas variáveis, como a média aritmética. O somatório ou notação sigma é uma forma simples e conveniente de abreviação, usada para fornecer uma expressão concisa para a soma dos valores de uma variável. Por exemplo, se quisermos representar a soma de um número de termos tais como:
+\[
+    1+2+3+4+5
+\]
+ou,
+\[
+    1^2+2^2+3^2+5^2+5^2
+\]
+em que há um padrão evidente para os números envolvidos.
+
+De modo geral, se tomarmos uma sequência de números \(x_1, x_2, x_3, \dots, x_n\) então podemos escrever a soma desses números como \(x_1, x_2, x_3, \dots, x_n\). Nesse conjunto, \(x_1\) representa o primeiro termo; \(x_2\) representa o segundo; \(x_3,\) o terceiro; e \(x_i\) o i-ésimo termo da soma.
+
+Essa soma pode ser representada de uma forma mais simples e concisa, deixando que \(x_i\) represente o termo geral da sequência. Para isso, empregamos a seguinte notação:
+\[
+    \sum_{i=1}^n\,x_i
+\]
+Então, em vez de usarmos vários elementos para determinarmos o somatório, utilizamos somente o símbolo do somatório:
+
+Essa notação envolve um símbolo de somatório, \(\sum\), sendo a letra grega maiúscula Sigma \(\Sigma\). Basicamente, esse símbolo está nos instruindo a somar determinados elementos de uma sequência. Os elementos típicos da sequência que está sendo somada aparecem à direita do símbolo de somatório:
+\[
+    {\sum}\,x_i
+\]
+
+Observe que essa notação também requer a definição de um índice, que fica localizado abaixo do símbolo de somatório. Esse índice é frequentemente representado por \(i\), embora também seja comum encontrarmos questões adotando \(j\) ou \(n\).
+Esse índice normalmente aparece como uma expressão, por exemplo, \(i=a\), em que o índice assume um valor inicial atribuído no lado direito da equação, conhecido como limite inferior \(a\). Se considerarmos que \(i=1\), estamos dizendo que o primeiro elemento da sequência a ser considerado é o de índice igual a 1, isto é, o primeiro elemento da sequência. A condição de parada ou limite superior do somatório é o valor localizado acima do símbolo, no caso \(b\). A condição de parada indica o último elemento da sequência a ser considerado no somatório.
+\[
+    \sum_{i=a}^b\,x_i
+\]
+Então, se tivermos uma sequência de 10 valores, devemos interpretar a notação a seguir como a soma dos valores da sequência \(x_i\), com \(i\) variando de 1 a 10:
+\[
+    \sum_{i=1}^{10}\,x_i
+\]
+Vejamos alguns exemplos típicos de operações envolvendo somatórios. Para isso, tomaremos como exemplo a sequência {\(x_i\)} = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}:
+\newpage
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\setlength{\tabcolsep}{10pt}
+
+\begin{tabularx}{\textwidth}{c X}
+\toprule
+\textbf{Notação} & \textbf{Interpretação e exemplo} \\
+\midrule
+
+$\displaystyle \sum_{i=3}^{10} x_i$
+&
+Representa a soma dos valores de $x$, começando em $x_3$ e terminando em $x_{10}$.
+\[
+\sum_{i=3}^{10} x_i = x_3 + x_4 + x_5 + x_6 + x_7 + x_8 + x_9 + x_{10}
+\]
+\[
+= 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 = 55
+\]
+\\
+
+$\displaystyle \sum x$
+&
+Quando os limites do somatório são omitidos, entende-se que a soma é feita de
+$x_1$ até $x_n$.
+\[
+\sum x = x_1 + x_2 + x_3 + \dots + x_n
+\]
+\[
+= 1 + 2 + 3 + \dots + 10 = 55
+\]
+\\
+
+$\displaystyle \sum_{i=1}^{n} x_i^2$
+&
+Representa a soma dos quadrados dos valores de $x$, de $x_1$ até $x_n$.
+\[
+\sum_{i=1}^{n} x_i^2 = x_1^2 + x_2^2 + x_3^2 + \dots + x_n^2
+\]
+\[
+= 1^2 + 2^2 + 3^2 + \dots + 10^2 = 385
+\]
+\\
+
+$\displaystyle \sum_{k=1}^{4} (2x_k + 1)$
+&
+Representa a soma dos termos da sequência $(2n+1)$, com $k$ variando de 1 a 4.
+\[
+= (2\cdot1+1) + (2\cdot2+1) + (2\cdot3+1) + (2\cdot4+1)
+\]
+\[
+= 3 + 5 + 7 + 9 = 24
+\]
+\\
+$\displaystyle \sum_{i=3}^{5}\left(\frac{x_i}{x_i+1}\right)$
+&
+Representa a soma dos termos $\dfrac{x_i}{x_i+1}$, com $i$ começando em 3 e terminando em 5.
+\[
+\sum_{i=3}^{5}\left(\frac{x_i}{x_i+1}\right)
+= \frac{x_3}{x_3+1} + \frac{x_4}{x_4+1} + \frac{x_5}{x_5+1}
+\]
+\[
+= \frac{3}{3+1} + \frac{4}{4+1} + \frac{5}{5+1}
+= \frac{3}{4} + \frac{4}{5} + \frac{5}{6}
+\]
+\[
+= \frac{45 + 48 + 50}{60} = \frac{143}{60}
+\]
+\\
+
+\bottomrule
+\end{tabularx}
+
+\caption{Interpretação de diferentes notações de somatório.}
+\end{table}
+
+Agora que já entendemos o funcionamento básico dessa notação, precisamos analisar outras operações aritméticas que também podem ser realizadas com as variáveis num somatório. Para tanto, vamos tomar como base as sequências {\(x_i\)} = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10} e {\(y_i\)} = {3, 6, 9, 12, 15, 18, 21, 24, 27, 30}.
+
+Por exemplo, na SOMA DOS PRODUTOS, multiplicamos \(x_1\) por \(y_1\); \(x_2\) por 
+\(y_2\); e assim por diante, até \(x_n\)
+por \(y_n\). Em seguida, somamos os resultados de cada multiplicação. A SOMA DOS PRODUTOS da variável
+\(x\) pela variável \(y\), com \(i\) variando de 1 a 10, pode ser representada por meio da seguinte expressão:
+
+\[
+    \sum\limits_{i=1}^n\,x_i\times y_i=x_1\times y_1+x_2\times y_2+x_3\times y_3+\dots+x_n\times y_n
+\]
+\[
+    \sum\limits_{i=1}^n\,x_i\times y_i=1\times 3+2\times 6+3\times 9+\dots+10\times 30 = 1155
+\]
+Observe que essa expressão é diferente de \(\sum_{i=1}^n\,x_i\times \sum_{i=1}^n\,y_i\times\), que representa o \textbf{PRODUTO DAS SOMAS} dessas duas variáveis. No \textbf{PRODUTO DAS SOMAS}, primeiro somamos toda a sequência \(x\), depois toda
+a sequência \(y\) e, em seguida, multiplicamos o resultado das somas:
+
+\[
+    \sum\limits_{i=1}^{10}\,x_i \times\sum\limits_{i=1}^{10}\,y_i=(1+2+3+\dots+10)\times (3+6+9+\dots+30)
+\]
+\[
+    \sum\limits_{i=1}^{10}\,x_i \times\sum\limits_{i=1}^{10}\,y_i=55\times 165=9075
+\]
+
+Dessa forma, temos que:
+\begin{center}
+    \textbf{SOMA DOS PRODUTOS} \(\neq\) \textbf{PRODUTO DAS SOMAS}
+\end{center}
+
+Também podemos utilizar a notação para representar o QUADRADO DA SOMA dos valores de \(x\), com \(i\) iniciando em 1 e terminando em 10. No QUADRADO DA SOMA, somamos toda a sequência e elevamos o resultado ao quadrado:
+
+\begin{align*}
+    \Bigg(\sum\limits_{i=1}^{n}\,x_i\Bigg)^2&=(x_1+x_2+x_3+\dots+x_n)^2\\
+    \Bigg(\sum\limits_{i=1}^{n}\,x_i\Bigg)^2&=(1+2+3+\dots+10)^2\\
+    \Bigg(\sum\limits_{i=1}^{n}\,x_i\Bigg)^2&=(55)^2=3025\\
+\end{align*}
+
+Veja que essa expressão é diferente de \(\sum_{i=n}^n\,x_i^2\), que representa a \textbf{SOMA DOS QUADRADOS}. Na \textbf{SOMA DOS QUADRADOS}, cada elemento da sequência é elevado ao quadrado e depois os resultados são somados:
+
+\begin{align*}
+      \sum\limits_{i=1}^{n}\,x_i^2&=1^2+2^2+3^2+\dots+10^2=385\\
+\end{align*}
+
+Por fim, ainda podemos representar o somatório de uma constante \(k\). Digamos que essa constante tenha valor igual a 3:
+
+\begin{align*}
+      \sum\limits_{i=1}^{n}\,k&=k+k+k+\dots+k=k\times n\\
+      \sum\limits_{i=1}^{n}\,3&=3+3+3+\dots+3=3\times n\\
+\end{align*}
+
+\subsection{Propriedades do Somatório}
+As propriedades apresentadas nesta seção facilitam o desenvolvimento de expressões algébricas com a notação de somatório.
+
+\begin{enumerate}
+    \item O somatório de uma constante \(k\) é igual ao produto do número de termos pela constante.
+    \begin{align*}
+      \sum\limits_{i=1}^{n}\,k&=k+k+k+\dots+k=k\times n\\
+\end{align*}
+Para demonstrar essa propriedade, consideraremos que cada constante está multiplicada pelo valor um, isto é:
+\[
+    \sum\limits_{i=1}^{n}\,k=k+k\times1+k\times1+\dots+k\times1
+\]
+Agora, colocaremos os novos valores em evidência:
+
+\[
+    \sum\limits_{i=1}^{n}\,k=k\,{\underbrace{(1+1+1+\dots+1)}_{n\,\text{termos}}}=k\times n
+\]
+
+Considere uma lista composta por noventa e nove elementos repetidos e iguais a 9:
+\[
+    \{\underbrace{{9, 9, 9, 9,\dots, 9}}_{\text{99 termos repetidos}}\}
+\]
+
+O somatório dos elementos dessa lista será:
+\[
+    \sum\limits_{i=1}^{99}\,9=\,{\underbrace{(9+9+9+\dots+9)}_{n\,\text{termos repetidos}}}=9\times \,{\underbrace{(9+9+9+\dots+9)}_{n\,\text{termos repetidos}}}=9\times99=891
+\]
+
+    \item O somatório do produto de uma constante por uma variável é igual ao
+produto da constante pelo somatório da variável.
+
+    Para demonstrarmos essa propriedade, colocaremos em evidência cada constante \(k\):
+   \[
+    \sum\limits_{i=1}^n\,k\times x_i = k\times x_1+ k\times x_2+k\times x_3 +\dots+k\times x_n=k\times\sum_{n=1}^{n}\,x_i
+\] 
+Para demonstrarmos essa propriedade, colocaremos em evidência cada constante \(k\):
+
+   \[
+    \sum\limits_{i=1}^n\,k\times x_i = k\times x_1+ k\times x_2+k\times x_3 +\dots+k\times x_n = k \times (x_1+x_2+x_3+\dots+x_n)
+\] 
+
+Já sabemos que \(\sum_{i=1}^{n}\,x_i=x_1+x_2+\dots+x_n\). Logo:
+
+\[
+\sum_{i=1}^{n}\,k\times x_i=k\times\sum_{i=1}^{n}x_i
+\]
+
+Portanto, a constante pode sair de dentro do somatório, passando a multiplicá-lo.
+
+\end{enumerate}

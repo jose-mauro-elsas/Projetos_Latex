@@ -1,0 +1,68 @@
+A média aritmética simples está muito presente em nosso cotidiano, seja no consumo médio de combustível, na temperatura média ou na renda per capita. Essa medida é definida como o \textbf{QUOCIENTE} entre a \textbf{SOMA DE TODOS OS ELEMENTOS} e o \textbf{NÚMERO DELES}. A propriedade principal da média é preservar a soma dos elementos de um conjunto de dados.
+
+Podemos adotar o seguinte raciocínio para encontrarmos a fórmula da média aritmética. Dada uma lista de \(n\) números, \(x_1, x_2, \dots, x_n\) a soma de seus termos é igual a:
+
+\[
+    \overbrace{x_1+x_2+x_3+\dots+x_n}^{\text{n fatores}}
+\]
+A média aritmética dessa lista é um número , tal que, se todos os elementos forem substituídos por \(\bar{x}\), a soma da lista permanecerá preservada. Assim, substituindo todos os elementos por \(\bar{x}, \bar{x}, \dots, \bar{x}\), teremos uma nova lista, cuja soma é:
+
+\[
+    \overbrace{\bar{x}+\bar{x}+\dots+\bar{x}}^{\text{n fatores}}=n\times\bar{x}
+\]
+Como as somas das duas listas são iguais, temos:
+\[
+    n\times\bar{x}=\bar{x_1}+\bar{x_2}+\dots+\bar{x_n}
+\]
+
+Portanto, a média aritmética é:
+
+\[
+    \bar{x}=\frac{{x_1}+{x_2}+\dots+x_n}{n}
+\]
+
+\subsection{Propriedades da Média Aritmética}
+
+Nessa seção, vamos estudar algumas propriedades importantes sobre a média aritmética.
+
+\begin{propriedade}
+Dado um conjunto com \(n\geq1\) elementos, a média aritmética sempre existirá e será única.
+\end{propriedade}
+
+ Desde que o conjunto tenha pelo menos um elemento, podemos afirmar que a média aritmética sempre existe, pois sempre conseguiremos calcular o quociente entre a soma dos elementos e o número deles. Além disso, como o somatório dos elementos resulta em um único número, o valor da média também sempre será único.
+
+\begin{propriedade}
+  A média aritmética \(\bar{x}\) de um conjunto de dados satisfaz a expressão \(m\leq\bar{x}\leq M\), em que \(m\) e \(M\) são, respectivamente, os elementos que representam o valor mínimo e o valor máximo desse conjunto.  
+\end{propriedade}
+
+\begin{center}
+        \(\text{\textbf{Mínimo}}\leq\bar{x}\leq \text{\textbf{Máximo}}\)
+    \end{center}
+
+      Essa propriedade diz respeito ao fato da média aritmética sempre se encontrar entre os números mínimo e máximo de um conjunto.
+
+\begin{propriedade}
+    Somando-se (ou subtraindo-se) uma constante \(c\) de todos os valores de uma variável, a média do conjunto fica aumentada (ou diminuída) dessa constante.
+\end{propriedade}
+
+\begin{propriedade}
+    Multiplicando-se (ou dividindo-se) uma constante c de todos os valores de uma variável, a média do conjunto fica multiplicada (ou dividida) por esta constante.
+\end{propriedade}
+\[
+    \bar{y}=\bar{x}\times c \quad\text{ou}\quad \bar{y}=\bar{x}\div c
+\]
+ Portanto, não importa qual a sequência de números, a soma dos desvios em relação à média é sempre igual a zero.
+\begin{propriedade}
+    A soma algébrica dos desvios em relação à média é nula.
+\end{propriedade}
+    \[
+    \sum_{i=1}^{n}\,(x_i-\bar{x})=0
+    \]
+\begin{propriedade}
+    A soma dos quadrados dos desvios da sequência de números \({x_1}\), em relação a um número \(a\), é mínima se \(a\) for a média aritmética dos números.
+\end{propriedade}
+\[
+    \sum_{i=1}^{n}(x_i-a)^2\geq \sum_{i=1}^{n}(x_i-\bar{x})^2
+\]
+
+    Essa propriedade afirma que, caso os desvios sejam calculados com relação a um número diferente da média, e os resultados de tais desvios sejam elevados ao quadrado e somados, teremos um número necessariamente maior do que obteríamos caso a mesma operação fosse realizada utilizando-se a média.

@@ -1,0 +1,208 @@
+%========================
+%Box Plot
+%========================
+Um boxplot (também chamado de box-and-whisker plot) é uma ferramenta gráfica frequentemente utilizada na análise exploratória de dados que permite visualizar a distribuição dos dados e os valores discrepantes (outliers), assim como a distância dos valores extremos em relação à maioria dos dados. Essa ferr amenta resume cinco medidas descritivas de um conjunto de dados, incluindo: o valor mínimo, o primeiro quartil, a mediana, o terceiro quartil e o valor máximo. 
+
+Para construir um gráfico de boxplot, usamos uma haste horizontal ou vertical e uma caixa retangular (box). O local onde a haste começa (da esquerda para a direita) indica o valor mínimo e o ponto em que a haste termina indica o valor máximo.
+
+A caixa retangular, localizada no meio da haste, em geral, possui três linhas. A primeira linha, na extremidade esquerda da caixa, indica o primeiro quartil. A terceira linha, na extremidade direita, indica o terceiro quartil. A linha do meio, no interior da caixa, indica o segundo quartil ou a mediana. O segundo quartil pode estar entre o primeiro e o terceiro quartis, ou pode coincidir com um, ou outro, ou ambos. 
+
+\begin{figure}[H]
+    \begin{tikzpicture}[
+         font=\sffamily,
+  >=Latex,
+  thick
+]
+
+% =========================
+% AJUSTE AQUI os 5 valores
+% (na mesma escala horizontal)
+% =========================
+\def\xmin{0}   % Valor mínimo
+\def\xqone{4}  % Q1
+\def\xmed{7}   % Mediana (Q2)
+\def\xqthr{10} % Q3
+\def\xmax{14}  % Valor máximo
+
+% Geometria da caixa
+\def\y0{0}
+\def\boxH{2.2}
+\def\ybot{\y0 - \boxH/2}
+\def\ytop{\y0 + \boxH/2}
+
+% Cores (próximas da sua figura)
+\definecolor{cminmax}{RGB}{0,153,0}   % verde
+\definecolor{cqone}{RGB}{40,90,200}   % azul
+\definecolor{cmed}{RGB}{220,0,0}      % vermelho
+\definecolor{cqthr}{RGB}{235,120,0}   % laranja
+
+% =========================
+% ELEMENTOS DO BOXPLOT
+% =========================
+
+% Bigodes (linhas)
+\draw[thick] (\xmin,\y0) -- (\xqone,\y0);
+\draw[thick] (\xqthr,\y0) -- (\xmax,\y0);
+
+% Caixa (Q1 a Q3)
+\draw[thick] (\xqone,\ybot) rectangle (\xqthr,\ytop);
+
+% Mediana
+\draw[very thick, cmed] (\xmed,\ybot) -- (\xmed,\ytop);
+
+% Linhas Q1 e Q3 (bordas coloridas como na imagem)
+\draw[very thick, cqone] (\xqone,\ybot) -- (\xqone,\ytop);
+\draw[very thick, cqthr] (\xqthr,\ybot) -- (\xqthr,\ytop);
+
+% Marcas verticais mínimo / máximo
+\draw[very thick, cminmax] (\xmin,\y0-1.0) -- (\xmin,\y0+1.0);
+\draw[very thick, cminmax] (\xmax,\y0-1.0) -- (\xmax,\y0+1.0);
+
+% =========================
+% RÓTULOS
+% =========================
+
+% Valor mínimo / máximo
+\node[cminmax, align=center, font=\bfseries] at (\xmin, \y0+2.0) {Valor\\Mínimo};
+\node[cminmax, align=center, font=\bfseries] at (\xmax, \y0+2.0) {Valor\\Máximo};
+
+% Quartis e mediana
+\node[cqone, align=center, font=\bfseries] at (\xqone, \y0+2.0) {Quartil\\Inferior\\$Q_1$};
+\node[cmed,  align=center, font=\bfseries] at (\xmed,  \y0+2.0) {Mediana\\$Q_2$};
+\node[cqthr, align=center, font=\bfseries] at (\xqthr, \y0+2.0) {Quartil\\Superior\\$Q_3$};
+
+% "whisker = bigode"
+\node[align=center] at ({(\xmin+\xqone)/2}, \y0+0.55) {whisker = bigode};
+\node[align=center] at ({(\xqthr+\xmax)/2}, \y0+0.55) {whisker = bigode};
+
+% "box = caixa"
+\node[align=center] at ({(\xqone+\xqthr)/2}, \y0-1.5) {box = caixa};
+
+    \end{tikzpicture}
+\end{figure}
+ 
+Além disso, há dois traços, chamados de whiskers(ou bigodes), ligando o valor mínimo à extremidade esquerda da caixa e o valor máximo à extremidade direita da caixa. Cada um desses traços comporta, aproximadamente, 25\% dos dados. O restante, cerca de 50\%, está distribuído no interior da caixa. 
+
+Também podemos encontrar gráficos de box plot com pontos ou asteriscos marcando valores discrepantes(outliers). Nesses casos, os whiskers não se estendem aos valores mínimo e máximo do conjunto de dados, mas ficam limitados a um comprimento máximo de 1,5 \(\times\), em que DIQ é a distância interquartílica. A distância interquartílica (ou amplitude interquartílica, ou intervalo interquartílico) é calculada pela fórmula: 
+\[
+    DIQ=Q3-Q1
+\]
+\begin{figure}[hbt]
+    \begin{tikzpicture}[
+         font=\sffamily,
+  >=Latex,
+  thick
+]
+% =========================
+% AJUSTE AQUI os 5 valores
+% (na mesma escala horizontal)
+% =========================
+\def\xmin{0}   % Valor mínimo
+\def\xqone{4}  % Q1
+\def\xmed{7}   % Mediana (Q2)
+\def\xqthr{10} % Q3
+\def\xmax{14}  % Valor máximo
+
+% Geometria da caixa
+\def\y0{0}
+\def\boxH{2.2}
+\def\ybot{\y0 - \boxH/2}
+\def\ytop{\y0 + \boxH/2}
+
+% Cores (próximas da sua figura)
+\definecolor{cminmax}{RGB}{0,153,0}   % verde
+\definecolor{cqone}{RGB}{40,90,200}   % azul
+\definecolor{cmed}{RGB}{220,0,0}      % vermelho
+\definecolor{cqthr}{RGB}{235,120,0}   % laranja
+
+% =========================
+% ELEMENTOS DO BOXPLOT
+% =========================
+
+% Bigodes (linhas)
+\draw[thick] (\xmin-0.5,\y0) -- (\xqone+1,\y0);
+\draw[thick] (\xqthr-1,\y0) -- (\xmax+0.5,\y0);
+
+\fill[red!70!black] (\xmin-0.5,\y0) circle (3pt);
+\fill[red!70!black] (\xmax+0.5,\y0) circle (3pt);
+
+% Caixa (Q1 a Q3)
+\draw[thick] (\xqone+1,\ybot) rectangle (\xqthr-1,\ytop);
+
+% Mediana
+\draw[line width=4pt, cmed] (\xmed,\ybot) -- (\xmed,\ytop);
+
+% Linhas Q1 e Q3 (bordas coloridas como na imagem)
+\draw[very thick, cqone] (\xqone+1,\ybot) -- (\xqone+1,\ytop);
+\draw[very thick, cqthr] (\xqthr-1,\ybot) -- (\xqthr-1,\ytop);
+
+% cotas da DIQ
+\draw[thick, black] (\xmed+2,-1) -- (\xmed+2,-2.6);
+\draw[thick, black] (\xmed-2,-1) -- (\xmed-2,-2.6);
+\draw[thick, black, <->, >=Stealth] (5,-2.5) -- (9,-2.5);
+
+
+% Marcas verticais mínimo / máximo +
+\draw[very thick, cminmax, ->, >=Stealth] (\xmin+1,\y0-1) -- (\xmin+1,\y0+1.0);
+\draw[very thick, cminmax, ->, >=Stealth] (\xmax-1,\y0-1) -- (\xmax-1,\y0+1.0);
+
+\draw[very thick, cqthr, <-, >=Stealth] (\xmin+0.5,\y0-1) -- (\xmin+0.5,\y0+1.0);
+\draw[very thick, cqthr, <-, >=Stealth] (\xmax-0.5,\y0-1) -- (\xmax-0.5,\y0+1.0);
+
+% =========================
+% RÓTULOS
+% =========================
+
+% Valor mínimo / máximo
+\node[cminmax, align=center, font=\bfseries] at (\xmin+1, \y0+2.0) {Menor Valor\\Acima do\\ Limite Inferior};
+\node[cminmax, align=center, font=\bfseries] at (\xmax-1, \y0+2.0) {Maior Valor\\Abaixo do\\ Limite Superior};
+
+\node[cqthr, align=center, font=\bfseries] at (\xmin+0.5, \y0-2.0) {Limite \\Inferior};
+\node[cqthr, align=center, font=\bfseries] at (\xmax-0.5, \y0-2.0) {Limite \\Superior};
+%==========================
+%Legendas de Outliers 
+%==========================
+\node[cmed, align=center, font=\bfseries, rotate=90] at (\xmin-0.5, \y0-1) {Outlier};
+\node[cmed, align=center, font=\bfseries, rotate=90] at (\xmax+0.5, \y0-1) {Outlier};
+
+% Quartis e mediana
+\node[cqone, align=center, font=\bfseries] at (\xqone+0.5, \y0+2.0) {Quartil\\Inferior\\$Q_1$};
+\node[cmed,  align=center, font=\bfseries] at (\xmed,  \y0+2.0) {Mediana\\$Q_2$};
+\node[cqthr, align=center, font=\bfseries] at (\xqthr-0.5, \y0+2.0) {Quartil\\Superior\\$Q_3$};
+
+% "whisker = bigode"
+\node[align=center] at ({(\xmin+\xqone)/1.4}, \y0-0.5)
+{$\overbrace{\text{whisker = bigode}}$};
+\node[align=center] at ({(\xqthr+\xmax)/2.15}, \y0-0.5) {$\overbrace{\text{whisker = bigode}}$};
+
+% distância interquartílica
+\node[align=center] at ({(\xqone+\xqthr)/2}, \y0-2)
+{Distância \\Interquartílica};
+\node[align=center] at ({(\xqone+\xqthr)/2}, \y0-2.8)
+{DIQ};
+
+%Q1-1,5DIQ
+
+\draw[thick, black, dashed] (\xmin+0.5,-2.8) -- (\xmin+0.5,-5);
+\draw[thick, black, dashed] (\xmin+5,-2.8) -- (\xmin+5,-3.7);
+
+\draw[thick, black, dashed] (\xmax-5,-2.8) -- (\xmax-+5,-3.7);
+\draw[thick, black, dashed] (\xmax-0.5,-2.8) -- (\xmax-0.5,-5);
+
+\draw[thick, black, <->, >=Stealth] (\xmin+0.5,-3.5) -- (\xmin+5,-3.5);
+\draw[thick, black, <->, >=Stealth] (\xmax-0.5,-3.5) -- (\xmax-5,-3.5);
+\draw[thick, black, <->, >=Stealth] (\xmin+0.5,-4.7) -- (\xmax-0.5,-4.7);
+
+\node[align=center] at ({(\xqthr+\xmax)/9}, \y0-3.1) {$Q_1-1,5\times DIQ$};
+\node[align=center] at ({(\xqthr+\xmax)/2.15}, \y0-3.1) {$Q_1+1,5\times DIQ$};
+\node[align=center] at ({(\xqone+\xqthr)/2}, \y0-4.5)
+{Limites dos Outliers };
+    \end{tikzpicture}
+\end{figure}
+
+Dessa forma, valores menores que \(Q_1-1,5\times DIQ\) ou maiores que \(Q_3+1,5\times DIQ\) são considerados VALORES DISCREPANTES (OUTLIERS) e representados por PONTOS ou ASTERISCOS.
+
+É importante salientarmos que a fórmula da distância interquartílica se parece muito com a do desvio quartílico (ou amplitude semi-interquartílica), podendo ser facilmente confundida. O desvio quartílico é calculado pela expressão apresentada a seguir:
+\[
+    \boxed{D_q=\frac{Q_3-Q_1}{2}}
+\]

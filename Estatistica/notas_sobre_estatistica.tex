@@ -1,0 +1,139 @@
+% !TEX program = lualatex
+\documentclass[a4paper,12pt]{book}
+\usepackage[brazil]{babel}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{caption} % para \captionof
+\geometry{top=2.5cm,bottom=2.0cm,left=2.5cm,right=2.0cm}
+\usepackage{setspace}
+\usepackage{array} %multicolunas
+\usepackage{multicol}
+\usepackage[hypcap=false]{caption}
+\usepackage{enumitem} %para enumerar com letras.
+\usepackage{graphicx}
+\usepackage{multirow} %permite várias linhas na cabeça da tabela.
+\usepackage{amsmath}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\usepackage{amsthm}
+\usepackage{siunitx}
+
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{pdfpages}
+\usepackage{enumitem} %com esse dá pra usar letras na enumeração
+
+% ===== Figuras / Gráficos =====
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{tabularx}
+% PGFPlots (já carrega o TikZ)
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.18, width=11cm}
+\usepgfplotslibrary{fillbetween}
+\usetikzlibrary{arrows.meta,intersections}
+\usepackage{float}
+\usepackage{makecell}
+\usepackage[table]{xcolor} % ou \usepackage{colortbl}
+
+% ===============================
+% Ambientes teóricos
+% ===============================
+% \theoremstyle{plain}      % itálico
+% \newtheorem{theorem}{Teorema}[section]
+
+% \theoremstyle{definition} % texto normal
+% \newtheorem{definition}{Definição}[section]
+
+% \theoremstyle{remark}     % texto normal, sem itálico
+% \newtheorem{remark}{Observação}[section]
+
+
+\theoremstyle{definition}
+\newtheorem{propriedade}{Propriedade}[section]
+
+
+
+%=======================================
+%         Header
+%=======================================
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[R]{\nouppercase{\scshape\rightmark}}
+\lhead{\textsc{Notas sobre Estatística}}
+\setlength{\headheight}{15pt}
+\addtolength{\topmargin}{-3pt}
+
+%======================================
+%títulos das seções
+%=====================================
+\usepackage{titlesec}
+
+% Section em versal-versalete (small caps)
+\titleformat{\section}
+  {\normalfont\Large\scshape}
+  {\thesection}
+  {1em}
+  {}
+
+% (opcional) Subsection também
+\titleformat{\subsection}
+  {\normalfont\large\scshape}
+  {\thesubsection}
+  {1em}
+  {}
+
+
+\usetikzlibrary{decorations.pathreplacing,arrows.meta,calc}
+
+\pgfplotsset{compat=1.18, width=11cm}
+\usetikzlibrary{arrows.meta}
+
+\setlist[itemize]{noitemsep,topsep=4pt}
+\begin{document}
+\tableofcontents
+\newpage
+\chapter{Fundamentos}
+\section{Introdução à estatística}
+\input{introducao_estatistica.tex}
+%parâmetros
+\section{Noções Iniciais sobre Estatística}
+\section{Método experimental vs. Método estatístico}
+\input{metodo_experimental_metodo_estatistico.tex}
+\section{Dados Estatísticos}
+\input{dados_estatisticos.tex}
+\section{Variáveis Estatísticas}
+\input{Variaveis_estatisticas.tex}
+\section{Séries Estatísticas}
+\input{series_estatisticas.tex}
+\section{Distribuição de Frequências}
+\input{distribuicao_de_frequencias.tex}
+\section{Representação Gráfica das Distribuições de Frequências}
+\input{representacao_grafica_distribuicoes_frequencias.tex}
+\chapter{Medidas de Tendência Central}
+\section{Noções Iniciais sobre Médias}
+\input{introducao_media.tex}
+\section{Medidas de Posição}
+\input{medidas_de_posicao.tex}
+\section{Notação de Somatório}
+\input{notacao_somatorio.tex}
+\section{Média Aritmética Simples}
+\input{media_aritmetica.tex}
+\section{Média Ponderada}
+\input{media_ponderada.tex}
+\section{Média para Dados Agrupados}
+\input{media_para_dados_agrupados.tex}
+\section{Média Geométrica}%\input{media_geometrica.tex}
+\section{Média Harmônica}
+\input{media_harmonica.tex}
+\section{Desigualdade das Médias}   
+\input{desigualdade_de_medias.tex}
+\section{Mediana}
+\input{mediana.tex}
+\section{Quartis, Decis e Percentis}
+\input{quartis_decis_percentis.tex}
+\section{Box Plot}
+\input{box_plot.tex}
+\end{document}

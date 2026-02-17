@@ -1,0 +1,119 @@
+ExercÃ­cio 5 da segunda lista.
+
+\subsubsection*{Retas tangentes nas direÃ§Ãµes $x$ e $y$ e plano tangente}
+
+Considere a superfÃ­cie
+\[
+z = f(x,y) = 3x^2 + \frac{3}{2}y^2 - \frac{7}{2}.
+\]
+
+No ponto
+\[
+P = (x_0,y_0,z_0) = (1,1,1),
+\]
+temos as derivadas parciais
+\[
+f_x(1,1) = 6
+\qquad\text{e}\qquad
+f_y(1,1) = 3.
+\]
+
+\subsection*{1. Reta tangente no corte paralelo ao plano $xz$}
+
+Fixando $y=1$, obtemos uma curva espacial dada por
+\[
+z = f(x,1) = 3x^2 - 2.
+\]
+
+A inclina\c{c}\~ao dessa curva no ponto $x=1$ (isto Ã©, a taxa de variaÃ§Ã£o de $z$ quando andamos na dire\c{c}\~ao de $x$ e mantemos $y$ constante) Ã©
+\[
+\frac{\partial z}{\partial x}\Big|_{(1,1)} = f_x(1,1) = 6.
+\]
+
+Logo, a reta tangente a essa curva em $P=(1,1,1)$ pode ser escrita de forma paramÃ©trica como
+\[
+\ell_x(t) =
+\bigl(x(t),y(t),z(t)\bigr)
+=
+(1+t,\; 1,\; 1 + 6t),
+\quad t \in \mathbb{R}.
+\]
+
+Isto estÃ¡ contido num plano paralelo ao plano $xz$ (pois $y=1$ Ã© constante).
+
+\subsection*{2. Reta tangente no corte paralelo ao plano $yz$}
+
+Agora fixamos $x=1$, obtendo a curva
+\[
+z = f(1,y) = \frac{3}{2}y^2 - \frac{1}{2}.
+\]
+
+A inclina\c{c}\~ao dessa curva no ponto $y=1$ Ã©
+\[
+\frac{\partial z}{\partial y}\Big|_{(1,1)} = f_y(1,1) = 3.
+\]
+
+Assim, a reta tangente em $P=(1,1,1)$ nesta direÃ§Ã£o Ã©
+\[
+\ell_y(s) =
+\bigl(x(s),y(s),z(s)\bigr)
+=
+(1,\; 1+s,\; 1 + 3s),
+\quad s \in \mathbb{R}.
+\]
+
+Isto estÃ¡ contido num plano paralelo ao plano $yz$ (pois $x=1$ Ã© constante).
+
+\subsection*{3. Plano tangente Ã  superfÃ­cie em $P$}
+
+A equaÃ§Ã£o geral do plano tangente a $z=f(x,y)$ no ponto $(x_0,y_0)$ Ã©
+\[
+z - z_0
+=
+f_x(x_0,y_0)\,(x-x_0)
++
+f_y(x_0,y_0)\,(y-y_0).
+\]
+
+Substituindo $x_0=1$, $y_0=1$, $z_0=1$, $f_x(1,1)=6$ e $f_y(1,1)=3$, obtemos
+\[
+z - 1
+=
+6(x-1) + 3(y-1).
+\]
+
+Equivalentemente,
+\[
+z = 6x + 3y - 8.
+\]
+
+Observe que as duas retas tangentes $\ell_x$ e $\ell_y$ est\~ao contidas neste plano tangente.
+
+\bigskip
+
+\section*{Visualiza\c{c}\~ao em 3D}
+
+A figura abaixo mostra:
+\begin{itemize}
+    \item A superf\'icie $z = 3x^2 + \tfrac{3}{2}y^2 - \tfrac{7}{2}$;
+    \item O ponto $P=(1,1,1)$;
+    \item As duas retas tangentes $\ell_x$ e $\ell_y$.
+\end{itemize}
+
+  \[f(x,y)= xy\frac{(x^2-y^2)}{x^2+y^2} \] Ã© melhor usar a recra do produto considerando
+  \[ u=xy \] e o \[ v=\frac{(x^2-y^2)}{x^2+y^2} \] ou a regra do quociente sendo \[uu= xy(x^2-y^2)
+  \] e \[ v=(x^2+y^2) \]? ou hÃ¡ ainda alguma coisa melhor?
+% --- Passo a passo para reta tangente via plano tangente (sem preÃ¢mbulo) ---
+
+\subsection*{Reta tangente por interseÃ§Ã£o com o plano tangente (uma equaÃ§Ã£o, duas ``partes'')}
+
+\paragraph{Ideia-chave.}
+Calcule o \textbf{plano tangente} Ã  superfÃ­cie no ponto pedido. \emph{Ele Ã© Ãºnico.}
+Depois, para cada item do exercÃ­cio, vocÃª \textbf{impÃµe o plano de corte} correspondente
+e obtÃ©m a \textbf{reta tangente da curva de interseÃ§Ã£o} como a interseÃ§Ã£o desses dois planos.
+
+\paragraph{Plano tangente (equaÃ§Ã£o-base).}
+Para \(z=f(x,y)\) no ponto \(P=(x_0,y_0,z_0)\) com \(z_0=f(x_0,y_0)\),
+\[
+\boxed{\,z - z_0 \;=\; f_x(x_0,y_0)\,(x-x_0) \;+\; f_y(x_0,y_0)\,(y-y_0)\, }.
+\]

@@ -1,0 +1,109 @@
+\subsection{Séries Geográficas (ou Territoriais)}
+
+É a série cujos dados são dispostos segundo a localidade de ocorrência. Isto é, enquanto o local vário, o fato e o tempo permanecem constantes. Também são chamadas de séries espaciais ou de localização. A principal característica é o fator geográfico variável.
+A seguir temos a série geográfica da população urbana residente em cada uma das regiões brasileiras no ano de 2010. Percebam que o local (região) varia; contudo, o fato que está sendo analisado (quantidade populacional) e o tempo (ano de 2010) permanecem constantes.
+
+\begin{table}[hbt]
+    \centering
+    \begin{tabular}{l r}
+\toprule
+Região &População\\
+\midrule
+norte	        &11664\\
+nordeste	    &38821\\	 
+sudeste         &75696\\ 
+sul             &23260\\	    
+Centro oeste    &12482\\		   
+\bottomrule
+ \end{tabular}
+ \caption{Fonte: Censo Populacional 2010}
+\end{table}
+ 
+\subsection{Séries Geográficas (ou Territoriais)}
+É a série cujos dados são dispostos segundo a localidade de ocorrência. Isto é, enquanto o local varia, o fato e o tempo permanecem constantes. Também são chamadas de séries espaciais ou de localização. A principal característica é o fator geográfico variável.
+A seguir temos a série geográfica da população urbana residente em cada uma das regiões brasileiras no ano de 2010. Percebam que o local (região) varia; contudo, o fato que está sendo analisado (quantidade populacional) e o tempo (ano de 2010) permanecem constantes.
+
+\begin{table}[hbt]
+    \centering
+    \begin{tabular}{l r}
+\toprule
+Região &População\\
+\midrule
+norte	        &11664\\
+nordeste	    &38821\\	 
+sudeste         &75696\\ 
+sul             &23260\\	    
+Centro oeste    &12482\\		   
+\bottomrule
+ \end{tabular}
+ \caption{Fonte: Censo Populacional 2010}
+\end{table}
+
+\subsection{Séries Específicas}
+É a série cujos dados são dispostos segundo a modalidade de ocorrência. Isto é, enquanto o fato varia, a época e o local permanecem constantes. Também são chamadas de séries categóricas. A principal característica é o fator especificativo variável.
+
+A seguir temos uma série específica das populações urbana e rural residentes no Brasil no ano de 2010. Percebam que os fatos analisados variam (população urbana x população rural); contudo, o tempo (2010) e o local de análise (Brasil) são constantes.
+
+\begin{table}[hbt]
+    \centering
+    \caption*{População Urbana e Rural em 2010 (x1000)}
+    \begin{tabular}{l r}
+\toprule
+Zona &População\\
+\midrule
+Urbana	        &93134\\
+Rural	          &119011\\	 
+Total:          &190755\\ 		   
+\bottomrule
+ \end{tabular}
+ \caption{Fonte: Censo Populacional 2010}
+\end{table} 
+
+\subsection{Séries Mistas (ou Compostas)}
+
+Muitas vezes, podemos ter a necessidade de apresentar, em uma única tabela, a variação de valores de mais de uma variável, isto é, combinar duas ou mais séries. As séries resultantes desse processo de combinação são chamadas de séries mistas (ou compostas) e apresentadas por meio de tabelas de dupla entrada.
+
+O nome da nova série deve considerar pelo menos dois elementos. Assim, se for uma série mista de fato é tempo, denominaremos de série específico-temporal. A seguir temos uma série específico-temporal representando as populações de homens e mulheres residentes no Brasil, no período de 1970 a 2010, com variação decenal.
+
+\begin{table}[H]
+\centering
+\caption{População do Brasil por sexo (1970 a 2010).}
+\label{tab:sexo}
+
+\renewcommand{\arraystretch}{1.25} % altura das linhas (opcional)
+\setlength{\tabcolsep}{10pt}       % espaçamento lateral (opcional)
+
+\begin{tabular}{|c|c|c|}
+\hline
+\multirow{2}{*}{\textbf{Anos}} & \multicolumn{2}{c|}{\textbf{Sexo}} \\ \cline{2-3}
+                              & \textbf{Homens} & \textbf{Mulheres} \\ \hline
+\textbf{1970} & 46.327 & 46.807 \\ \hline
+\textbf{1980} & 59.142 & 59.868 \\ \hline
+\textbf{1991} & 72.485 & 74.340 \\ \hline
+\textbf{2000} & 83.602 & 86.270 \\ \hline
+\textbf{2010} & 93.406 & 97.348 \\ \hline
+\end{tabular}
+\end{table}
+
+Por sua vez, se tivermos uma série mista de local e tempo, denominaremos de série geográfica-temporal. A seguir temos uma série geográfico-temporal representando as populações residentes em cada região brasileira, no período de 1970 a 2010, com variação decenal.
+
+\begin{table}[H]
+\centering
+\caption{População do Brasil por regiões (1970 a 2010).}
+\label{tab:regioes}
+
+\renewcommand{\arraystretch}{1.25}
+\setlength{\tabcolsep}{10pt}
+
+\begin{tabular}{|c|r|r|r|r|r|}
+\hline
+\multirow{2}{*}{\textbf{Ano}} & \multicolumn{5}{c|}{\textbf{Regiões}} \\ \cline{2-6}
+ & \textbf{norte} & \textbf{nordeste} & \textbf{sudeste} & \textbf{sul} & \textbf{Centro-Oeste} \\ \hline
+\textbf{1970} &3.603  &28.111  &39.850  &16.496  &5.072  \\ \hline
+\textbf{1980} &5.880  &34.815  &51.737  &19.031  &7.545  \\ \hline
+\textbf{1991} &10.030 &42.497  &62.740	&22.129	 &9.427  \\ \hline
+\textbf{2000} &12.900 &47.741  &72.412	&25.107	 &11.636 \\ \hline
+\textbf{2010} &15.864 &53.081  &80.364	&27.386	 &14.058 \\ \hline
+\end{tabular}
+\end{table}
+				
