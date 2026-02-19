@@ -29,6 +29,7 @@
 \usepackage{lmodern}
 \usepackage{amsmath,amsthm,amsfonts,amssymb,dsfont,mathtools}
 \usepackage{cancel}
+\usepackage{cases}
 
 \renewcommand{\CancelColor}{\color{red}}
 \newtheorem{theorem}{Teorema}
@@ -119,6 +120,8 @@
     \end{aligned}}
   \]%
 }
+\theoremstyle{definition}
+\newtheorem{definition}{Definição}[section]
 \newtheorem{exercicio}{Exercício}[subsection]
 
 % ===== MACROS GLOBAIS =====
@@ -168,7 +171,7 @@
 
 \subsection{Integral de Riemann}\label{subsec:integral-riemann}
 \input{Integral_de_Riemann.tex}
-
+\newpage
 \subsection{Teorema Fundamental do Cálculo}
 \input{Teorema_Fundamental_do_Calculo.tex}
 

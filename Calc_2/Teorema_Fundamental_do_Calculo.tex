@@ -1,12 +1,94 @@
+Seja \(f[a,b]\longrightarrow\mathbb{R}\) contínua, F é a prmitiva de f.
+\[
+  \int_{a}^{b}\,f(x)\,dx=F\big|_a^b=F(b)-F(a)
+\]
+
+\begin{definition}
+Seja $P$ uma partição de $[a,b]$ que subdivide o intervalo em $n$ subintervalos
+
+$[x_{i-1},x_i]$ de mesmo comprimento 
+\[
+  \Delta x = \frac{b-a}{n}.
+\]
+\end{definition}
+
+\begin{theorem} (TMV -- Teorema do Valor Médio.)\label{TVM}
+  Se $f$ é contínua no intervalo fechado $[a,b]$ e derivável no intervalo aberto $(a, b)$, então existe pelo menos um número $c \in (a, b)$ tal que:
+\[
+f'(c) = \frac{f(b) - f(a)}{b - a}
+\]
+\end{theorem}
+
+Aplicando o TVM \ref{TVM} acima à função \(F\, \text{em}\, (x_{i-1}, x_{i})\exists \quad c_i \quad]\, x_{x-1,x_i \,[}\) tal que
+\[
+  \sum_{i=1}^{n}\,F_{x_i}-F_{(x-1,x_i)}=\sum_{i=1}^{n}f(c_i)\Delta x = F(b)-F(a)=\int_{a}^{b}f(x)\,dx
+\]
+
+Mais uma vez, seja \(f[a,b]\longrightarrow\mathbb{R}\) contínua, F é a prmitiva de f.
+\[
+  \int_{a}^{x}\,f(t)\,dt\,\text{é primitiva de}\,f
+\]
+ou seja, 
+\[
+  \frac{dF(x)}{dx}=\frac{d}{dx}\,\int_{a}^{x}f(t)\,dt=f(x)
+\]
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      clip=false,
+      axis x line=middle,
+      axis y line=middle,
+      axis line style={-{Stealth[length=3mm,width=1.5mm]}},
+      xmin=0, xmax=2*pi,
+      ymin=-0.5, ymax=1.2, % <- se quiser zoom, use ymin=-0.05 em vez de 0.4
+      grid=both,
+      xtick=\empty,
+      %{0,pi/2,pi,3*pi/2,2*pi}
+      xticklabels=\empty, 
+      % {$0$,$\frac{\pi}{2}$,$\pi$,$\frac{3\pi}{2}$,$2\pi$}
+    ]
+
+      % Curva
+      \addplot[
+        thick, blue, samples=200,
+        domain=pi/2:3*pi/2,
+        name path=curva
+      ] {sin(deg(0.5*x))};
+
+      % Caminho do eixo x (y=0) para o fillbetween
+      \path[name path=xaxis] (axis cs:{pi/2},0) -- (axis cs:{3*pi/2},0);
+
+      % Linhas verticais pontilhadas
+      \draw[blue, thick, dashed] (axis cs:{pi/2},0) -- (axis cs:{pi/2},{sqrt(2)/2});
+      \draw[blue, thick, dashed] (axis cs:{pi},0)   -- (axis cs:{pi},1);
+      \draw[blue, thick, dashed] (axis cs:{3*pi/2},0) -- (axis cs:{3*pi/2},{sqrt(2)/2});
+
+      % Área preenchida só de pi/2 até pi
+      \addplot[fill=gray!35, draw=none, opacity=.5]
+        fill between[of=curva and xaxis, soft clip={domain=pi/2:pi}];
+      \node[anchor=north, yshift=-2pt] at (axis cs:{pi/2},0) {$a$};
+      \node[anchor=north, yshift=-2pt] at (axis cs:{pi},0) {$b$};
+      \node[anchor=north, yshift=-2pt] at (axis cs:{3*pi/2},0) {$C$};
+    \end{axis}
+  \end{tikzpicture}
+\end{figure}
+
 \subsubsection{Exemplos clássicos}
 \begin{itemize}
   \item \(f(x)=x\) em \([0,1]\): contínua \(\Rightarrow\) integrável e 
-  \(\int_0^1 x\,dx = \tfrac{1}{2}\).
-  \item \textbf{Dirichlet:} \(f(x)=1\) se \(x\) é racional e \(0\) se 
-  irracional em \([0,1]\). Não é integrável no sentido de Riemann.
-  \item \textbf{Thomae (``pipoca''):} \(f(x)=\begin{cases}1/q, & x=p/q
+  \[
+  \int_0^1 x\,dx = \frac{x^2}{2}\Bigg|_0^1=\frac{1}{2}
+  \].
+  \item \textbf{Dirichlet:} \(f(x)=1\) se \(x\) é racional e \(0\) se irracional em \([0,1]\). Não é integrável no sentido de Riemann.
+  \item \textbf{Thomae ("pipoca"):} 
+  \(f(x)=\begin{cases}1/q, & x=p/q
     \ (\gcd(p,q)=1)\\[2pt] 0, & x\ \text{irracional}\end{cases}\).
-  É integrável no sentido de Riemann e \(\int_0^1 f\,dx = 0\).
+
+    É integrável no sentido de Riemann e 
+    \[
+      \int_0^1 f\,dx = 0.
+    \]
 \end{itemize}
 
 \subsubsection{Exemplo por somas superior/inferior}
