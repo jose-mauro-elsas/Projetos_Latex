@@ -43,6 +43,7 @@ ou seja,
       xmin=0, xmax=2*pi,
       ymin=-0.5, ymax=1.2, % <- se quiser zoom, use ymin=-0.05 em vez de 0.4
       grid=both,
+      ytick={0.25, .5, .75, 1},
       xtick=\empty,
       %{0,pi/2,pi,3*pi/2,2*pi}
       xticklabels=\empty, 
@@ -61,20 +62,304 @@ ou seja,
 
       % Linhas verticais pontilhadas
       \draw[blue, thick, dashed] (axis cs:{pi/2},0) -- (axis cs:{pi/2},{sqrt(2)/2});
-      \draw[blue, thick, dashed] (axis cs:{pi},0)   -- (axis cs:{pi},1);
+      \draw[blue, thick, dashed] (axis cs:{1.5*pi/2},0)   -- (axis cs:{1.5*pi/2},0.923);
       \draw[blue, thick, dashed] (axis cs:{3*pi/2},0) -- (axis cs:{3*pi/2},{sqrt(2)/2});
 
       % Área preenchida só de pi/2 até pi
       \addplot[fill=gray!35, draw=none, opacity=.5]
-        fill between[of=curva and xaxis, soft clip={domain=pi/2:pi}];
+        fill between[of=curva and xaxis, soft clip={domain=pi/2:1.5*pi/2}];
       \node[anchor=north, yshift=-2pt] at (axis cs:{pi/2},0) {$a$};
-      \node[anchor=north, yshift=-2pt] at (axis cs:{pi},0) {$b$};
-      \node[anchor=north, yshift=-2pt] at (axis cs:{3*pi/2},0) {$C$};
+      \node[anchor=north, yshift=-2pt] at (axis cs:{1.5*pi/2},0) {$x$};
+      \node[anchor=north, yshift=-2pt] at (axis cs:{3*pi/2},0) {$b$};
     \end{axis}
   \end{tikzpicture}
 \end{figure}
+\newpage
+\[
+  \int_{a}^{x}f(t)\,dt
+\]
+\begin{example}
+\begin{align*}
+\frac{d}{dx}F(x),\quad \text{se}\quad F(x) &= \int_{1}^{x}(t^2+2)\,dt.\\
+&=\frac{d}{dx}\,F(x)=X^2+2\\
+\end{align*}
+\end{example}
 
-\subsubsection{Exemplos clássicos}
+\begin{example}
+  \begin{align*}
+    &\frac{dy}{dx}\,\quad\text{se}\quad y=\int_{3}^{x^2}(5t+8)^{32} \,dt\\
+    \text{Pela regra da cadeia}&\quad\frac{dy}{dx}=(5x^2+8)^{32}\cdot2x\\
+    &y=F(u(x)),\\
+    \text{onde}&\quad u(x)=x^2\quad \text{e}\quad \int_{3}^{u} (5t+8)^{32}\,dt\\
+    &\frac{dy}{dx}=\frac{dF}{du}\frac{du}{dx}=(5x^2+8)^{32}\cdot 2x.
+  \end{align*}
+\end{example}
+
+\begin{example}
+      \begin{align*}
+        \frac{d}{dx}\int_{1}^{x^4}\sec(t)\,dt=\sec(x^4)\cdot 4x^3
+      \end{align*}
+\end{example}
+
+
+  Propriedades: se \(f\) é contínua em \([a,b]\), então:
+  \begin{enumerate}
+    \item 
+    \[
+      \int_{a}^{a}f(x)dx=0;
+    \]
+    \item 
+    \[
+      \int_{b}^{a}f(x)dx=-\int_{a}^{b}dx
+    \]
+  \end{enumerate}
+
+\begin{example}
+Calcule $\dfrac{dy}{dx}$, supondo $a$ constante, se
+\[
+y(x)=\int_{-x}^{a}\sqrt{t^{2}+1}\,dt+\int_{1}^{5x-7}\sqrt{t^{2}-1}\,dt,
+\qquad (5x-7\ge 1).
+\]
+
+Usaremos a regra de Leibniz:
+\[
+\frac{d}{dx}\left(\int_{\alpha(x)}^{\beta(x)} f(t)\,dt\right)
+= f(\beta(x))\,\beta'(x)-f(\alpha(x))\,\alpha'(x).
+\]
+
+\begin{enumerate}[label=\alph*)]
+\item Para $y_1(x)=\displaystyle\int_{-x}^{a}\sqrt{t^{2}+1}\,dt$,
+temos $\alpha(x)=-x$ e $\beta(x)=a$ (constante). Logo,
+\[
+y_1'(x)=\sqrt{a^2+1}\cdot 0-\sqrt{(-x)^2+1}\cdot(-1)=\sqrt{x^2+1}.
+\]
+
+\item Para $y_2(x)=\displaystyle\int_{1}^{5x-7}\sqrt{t^{2}-1}\,dt$,
+temos $\alpha(x)=1$ (constante) e $\beta(x)=5x-7$. Então,
+\[
+y_2'(x)=\sqrt{(5x-7)^2-1}\cdot 5-\sqrt{1^2-1}\cdot 0
+=5\sqrt{(5x-7)^2-1}.
+\]
+
+\item Portanto,
+\[
+\boxed{\frac{dy}{dx}=\sqrt{x^2+1}+5\sqrt{(5x-7)^2-1}},
+\qquad \text{válido para } 5x-7\ge 1 \ (x\ge 8/5).
+\]
+\end{enumerate}
+\end{example}
+
+\section{Derivada de Integrais com Limites Variáveis}
+
+\subsection{1. Interpretação Geométrica}
+
+Considere
+\[
+F(x)=\int_{0}^{x} f(t)\,dt.
+\]
+
+A função $F(x)$ representa a área acumulada sob o gráfico de $f(t)$
+desde $0$ até $x$.
+
+Quando $x$ aumenta para $x+h$, a nova área acumulada é
+
+\[
+F(x+h)=\int_{0}^{x+h} f(t)\,dt.
+\]
+
+Logo,
+
+\[
+F(x+h)-F(x)=\int_{x}^{x+h} f(t)\,dt.
+\]
+
+Essa diferença corresponde à pequena faixa adicionada no final do intervalo.
+
+\subsubsection*{Ilustração Geométrica}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=1.1]
+
+% Eixos
+\draw[->] (-0.2,0) -- (4.8,0) node[right] {$t$};
+\draw[->] (0,-0.2) -- (0,3.5) node[above] {$f(t)$};
+
+% Curva
+\draw[domain=0:4.5,smooth,variable=\x,thick]
+plot ({\x},{0.5*\x+0.5});
+
+% Pontos x e x+h
+\draw[dashed] (3,0) -- (3,2);
+\draw[dashed] (3.5,0) -- (3.5,2.25);
+
+\node[below] at (3,0) {$x$};
+\node[below] at (3.5,0) {$x+h$};
+
+% Área pequena
+\fill[gray!40] (3,0) -- (3,2) -- (3.5,2.25) -- (3.5,0) -- cycle;
+
+\end{tikzpicture}
+\caption{A pequena faixa de área adicionada quando $x$ varia para $x+h$.}
+\end{figure}
+
+Se $h$ é pequeno, essa área é aproximadamente um retângulo de:
+
+\[
+\text{altura } \approx f(x),
+\qquad
+\text{largura } = h.
+\]
+
+Assim,
+
+\[
+F(x+h)-F(x)\approx f(x)\,h.
+\]
+
+Dividindo por $h$ e passando ao limite:
+
+\[
+\boxed{F'(x)=f(x).}
+\]
+
+\subsection{2. Demonstração Formal}
+
+Considere
+
+\[
+F(x)=\int_{0}^{x} f(t)\,dt.
+\]
+
+Pela definição de derivada:
+
+\[
+F'(x)=\lim_{h\to 0}
+\frac{F(x+h)-F(x)}{h}.
+\]
+
+Mas:
+
+\[
+F(x+h)-F(x)=\int_{x}^{x+h} f(t)\,dt.
+\]
+
+Pelo Teorema do Valor Médio para integrais, existe
+$c\in[x,x+h]$ tal que
+
+\[
+\int_{x}^{x+h} f(t)\,dt = f(c)\,h.
+\]
+
+Logo,
+
+\[
+\frac{F(x+h)-F(x)}{h}=f(c).
+\]
+
+Quando $h\to 0$, temos $c\to x$, e como $f$ é contínua:
+
+\[
+F'(x)=f(x).
+\]
+
+\subsection{3. Caso com Limite Variável Geral}
+
+Se
+
+\[
+F(x)=\int_{0}^{g(x)} f(t)\,dt,
+\]
+
+então:
+
+\[
+F'(x)=f(g(x))\,g'(x).
+\]
+
+Aqui aparece naturalmente a regra da cadeia.
+
+\subsection{4. Regra Geral (Regra de Leibniz)}
+
+Se ambos os limites dependem de $x$:
+
+\[
+F(x)=\int_{\alpha(x)}^{\beta(x)} f(t)\,dt,
+\]
+
+então:
+
+\[
+\boxed{
+F'(x)
+=
+f(\beta(x))\,\beta'(x)
+-
+f(\alpha(x))\,\alpha'(x).
+}
+\]
+
+\subsection{Interpretação}
+
+\begin{itemize}
+    \item O limite superior adiciona área.
+    \item O limite inferior remove área.
+    \item O sinal negativo surge da orientação do intervalo.
+\end{itemize}
+
+\subsection{5. Exemplo Completo}
+
+Considere
+
+\[
+y(x)=\int_{-x}^{a}\sqrt{t^2+1}\,dt,
+\quad a \text{ constante}.
+\]
+
+Temos:
+
+\[
+\alpha(x)=-x,
+\qquad
+\beta(x)=a.
+\]
+
+Aplicando a regra:
+
+\[
+y'(x)
+=
+\sqrt{a^2+1}\cdot 0
+-
+\sqrt{(-x)^2+1}\cdot(-1).
+\]
+
+Logo,
+
+\[
+\boxed{y'(x)=\sqrt{x^2+1}.}
+\]
+
+\subsection{Resumo Final}
+
+\[
+\boxed{
+\frac{d}{dx}
+\left(
+\int_{\alpha(x)}^{\beta(x)} f(t)\,dt
+\right)
+=
+f(\beta(x))\beta'(x)
+-
+f(\alpha(x))\alpha'(x)
+}
+\]
+
+Esta fórmula resolve todos os exercícios desse tipo.
+
+
+\subsection{Exemplos clássicos}
+
 \begin{itemize}
   \item \(f(x)=x\) em \([0,1]\): contínua \(\Rightarrow\) integrável e 
   \[

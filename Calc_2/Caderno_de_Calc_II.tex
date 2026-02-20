@@ -3,8 +3,6 @@
 % LTeX: language=pt-BR
 % \tikzexternalize[prefix=externalized/]
 
-
-
 \documentclass[a4paper,12pt]{article}
 
 % ===== Básico =====
@@ -34,7 +32,10 @@
 \renewcommand{\CancelColor}{\color{red}}
 \newtheorem{theorem}{Teorema}
 \newtheorem*{definicao}{Definição}
+\newtheorem{example}{Exemplo}[section]
+
 \newtheorem*{classificacao}{Classificação de pontos críticos}
+
 
 \newcommand{\dif}{\,\mathrm{d}}
 \newcommand{\sen}{\operatorname{sen}}
@@ -107,6 +108,8 @@
 % ===== Hyperref por último =====
 \usepackage{hyperref}
 \hypersetup{hypertexnames=false}
+\usepackage{bookmark}
+
 
 \title{\textbf{Notas e Exercícios}}
 \author{Jose Mauro Xavier Elsas}
