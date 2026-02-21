@@ -151,7 +151,7 @@ y_2'(x)=\sqrt{(5x-7)^2-1}\cdot 5-\sqrt{1^2-1}\cdot 0
 
 \section{Derivada de Integrais com Limites Variáveis}
 
-\subsection{1. Interpretação Geométrica}
+\subsection{Interpretação Geométrica}
 
 Considere
 \[
@@ -223,7 +223,7 @@ Dividindo por $h$ e passando ao limite:
 \boxed{F'(x)=f(x).}
 \]
 
-\subsection{2. Demonstração Formal}
+\subsection{Demonstração Formal}
 
 Considere
 
@@ -263,7 +263,7 @@ Quando $h\to 0$, temos $c\to x$, e como $f$ é contínua:
 F'(x)=f(x).
 \]
 
-\subsection{3. Caso com Limite Variável Geral}
+\subsection{Caso com Limite Variável Geral}
 
 Se
 
@@ -279,7 +279,7 @@ F'(x)=f(g(x))\,g'(x).
 
 Aqui aparece naturalmente a regra da cadeia.
 
-\subsection{4. Regra Geral (Regra de Leibniz)}
+\subsection{Regra Geral (Regra de Leibniz)}
 
 Se ambos os limites dependem de $x$:
 
@@ -307,7 +307,7 @@ f(\alpha(x))\,\alpha'(x).
     \item O sinal negativo surge da orientação do intervalo.
 \end{itemize}
 
-\subsection{5. Exemplo Completo}
+\subsection{Exemplo Completo}
 
 Considere
 
@@ -376,7 +376,7 @@ Esta fórmula resolve todos os exercícios desse tipo.
     \]
 \end{itemize}
 
-\subsubsection{Exemplo por somas superior/inferior}
+\subsection{Exemplo por somas superior/inferior}
 Para \(f(x)=x\) em \([0,1]\), use a partição uniforme \(x_i=i/n\).
 Temos \(m_i=x_{i-1}=\tfrac{i-1}{n}\) e \(M_i=x_i=\tfrac{i}{n}\). Logo,
 \[
@@ -392,13 +392,13 @@ U(P_n,f)=\sum_{i=1}^n \frac{i}{n}\cdot\frac{1}{n}
 Como \(L(P_n,f), U(P_n,f) \to \tfrac{1}{2}\), conclui-se que \(\displaystyle 
 \int_0^1 x\,dx = \tfrac{1}{2}\).
 
-\subsubsection{Relação do TFC com as integrais definidas}
+\subsection{Relação do TFC com as integrais definidas}
 Se \(F\) é uma primitiva de \(f\) (\(F'=f\)), então:
 \[
 \int_a^b f(x)\,dx = F(b)-F(a).
 \]
 
-\subsubsection{Integrais impróprias (observação)}
+\subsection{Integrais impróprias (observação)}
 Se \(f\) não é limitada em \([a,b]\) ou se o intervalo é infinito, define-se por limites:
 \[
 \int_a^b f(x)\,dx
@@ -407,7 +407,7 @@ Se \(f\) não é limitada em \([a,b]\) ou se o intervalo é infinito, define-se 
 =\lim_{t\to +\infty}\int_a^{t} f(x)\,dx.
 \]
 
-\subsubsection{Propriedades úteis}
+\subsection{Propriedades úteis}
 Para funções integráveis \(f, g\) e escalares \(\alpha, \beta\):
 \begin{align*}
 &\int_a^b (\alpha f + \beta g)\,dx = \alpha\int_a^b f\,dx + \beta\int_a^b g\,dx,\\
@@ -525,7 +525,7 @@ Calcule a integral definida:
   \caption{Função $f(x)=x^2-2x$ e a área (abaixo do eixo $x$).}
 \end{figure}
 
-\subsubsection{O Teorema Fundamental do Cálculo (Parte 1)}
+\subsection{O Teorema Fundamental do Cálculo (Parte 1)}
 
 O TFC estabelece que a derivada de uma função definida por uma integral é o próprio integrando avaliado no limite de integração superior. Quando o limite superior é uma função $g(x)$, aplicamos a Regra da Cadeia:
 
@@ -554,7 +554,7 @@ O TFC estabelece que a derivada de uma função definida por uma integral é o p
       \]
 \end{exercicio}
 
-\subsubsection{Caso Geral -- Ambos os limites são funções}
+\subsection{Caso Geral -- Ambos os limites são funções}
 
 Se a função possui variáveis em ambos os limites de integração:
 \[
