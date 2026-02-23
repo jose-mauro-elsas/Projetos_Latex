@@ -3,95 +3,149 @@
 % LTeX: language=pt-BR
 % \tikzexternalize[prefix=externalized/]
 
-\documentclass[a4paper,12pt]{article}
+\documentclass[a4paper,12pt,openany]{book}
 
-% ===== Básico =====
-%\usepackage[T1]{fontenc}
-% \usepackage[utf8]{inputenc}    % (REMOVER no LuaLaTeX)
-\usepackage[portuguese]{babel}
+% =========================
+% Idioma e tipografia
+% =========================
+\usepackage[brazil]{babel} % pt-BR
+\usepackage{lmodern}
+
+% Trocar "Conteúdo" por "Sumário"
+\addto\captionsbrazil{%
+  \renewcommand{\contentsname}{Sumário}%
+}
+% =========================
+% Layout / espaçamento
+% =========================
 \usepackage[margin=3cm,tmargin=3cm,rmargin=2cm,bmargin=2cm]{geometry}
 \usepackage{indentfirst}
 \usepackage{setspace}
 \usepackage{enumitem}
+\raggedbottom
+
+% =========================
+% Cabeçalho (seção antes do nº da página)
+% =========================
+\usepackage{fancyhdr}
+\setlength{\headheight}{16pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+% marks (capítulo e seção)
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter\quad #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\quad #1}}
+
+% Regra: se existir seção, mostra seção; senão mostra capítulo
+\makeatletter
+\newcommand{\CabecalhoEsquerda}{%
+  \nouppercase{%
+    \ifx\rightmark\@empty
+      \leftmark
+    \else
+      \rightmark
+    \fi
+  }%
+}
+\makeatother
+
+\fancyhead[LE,LO]{\CabecalhoEsquerda}
+\fancyhead[RE,RO]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% Aplica também nas páginas "plain" (início de capítulo), para não “sumir” cabeçalho
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyhead[LE,LO]{\CabecalhoEsquerda}
+  \fancyhead[RE,RO]{\thepage}
+  \renewcommand{\headrulewidth}{0.4pt}
+}
+
+% =========================
+% Tabelas / utilidades
+% =========================
 \usepackage{booktabs}
-\usepackage{textcomp} 
-\usepackage[official]{eurosym}
+\usepackage{tabularx}
 \usepackage{adjustbox}
+\usepackage{float}
 \usepackage{lipsum}
+\usepackage{textcomp}
+\usepackage[official]{eurosym}
 
-% ===== Cores =====
+% =========================
+% Cores
+% =========================
 \usepackage[dvipsnames]{xcolor}
-% Define a cor azul escuro (DarkBlue ou customizado)
-\definecolor{azulmarinho}{RGB}{0, 0, 139} % Opção 1: Customizado
+\definecolor{azulmarinho}{RGB}{0,0,139}
+\usepackage[table]{xcolor}
 
-% ===== Matemática / Fontes =====
-\usepackage{lmodern}
-\usepackage{amsmath,amsthm,amsfonts,amssymb,dsfont,mathtools}
+% =========================
+% Matemática / Teoremas
+% =========================
+\usepackage{amsmath,amsthm,amsfonts,amssymb,dsfont,mathtools, array}
 \usepackage{cancel}
 \usepackage{cases}
+%\usepackage{adjustbox}
+\usepackage{changepage} % para adjustwidth
 
 \renewcommand{\CancelColor}{\color{red}}
+
 \newtheorem{theorem}{Teorema}
 \newtheorem*{definicao}{Definição}
 \newtheorem{example}{Exemplo}[section]
-
 \newtheorem*{classificacao}{Classificação de pontos críticos}
 
+\theoremstyle{definition}
+\newtheorem{definition}{Definição}[section]
+\newtheorem{exercicio}{Exercício}[subsection]
 
 \newcommand{\dif}{\,\mathrm{d}}
 \newcommand{\sen}{\operatorname{sen}}
 
-% ===== Figuras / Gráficos =====
+% =========================
+% Figuras
+% =========================
 \usepackage{graphicx}
 \graphicspath{{Images/}{./}}
-\usepackage{float}
-\usepackage{tabularx}
 
-%\usepackage{showframe}
-
-% ===== PGFPlots/TikZ =====
+% =========================
+% TikZ / PGFPlots
+% =========================
 \usepackage{tikz}
 \usepackage{pgfplots}
-\usetikzlibrary{angles,quotes}
-\usetikzlibrary{external, arrows.meta,intersections,patterns,calc,positioning,shapes.geometric}
-
 \pgfplotsset{compat=1.18}
 \usepgfplotslibrary{fillbetween}
 
-% ===== PGFPlots/TikZ =====
-\usepackage{tikz}
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.18}
-
-% --- TikZ externalization (cache) ---
+\usetikzlibrary{angles,quotes}
+\usetikzlibrary{arrows.meta,intersections,patterns,calc,positioning,shapes.geometric}
 \usetikzlibrary{external}
+
+% --- Externalização TikZ (cache) ---
 \tikzexternalize[
   prefix=externalized/,
   up to date check=diff
 ]
 
-% (opcional, mas eu recomendo no Windows)
+% (recomendado no Windows) chamada externa explícita
 \tikzset{external/system call={
   lualatex -shell-escape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"
 }}
 
+% =========================
+% Estilos para gráficos de área (seus macros)
+% =========================
+\newcommand{\CorCurvaSup}{red}
+\newcommand{\CorCurvaInf}{blue}
+\newcommand{\CorSombra}{fill=gray!20}
 
-% Chamada externa explícita (evita variações do ambiente)
-\tikzset{external/system call={
-  lualatex -shell-escape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"
-}}
-
-
-% ===== Estilos para gráficos de área =====
-\newcommand{\CorCurvaSup}{red}          
-\newcommand{\CorCurvaInf}{blue}         
-\newcommand{\CorSombra}{fill=gray!20}   
 \newcommand{\MarcarAB}[4]{%
   \draw[line width=0.6pt] (axis cs:#1,#3) -- (axis cs:#1,#4);
   \draw[line width=0.6pt] (axis cs:#2,#3) -- (axis cs:#2,#4);
   \node[below] at (axis cs:#1,#3) {$a$};
   \node[below] at (axis cs:#2,#3) {$b$};
 }
+
 \pgfplotsset{
   AreaAxisStyle/.style={
     axis x line=middle,
@@ -106,16 +160,29 @@
   }
 }
 
-% ===== Hyperref por último =====
+% =========================
+% Hyperref + Bookmark (final)
+% =========================
 \usepackage{hyperref}
-\hypersetup{hypertexnames=false}
+\hypersetup{
+  hypertexnames=false,
+  colorlinks=true,
+  linkcolor=azulmarinho,
+  urlcolor=azulmarinho,
+  citecolor=azulmarinho
+}
 \usepackage{bookmark}
 
-
+% =========================
+% Metadados (se você usar \maketitle em algum momento)
+% =========================
 \title{\textbf{Notas e Exercícios}}
 \author{Jose Mauro Xavier Elsas}
 \date{outubro de 2025}
 
+% =========================
+% Macros adicionais suas
+% =========================
 \newcommand{\leftdisplay}[1]{%
   \[
   \makebox[\linewidth][l]{%
@@ -124,22 +191,23 @@
     \end{aligned}}
   \]%
 }
-\theoremstyle{definition}
-\newtheorem{definition}{Definição}[section]
-\newtheorem{exercicio}{Exercício}[subsection]
 
-% ===== MACROS GLOBAIS =====
 % uso: \Setor[<estilo>]{(x,y)}{raio}{ang_ini}{ang_fim}
 \newcommand{\Setor}[5][]{%
   \begin{scope}
     \path[#1] #2 -- ++(#4:#3) arc[start angle=#4, end angle=#5, radius=#3] -- cycle;
   \end{scope}%
 }
-
+\setlength{\maxdepth}{\maxdimen}
+\hfuzz=50pt
+\vfuzz=50pt
+% ==========================================================
+% DOCUMENTO
+% ==========================================================
 \begin{document}
-    
+
 % ----------------------------------------------------------
-% PÁGINA DE ROSTO
+% CAPA (sem numeração)
 % ----------------------------------------------------------
 \begin{titlepage}
   \centering
@@ -154,28 +222,39 @@
 \end{titlepage}
 
 % ----------------------------------------------------------
-% SUMÁRIO AUTOMÁTICO
+% SUMÁRIO (frontmatter = numeração romana, sem capítulos numerados)
 % ----------------------------------------------------------
+\frontmatter
 \tableofcontents
-\newpage
 
-
+% ----------------------------------------------------------
+% TEXTO PRINCIPAL (mainmatter = capítulos/seções numerados)
+% ----------------------------------------------------------
+\mainmatter
 
 \onehalfspacing
 \setlist{nosep}
 \setlength{\parindent}{0pt}
 
-\section*{Ementa de Cálculo II}
+% -------------------------
+% EMENTA (capítulo sem número + entra no sumário)
+% -------------------------
+\chapter*{Ementa de Cálculo II}
+\addcontentsline{toc}{chapter}{Ementa de Cálculo II}
+\markboth{Ementa de Cálculo II}{} % garante cabeçalho
 \input{Ementa_Calc_II.tex}
-\newpage
-\section{Integral Definida: Aplicações}
+
+% -------------------------
+% CAPÍTULO 1
+% -------------------------
+\chapter{Integral Definida: Aplicações}
+
 \section{Cálculo de área sob uma curva}
 \input{Calculo_de_area_sob_uma_curva.tex}
 
-
-\section{Integral de Riemann}\label{subsec:integral-riemann}
+\section{Integral de Riemann}\label{sec:integral-riemann}
 \input{Integral_de_Riemann.tex}
-\newpage
+
 \section{Teorema Fundamental do Cálculo}
 \input{Teorema_Fundamental_do_Calculo.tex}
 
@@ -184,27 +263,40 @@
 
 \section{Volume de Sólido de Revolução}
 \input{volume_de_solido_de_revolucao.tex}
-  
-\section{Funções no espaço tridimensional}
+
+% -------------------------
+% CAPÍTULO 2
+% -------------------------
+\chapter{Funções no espaço tridimensional}
+
+\section{Introdução}
 \input{Funcoes_no_espaco_tridimensional.tex}
 
-\subsection{Interpretação Geométrica}
+\section{Interpretação Geométrica}
 \input{Interpretacao_Geometrica.tex}
 
-\subsection{Exercício 5 da Lista 2}
+% -------------------------
+% CAPÍTULO 3 (exemplo para seus tópicos seguintes)
+% -------------------------
+\chapter{Derivadas Parciais e Aplicações}
 
-\section {Derivadas Parciais}
-\subsection {Funções de duas ou mais variáveis, limite, continuidade}
-\section {Curva de nível}
-\section {Derivada direcional e gradiente}
-\section {Plano tangente}
-\section {A Regra da Cadeia}
-\section {Diferencial total}
-\section {Derivadas de ordem superior}
-\section {Máximos e Mínimos; Multiplicadores de Lagrange}
+\section{Derivadas Parciais}
+\section{Funções de duas ou mais variáveis: limite e continuidade}
+\section{Curva de nível}
+\section{Derivada direcional e gradiente}
+\section{Plano tangente}
+\section{A Regra da Cadeia}
+\section{Diferencial total}
+\section{Derivadas de ordem superior}
+\section{Multiplicadores de Lagrange}
+
 \section{Otimização Condicionada}
 \input{Otimizacao_Condicionada.tex}
-\section {Integrais Múltiplas}
-\section {Integral dupla; Área}
-\section {Coordenadas polares}
+
+\section{Integrais Múltiplas}
+\section{Integral dupla; Área}
+\section{Coordenadas polares}
+\section{Relações Trigonométricas}
+\input{relacoes_trigonogetricas.tex}
+
 \end{document}

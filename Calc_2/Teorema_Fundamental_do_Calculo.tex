@@ -74,7 +74,6 @@ ou seja,
     \end{axis}
   \end{tikzpicture}
 \end{figure}
-\newpage
 \[
   \int_{a}^{x}f(t)\,dt
 \]
@@ -148,6 +147,227 @@ y_2'(x)=\sqrt{(5x-7)^2-1}\cdot 5-\sqrt{1^2-1}\cdot 0
 \]
 \end{enumerate}
 \end{example}
+
+\subsection*{Aplicações do Teorema Fundamental do Cálculo}
+
+O Teorema Fundamental do Cálculo (TFC) possui duas faces complementares:
+\begin{enumerate}
+    \item Se \(F(x)=\displaystyle \int_a^x f(t)\,dt\) e \(f\) é contínua, então
+    \[
+    F'(x)=f(x).
+    \]
+    \item Se \(f\) é contínua em \([a,b]\), então
+    \[
+    \int_a^b f(x)\,dx = F(b)-F(a),
+    \]
+    onde \(F\) é uma primitiva de \(f\).
+\end{enumerate}
+
+Muitos exercícios aparentemente distintos são, na verdade, aplicações diretas ou consequências estruturais do TFC.
+
+\subsubsection*{1. Limites envolvendo integrais}
+
+Considere o limite
+\[
+\lim_{x\to 0^+}
+\frac{\int_{0}^{\sin x} e^{t^2}\,dt}{\sin x}.
+\]
+
+Definindo
+\[
+F(u)=\int_0^u e^{t^2}\,dt,
+\]
+temos, pelo TFC,
+\[
+F'(u)=e^{u^2}.
+\]
+
+Como \(F(0)=0\), o limite acima pode ser interpretado como
+\[
+\lim_{u\to 0^+} \frac{F(u)-F(0)}{u-0},
+\]
+isto é, a definição da derivada de \(F\) em \(0\). Logo,
+\[
+\lim_{x\to 0^+}
+\frac{\int_{0}^{\sin x} e^{t^2}\,dt}{\sin x}
+=
+F'(0)
+=
+e^{0}
+=
+1.
+\]
+
+\textbf{Interpretação:} trata-se de uma aplicação direta da primeira parte do TFC.
+
+\subsubsection*{2. Mudança de variável como consequência do TFC}
+
+Considere agora
+\[
+\int_{0}^{\frac{\pi}{6}}
+\sin(2x)e^{\sin^2 x}\,dx.
+\]
+
+Observe que
+\[
+\frac{d}{dx}(\sin^2 x)=\sin(2x).
+\]
+
+Fazendo a substituição \(u=\sin^2 x\), temos \(du=\sin(2x)\,dx\), e a integral torna-se
+\[
+\int_0^{1/4} e^u\,du.
+\]
+
+A justificativa teórica dessa substituição repousa no fato de que
+\[
+\frac{d}{dx} \big( F(f(x)) \big)
+=
+F'(f(x))\, f'(x),
+\]
+ou seja, na regra da cadeia aplicada à primitiva — resultado cuja validade depende do TFC.
+
+\textbf{Interpretação:} a mudança de variável em integrais definidas é uma consequência estrutural do Teorema Fundamental do Cálculo combinada com a regra da cadeia.
+
+\subsubsection*{Observação}
+
+Sempre que surgir:
+\[
+\int_0^{g(x)} f(t)\,dt
+\]
+ou
+\[
+f'(x)\,F(f(x)),
+\]
+é recomendável investigar se o problema pode ser resolvido por meio do Teorema Fundamental do Cálculo.
+
+\subsection*{Aplicações do Teorema Fundamental do Cálculo}
+
+O Teorema Fundamental do Cálculo (TFC) possui duas faces complementares:
+\begin{enumerate}
+    \item Se \(F(x)=\displaystyle \int_a^x f(t)\,dt\) e \(f\) é contínua, então
+    \[
+    F'(x)=f(x).
+    \]
+    \item Se \(f\) é contínua em \([a,b]\), então
+    \[
+    \int_a^b f(x)\,dx = F(b)-F(a),
+    \]
+    onde \(F\) é uma primitiva de \(f\).
+\end{enumerate}
+
+Muitos exercícios aparentemente distintos são, na verdade, aplicações diretas ou consequências estruturais do TFC.
+
+\subsubsection*{1. Limites envolvendo integrais}
+
+Considere o limite
+\[
+\lim_{x\to 0^+}
+\frac{\int_{0}^{\sin x} e^{t^2}\,dt}{\sin x}.
+\]
+
+Definindo
+\[
+F(u)=\int_0^u e^{t^2}\,dt,
+\]
+temos, pelo TFC,
+\[
+F'(u)=e^{u^2}.
+\]
+
+Como \(F(0)=0\), o limite acima pode ser interpretado como
+\[
+\lim_{u\to 0^+} \frac{F(u)-F(0)}{u-0},
+\]
+isto é, a definição da derivada de \(F\) em \(0\). Logo,
+\[
+\lim_{x\to 0^+}
+\frac{\int_{0}^{\sin x} e^{t^2}\,dt}{\sin x}
+=
+F'(0)
+=
+e^{0}
+=
+1.
+\]
+
+\textbf{Interpretação:} trata-se de uma aplicação direta da primeira parte do TFC.
+
+\subsubsection*{2. Mudança de variável como consequência do TFC}
+
+Considere agora
+\[
+\int_{0}^{\frac{\pi}{6}}
+\sin(2x)e^{\sin^2 x}\,dx.
+\]
+
+Observe que
+\[
+\frac{d}{dx}(\sin^2 x)=\sin(2x).
+\]
+
+Fazendo a substituição \(u=\sin^2 x\), temos \(du=\sin(2x)\,dx\), e a integral torna-se
+\[
+\int_0^{1/4} e^u\,du.
+\]
+
+A justificativa teórica dessa substituição repousa no fato de que
+\[
+\frac{d}{dx} \big( F(f(x)) \big)
+=
+F'(f(x))\, f'(x),
+\]
+ou seja, na regra da cadeia aplicada à primitiva — resultado cuja validade depende do TFC.
+
+\textbf{Interpretação:} a mudança de variável em integrais definidas é uma consequência estrutural do Teorema Fundamental do Cálculo combinada com a regra da cadeia.
+
+\subsubsection*{Observação}
+
+Sempre que surgir:
+\[
+\int_0^{g(x)} f(t)\,dt
+\]
+ou
+\[
+f'(x)\,F(f(x)),
+\]
+é recomendável investigar se o problema pode ser resolvido por meio do Teorema Fundamental do Cálculo.
+
+\begin{exercicio} Esse exercício foi questão de prova (primeira). Na integral abaixo será feita uma mudança de variaveis, portanto os limites de integração serão também modificados.
+  \begin{align*}
+    &\int_{0}^{\frac{\pi}{6}}\sin(2x)e^{\sin^2(x)}dx\\
+    &u=\sin^2(x)\\
+    &du=2\sin(x)\frac{d}{dx}\sin(x)\\
+    &du=2\sin(x)\cos(x)\;dx\\
+    &\text{mas,}\\
+    &2\sin(x)\cos(x)=\sin(2x)\\
+    \therefore&\quad du=\sin(2x)\\
+  \end{align*} 
+os novos limites de integração:
+\begin{align*}
+  \text{A integral é:}&\int e^u\,du\\
+  \text{quando}\,x&=0, u=sin^2(0)=0\\
+  \text{e quando}\,x&=\frac{\pi}{6},\, u=\sen\Big(\frac{\pi}{6}\Big)=\frac{1}{2}\\
+\end{align*}
+Então com os limites temos:
+\begin{align*}
+  &\int_0^{\frac{1}{2}} e^u\,du\\
+  &e^u\Big|_0^\frac{1}{2}=\sqrt{e}-0=\sqrt{e}\\
+\end{align*}
+\end{exercicio}
+
+\begin{exercicio} Esse exercício também foi questão de prova.
+  Aqui o segredo é perceber que função definida por integral avaliada em $\sin(x)$
+
+ \begin{align*}
+   &\lim_{\to{0+}}\frac{\int_{0}^{\sin(x)}e^{t^2}\,dt}{\sin(x)}\\
+ \end{align*}
+ Vamos tentar resolver a integral.
+ \begin{align*}
+  &\int_{0}^{\sin(x)}e^{t^2}\,dt\\
+  &F(u)=
+ \end{align*}
+
+\end{exercicio}
 
 \section{Derivada de Integrais com Limites Variáveis}
 
@@ -595,7 +815,10 @@ A derivada é dada por:
     &= \Bigg[\frac{(-2)^3}{3}-(4\cdot(-2))\Bigg]-\Bigg[\frac{(-3)^3}{3}-(4\cdot(-3))\Bigg]\\
     &-\frac{8}{3}-(-8)-(-\frac{27}{3}-(-12))\\
     &-\frac{8}{3}+\frac{24}{3}-\Big(-\frac{27}{3}+\frac{36}{3}\Big)\\
-    &\frac{16}{3}-\frac{9}{3}=\frac{7}{3}\\\\
+    &\frac{16}{3}-\frac{9}{3}=\frac{7}{3}\\
+    \end{align*}
+
+    \begin{align*}
     &\text{Segunda Integral}\\
     &\int_{-2}^{0}(-x^2-2x)\,dx\\
     &\Bigg[\Big(-\frac{x^3}{3}\Big)-\Big(x^2\Big)\Bigg]_{-2}^0\\

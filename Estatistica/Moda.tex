@@ -1,0 +1,221 @@
+Nessa aula, aprenderemos outra importante medida descritiva: a moda estatística. A moda é uma medida de posição e de tendência central que descreve o valor mais frequente de um conjunto de observações, ou seja, o valor de maior ocorrência dentre os valores observados.
+
+\begin{figure}[ht]
+    \centering
+        \includegraphics[width=0.8\linewidth]{Moda.png}
+\end{figure}
+
+Na estatística, o termo moda foi introduzido por Karl Pearson, em 1895, influenciado, muito provavelmente, pela forma com que as pessoas se referiam àquilo que estava em destaque, em evidência, com o significado de coisa mais frequente.
+
+A definição evidencia que um conjunto de valores pode possuir uma ou mais modas, ou não possuir nenhuma. Assim, dizemos que um conjunto é unimodal, bimodal, trimodal ou plurimodal, conforme o número de modas que apresenta. A ausência de uma moda caracteriza o conjunto como amodal.
+
+\begin{figure}[ht]
+    \centering
+        \includegraphics[width=0.8\linewidth]{conjunto_amodal.png}
+\end{figure}
+
+Em geral, a moda é utilizada em distribuições nas quais o valor mais frequente é o mais importante da distribuição. A moda também é útil para a determinação da medida de posição de variáveis qualitativas nominais, ou seja, variáveis não-numéricas que não podem ser ordenadas.
+
+O cálculo da moda ocorre de diferentes formas, a depender de como os dados estão organizados. Nesse contexto, aprenderemos a calcular a moda para as seguintes situações:
+\begin{itemize}
+    \item dados não-agrupados;
+    \item dados agrupados sem intervalos de classe (ou por valores); e
+    \item dados agrupados em classes.
+\end{itemize}
+ 
+\subsection{Moda para dados não-agrupados}
+
+Para determinarmos a moda de um conjunto ordenado de valores não agrupados em classes, basta identificarmos o elemento (ou elementos) de maior frequência no conjunto.
+
+Com relação ao número de modas, o conjunto de pode ser classificado como:
+
+\begin{itemize}
+    \item amodal: quando todos os elementos apresentam a mesma frequência, isto é, quando todosaparecem o mesmo número de vezes:
+    
+    \begin{center}
+    (1, 2, 3, 5, 6, 8, 10)
+    \end{center}
+
+\item unimodal: quando a frequência de um elemento é maior que as frequências dos demais elementos. Assim, um único elemento se destaca entre os demais. Isto é, quando o conjunto tem uma única moda. No conjunto a seguir, o elemento 2 repete-se cinco vezes enquanto o elemento 3 aparece duas vezes. Logo, $Mo$ = 2.
+
+    \begin{center}
+    $\Bigg
+    (\underbrace{2, 2, 2, 2, 2,}_{5\; elementos} 
+    \underbrace{3,3}_{2\; elementos}\Bigg)$
+    \end{center}
+
+\item bimodal: quando as frequências de dois elementos são iguais e maiores que as frequências dos demais elementos. Isto é, quando o conjunto tem duas modas. No conjunto a seguir, os elementos 2 e 3 repetem-se cinco vezes, enquanto o elemento 4 aparece duas vezes. Logo, $Mo = 2$ e $Mo=3$.
+
+    \begin{center}
+    $\Bigg(\underbrace{2, 2, 2, 2, 2,}_{5\; elementos}\, \underbrace{3, 3, 3, 3, 3}_{5\; elementos}
+    \underbrace{4, 4}_{2\; elementos}\Bigg)$
+    \end{center}
+
+\item multimodal ou plurimodal: quando as frequências de três ou mais elementos são iguais e maiores que as frequências dos demais elementos. Isto é, quando o conjunto tem três ou mais modas. No conjunto a seguir, os elementos 2, 3 e 4 repetem-se cinco vezes, enquanto o elemento 5 aparece duas vezes. Logo, $Mo = 2$  $Mo=3$ e $Mo=4$.
+
+    \begin{center}
+    $\Bigg(\underbrace{2, 2, 2, 2, 2,}_{5\; elementos}\, \underbrace{3, 3, 3, 3, 3}_{5\; elementos}
+    \underbrace{4, 4, 4, 4, 4}_{5\; elementos}
+    \underbrace{5, 5}_{2\; elementos}\Bigg)$
+    \end{center}
+\end{itemize}
+
+\subsection{Moda para dados agrupados sem intervalos de classe}
+
+Quando os dados estão agrupados por valores, isto é, quando não agrupados em intervalos de classe, o cálculo da moda também é realizado de maneira simples e rápida. Para tanto, devemos identificar o valor que apresenta a maior frequência absoluta. Vejamos um exemplo.
+
+\begin{example}
+    Considere que o Estratégia Concursos tenha realizado um simulado, contendo 50 questões, com 100 estudantes da área fiscal, obtendo a seguinte distribuição de acertos:
+
+    \begin{table}[ht]
+        \centering
+\begin{tabular}{cc}
+    \toprule
+\multicolumn{1}{c}{\begin{tabular}[c]{@{}c@{}}Nº de \\      Acertos ($X_i$)\end{tabular}} & \multicolumn{1}{c}{\begin{tabular}[c]{@{}c@{}}Frequência \\      Absoluta ($f_i$)\end{tabular}} \\
+\midrule
+45 & 8 \\
+46 & 12 \\
+47 & 28 \\
+48 & \textcolor{red}{32} \\
+49 & 17 \\
+50 & 3\\
+\bottomrule
+\end{tabular}
+\caption{Número de Acertos}
+\label{tab:moda_agrupados}
+\end{table}
+\newpage
+Para calcular a moda dessa distribuição, devemos identificar o maior valor existente na coluna de frequências. Veja novamente a tabela \ref{tab:moda_agrupados}, o valor da maior frequência é 32 que está marcado em vermelho. Logo, a moda da distribuição é o resultado de 48 questões corretas, pois corresponde a maior frequência. Portanto, podemos concluir que a maior concentração dos participantes errou somente duas questões:
+
+\begin{center}
+    $Mo=48$
+\end{center}
+
+\begin{figure}[H]
+    \centering
+    \begin{center}
+        \includegraphics[width=0.8\linewidth]{histo_acertos.png}
+    \end{center}
+    \caption{Histograma do número de acertos.}
+    \label{Fig:histo_acertos}
+\end{figure}
+Perceba que a maior barra do gráfico, referente à frequência 32, corresponde à moda da distribuição, isto é, um total de 48 questões corretas.
+\end{example}
+
+\subsection{Moda para dados agrupados em classes}
+
+Quando os dados estão agrupados em classes de mesma amplitude, a moda será o valor dominante da classe que apresenta a maior frequência, a qual é denominada classe modal. Como já vimos, a amplitude de classe é a diferença entre os limites superior e inferior de uma determinada classe. Assim, quando as amplitudes são todas iguais, a moda estará contida na classe de maior frequência. A seguir, veremos os principais métodos empregados no cálculo da moda de distribuições agrupadas por intervalos de classe: moda bruta, moda de Pearson, moda de Czuber e moda de King.
+
+\subsubsection{Moda Bruta}
+
+A maneira mais simples de calcular a moda é tomar o ponto médio da classe modal. Esse valor, ao qual denominamos de moda bruta, é determinado pela seguinte fórmula:
+\[
+    \boxed{M_o=\frac{l_{inf}+l_{sup}}{2}}
+\]
+em que $l_{inf}$ é o limite inferior da classe modal; e
+$l_{sup}$ é o limite superior da classe modal.
+
+\begin{example}
+Assim podemos exemplificar:    
+
+\begin{table}[ht]
+    \centering
+\begin{tabular}{ccc}
+\hline
+\multicolumn{2}{c}{Faixa etária \$(X\_i)} & Frequência $(f_i)$ \\ \hline
+\multicolumn{2}{c}{10 \vdash 20} & 30 \\
+\multicolumn{2}{c}{20 \vdash 30} & 50 \\
+\multicolumn{2}{c}{\textcolor{red}{30 \vdash 40}} & \textcolor{red}{70} \\
+\multicolumn{2}{c}{40 \vdash 50} & 60 \\
+\multicolumn{2}{c}{50 \vdash 60} & 10 \\ \hline
+\multicolumn{2}{c}{Total 220} &  \\ \hline
+\end{tabular}
+\caption{Moda agrupada por classes}
+\label{tab:moda_classes}
+\end{table}
+
+Como todas as classes possuem a mesma amplitude, a classe modal é aquela com maior frequência simples. No caso, trata-se da terceira classe marcada em vermelho na tabela \ref{tab:moda_classes}.
+\medskip
+Temos, então, as seguintes informações: 
+\begin{itemize}
+    \item limite inferior da classe modal: $l_{inf}=30$; e
+    \item limite superior da classe modal: $l_{sup}=40$.
+\end{itemize}
+Aplicando a fórmula da moda bruta, temos:
+\begin{align*}
+    &M_o=\frac{l_{inf}+l_{sup}}{2}\\
+    &M_o=\frac{30+40}{2}=35\\
+\end{align*}
+\end{example}
+
+\subsubsection{Moda de Pearson}
+O matemático Karl Pearson observou a existência de uma relação empírica que permite calcular a moda quando são conhecidas a média $(\bar{x})$  e a mediana $(M_d)$ de uma distribuição moderadamente assimétrica. Quando essas condições são satisfeitas, podemos aplicar a relação denominada de moda de Pearson:
+\[
+    M_o=3\times M_d-2\times \bar{x}
+\]
+Onde:
+$\bar{x}$ é a média e
+$M_d$ é a mediana da distribuição.
+
+\subsubsection{Moda de Czuber}
+
+O matemático Emanuel Czuber elaborou um processo gráfico capaz de aproximar o cálculo da moda. Para determinar graficamente a moda, Czuber partiu de um histograma, utilizando os três retângulos correspondentes à classe modal e às classes adjacentes (anterior e posterior).
+\[
+    M_o=l_{inf}+x
+\]
+Nesse caso, o valor de $x$ é determinado pela intersecção dos segmentos $\overline{AB}$ (que une o limite superior da
+classe que antecede a classe modal ao limite superior da classe modal) e $\overline{CD}$ (que une o limite inferior da
+classe modal ao inferior da classe posterior).
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\linewidth]{Fig_czuber.png}
+    \caption{Moda de Czber}
+    \label{Fig:czuber_1}
+    \end{figure}
+
+Note os triângulos (I) e (II), indicados na figura a seguir:
+
+    \begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\linewidth]{Fig_czube_2r.png}
+    \caption{Moda de Czber (geometria)}
+    \label{Fig:czuber_2}
+    \end{figure}
+
+Por semelhança de triângulos temos:
+    \[
+        \frac{\Delta_1}{x}=\frac{\Delta_2}{h-x}
+    \]
+    Fazendo a multiplicação cruzada das frações, temos que:
+    \begin{align*}
+        &\Delta_1(h-x)=\Delta_2(x)\\
+        &h\Delta_1-x\Delta_1=x\Delta_2\\
+        &h\Delta_1=x\Delta_2+x\Delta_1\\
+        &h\Delta_1=x(\Delta_2+x\Delta_1)\\
+    \end{align*}
+
+Então temos:
+    \[
+        x=\Bigg[\frac{\Delta_1}{\Delta_1+\Delta_2}\Bigg]\times h
+    \]
+    Como a moda é igual ao limite inferior da classe modal adicionado de 𝑥, temos que:
+    \[
+        M_o=l_{inf}+x
+    \]
+    e portanto,
+    \[
+        M_o=l_{inf}+\Bigg[\frac{\Delta_1}{\Delta_1+\Delta_2}\Bigg]\times h
+    \]
+    ou
+    \[
+          M_o=l_{inf}+\Bigg[\frac{f_{Mo}-f_{ant}}{2\times f{M_o}-f_{post}}\Bigg]\times h
+    \]
+
+    \subsection{Propriedades da Moda}
+
+São propriedades da Moda:
+\begin{itemize}
+    \item Somando-se (ou subtraindo-se) uma constante $c$ a todos os valores de uma variável, a moda do conjunto fica aumentada (ou diminuída) dessa constante.
+    \item Multiplicando-se (ou dividindo-se) uma constante $c$ a todos os valores de uma variável, a moda do conjunto fica aumentadamultiplicada (ou dividida) dessa constante.
+\end{itemize}

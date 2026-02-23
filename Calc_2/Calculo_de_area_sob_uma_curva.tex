@@ -74,3 +74,151 @@ A soma das áreas desses retângulos fornece uma aproximação da área total. Q
 A interpretação geométrica apresentada só é válida quando $f(x) \ge 0$. Quando a função assume valores negativos, a região correspondente situa-se abaixo do eixo $x$, e a noção de área geométrica deve ser tratada com cuidado, pois a integral pode resultar em valores negativos.
 
 Nesse caso, a ferramenta matemática adequada para tratar o problema de forma sistemática é a integral definida, que será formalmente introduzida na próxima seção.
+
+
+
+\subsection*{Como identificar integrais resolvidas por mudança de variável}
+
+A técnica de \textbf{mudança de variável} (substituição) é usada quando o integrando tem a estrutura:
+
+\[
+f'(x)\, g(f(x))
+\]
+
+ou seja, aparece uma função composta e, multiplicando-a, algo proporcional à sua derivada.
+
+\subsubsection*{1. Interpretação conceitual (Regra da cadeia ao contrário)}
+
+Sabemos que:
+
+\[
+\frac{d}{dx} F(f(x)) = F'(f(x))\, f'(x)
+\]
+
+Logo, se a integral tem a forma
+
+\[
+f'(x)\, F'(f(x)),
+\]
+
+ela pode ser vista como a regra da cadeia ``ao contrário''.
+
+\subsubsection*{2. Exemplo motivador}
+
+Considere:
+
+\[
+\int \sin(2x)\, e^{\sin^2 x}\, dx
+\]
+
+Observe que:
+
+\[
+\frac{d}{dx}(\sin^2 x)=2\sin x \cos x=\sin(2x).
+\]
+
+Portanto, fazendo:
+
+\[
+u=\sin^2 x \quad \Rightarrow \quad du=\sin(2x)\,dx,
+\]
+
+a integral se transforma em:
+
+\[
+\int e^u\,du.
+\]
+
+\subsubsection*{3. Checklist prático}
+
+Ao analisar uma integral, pergunte:
+
+\begin{enumerate}
+    \item Existe uma função dentro de outra (composição)?
+    \item A derivada da função interna aparece multiplicando?
+    \item A expressão lembra a regra da cadeia invertida?
+\end{enumerate}
+
+Se a resposta for positiva, tente a substituição \(u=f(x)\).
+
+\subsubsection*{4. Casos típicos de substituição}
+
+\begin{itemize}
+    \item Exponencial composta:
+    \[
+    \int e^{x^2} 2x\,dx
+    \]
+
+    \item Potência composta:
+    \[
+    \int (3x^2+1)^5 \cdot 6x\,dx
+    \]
+
+    \item Função trigonométrica composta:
+    \[
+    \int \cos(5x)\,dx
+    \]
+
+    \item Expressões com raiz:
+    \[
+    \int \frac{x}{\sqrt{1+x^2}}\,dx
+    \]
+\end{itemize}
+
+\subsubsection*{5. Ajuste por constante}
+
+Às vezes a derivada da parte interna não aparece exatamente, mas pode ser ajustada.
+
+Exemplo:
+
+\[
+\int x e^{x^2}\,dx
+\]
+
+Observe que:
+
+\[
+\frac{d}{dx}(x^2)=2x.
+\]
+
+Então:
+
+\[
+\int x e^{x^2}\,dx
+=
+\frac{1}{2} \int 2x e^{x^2}\,dx.
+\]
+
+Agora a substituição fica imediata.
+
+\subsubsection*{6. Regra prática para decisão}
+
+Em exercícios de Cálculo:
+
+\begin{itemize}
+    \item Se há composição evidente → tente substituição.
+    \item Se há produto polinômio × exponencial/trigonométrica → teste substituição.
+    \item Se há raiz envolvendo expressão algébrica → teste substituição.
+    \item Se a substituição não funcionar → considere integração por partes.
+\end{itemize}
+
+\subsubsection*{7. Regra de ouro}
+
+Sempre que aparecer:
+
+\[
+\text{função complicada dentro de outra}
+\]
+
+ou
+
+\[
+(\text{expressão})^{n}
+\quad \text{ou} \quad
+e^{(\text{expressão})},
+\]
+
+procure imediatamente a derivada da parte interna.  
+Se ela estiver presente (mesmo que multiplicada por constante), a técnica adequada é mudança de variável.
+
+

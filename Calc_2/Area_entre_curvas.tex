@@ -4,19 +4,19 @@
 
 Nesta seção, "área entre curvas" significa \textbf{área geométrica} (sempre não-negativa), calculada por integrais definidas. Em todos os casos, a ideia central é somar a área de tiras (verticais ou horizontais) que preenchem a região.
 O cálculo de áreas utilizando integrais baseia-se no princípio fundamental de somar infinitos retângulos de altura infinitesimal. A altura de cada retângulo é definida pela diferença entre o "teto" (limite superior) e o "chão" (limite inferior) da região. Abaixo, detalhamos os quatro cenários principais.
-\newpage
+
 \begin{example}
   Segue um exemplo gráfico de área entre curvas:
   \begin{figure}[H]
   \centering
-    \includegraphics[width=0.8\linewidth]{area_entre_y=x+4_e_y=raiz_de_0.5x.png}
+    \includegraphics[width=0.7\linewidth]{area_entre_y=x+4_e_y=raiz_de_0.5x.png}
     \caption{Gráfico de área entre curvas}
     \label{graf_area_entre_curvas_ex}
 \end{figure}
 \end{example}
 
 \subsection{Área sob uma Curva (Acima do Eixo X)}
-Conforme visto na seção\, \ref{subsec:integral-riemann} sobre integral de Riemann, quando uma função $f(x)$ é contínua e positiva em um intervalo $[a,b]$, a área é calculada entre a curva e o eixo $x$. Neste caso, o eixo $x$ atua como o limite inferior ($y = 0$).
+Conforme visto na seção\, \ref{sec:integral-riemann} sobre integral de Riemann, quando uma função $f(x)$ é contínua e positiva em um intervalo $[a,b]$, a área é calculada entre a curva e o eixo $x$. Neste caso, o eixo $x$ atua como o limite inferior ($y = 0$).
 
 \begin{equation}
 A = \int_{a}^{b} f(x) \, dx
@@ -72,7 +72,7 @@ A = \int_{a}^{b} [f(x) - g(x)] \, dx
       \addplot[name path=B, thick, red,  domain=0:pi/2, samples=200] {exp(x)};
       \addplot[fill=gray!20, draw=none] fill between[of=B and A];
       \node[anchor=west] at (axis cs:0.9,3.2) {$e^x$};
-      \node[anchor=west] at (axis cs:1.35,1.0) {$\sin(x)$};
+      \node[anchor=west] at (axis cs:1.35,0.7) {$\sin(x)$};
     \end{axis}
   \end{tikzpicture}
   \caption{Área entre $e^x$ e $\sin(x)$ no intervalo $[0,\pi/2]$.}
@@ -193,14 +193,17 @@ Considere duas funções contínuas \(f\) e \(g\) em \([a,b]\) tais que, para to
 \[
 f(x)\ge g(x).
 \]
+\begin{example}
+  
+
 Nesse caso, a região entre as curvas \(y=f(x)\) (curva superior) e \(y=g(x)\) (curva inferior), limitada pelas retas \(x=a\) e \(x=b\), tem área dada por
 \[
 A=\int_a^b \big(f(x)-g(x)\big)\,dx.
 \]
-\textbf{Exemplo (sem números):} área limitada superiormente por \(y=f(x)\), inferiormente por \(y=g(x)\) e lateralmente por \(x=a\) e \(x=b\), sem que as curvas se cruzem no intervalo.
+A área limitada superiormente por \(y=f(x)\), inferiormente por \(y=g(x)\) e lateralmente por \(x=a\) e \(x=b\), sem que as curvas se cruzem no intervalo.
 
-\medskip
-\textbf{Observação importante.} Não importa se \(f\) e \(g\) estão acima ou abaixo do eixo \(x\). O que importa é somente qual delas está \emph{acima da outra}. Mesmo que \(f(x)\) e \(g(x)\) sejam negativos, a área continua sendo \(\int ( \text{superior} - \text{inferior})\,dx\).
+Não importa se \(f\) e \(g\) estão acima ou abaixo do eixo \(x\). O que importa é somente qual delas está \emph{acima da outra}. Mesmo que \(f(x)\) e \(g(x)\) sejam negativos, a área continua sendo \(\int ( \text{superior} - \text{inferior})\,dx\).
+\end{example}
 
 \subsection{Tipo 2: As curvas se entrecruzam (troca de quem está por cima)}
 Suponha que \(f\) e \(g\) sejam contínuas em \([a,b]\) e que existam pontos de interseção:\\
@@ -256,7 +259,7 @@ com \(r_0=a\) e \(r_{m+1}=b\).
 \end{itemize}
 
 
-\subsection{Curvas que se Cruzam}
+\subsection{Curvas que se entrecruzam}
 Se as funções $f(x)$ e $g(x)$ se cruzam em um ponto $c$, a posição relativa de "teto" e "chão" se inverte. Para calcular a área total, devemos dividir a integral nos pontos de interseção.
 \begin{equation}
 A = \int_{a}^{c} [f(x) - g(x)] \, dx + \int_{c}^{b} [g(x) - f(x)] \, dx
