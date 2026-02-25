@@ -1,0 +1,125 @@
+O desvio padrão \((s ou \sigma)\) é definido como sendo a raiz quadrada da média aritmética dos quadrados dos
+desvios e, dessa forma, é determinado pela raiz quadrada da variância. É uma das medidas de variabilidade
+mais utilizadas porque consegue apontar de forma mais precisa a dispersão dos valores em relação à
+média aritmética.
+
+Valores muito próximos da média resultarão em um desvio-padrão pequeno, enquanto valores mais espalhados levarão a desvios maiores. Essa medida será sempre maior ou igual a zero. Ela será igual a zero quando todos os elementos do conjunto forem iguais.
+
+O desvio padrão é utilizado para comparar a variabilidade de dois conjuntos de dados diferentes quando as médias forem aproximadamente iguais e quando as unidades de medidas para os dois conjuntos forem idênticas.
+
+A fórmula para o cálculo do desvio padrão populacional é:
+\[
+\sigma^2 =
+\frac{\sum_{i=1}^{n}(x_i-\mu)^2}{n}
+\]
+Para o desvio padrão amostral, a fórmula é a seguinte:
+
+\[
+s = \sqrt{\frac{\sum_{i=1}^{m}(x_i-\bar{x})^2}{n-1}}
+\]
+Como vimos no tópico anterior, a utilização do divisor $(n-1)$ resulta em uma melhor estimativa do
+parâmetro populacional. Além disso, como a soma dos desvios em relação à média aritmética é sempre nula, somente $(n-1)$ dos desvios $(x_i-\bar{x})$ são independentes, uma vez que esses $(n-1)$ desvios determinam automaticamente o valor desconhecido.
+
+Por fim, o desvio-padrão é expresso nas mesmas unidades dos dados originais. Tanto o desvio padrão como a variância são usados como medidas de dispersão ou variabilidade. O uso de uma medida ou de outra dependerá da finalidade que se tiver em mente.
+
+O desvio-padrão será igual a zero quando todos os elementos forem iguais. Se todos os elementos forem iguais, a média aritmética do conjunto será igual ao valor dos elementos e todos os desvios
+também serão iguais a zero. Logo, o desvio-padrão também será zero.
+
+O desvio-padrão é sempre maior ou igual a zero, isto é, sempre tem valor positivo.
+
+\subsection{Desvio-padrão para dados não-agrupados}
+
+Para dados não agrupados, o desvio-padrão pode ser expresso por meio das seguintes fórmulas:
+
+\begin{enumerate}[label=\alph*.]
+    \item para populações;
+\[
+\sigma=\sqrt{\frac{\sum_{i=1}^{n}d_i^2}{n}}
+=\sqrt{\frac{\sum_{i=1}^{n}(x_i-\mu)^2}{n}}
+\]
+    \item para amostras;
+\[
+s=\sqrt{\frac{\sum_{i=1}^{n}d_i^2}{n-1}}
+=\sqrt{\frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}}
+\]
+\end{enumerate}
+
+\begin{example}
+    Vamos calcular o desvio-padrão amostral do conjunto de números mostrado a seguir:
+    \begin{center}
+        \{1, 2, 3, 5, 9\}
+    \end{center}
+    Iniciaremos pelo cálculo da média aritmética:
+    \begin{align*}
+        \bar{x}=\frac{1+2+3+5+9}{5}=\frac{20}{5}=4
+    \end{align*}
+    Em seguida, montaremos uma tabela para facilitar o cálculo do desvio padrão:
+
+    \begin{table}[ht]
+        \centering
+            \begin{tabular}{cc}
+                \toprule
+            $x_i$& $(x_i-\bar{x})$ \\
+            \midrule
+            1 & \((1-4)^2=9\) \\
+            3 & \((1-4)^2=4\) \\
+            5 & \((1-4)^2=1\) \\
+            7 & \((1-4)^2=1\) \\
+            9 & \((1-4)^2=25\)\\
+            \midrule 
+              & \(\sum (x_i-\bar{x})^2=40\)\\
+                \bottomrule
+            \end{tabular}
+        \caption{}
+        \label{tab:despav_amost}
+        \end{table}
+    Por fim, aplicando a fórmula do desvio padrão temos:
+\[
+    s=\sqrt{\frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}}=\sqrt{\frac{40}{5-1}}=\sqrt{10}\cong3.16
+\]
+    \end{example}
+\subsection{Desvio-padrão para dados agrupados sem intervalo de Classe}
+
+Quando os valores vierem dispostos em uma tabela de frequências, o desvio-padrão será calculado por meio
+de uma das seguintes fórmulas:
+\begin{enumerate}[label=\alph*.]
+    \item para populações;
+    \[
+\sigma=\sqrt{\frac{\sum_{i=1}^{n}(d_i\times f_i)^2}{n}}
+=\sqrt{\frac{\sum_{i=1}^{n}[(X_i-\mu)^2\times f_i]}{n}}
+    \]
+    \item para amostras:
+    \[
+s=\sqrt{\frac{\sum_{i=1}^{n}(d_i\times f_i)^2}{n-1}}
+=\sqrt{\frac{\sum_{i=1}^{n}[(X_i-\bar{x})^2\times f_i]}{n-1}}
+\]  
+em que
+\[
+    n=\sum_{i=1}^{m} \;\text{e}\; \bar{x}=\frac{\sum_{i=1}^{m X_i\bar{x}}}{n}
+\]
+\begin{example}
+    Durante a mesma pesquisa sobre a quantidade de filhos dos professores de uma escola, produziu-se a tabela de frequências apresentada a seguir. Vamos calcular o desvio-padrão amostral dessa distribuição.
+
+    \begin{table}[H]
+                    \centering
+            \begin{tabular}{ccc}
+                \toprule
+            \begin{tabular}[c]{@{}l@{}}Nº de   filhos \\ por professor\end{tabular} & $f_i$ & $x_i\times f_1$\\
+                \midrule
+            0 & 4 & 0 \times 4 = 0 \\
+            1 & 8 & 1 \times 8 = 8 \\
+            2 & 4 & 2 \times 4 = 8 \\
+            3 & 2 & 3 \times 2 = 6 \\
+            4 & 2 & 4 \times 2 = 8 \\
+            \midrule
+            \begin{tabular}[c]{@{}l@{}}*  Pesquisa \\ populacional\end{tabular} & $f_i$  = 20 & $x_i\times f_i  = 30$\\
+            \bottomrule
+            \end{tabular}
+            \caption{}
+            \label{tab:filhos__por_prof}
+        \end{table}
+    
+        Iniciaremos pelo cálculo da média aritmética:
+        
+\end{example}
+\end{enumerate}

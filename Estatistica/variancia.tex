@@ -1,0 +1,313 @@
+
+Existem outras formas de se eliminar o problema com os números negativos. Além da operação de módulo, podemos trabalhar com potências pares. A utilização de potências de expoente par, como o número dois, além de transformar números negativos em positivos, simplifica o cálculo.
+
+A variância é determinada pela média dos quadrados dos desvios em relação à média aritmética. Por meio dessa medida de dispersão ou variabilidade, podemos avaliar o quanto os dados estão dispersos em relação à média aritmética. Nesse sentido, quanto maior a variância, maior a dispersão dos dados.
+
+A variância considera a totalidade dos valores da variável em estudo, e não somente os valores extremos, como faz a amplitude total. Por isso, essa medida de variabilidade é considerada muito estável.
+
+Além disso, a variância complementa as informações obtidas pelas medidas de tendência central.
+
+Até o momento, as medidas que estudamos não sofriam nenhuma alteração quando o cálculo era realizado para uma amostra. Contudo, para a variância, devemos considerar essa informação, pois há uma pequena diferença entre o cálculo da variância populacional e da variância amostral.
+
+A variância populacional é simbolizada pela letra grega $\sigma$ (sigma), sendo calculada usando todos os elementos da população, pela seguinte fórmula:
+\begin{align*}
+    \sigma^2=\frac{\sum_{i=1}^{n}(x_i-\mu)^2}{n}
+\end{align*}
+em que: $x_i$ é o valor de ordem $i$ assumido pela variável; $\mu$ é a média populacional de $x$; $\sigma^2$ é a variância
+populacional; e $z$ é o número de dados da população.
+A variância amostral é simbolizada pela letra $s$, sendo calculada a partir de uma amostra da população, pela
+seguinte fórmula:
+\begin{align*}
+    s^2=\frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}
+\end{align*}
+
+em que: $x_1$ é o valor de ordem $i$ assumido pela variável; $\bar{x}$ é a média amostral de $n$; $s^2$ é a variância amostral; e $n$ é o número de dados da amostra.
+
+Normalmente, uma população possui uma grande quantidade de elementos, o que inviabiliza a realização de um estudo de suas medidas, chamadas de parâmetros populacionais. Nesse caso, recorremos ao estudo de amostras representativas dessa população, buscando obter indícios do valor correto do parâmetro populacional desconhecido. Esse valor amostral é denominado de estimador do parâmetro populacional.
+
+Em nosso caso, a variância populacional cumpre o papel de parâmetro populacional, enquanto a variância
+amostral atua como um estimador. Já vimos a variância populacional e a variância amostral são representadas por símbolos diferentes: $\sigma^2$ e $s^2$. O mesmo acontece com a média populacional e a média amostral, que também possuem símbolos diferentes: $\mu$ (parâmetro populacional) e $\bar{x}$ (estimador).
+
+Reparem que, quando a variância representa uma descrição da amostra e não da população, caso mais frequente em estatística, o denominador das expressões deve ser $n - 1$, em vez de $n$. Isso ocorre porque a utilização do divisor ($n - 1$) resulta em uma melhor estimativa do parâmetro populacional.
+
+Além disso, como a soma dos desvios em relação à média aritmética é sempre nula, apenas (($n - 1$)) dos desvios ($n - \bar{x}$) são independentes, vez que ($n - 1$) desvios determinam automaticamente o valor desconhecido. Para amostras grandes ($n > 30$), não há diferença significativa entre os resultados proporcionados pela utilização de qualquer dos dois divisores, $n$ ou ($n - 1$).
+
+Em determinadas situações, a aplicação dessas fórmulas pode requerer um esforço considerável. É o caso do que acontece quando a média não é um número natural, situação em que a obtenção da soma dos quadrados dos desvios se torna muito trabalhosa. Por isso, é importante aprendermos outras fórmulas que podem nos ajudar no cálculo da variância.
+
+Já ouviram dizer que a variância é igual à média dos quadrados menos o quadrado da média? Pois bem,
+essa é a fórmula que expressa a variância populacional:
+\begin{align*}
+   \sigma^2=\bar{x}^2-\bar{x}^2
+\end{align*}
+
+em que \(\overline{x^2}\) é a média dos quadrados; e \(\bar{x}^2\) é o quadrado da média.
+
+Como vimos, para encontrarmos a fórmula da variância amostral, basta substituirmos $n$ por $(n-1)$. Isso é
+equivalente a multiplicarmos a variância populacional por
+\[
+    \frac{n}{n-1}
+\]
+É exatamente o que faremos agora:
+\[
+    s^2=[\overline{x^2}-\bar{x}^2]\times \frac{n}{n-1}
+\]
+\textcolor{red}{em que $\overline{x^2}$ é a média dos quadrados; $\bar{x}^2$ é o quadrado da média; e n é o tamanho da amostra.}
+
+\subsection{Variância para dados não agrupados}
+
+Considere um conjunto de dados 
+$x_1, x_2, \dots, x_n$.
+
+\begin{enumerate}[label=\alph*.]
+
+\item \textbf{Para populações:}
+
+A variância populacional é dada por
+
+\[
+\sigma^2
+=
+\frac{\sum_{i=1}^{n}(x_i-\mu)^2}{n}
+\]
+
+ou, na forma computacional,
+
+\[
+\sigma^2
+=
+\frac{
+\sum_{i=1}^{n} x_i^2
+-
+\frac{\left(\sum_{i=1}^{n} x_i\right)^2}{n}
+}{n}.
+\]
+
+
+\item \textbf{Para amostras:}
+
+A variância amostral é dada por
+
+\[
+s^2
+=
+\frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}
+\]
+
+ou, na forma computacional,
+
+\[
+s^2
+=
+\frac{
+\sum_{i=1}^{n} x_i^2
+-
+\frac{\left(\sum_{i=1}^{n} x_i\right)^2}{n}
+}{n-1}.
+\]
+
+\end{enumerate}
+
+
+
+A relação entre a variância amostral ($s^2$) e a variância populacional $\sigma^2$ é dada por:
+\[
+    s^2=\Bigg(\frac{n}{n-1}\Bigg)\times\sigma^2
+\]
+\begin{example}
+    Calcular a variância amostral do conjunto de números mostrado a seguir:
+    \begin{center}
+        {1, 2, 3, 5, 9}
+    \end{center}
+    Calculando a média aritmética
+    \begin{align*}
+        \bar{x}=\frac{1+2+3-5+9}{5}=\frac{20}{5}=4
+    \end{align*}
+    Agora, vamos montar uma tabela para facilitar o cálculo da variância:
+
+    \begin{table}[H]
+    \centering
+\begin{tabular}{lr}
+\toprule    
+$x_i$  &  $(x_i-\bar{x})^2$\\
+\midrule
+1 & $(1-4)^2=9$ \\
+2 & $(2-4)^2=4$ \\
+3 & $(3-4)^2=1$ \\
+5 & $(5-4)^2=1$ \\
+9 & $(9-4)^2=25$\\
+\midrule
+Total  & $\sum (x_i-\bar{x})^2 = 40$\\
+\bottomrule
+\end{tabular}
+\caption{}
+\label{tab:ex_calc_var}
+\end{table}
+Por fim, aplicando a fórmula da variância amostral, temos:
+\[
+      s^2= \frac{\sum_{i=1}^{n}(x-\bar{x})^2}{n-1}=\frac{40}{5-1}=10
+\]
+\end{example}
+
+\subsection{Variância para dados agrupados sem intervalos de classe}
+
+Considere uma distribuição de frequências composta por valores distintos 
+$X_1, X_2, \dots, X_m$, com respectivas frequências $f_1, f_2, \dots, f_m$, 
+e tamanho total
+\[
+n = \sum_{i=1}^{m} f_i.
+\]
+
+\begin{enumerate}[label=\alph*.]
+
+\item \textbf{Para populações:}
+
+A variância populacional pode ser calculada por:
+
+\[
+\sigma^2 = \frac{\sum_{i=1}^{m}(X_i-\mu)^2\,f_i}{n}
+\]
+
+ou, na forma computacional,
+
+\[
+\sigma^2 = \frac{\sum_{i=1}^{m} X_i^2 f_i-\frac{\left(\sum_{i=1}^{m} X_i f_i\right)^2}{n}
+}{n}.
+\]
+
+
+\item \textbf{Para amostras:}
+
+A variância amostral é dada por
+
+\[
+s^2
+=
+\frac{\sum_{i=1}^{m}(X_i-\bar{x})^2\,f_i}{n-1}
+\]
+
+ou, na forma computacional,
+
+\[
+s^2=\frac{\sum_{i=1}^{m} X_i^2 f_i-\frac{\left(\sum_{i=1}^{m} X_i f_i\right)^2}{n}
+}{n-1}.
+\]
+\end{enumerate}
+Em que 
+\[
+    n=\sum_{i=1}^{m} f_i
+\]
+e
+\[
+    \bar{x}=\frac{\sum_{i=1}^{m} X_i f_i}{n}
+\]
+\begin{example}
+    Durante uma pesquisa, em uma escola, registrou-se a quantidade de filhos por professor, obtendo a tabela de frequências apresentada a seguir. Sendo assim, calcule a variância amostral dessa tabela.
+
+        \begin{table}[H]
+                    \centering
+            \begin{tabular}{ccc}
+                \toprule
+            \begin{tabular}[c]{@{}l@{}}Nº de   filhos \\ por professor\end{tabular} & $f_i$ & $x_i\times f_1$\\
+                \midrule
+            0 & 4 & 0 \times 4 = 0 \\
+            1 & 8 & 1 \times 8 = 8 \\
+            2 & 4 & 2 \times 4 = 8 \\
+            3 & 2 & 3 \times 2 = 6 \\
+            4 & 2 & 4 \times 2 = 8 \\
+            \midrule
+            \begin{tabular}[c]{@{}l@{}}*  Pesquisa \\ populacional\end{tabular} & $f_i$  = 20 & $x_i\times f_i  = 30$\\
+            \bottomrule
+            \end{tabular}
+            \caption{}
+            \label{tab:filhos_por_prof}
+        \end{table}
+começando pela média aritimética temos:
+\[
+    \bar{x}=\frac{\sum x_i \times f_i}{\sum f_i}
+    =\frac{30}{20}=1,5\;\text{filhos por professor}
+\]
+Em seguida, adicionaremos uma nova coluna à tabela anterior, em que calcularemos os produtos dos quadrados dos desvios por suas respectivas frequências:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{cccr}
+    \toprule    
+        \begin{tabular}[c]{@{}c@{}}Nº de   filhos \\ por professor\end{tabular} & $f_1$ & $x_i\times f_i$&$(x_i-\bar{x})^2\times f_i$\\
+    \midrule
+        0 & 4 & 0 \times 4 = 0 & $(0-1,5)^2\times 4=9$ \\
+        1 & 8 & 1 \times 8 = 8 & $(1-1,5)^2\times 8=2$ \\
+        2 & 4 & 2 \times 4 = 8 & $(2-1,5)^2\times 4=1$ \\
+        3 & 2 & 3 \times 2 = 6 & $(3-1,5)^2\times 2=4,5$ \\
+        4 & 2 & 4 \times 2 = 8 & $(4-1,5)^2\times 2=12,5$ \\
+    \midrule
+        \begin{tabular}[c]{@{}c@{}}*  Pesquisa \\ populacional\end{tabular} & $f_i$  = 20 & $x_i\times f_i=30$ & \multicolumn{1}{l}{}$\Big(\sum x_i-\bar{x}\Big)^2\times f_i$=29\\
+        \bottomrule
+    \end{tabular}
+    \caption{}
+    \label{tab:filhos_por_prof1}
+\end{table}
+Por fim, aplicando a fórmula do desvio padrão amostral, temos:
+\[
+s = \sqrt{\frac{\sum_{i=1}^{m}(X_i-\bar{x})^2\,f_i}{n-1}}
+\]
+
+\[
+s = \sqrt{\frac{29}{19}}=\sqrt{1,53}\cong 1,23
+\]
+\end{example}
+
+\subsection{Desvio-padrão para dados agrupados em classes}
+Quando tivermos que calcular o desvio-padrão para dados agrupados em classes, usaremos as mesmas fórmulas para dados sem intervalos de classes, utilizando para $x_i$ os pontos médios de cada classe, mas adotando os mesmos procedimentos.
+
+\begin{example}
+    Durante uma pesquisa, feito em um grupo de estudadntes registrou as estaturas de 40 alunos, obtendo a distribuição de frequências apresentada a seguir. Vamos calcular o desvio-padrão amostral dessa distribuição.
+
+        \begin{table}[H]
+        \centering
+        \begin{tabular}{lc}
+        \hline
+        Estaturas & Frequência \(f_i\) \\ \hline
+        150 \vdash 154 & 4  \\
+        154 \vdash 158 & 9  \\
+        158 \vdash 162 & 11 \\
+        162 \vdash 166 & 8  \\
+        166 \vdash 170 & 5  \\
+        170 \vdash 174 & 3  \\ \hline
+        \shortstack{*Pesquisa \\amostral} &\(\sum f_i = 40\) \\ \hline
+        \end{tabular}
+        \caption{}
+        \label{tab:estaturas__classes}
+\end{table}
+Inicialmente, construiremos uma tabela como a mostrada a seguir:
+\begin{table}[H]
+\begin{tabular}{lcccccc}
+\hline
+Estaturas & \begin{tabular}[c]{@{}c@{}}Frequência \\ $(f_i)$\end{tabular} & $x_i$ & $x_i \times f_i$ & $(x_i-\bar{x})$ & $(x_i \bar{x})^2$ & $(x_i - \bar{x})^2 \times f_i$ \\ \hline
+150 \vdash 154 & 4 & 152 & 608 & -9 & 81 & 324 \\
+154 \vdash 158 & 9 & 156 & 1.404 & -5 & 25 & 225 \\
+158 \vdash 162 & 11 & 160 & 1.760 & -1 & 1 & 11 \\
+162 \vdash 166 & 8 & 164 & 1.312 & 3 & 9 & 72 \\
+166 \vdash 170 & 5 & 168 & 840 & 7 & 49 & 245 \\
+170 \vdash 174 & 3 & 172 & 516 & 11 & 121 & 363 \\ \hline
+\begin{tabular}[c]{@{}l@{}}* Pesquisa \\ amostral\end{tabular} & $\sum f_i = 40$ &  & $\sum x_i \times f_i = 6440$ &  &  & \begin{tabular}[c]{@{}c@{}}$\sum (x_i - \bar{x}) \times f_i$\\ $= 1240$\end{tabular}
+\end{tabular}
+\caption{}
+\label{tab:desv_pad}
+\end{table}
+Feito isso, podemos calcular a média da distribuição por meio da seguinte fórmula:
+\[
+    \bar{x}=\frac{\sum x_i\times f_i}{\sum f_i}=\frac{6440}{40}=161
+\]
+Conhecendo a média, completamos a tabela com as diferenças e os produtos necessários para o cálculo da variância. Agora, aplicando a fórmula da variância amostral, temos:
+\[
+    s^2=\frac{\sum_{i=1}^{k}(x_i-\bar{x})^2}{n-1}\times f_i
+    = \frac{\sum_{i=1}^{6}(x_i-161)^2}{40-1}\times f_i
+    =\frac{1240}{39}=\SI{31,79}{cm^2}
+\]
+\end{example}
+
+\subsection{Priopriedades da Variância}
+
+\begin{enumerate}
+    \item Somando-se (ou subtraindo-se) uma constante $c$ a todos os valores de uma variável, a variância do conjunto não é alterada.
+    \item Multiplicando-se (ou dividindo-se) todos os valores de uma variável por uma constante $c$, a variância do conjunto fica multiplicada (ou dividida) pelo QUADRADO dessa constante.
+\end{enumerate}

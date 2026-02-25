@@ -1,0 +1,506 @@
+\subsection{Medidades de Variabilidade}
+Já estudamos mecanismos para encontrar valores (média, mediana e moda) que sintetizam o comportamento dos elementos de um conjunto de dados. Esses valores fornecem parâmetros
+significativos para uma análise dos dados, porém, também é importante identificarmos como variam ou
+como se diferenciam as características dos elementos de um conjunto.
+
+Imagine, por exemplo, que você precise avaliar três grupos de alunos, cada um com cinco elementos, no que
+diz respeito ao domínio de uma determinada matéria. Os testes mostraram os seguintes resultados:
+
+\begin{align*}
+    A=& 7,7,7,7,7\\
+    B=& 5, 6, 7, 8, 9\\
+    C=& 1, 4, 10, 10, 10\\
+\end{align*}
+
+Para analisar esses dados, podemos, inicialmente, calcular a média aritmética dos três grupos. Concluímos, então, que todos possuem a mesma média aritmética \(\bar{x} = 7\). Contudo, ao observarmos a variação dos dados, percebemos que os grupos se comportam de maneira diferente, apesar de todos possuírem a mesma
+média.
+
+A média de A, de B e de C são iguais a 7.
+
+Nesse caso, a média, embora seja uma medida representativa do conjunto, não indica o grau de homogeneidade ou heterogeneidade existente entre os valores que compõem o conjunto. Desse modo,
+precisamos recorrer a procedimentos matemáticos que possibilitem a compreensão da discrepância existente entre os valores do conjunto.
+
+As medidas de dispersão (ou variabilidade) são justamente métricas que mostram a variação dos dados de um conjunto. Elas podem ser divididas em dois grupos:
+
+\begin{enumerate}[label=\alph*.]
+    \item medidas de dispersão absoluta:
+    \begin{itemize}[label=--]
+        \item amplitude total;
+        \item amplitude interquartílica;
+        \item desvio médio;
+        \item variância; e
+        \item desvio-padrão.
+    \end{itemize}
+    \item medidas de variação relativa:
+    \begin{itemize}[label=--]
+        \item coeficiente de variação (de Pearson); e
+        \item variância relativa.
+    \end{itemize}
+\end{enumerate}
+
+Agora, aprenderemos a medir o grau de concentração ou dispersão dos dados em torno da média. Para isso, estudaremos as principais medidas de dispersão, sendo: amplitude total, amplitude interquartílica, desvio médio, variância, desvio padrão, coeficiente de variação e variância relativa.
+
+A amplitude total (ou simplesmente amplitude) é a diferença entre os valores extremos de um conjunto de observações, ou seja, a diferença entre o maior e o menor elemento desse conjunto:
+ \[
+    A_T=\bar{x}_max-\bar{x}_min
+ \]
+ Essa medida de dispersão chama atenção por ser extremamente simples e muito fácil de se calcular.
+Contudo, há uma certa restrição quanto ao seu uso por conta de sua grande instabilidade, vez que considera somente os valores extremos da série.
+
+Por exemplo, vamos comparar os conjuntos A e B da tabela a seguir:
+
+\begin{table}[ht]
+    \centering
+\begin{tabular}{lll}
+    \toprule
+Conjunto & Média \(\bar{x}\) & Amplitude total (AT)\\
+\midrule
+\(A= 5,7,8,9,10,11,55\) & \(\bar{x} = 15\) & \(55 - 5 = 50\) \\
+\(B= 12,13,14,15,16,17,18\) & \(\bar{x} = 15\) & \(18 - 12 = 6\)\\
+\bottomrule
+\end{tabular}
+\caption{Médias e Amplitudea}
+\label{tab:media_amplitude}
+\end{table}
+
+As médias aritméticas dos dois conjuntos são iguais a 15. Portanto, no que diz respeito a essa medida de posição, podemos considerá-los idênticos. Porém, ao calcularmos a amplitude total, verificamos que os valores do conjunto A apresentam um grau de dispersão bem maior que os do conjunto B.
+
+Isso acontece porque, no cálculo da amplitude total, desconsideramos os valores da série que se encontram entre os extremos, o que pode conduzir a interpretações equivocadas. Com frequência, um valor discrepante pode afetar a medida de maneira acentuada. É o caso, por exemplo, do último valor (55) do conjunto A, sensivelmente maior que seu antecessor (11), que elevou a magnitude da amplitude total para 50.
+
+Além disso, a amplitude total também é sensível ao tamanho de amostra. Normalmente, a amplitude total tende a aumentar com o incremento da dimensão da amostra, ainda que não proporcionalmente. Ainda, a amplitude total pode apresentar muita variação de uma amostra para outra, ainda que extraídas de uma
+mesma população.
+
+Apesar das limitações dessa medida, há situações em que ela pode ser aplicada de forma satisfatória. É o caso, por exemplo, da variação da temperatura em um dia. Também é o caso de quando uma compreensão rápida dos dados é mais relevante que a exatidão de um procedimento complexo.
+
+\subsection{Amplitude para dados não agrupados}
+
+Para dados não agrupados, o cálculo da amplitude total pode ser expresso pela fórmula:
+ \[
+    A_T=x_{max}-x_{min}
+ \]
+
+ em que $x_max$ é o maior elemento; e $x_min$ é o menor elemento do conjunto.
+ \begin{example}
+    Calcular a amplitude total dos conjuntos apresentados a seguir:
+\begin{align*}
+    &A = 50, 50, 50, 50, 50, 50, 50\\
+    &B = 47, 48, 49, 50, 51, 52, 53\\
+    &C = 20, 30, 40, 50, 60, 70, 80\\
+\end{align*}
+
+Aplicando a fórmula anterior para esses dados, obtemos os seguintes resultados:
+\begin{align*}
+    &AT A = x_{max} - x_{min} = 50 - 50 = 0\\
+    &AT B = x_{max} - x_{min} = 53 - 47 = 6\\
+    &AT C = x_{max} - x_{min} = 80 - 20 = 60\\
+   \end{align*}
+
+Nesse caso, podemos observar que o conjunto A obteve uma amplitude total igual a 0, ou seja, uma dispersão nula. Então, significa que os valores não variam entre si. O conjunto B, por sua vez, obteve uma amplitude igual a 6. Já a variável C teve uma amplitude total igual a 60.
+\medskip
+Embora o valor da amplitude total seja diferente para os conjuntos A, B e C, todos possuem a mesma média aritmética (50). Independentemente da média, verificamos que o conjunto A possui
+elementos mais homogêneos do que os conjuntos B e C. E, também, que os elementos do conjunto B são mais homogêneos do que os do conjunto C.
+ \end{example}
+
+ \subsection{Amplitude Total para dados agrupados sem intervalos de classes}
+
+ Para dados agrupados SEM intervalos de classe, a fórmula usada para a identificação da amplitude total é similar à adotada para dados não-agrupados. A única diferença consiste na identificação dos valores mínimo e máximo, que agora ocorre por meio de uma tabela de frequências.
+
+ \begin{example}
+    Calcular a amplitude total da tabela de frequências apresentada a seguir.
+
+    \begin{table}[ht]
+        \centering
+\begin{tabular}{ll}
+    \toprule
+$x_i$& $f_i$ \\
+    \midrule
+1 & 10 \\
+3 & 15 \\
+5 & 10 \\
+7 & 8 \\
+9 & 7\\
+    \bottomrule
+\end{tabular}
+\caption{Frequências}
+\label{tab:frequencias}
+\end{table}
+
+Nesse caso, como 1 e 9 são os valores mínimo e máximo da variável $x_i$, temos o seguinte resultado:
+
+\begin{align*}
+    &AT = x_{max} - x_{min}\\
+    &AT = 9 - 1=8\\
+\end{align*}
+
+É importante ressaltar que esses valores foram selecionados independentemente da frequência
+associada a eles.
+ \end{example}
+
+ \subsection{Amplitude Total para dados agrupados em classes}
+
+ Para dados agrupados em intervalos de classe, podemos definir a amplitude total de duas formas:
+\begin{enumerate}
+    \item  pela diferença entre o limite superior da última classe \(l_{inf}\) e o limite inferior da primeira classe \(l_{sup}\), conforme expresso na fórmula a seguir:
+
+    \[
+        A = (l_{sup}) - (l_{inf})
+    \]
+
+    \item pela diferença entre o ponto médio da última classe \(PM_{Utl}\) e o ponto médio da primeira classe \(PM_{pri}\), conforme expresso na fórmula a seguir:
+    
+    \[
+        A=PM_{ult}-PM_{pri}
+    \]
+
+\end{enumerate}
+
+\begin{example}
+    Calcular a amplitude total da distribuição de frequências apresentada a seguir:
+\begin{table}[h!]
+    \centering
+\begin{tabular}{lll}
+\hline
+Classes  &$PM_i$ & $f_i$ \\ \hline
+1  \vdash 5   & 3  & 5  \\
+5  \vdash 9   & 7  & 10 \\
+9  \vdash 13  & 11 & 15 \\
+13 \vdash 17  & 15 & 10 \\
+17 \vdash 21  & 19 & 5  \\ \hline
+Total &  & 45 \\ \hline
+\end{tabular}
+\caption{Amplitudes agrupadas por classes}
+\label{tab:amplitude_classes}
+\end{table}
+
+Pelo primeiro método, temos que o limite superior da última classe é 21, enquanto o limite inferior da primeira classe é 1. Portanto, temos a seguinte amplitude:
+
+\begin{align*}
+    A= L_{sup} - L_{inf}
+    A = 21 - 1 = 20
+\end{align*}
+Pelo segundo método, temos que o ponto médio da última classe é 19, enquanto o ponto médio da primeira classe é 3. Portanto, temos a seguinte amplitude:
+
+\begin{align*}
+    A= PM_{ult} - PM_{pri}
+    A = 19 - 3 = 16
+\end{align*}
+
+Observe que a amplitude é menor pelo segundo método, porque os extremos da distribuição são desconsiderados.
+\end{example}
+
+\subsection{Propriedades da Amplitude Total}
+Nesse tópico, estudaremos as principais propriedades da amplitude total:
+\begin{enumerate}
+    \item Somando-se (ou subtraindo-se) uma constante 𝒄 a todos os valores de uma variável, a amplitude do conjunto não é alterada.
+    \item Multiplicando-se (ou dividindo-se) todos os valores de uma variável por uma constante c, a amplitude do conjunto fica multiplicada (ou dividida) por essa constante.
+\end{enumerate}
+
+Como já sabemos, denominamos de quartis os valores de uma série que a dividem em quatro partes iguais, isto é, quatro partes contendo o mesmo número de elementos (25\%). A imagem a seguir mostra os quartis de uma distribuição hipotética:
+
+\subsection{Amplitude interquartílica}
+
+\begin{figure}[h]
+    \centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=12cm, height=6cm,
+  axis lines=left,
+  xlabel={$x$}, ylabel={$f(x)$},
+  axis line style={-{Stealth[length=3mm,width=2mm]}},
+  domain=-4:4, samples=300,
+  ymin=0,
+  ymax=0.6,
+  grid=both
+]
+
+% linhas verticais
+\addplot [blue, thick] {(1/sqrt(2*pi) * exp(-x^2/2))+0.05};
+\draw [red, thick] (-2,0) -- (-2,0.103);
+\draw [red, thick] (0,0) -- (0,0.448);
+\draw [red, thick] (2,0) -- (2,0.103);
+
+
+% rótulos embaixo do eixo x
+\node[font=\itshape] at (0,0.5) {Md=\(Q_2\)};
+\node[font=\itshape] at (2,0.16) {\(Q_3\)};
+\node[font=\itshape] at (-2,0.16) {\(Q_1\)};
+\end{axis}
+\end{tikzpicture}
+\caption{Amplitude interquartílica}
+\label{Graf:amplitide_quartis}
+\end{figure}
+
+Temos, então, 3 quartis (\(Q1, Q2, Q3\)) para dividir uma série em quatro partes iguais:
+
+\begin{itemize}[label=--]
+    \item Q1: o primeiro quartil corresponde à separação dos primeiros 25\% de elementos da série;
+    \item Q2: o segundo quartil corresponde à separação de metade dos elementos da série, coincidindo com a mediana \(Q2 = Md\);
+    \item Q3: o terceiro quartil corresponde à separação dos primeiros 75\% de elementos da série, ou dos últimos 25\% de elementos da série.
+\end{itemize}
+
+A amplitude interquartílica (ou distância interquartílica, ou intervalo interquartílico) é o resultado da subtração entre o terceiro quartil e o primeiro quartil:
+\[
+    A_{IQ}= Q_1 - Q_3
+\]
+A amplitude semi-interquartílica (ou desvio quartílico) é definida como a metade desse valor, sendo calculada pela expressão apresentada a seguir:
+\[
+    D_Q=\frac{Q_3-Q_1}{2}
+\]
+A fórmula da amplitude interquartílica (ou distância interquartílica) é muito parecida com a fórmula da amplitude semi-interquartílico (ou desvio quartílico), podendo ser facilmente confundida.
+
+\subsection{Propriedades da Amplitude Interquartílica}
+
+\begin{enumerate}
+    \item Somando-se (ou subtraindo-se) uma constante 𝒄 a todos os valores de uma variável, a amplitude interquartílica (e o desvio quartílico) do conjunto não é alterada.
+    \item Multiplicando-se (ou dividindo-se) todos os valores de uma variável por uma constante c, a amplitude interquartílica (e o desvio quartílico) do conjunto fica multiplicada (ou dividida) por essa constante.
+\end{enumerate}
+
+\subsection{Desvios em relação à média aritmética e mediana}
+
+Antes de apresentarmos as fórmulas para o cálculo do desvio médio e da variância, precisamos compreender qual o conceito de desvio em estatística. Um desvio é a distância entre qualquer observação do conjunto de dados e uma medida descritiva desse conjunto:
+\begin{center}
+    devio = observação - medida
+\end{center}
+
+Em especial, os desvios em relação à média aritmética e em relação à mediana:
+\[
+    di= x - \bar{x}\, \text{(média)}
+\]
+ou
+\[
+    di= x - Md \quad\text{(mediana)}
+\]
+Quando os desvios em relação a uma medida descritiva são pequenos, as observações estão concentradas em torno dessa medida e, portanto, a variabilidade dos dados é pequena.
+Agora, quando os desvios são maiores, significa que as observações estão dispersas e, portanto, a variabilidade dos dados é grande.
+
+\subsection{Propriedades dos desvios em relação à Média Aritmética e
+Mediana}
+
+\begin{enumerate}
+    \item A soma algébrica dos desvios em relação à média é nula.
+    \item A soma dos quadrados dos desvios da sequência de números $x_i$, em relação a um número a, é mínima se a for a média aritmética dos números.
+    \item A soma dos desvios absolutos de uma sequência de números, em relação a um número a, é mínima quando a é a mediana dos números.
+\end{enumerate}
+
+\subsection{Desvio absoluto médio}
+
+O desvio absoluto médio, ou simplesmente desvio médio, mede a dispersão entre os valores da distribuição e a média dos dados coletados. Para compreender essa medida, vamos supor que o Estratégia Concursos tenha realizado uma semana de revisão para estudantes da área fiscal, obtendo os seguintes números de
+visualizações:
+
+\begin{table}[H]
+    \centering
+\begin{tabular}{lr}
+\hline
+\multicolumn{1}{l}{\begin{tabular}[c]{@{}c@{}}Dia da   \\ semana\end{tabular}} & \multicolumn{1}{c}{\begin{tabular}[c]{@{}c@{}}Número de\\ visualizações\end{tabular}} \\
+\toprule
+Domingo     & 2.000 \\
+Segunda     & 4.000 \\
+Terça       & 5.200 \\
+Quarta      & 6.300 \\
+Quinta      & 5.400 \\
+Sexta       & 4.100 \\
+Sábado      & 2.400 \\
+\midrule
+Total       & $\sum f_i = 29.400$\\
+\bottomrule
+\end{tabular}
+\caption{Desvio Absoluto médio}
+\label{tab:desvio_medio}
+\end{table}
+
+Isso significa que a semana de revisão teve uma média diária de 4.200 visualizações. Esse resultado, porém, não retrata a realidade com fidedignidade, pois alguns dias tiveram mais visualizações do que a média; enquanto outros não. Por isso, é importante sabermos o quão distante a média está em relação aos valores
+reais por ela representados.
+
+Para calculá-los, basta subtrairmos o valor da média de cada observação, conforme mostrado a seguir:
+
+\begin{table}[H]
+    \centering
+\begin{tabular}{lclr}
+\hline
+\multicolumn{1}{c}{\begin{tabular}[c]{@{}c@{}}Dia da \\ semana\end{tabular}} & \begin{tabular}[c]{@{}c@{}}Número de \\ visualizações\end{tabular} & \multicolumn{2}{c}{$x_i-\bar{x}$} \\ \hline
+Domingo & 2.000 & 2.000 - 4.200 = & -2200 \\
+Segunda & 4.000 & 4.000 - 4.200 = & -200 \\
+Terça   & 5.200 & 5.200 - 4.200 = & 1000 \\
+Quarta  & 6.300 & 6.300 - 4.200 = & 2100 \\
+Quinta  & 5.400 & 5.400 - 4.200 = & 1200 \\
+Sexta   & 4.100 & 4.100 - 4.200 = & -100 \\
+Sábado  & 2.400 & 2.400 - 4.200 = & -1800 \\ \hline
+\end{tabular}
+\caption{Cálculo do desvio}
+\label{tab:desvio}
+\end{table}
+
+Ao calcularmos o desvio médio, obtemos resultados positivos e negativos, que se anulam ao serem somados. Percebam que existem valores de observações que estão muito próximos da média, enquanto outros estão mais distantes.
+
+Como a soma de todos os desvios médios é sempre igual a zero para qualquer conjunto de dados (Primeira propriedade dos desvios), sabemos que \(\sum (x - \bar{x}) n_i\) não nos fornecerá nenhuma informação relevante nem nos ajudará a compreender o que está acontecendo com essa variável. 
+
+Para superar essa dificuldade, podemos utilizar somente os resultados positivos dos desvios calculados. A fórmula do cálculo do desvio médio se apresenta da seguinte maneira:
+\begin{align*}
+    D_m = \frac{\sum_{n=1}^n |x_i- \bar{x}|}{n}
+\end{align*}
+
+em que $D_m$ representa o desvio médio, \(|x_i - \bar{x}|\) representa o módulo da diferença entre uma determinada observação e a média calculada, $f_i$ representa a frequência de um determinado valor para a variável da distribuição, e $n$ representa o total de elementos formados pela distribuição. 
+
+O desvio médio é uma medida de dispersão mais robusta do que a amplitude total e a amplitude interquartílica, pois considera todos os valores do conjunto. O inconveniente dessa medida é a operação de módulo, que, por conta de suas características matemáticas, dificulta o estudo de suas propriedades.
+
+\subsection{Desvio Médio para dados não-agrupados}
+
+O desvio absoluto médio $(D_m)$, de um conjunto de $n$ observações $x_11, \dots , x_n$, é a média dos valores absolutos das diferenças entre as observações e a média. Isto é,
+
+\begin{align*}
+    D_m = \frac{\sum_{n=1}^n |x_i- \bar{x}|}{n}
+\end{align*}
+
+As barras verticais indicam a operação de módulo, responsável por transformar qualquer número negativo em um número positivo, isto é, retornar o valor absoluto.
+
+\begin{example}
+    Calcular o desvio médio do conjunto mostrado a seguir:
+    \begin{align*}
+        {1, 2, 3, 5, 9}
+    \end{align*}
+    Iniciaremos pelo cálculo da média aritmética:
+    \begin{align*}
+        \bar{x}=\frac{1+2+3+5+9}{5}=4
+    \end{align*}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{l l c}
+\hline
+\multicolumn{1}{c}{$x_i$} &
+\multicolumn{1}{c}{$x_i-\bar{x}$} &
+\multicolumn{1}{c}{$|x_i-\bar{x}|$} \\
+\hline
+1 & $(1-4)=-3$ & 3 \\
+2 & $(2-4)=-2$ & 2 \\
+3 & $(3-4)=-1$ & 1 \\
+5 & $(5-4)=1$  & 1 \\
+9 & $(9-4)=5$  & 5 \\
+\hline
+\end{tabular}
+\caption{Desvio médio}
+\label{tab:cal_desv_med}
+
+\end{table}
+Aplicando a fórmula do desvio médio, temos:
+\begin{align*}
+    D_m = \frac{\sum_{n=1}^n |x_i-4|}{n}=\frac{\sum_{n=1}^n |x_i- \bar{x}|}{n}=\frac{12}{5}=2,4
+\end{align*}
+\end{example}
+
+\subsection{Desvio Médio para dados agrupados sem intervalo de classe}
+
+Quando os valores vierem dispostos em uma tabela de frequências, o desvio médio será calculado por meio da seguinte fórmula:
+
+\begin{align*}
+    D_m = \frac{\sum_{i=1}^{m} |x_i-\bar{x}|\times f_i}{\sum f_i}
+\end{align*}
+
+Em que $m$ indica o número de grupos que os dados estão organizados; e \(|x_1 - \bar{x}|\) representa o módulo da diferença entre uma determinada observação e a média calculada.
+
+Durante uma pesquisa, o Estratégia Concursos registrou a quantidade de filhos de seus professores, obtendo a tabela de frequências apresentada a seguir. Vamos calcular o desvio médio dessa distribuição.
+
+\begin{table}[ht]
+    \centering
+\begin{tabular}{ccc}
+    \toprule
+\begin{tabular}[c]{@{}c@{}}Nº de filhos \\ por professor\end{tabular} & $f_i$& $x_i \times f_i$\\
+\midrule
+0 & 4 & 0 \times 4 = 0 \\
+1 & 8 & 1 \times 8 = 8 \\
+2 & 4 & 2 \times 4 = 8 \\
+3 & 2 & 3 \times 2 = 6 \\
+4 & 2 & 4 \times 2 = 8 \\
+\midrule
+*Pesquisa populacional &$\sum f_i = 20$ & $\sum x_i\times f_i=30$\\
+\hline
+\end{tabular}
+\caption{Distribuição de frequências}
+\label{tab:distrib}
+\end{table}
+
+Iniciamos pelo cálculo da média aritmética:
+
+\begin{align*}
+    &D_m = \frac{\sum_{i=1}^{m} |x_i-\bar{x}|\times f_i}{\sum f_i}=\frac{30}{20}=1,5\,\text{Filhos por professor}
+\end{align*}
+
+Em seguida, adicionaremos uma nova coluna à tabela anterior, em que calcularemos os produtos dos desvios absolutos por suas respectivas frequências:
+
+\begin{table}[H]
+    \centering
+\begin{tabular}{cccc}
+    \toprule
+\begin{tabular}[c]{@{}c@{}}Nº de filhos\\  por professor\end{tabular} & $f_i$ & $x_i\times f_i$ & $|x_i - \bar{x}| \times x f_i$ \\ \hline
+0 & 4 & 0 & |0 - 1,5| \times 4 = 6 \\
+1 & 8 & 8 & |1 - 1,5| \times 8 = 4 \\
+2 & 4 & 8 & |2 - 1,5| \times 4 = 2 \\
+3 & 2 & 6 & |3 - 1,5| \times 2 = 3 \\
+4 & 2 & 8 & |4 - 1,5| \times 2 = 5 \\
+\midrule
+\morecmidrules * Pesquisa populacional & $\sum f_i = 20 $ & $\sum x_i \times f_i = 30$ & $\sum |x_i - \bar{x}| \times f_i = 20$ \\ \hline
+\end{tabular}
+\caption{}
+\label{tab:my-table}
+\end{table}
+
+Por fim, aplicando a fórmula do desvio médio, temos:
+
+\begin{align*}
+    D_m = \frac{\sum_{i=1}^{m} |x_i-\bar{x}|\times f_i}{\sum f_i}=\frac{20}{20}=1
+\end{align*}
+
+\subsection{Desvio Médio para dados agrupados em classes}
+
+Se os dados estiverem agrupados em classe, deveremos adotar a mesma convenção que tomamos para o cálculo da média: vamos assumir que todos os valores coincidem com os pontos médios das suas respectivas classes.
+
+\begin{example}
+    Durante uma pesquisa, uma escola registrou as estaturas de 40 alunos, obtendo a distribuição de frequências apresentada a seguir. Calcule o desvio médio dessa distribuição
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{lc}
+        \hline
+        Estaturas & Frequência \(f_i\) \\ \hline
+        150 \vdash 154 & 4  \\
+        154 \vdash 158 & 9  \\
+        158 \vdash 162 & 11 \\
+        162 \vdash 166 & 8  \\
+        166 \vdash 170 & 5  \\
+        170 \vdash 174 & 3  \\ \hline
+        *Pesquisa amostral &\(\sum f_i = 40\) \\ \hline
+        \end{tabular}
+        \caption{}
+        \label{tab:estaturas_classes}
+\end{table}
+
+Inicialmente, construiremos uma tabela como a mostrada a seguir:
+\begin{table}[H]
+    \centering
+\begin{tabular}{lcccccc}
+\hline
+Estaturas & \begin{tabular}[c]{@{}c@{}}Frequência \\ $(f_i)$\end{tabular} & $x_i$ & $x_i \times f_i$ & $(x_i-\bar{x})$ & $|x_i \bar{x}|$ & $|x_i - \bar{x}| \times f_i$ \\ \hline
+150 \vdash 154 & 4  & 152 & 608     & -9 & 9 & 36  \\
+150 \vdash 154 & 9  & 156 & 1.404   & -5 & 5 & 45  \\
+150 \vdash 154 & 11 & 160 & 1.760   & -1 & 1 & 11  \\
+150 \vdash 154 & 8  & 164 & 1.312   & 3 & 3 & 24   \\
+150 \vdash 154 & 5  & 168 & 840     & 7 & 7 & 35   \\
+150 \vdash 154 & 3  & 172 & 516     & 11 & 11 & 33 \\ \hline
+\begin{tabular}[c]{@{}l@{}}* Pesquisa \\ amostral\end{tabular} & $\sum f_i = 40$ &  & $\sum x_i \times f_i = 6440$ &  &  & $\sum |x_i - \bar{x}| \times f_i = 184$
+\end{tabular}
+\caption{Desvio Médio}
+\label{tab:desvio__medio}
+\end{table}
+\end{example}
+
+Feito isso, podemos calcular a média da distribuição por meio da seguinte fórmula:
+
+\begin{align*}
+    \bar{x} = \frac{\sum x_i\times f_i}{\sum f_i}=\frac{6640}{40}=161
+\end{align*}
+
+Conhecendo a média, completamos a tabela com as diferenças e os produtos necessários para o cálculo do desvio médio. Assim, aplicando a fórmula do desvio médio, temos:
+
+\begin{align*}
+    D_m = \frac{\sum_{i=1}^{6} |x_i-\bar{x}|\times f_i}{\sum f_i}=\frac{184}{40}=4,6
+\end{align*}
+Portanto, o desvio médio para essa distribuição de estaturas é 4,6 cm.
