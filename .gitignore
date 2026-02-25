@@ -1,30 +1,35 @@
-﻿# LaTeX build artefacts (global)
+﻿# LaTeX / latexmk
 *.aux
 *.log
 *.out
 *.toc
 *.lof
 *.lot
-*.synctex.gz
 *.fls
 *.fdb_latexmk
+*.synctex.gz
 *.bbl
-*.bcf
 *.blg
+*.bcf
 *.run.xml
 *.nav
 *.snm
-*.vrb
+
+# TikZ externalization cache (se usar)
 externalized/
 
-# --- Extra ignores (LaTeX/TikZ) ---
+# Backups operacionais
+_backup_git_*.zip
 
-# TikZ/PGF externalization artefacts (when generated in-place)
-*.md5
+# Editor/OS
+.vscode/
+Thumbs.db
+.DS_Store
+
+# TikZ/PGFPlots externalization outputs (quando o prefix não está em externalized/)
 *.dpth
-*-figure*.pdf
+*.md5
 *.auxlock
 
-# Compiled PDFs (OPTIONAL) - descomente se NÃO quiser versionar PDFs finais
-# *.pdf
-
+# PDFs gerados automaticamente (se você não quer versionar PDFs de build)
+*-figure*.pdf
