@@ -33,3 +33,7 @@ Thumbs.db
 
 # PDFs gerados automaticamente (se você não quer versionar PDFs de build)
 *-figure*.pdf
+
+# Inbox/quarentena
+_INBOX/
+
