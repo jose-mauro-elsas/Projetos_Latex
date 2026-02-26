@@ -1,0 +1,175 @@
+%!TEX program = lualatex
+% Arquivo: Template_Estat_Texto.tex
+
+\documentclass[a4paper,12pt]{article}
+
+% =========================================================
+% Idioma e tipografia (LuaLaTeX)
+% =========================================================
+\usepackage[portuguese]{babel}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+
+% =========================================================
+% Layout
+% =========================================================
+\usepackage[top=3cm,bottom=2.5cm,left=3cm,right=2.5cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25cm}
+
+% =========================================================
+% Matemática (align*, etc.)
+% =========================================================
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% =========================================================
+% Tabelas, listas, figuras
+% =========================================================
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\setlist[itemize]{noitemsep,topsep=3pt}
+\setlist[enumerate]{noitemsep,topsep=3pt}
+
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{pdflscape}
+\graphicspath{{./}{./imagens/}{./figuras/}}
+
+% =========================================================
+% Links
+% =========================================================
+\usepackage{hyperref}
+\usepackage{xurl}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=blue,
+  citecolor=black,
+  pdfauthor={},
+  pdftitle={}
+}
+
+% =========================================================
+% Texto de preenchimento (lorem)
+% =========================================================
+\usepackage{lipsum}
+
+% =========================================================
+% Dados da capa
+% =========================================================
+\newcommand{\Instituicao}{Universidade / Instituição}
+\newcommand{\Curso}{Disciplina / Curso}
+\newcommand{\Professor}{Professor: Nome Sobrenome}
+\newcommand{\Aluno}{Aluno: José Mauro Xavier Elsas}
+\newcommand{\Cidade}{Rio de Janeiro}
+\newcommand{\Ano}{2026}
+
+\title{\textbf{Título do Documento}}
+\author{\Aluno}
+\date{\Cidade --- \Ano}
+
+\begin{document}
+
+% =========================================================
+% Capa (página de rosto)
+% =========================================================
+\begin{titlepage}
+\centering
+{\large \Instituicao \par}
+\vspace{0.5cm}
+{\large \Curso \par}
+\vspace{1.0cm}
+
+{\LARGE \textbf{Título do Documento} \par}
+\vspace{0.6cm}
+{\Large Subtítulo (opcional) \par}
+
+\vfill
+
+\begin{flushright}
+\Aluno\\
+\Professor
+\end{flushright}
+
+\vspace{1.0cm}
+{\Cidade --- \Ano \par}
+\end{titlepage}
+
+% =========================================================
+% Sumário
+% =========================================================
+\tableofcontents
+\newpage
+
+% =========================================================
+% Corpo do texto (exemplos)
+% =========================================================
+\section{Introdução}
+\lipsum[1-2]
+
+\section{Fundamentação teórica}
+\lipsum[3]
+
+\subsection{Um exemplo com \texttt{align*}}
+\begin{align*}
+f(x) &= -0.5x^2 + 2x - 3 \\
+g(x) &= -0.5x - 0.5
+\end{align*}
+
+\lipsum[4]
+
+\section{Metodologia}
+\lipsum[5]
+
+\section{Resultados}
+\lipsum[6]
+
+% Exemplo de tabela
+\begin{table}[H]
+\centering
+\caption{Exemplo de tabela com \texttt{booktabs}.}
+\label{tab:exemplo}
+\setlength{\tabcolsep}{12pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{lc}
+\toprule
+\textbf{Intervalo} & \textbf{Frequência} \\
+\midrule
+$85 \le x < 100$  & 5 \\
+$100 \le x < 115$ & 5 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Discussão}
+\lipsum[7]
+
+\section{Conclusão}
+\lipsum[8]
+
+% =========================================================
+% Referências (entra no sumário)
+% =========================================================
+\newpage
+\phantomsection
+\addcontentsline{toc}{section}{Referências}
+\begin{thebibliography}{99}
+
+\bibitem{exemplo1}
+SOBRENOME, Nome.
+\textbf{Título do livro}.
+Cidade: Editora, 2020.
+
+\bibitem{exemplo2}
+AUTOR, Nome.
+Título do artigo.
+\textit{Nome do Periódico}, v. 10, n. 2, p. 1--20, 2021.
+Disponível em: \url{https://exemplo.com}. Acesso em: 30 jan. 2026.
+
+\end{thebibliography}
+
+\end{document}

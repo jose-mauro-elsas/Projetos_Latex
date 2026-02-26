@@ -14,6 +14,7 @@
 *.run.xml
 *.nav
 *.snm
+*.pdf
 
 # TikZ externalization cache (se usar)
 externalized/
@@ -37,3 +38,5 @@ Thumbs.db
 # Inbox/quarentena
 _INBOX/
 
+_backup_git_Estatistica/
+Projetos_Latex/
