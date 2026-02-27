@@ -97,6 +97,7 @@ em que
 \[
     n=\sum_{i=1}^{m} \;\text{e}\; \bar{x}=\frac{\sum_{i=1}^{m X_i\bar{x}}}{n}
 \]
+\end{enumerate}
 \begin{example}
     Durante a mesma pesquisa sobre a quantidade de filhos dos professores de uma escola, produziu-se a tabela de frequências apresentada a seguir. Vamos calcular o desvio-padrão amostral dessa distribuição.
 
@@ -121,5 +122,151 @@ em que
     
         Iniciaremos pelo cálculo da média aritmética:
         
+    \begin{align*}
+        \bar{x}=\frac{sum X_i \times f_i}{\sum f_i}=\frac{30}{20}=1,5\;\text{filhos por professor}
+    \end{align*}
+
+    Em seguida, adicionaremos uma nova coluna à tabela anterior, em que calcularemos os produtos dos quadrados dos desvios por suas respectivas frequências:
+
+    \begin{table}[H]
+    \centering
+    \begin{tabular}{cccr}
+    \toprule    
+        \begin{tabular}[c]{@{}c@{}}Nº de   filhos \\ por professor\end{tabular} & $f_1$ & $x_i\times f_i$&$(x_i-\bar{x})^2\times f_i$\\
+    \midrule
+        0 & 4 & 0 \times 4 = 0 & $(0-1,5)^2\times 4=9$ \\
+        1 & 8 & 1 \times 8 = 8 & $(1-1,5)^2\times 8=2$ \\
+        2 & 4 & 2 \times 4 = 8 & $(2-1,5)^2\times 4=1$ \\
+        3 & 2 & 3 \times 2 = 6 & $(3-1,5)^2\times 2=4,5$ \\
+        4 & 2 & 4 \times 2 = 8 & $(4-1,5)^2\times 2=12,5$ \\
+    \midrule
+        \begin{tabular}[c]{@{}c@{}}*  Pesquisa \\ populacional\end{tabular} & $f_i$  = 20 & $x_i\times f_i=30$ & \multicolumn{1}{l}{}$\Big(\sum x_i-\bar{x}\Big)^2\times f_i$=29\\
+        \bottomrule
+    \end{tabular}
+    \caption{}
+    \label{tab:desvpad_filhos}
+\end{table}
+Por fim, aplicando a fórmula do desvio padrão amostral, temos:
+\[
+    s=\sqrt{\frac{\sum_{i=1}^{n}(d_i\times f_i)^2}{n-1}=\sqrt{\frac{29}{19}=\sqrt{1,52}}}=\cong 1,23    
+\]
 \end{example}
+
+\subsection{Desvio-padrão para dados agrupados em classes}
+
+Quando tivermos que calcular o desvio-padrão para dados agrupados em classes, usaremos as mesmas fórmulas para dados sem intervalos de classes, utilizando para $x_i$ os pontos médios de cada classe, mas adotando os mesmos procedimentos.
+
+\begin{example}
+    Durante uma pesquisa, feito em um grupo de estudadntes registrou as estaturas de 40 alunos, obtendo a distribuição de frequências apresentada a seguir. Calcular o desvio padrão amostral da distribuição,
+
+        \begin{table}[H]
+        \centering
+        \begin{tabular}{lc}
+        \hline
+        Estaturas & Frequência \(f_i\) \\ \hline
+        150 \vdash 154 & 4  \\
+        154 \vdash 158 & 9  \\
+        158 \vdash 162 & 11 \\
+        162 \vdash 166 & 8  \\
+        166 \vdash 170 & 5  \\
+        170 \vdash 174 & 3  \\ \hline
+        \shortstack{*Pesquisa \\amostral} &\(\sum f_i = 40\) \\ \hline
+        \end{tabular}
+        \caption{}
+        \label{tab:despav__classes}
+\end{table}
+Inicialmente, construiremos uma tabela como a mostrada a seguir:
+\begin{table}[H]
+\begin{tabular}{lcccccc}
+\hline
+Estaturas & \begin{tabular}[c]{@{}c@{}}Frequência \\ $(f_i)$\end{tabular} & $x_i$ & $x_i \times f_i$ & $(x_i-\bar{x})$ & $(x_i \bar{x})^2$ & $(x_i - \bar{x})^2 \times f_i$ \\ \hline
+150 \vdash 154 & 4  & 152 & 608 & -9   & 81  & 324 \\
+154 \vdash 158 & 9  & 156 & 1.404 & -5 & 25  & 225 \\
+158 \vdash 162 & 11 & 160 & 1.760 & -1 & 1   & 11 \\
+162 \vdash 166 & 8  & 164 & 1.312 & 3  & 9   & 72 \\
+166 \vdash 170 & 5  & 168 & 840   & 7  & 49  & 245 \\
+170 \vdash 174 & 3  & 172 & 516   & 11 & 121 & 363 \\ \hline
+\begin{tabular}[c]{@{}l@{}}* Pesquisa \\ amostral\end{tabular} & $\sum f_i = 40$ &  & $\sum x_i \times f_i = 6440$ &  &  & \begin{tabular}[c]{@{}c@{}}$\sum (x_i - \bar{x}) \times f_i$\\ $= 1240$\end{tabular}
+\end{tabular}
+\caption{}
+\label{tab:desv_padr}
+\end{table}
+Feito isso, podemos calcular a média da distribuição por meio da seguinte fórmula:
+\[
+    \bar{x}=\frac{\sum x_i\times f_i}{\sum f_i}=\frac{6440}{40}=161
+\]
+Conhecendo a média, completamos a tabela com as diferenças e os produtos necessários para o cálculo da variância. Agora, aplicando a fórmula da variância amostral, temos:
+\[
+    s=\sqrt{\frac{\sum_{i=1}^{k}(x_i-\bar{x})^2}{n-1}\times f_i}
+    = \sqrt{\frac{\sum_{i=1}^{6}(x_i-161)^2}{40-1}\times f_i}
+    =\sqrt{\frac{1240}{39}}=\SI{5,64}{cm}
+\]
+O desvio-padrão das estaturas é 5,64 𝑐𝑚. Vimos anteriormente que o desvio médio, para essa mesma distribuição, foi de 4,63 cm.
+\end{example}
+
+\subsection{Propriedades do Desvio-padrão}
+
+Nesse tópico, vamos estudar as principais propriedades do desvio-padrão.
+
+\begin{enumerate}
+    \item Somando-se (ou subtraindo-se) uma constante 𝒄 a todos os valores de uma variável, o desvio-padrão do conjunto não é alterado.
+    \item Multiplicando-se (ou dividindo-se) todos os valores de uma variável por uma constante $c$, o desvio-padrão do conjunto fica multiplicado (ou dividido) por essa constante.
 \end{enumerate}
+
+\subsection{Coeficiente de variação}
+
+O desvio-padrão pode ser utilizado para a comparação de duas ou mais séries de valores, no que diz respeito à variabilidade e dispersão, quando os conjuntos possuem a mesma média e estão expressos na mesma unidade de medida (p.ex., os dois conjuntos em centímetros). Porém, quando os conjuntos de dados estão expressos em unidades diferentes (p.ex., quilogramas e centímetros), precisamos de outra medida.
+
+Para contornar essa limitação do desvio-padrão, podemos caracterizar a dispersão ou variabilidade dos dados de maneira relativa ao seu valor médio. Nesse sentido, o coeficiente de variação é uma medida de    dispersão relativa que fornece a variação dos dados em relação à média, podendo ser calculado como:
+
+\begin{enumerate}[label=\alph*.]
+    \item para populações;
+    \begin{align*}
+        CV=\frac{\sigma}{\mu}\times 100\%
+    \end{align*}
+    \item para amostras:
+        \begin{align*}
+        CV=\frac{s}{\bar{x}}\times 100\%
+    \end{align*}
+\end{enumerate}
+em que: $\sigma$ é o desvio-padrão populacional; $\mu$ é a média populacional; $s$ é o desvio-padrão amostral; e $\bar{x}$ é a
+média amostral.
+\begin{example}
+    Em uma empresa de tecnologia, o salário médio dos homens é de R\$ 1800,00 com desvio-padrão de R\$ 810,00 e o salário médio das mulheres é de R\$ 1500,00 com desvio padrão de R\$ 705,00. A dispersão relativa dos salários dos homens é maior que a das mulheres?
+
+    Vamos identificar os dados do problema:
+    \begin{enumerate}[label=\alph*.]
+        \item para homens:
+            \begin{align*}
+            \begin{cases}
+                \mu_H=1800\\
+                \sigma_H=810
+            \end{cases}
+        \end{align*}
+        \item para mulheres:
+            \begin{align*}
+            \begin{cases}
+                \mu_H=1500\\
+                \sigma_H=705
+            \end{cases}
+        \end{align*}
+    \end{enumerate}
+Agora, vamos calcular os respectivos coeficientes de variação:
+    \begin{enumerate}[label=\alph*.]
+        \item para homens;
+            \begin{align*}
+                CV=\frac{\sigma_H}{\mu_H}\times 100\%=\frac{810}{1800}=45\%
+            \end{align*}
+        \item para mulheres
+            \begin{align*}
+                CV=\frac{\sigma_M}{\mu_M}\times 100\%=\frac{705}{1500}=47\%
+            \end{align*}
+    \end{enumerate}
+    Portanto, os salários das mulheres apresentam uma dispersão relativa maior que os salários dos homens. Além disso, as duas distribuições possuem uma alta dispersão (CV > 30\%).
+\end{example}
+\subsection{Assimetria}
+
+Assimetria é o grau de desvio ou afastamento da simetria de uma distribuição.
+
+Quando a curva é simétrica, a média, a mediana e a moda coincidem,
+num mesmo ponto, de ordenada máxima, havendo um perfeito equilíbrio na distribuição. Quando o equilíbrio não acontece, isto é, a média, a mediana e a moda recaem em pontos diferentes da distribuição esta será assimétrica; enviesada a direita ou esquerda.
