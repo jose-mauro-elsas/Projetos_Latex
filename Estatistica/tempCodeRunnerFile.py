@@ -1,0 +1,1 @@
+plt.figure(figsize=(6, 4))

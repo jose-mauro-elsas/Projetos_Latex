@@ -1,66 +1,57 @@
 % !TEX program = lualatex
 \documentclass[a4paper,12pt]{book}
+
 \usepackage[brazil]{babel}
 \usepackage{geometry}
-\usepackage{float}
-\usepackage{booktabs}
-\usepackage{caption} % para \captionof
 \geometry{top=2.5cm,bottom=2.0cm,left=2.5cm,right=2.0cm}
-\usepackage{setspace}
-\usepackage{array} %multicolunas
-\usepackage{multicol}
-\usepackage[hypcap=false]{caption}
-\usepackage{enumitem} %para enumerar com letras.
-\usepackage{graphicx}
-\usepackage{multirow} %permite várias linhas na cabeça da tabela.
+
+% Matemática / tabelas
 \usepackage{amsmath}
-\usepackage{fontspec}
-\setmainfont{Times New Roman}
+\usepackage{amssymb}
 \usepackage{amsthm}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{makecell}
 \usepackage{siunitx}
 
+% Listas e floats
+\usepackage{enumitem}
+\usepackage{float}
+
+% Figuras
+\usepackage{graphicx}
+\usepackage[table]{xcolor}
+
+% Fonte (LuaLaTeX)
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+
+% Microtipografia / links / PDFs
 \usepackage{microtype}
 \usepackage{hyperref}
 \usepackage{pdfpages}
-\usepackage{enumitem} %com esse dá pra usar letras na enumeração
 
-% ===== Figuras / Gráficos =====
-\usepackage{graphicx}
-\usepackage{float}
-\usepackage{tabularx}
-% PGFPlots (já carrega o TikZ)
+% Caption (carregar UMA vez)
+\usepackage[hypcap=false]{caption} % se você precisa dessa opção, mantenha
+
+% TikZ/PGFPlots
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
 \pgfplotsset{compat=1.18, width=11cm}
 \usepgfplotslibrary{fillbetween}
-\usetikzlibrary{arrows.meta,intersections}
-\usepackage{float}
-\usepackage{makecell}
-\usepackage[table]{xcolor} % ou \usepackage{colortbl}
+\usetikzlibrary{calc,arrows.meta,intersections,decorations.pathreplacing}
+
+% Ambientes
+\theoremstyle{definition} % texto normal (não itálico)
 \newtheorem{example}{Exemplo}[section]
-
-% ===============================
-% Ambientes teóricos
-% ===============================
-% \theoremstyle{plain}      % itálico
-% \newtheorem{theorem}{Teorema}[section]
-
-% \theoremstyle{definition} % texto normal
-% \newtheorem{definition}{Definição}[section]
-
-% \theoremstyle{remark}     % texto normal, sem itálico
-% \newtheorem{remark}{Observação}[section]
-
 
 \theoremstyle{definition}
 \newtheorem{propriedade}{Propriedade}[section]
 
-
-
-
-%=======================================
-%         Header
-%=======================================
+% Header
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhead[R]{\nouppercase{\scshape\rightmark}}
@@ -68,31 +59,12 @@
 \setlength{\headheight}{15pt}
 \addtolength{\topmargin}{-3pt}
 
-%======================================
-%títulos das seções
-%=====================================
+% Títulos
 \usepackage{titlesec}
+\titleformat{\section}{\normalfont\Large\scshape}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\scshape}{\thesubsection}{1em}{}
 
-% Section em versal-versalete (small caps)
-\titleformat{\section}
-  {\normalfont\Large\scshape}
-  {\thesection}
-  {1em}
-  {}
-
-% (opcional) Subsection também
-\titleformat{\subsection}
-  {\normalfont\large\scshape}
-  {\thesubsection}
-  {1em}
-  {}
-
-
-\usetikzlibrary{decorations.pathreplacing,arrows.meta,calc}
-
-\pgfplotsset{compat=1.18, width=11cm}
-\usetikzlibrary{arrows.meta}
-
+% Listas
 \setlist[itemize]{noitemsep,topsep=4pt}
 \begin{document}
 \tableofcontents
@@ -142,7 +114,8 @@
 \input{media_ponderada.tex}
 \section{Média para Dados Agrupados}
 \input{media_para_dados_agrupados.tex}
-\section{Média Geométrica}%\input{media_geometrica.tex}
+\section{Média Geométrica}
+\input{media_geometrica.tex}
 \section{Média Harmônica}
 \input{media_harmonica.tex}
 \section{Desigualdade das Médias}   
@@ -161,4 +134,8 @@
 \input{variancia.tex}
 \section{Desvio Padrão}
 \input{desvio_padrao.tex}
+\section{Simetria, Assimetria e Curtose}
+\input{Assimetria.tex}
+\section{Momentos e Índices Relativos}
+\input{momentos_indices_relativos.tex}
 \end{document}
