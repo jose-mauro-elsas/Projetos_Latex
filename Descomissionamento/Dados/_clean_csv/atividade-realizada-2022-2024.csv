@@ -1,0 +1,375 @@
+﻿Bacia;Ambiente;Ano;Atividade;Quantidade realizada;Unidade da Atividade
+Alagoas;TERRA;2022;Coleta - linhas - lançamento (inclui risers);1,0;Kilômetro
+Alagoas;TERRA;2022;Coleta - manifold - instalação;2,0;Unidade
+Alagoas;TERRA;2022;Mudança de método de elevação artificial - poço;6,0;Unidade
+Alagoas;TERRA;2022;Perfuração - produtor;1,0;Unidade
+Alagoas;TERRA;2022;Recompletação para injeção;8,0;Unidade
+Alagoas;TERRA;2022;Recompletação para produção;44,0;Unidade
+Alagoas;TERRA;2022;UEP - alteração/ampliação/melhorias;1,0;Unidade
+Alagoas;TERRA;2023;Abandono Permanente;1,0;Unidade
+Alagoas;TERRA;2023;Coleta - linhas - lançamento (inclui risers);23,0;Kilômetro
+Alagoas;TERRA;2023;Coleta - manifold - instalação;1,0;Unidade
+Alagoas;TERRA;2023;Completação para produção;1,0;Unidade
+Alagoas;TERRA;2023;Mudança de método de elevação artificial - poço;16,0;Unidade
+Alagoas;TERRA;2023;Recompletação para injeção;16,0;Unidade
+Alagoas;TERRA;2023;Recompletação para produção;72,0;Unidade
+Alagoas;TERRA;2024;Coleta - linhas - lançamento (inclui risers);23,0;Kilômetro
+Alagoas;TERRA;2024;Completação para produção;3,0;Unidade
+Alagoas;TERRA;2024;Mudança de método de elevação artificial - poço;7,0;Unidade
+Alagoas;TERRA;2024;Perfuração - produtor;3,0;Unidade
+Alagoas;TERRA;2024;Recompletação para injeção;13,0;Unidade
+Alagoas;TERRA;2024;Recompletação para outros fins;3,0;Unidade
+Alagoas;TERRA;2024;Recompletação para produção;68,1;Unidade
+Alagoas;TERRA;2024;UEP - alteração/ampliação/melhorias;3,0;Unidade
+Alagoas;TERRA;2024;UEP - instalação;1,0;Unidade
+Amazonas;TERRA;2022;Completação para produção;1,0;Unidade
+Amazonas;TERRA;2022;Perfuração - produtor;1,0;Unidade
+Amazonas;TERRA;2023;Completação para produção;5,0;Unidade
+Amazonas;TERRA;2023;Perfuração - produtor;5,0;Unidade
+Amazonas;TERRA;2024;Coleta - linhas - lançamento (inclui risers);14,5;Kilômetro
+Amazonas;TERRA;2024;Coleta - manifold - instalação;1,8;Unidade
+Amazonas;TERRA;2024;Escoamento - gasoduto - lançamento;1,85;Kilômetro
+Amazonas;TERRA;2024;Teste de Formação - poço exploratório;4,0;Unidade
+Amazonas;TERRA;2024;UEP - construção;0,2;Unidade
+Barreirinhas;TERRA;2022;Mudança de método de elevação artificial - poço;3,0;Unidade
+Barreirinhas;TERRA;2022;Recompletação para produção;1,0;Unidade
+Barreirinhas;TERRA;2024;Recompletação para produção;3,0;Unidade
+Camamu;TERRA;2024;Coleta - manifold - instalação;3,0;Unidade
+Campos;MAR;2022;Abandono Permanente;27,88;Unidade
+Campos;MAR;2022;Coleta - linhas - lançamento (inclui risers);202,27;Kilômetro
+Campos;MAR;2022;Coleta - manifold - instalação;3,02;Unidade
+Campos;MAR;2022;Completação para injeção;2,01;Unidade
+Campos;MAR;2022;Completação para produção;19,0;Unidade
+Campos;MAR;2022;Descomissionamento - desmobilização UEP;2,0;Unidade
+Campos;MAR;2022;Descomissionamento - remoção de linhas;172,86;Kilômetro
+Campos;MAR;2022;Elevação Artificial - sistema submarino;5,1;Unidade
+Campos;MAR;2022;Escoamento - compressor - instalação;6,01;Unidade
+Campos;MAR;2022;Escoamento - gasoduto - lançamento;1,12;Kilômetro
+Campos;MAR;2022;Escoamento - oleoduto - lançamento;0,04;Kilômetro
+Campos;MAR;2022;Levantamento de Sísmica 2D - Aquisição;3,0;Kilômetro
+Campos;MAR;2022;Levantamento de Sísmica 3D - Aquisição;1013,93;Kilômetro Quadrado
+Campos;MAR;2022;Mudança de método de elevação artificial - poço;14,03;Unidade
+Campos;MAR;2022;Perfuração - injetor;3,0;Unidade
+Campos;MAR;2022;Perfuração - outro;3,0;Unidade
+Campos;MAR;2022;Perfuração - produtor;23,48;Unidade
+Campos;MAR;2022;Recompletação para outros fins;11,0;Unidade
+Campos;MAR;2022;Recompletação para produção;1,02;Unidade
+Campos;MAR;2022;Recuperação Ambiental;1,0;Kilômetro Quadrado
+Campos;MAR;2022;Remoção dos Demais Equipamentos do Sistema Submarino;3,0;Unidade
+Campos;MAR;2022;UEP - alteração/ampliação/melhorias;121,57;Unidade
+Campos;MAR;2022;UEP - construção;1,1;Unidade
+Campos;MAR;2022;UEP - instalação;5,59;Unidade
+Campos;MAR;2023;Abandono Permanente;43,19;Unidade
+Campos;MAR;2023;Coleta - linhas - lançamento (inclui risers);291,98;Kilômetro
+Campos;MAR;2023;Coleta - manifold - instalação;4,01;Unidade
+Campos;MAR;2023;Completação para injeção;5,0;Unidade
+Campos;MAR;2023;Completação para produção;26,0;Unidade
+Campos;MAR;2023;Descomissionamento - Arrasamento de poço;1,0;Unidade
+Campos;MAR;2023;Descomissionamento - desmobilização UEP;10,96;Unidade
+Campos;MAR;2023;Descomissionamento - remoção de linhas;336,03;Kilômetro
+Campos;MAR;2023;Elevação Artificial - sistema submarino;14,0;Unidade
+Campos;MAR;2023;Escoamento - compressor - instalação;3,0;Unidade
+Campos;MAR;2023;Escoamento - gasoduto - lançamento;26,52;Kilômetro
+Campos;MAR;2023;Escoamento - oleoduto - lançamento;19,82;Kilômetro
+Campos;MAR;2023;Levantamento de Sísmica 3D - Aquisição;0,01;Kilômetro Quadrado
+Campos;MAR;2023;Mudança de método de elevação artificial - poço;11,0;Unidade
+Campos;MAR;2023;Perfuração - exploratório;0,01;Unidade
+Campos;MAR;2023;Perfuração - injetor;6,32;Unidade
+Campos;MAR;2023;Perfuração - outro;2,0;Unidade
+Campos;MAR;2023;Perfuração - produtor;23,57;Unidade
+Campos;MAR;2023;Recompletação para outros fins;7,0;Unidade
+Campos;MAR;2023;Recompletação para produção;13,1;Unidade
+Campos;MAR;2023;Remoção dos Demais Equipamentos do Sistema Submarino;5,09;Unidade
+Campos;MAR;2023;UEP - alteração/ampliação/melhorias;67,46;Unidade
+Campos;MAR;2023;UEP - construção;4,0;Unidade
+Campos;MAR;2023;UEP - instalação;3,0;Unidade
+Campos;MAR;2024;Abandono Permanente;49,07;Unidade
+Campos;MAR;2024;Coleta - linhas - lançamento (inclui risers);250,4;Kilômetro
+Campos;MAR;2024;Coleta - manifold - instalação;5,0;Unidade
+Campos;MAR;2024;Completação para injeção;2,63;Unidade
+Campos;MAR;2024;Completação para produção;23,19;Unidade
+Campos;MAR;2024;Descomissionamento - desmobilização UEP;8,5;Unidade
+Campos;MAR;2024;Descomissionamento - remoção de linhas;397,37;Kilômetro
+Campos;MAR;2024;Elevação Artificial - sistema submarino;32,0;Unidade
+Campos;MAR;2024;Escoamento - gasoduto - lançamento;19,17;Kilômetro
+Campos;MAR;2024;Levantamento de Sísmica 3D - Aquisição;681,38;Kilômetro Quadrado
+Campos;MAR;2024;Mudança de método de elevação artificial - poço;3,0;Unidade
+Campos;MAR;2024;Perfuração - exploratório;3,0;Unidade
+Campos;MAR;2024;Perfuração - injetor;4,32;Unidade
+Campos;MAR;2024;Perfuração - outro;0,26;Unidade
+Campos;MAR;2024;Perfuração - produtor;22,11;Unidade
+Campos;MAR;2024;Recompletação para injeção;0,96;Unidade
+Campos;MAR;2024;Recompletação para produção;9,87;Unidade
+Campos;MAR;2024;Remoção dos Demais Equipamentos do Sistema Submarino;5,0;Unidade
+Campos;MAR;2024;Teste de Formação - poço exploratório;2,0;Unidade
+Campos;MAR;2024;Teste de Formação - poço explotatório;4,0;Unidade
+Campos;MAR;2024;UEP - alteração/ampliação/melhorias;76,96;Unidade
+Campos;MAR;2024;UEP - construção;1,86;Unidade
+Campos;MAR;2024;UEP - instalação;1,01;Unidade
+Ceará;MAR;2022;Descomissionamento - remoção de linhas;1,49;Kilômetro
+Ceará;MAR;2024;Descomissionamento - remoção de linhas;51,72;Kilômetro
+Espírito Santo;MAR;2022;Abandono Permanente;1,6;Unidade
+Espírito Santo;TERRA;2022;Abandono Permanente;12,0;Unidade
+Espírito Santo;TERRA;2022;Coleta - manifold - instalação;1,0;Unidade
+Espírito Santo;TERRA;2022;Descomissionamento - Arrasamento de poço;7,0;Unidade
+Espírito Santo;TERRA;2022;Mudança de método de elevação artificial - poço;3,0;Unidade
+Espírito Santo;TERRA;2022;Recompletação para injeção;38,0;Unidade
+Espírito Santo;TERRA;2022;Recompletação para outros fins;3,0;Unidade
+Espírito Santo;TERRA;2022;Recompletação para produção;82,0;Unidade
+Espírito Santo;TERRA;2022;Recuperação Ambiental;1,0;Kilômetro Quadrado
+Espírito Santo;TERRA;2022;UEP - alteração/ampliação/melhorias;59,0;Unidade
+Espírito Santo;TERRA;2022;UEP - instalação;3,0;Unidade
+Espírito Santo;MAR;2023;Coleta - linhas - lançamento (inclui risers);6,0;Kilômetro
+Espírito Santo;TERRA;2023;Abandono Permanente;6,0;Unidade
+Espírito Santo;TERRA;2023;Coleta - linhas - lançamento (inclui risers);1,0;Kilômetro
+Espírito Santo;TERRA;2023;Completação para produção;2,0;Unidade
+Espírito Santo;TERRA;2023;Descomissionamento - Arrasamento de poço;6,0;Unidade
+Espírito Santo;TERRA;2023;Escoamento - compressor - instalação;1,0;Unidade
+Espírito Santo;TERRA;2023;Mudança de método de elevação artificial - poço;7,0;Unidade
+Espírito Santo;TERRA;2023;Perfuração - produtor;4,0;Unidade
+Espírito Santo;TERRA;2023;Recompletação para injeção;56,0;Unidade
+Espírito Santo;TERRA;2023;Recompletação para produção;89,0;Unidade
+Espírito Santo;TERRA;2023;Recuperação Ambiental;1,0;Kilômetro Quadrado
+Espírito Santo;TERRA;2023;UEP - alteração/ampliação/melhorias;128,0;Unidade
+Espírito Santo;MAR;2024;Abandono Permanente;1,0;Unidade
+Espírito Santo;MAR;2024;Coleta - linhas - lançamento (inclui risers);0,02;Kilômetro
+Espírito Santo;MAR;2024;Coleta - manifold - instalação;1,0;Unidade
+Espírito Santo;MAR;2024;Elevação Artificial - sistema submarino;1,0;Unidade
+Espírito Santo;MAR;2024;Escoamento - gasoduto - lançamento;0,01;Kilômetro
+Espírito Santo;MAR;2024;UEP - alteração/ampliação/melhorias;1,0;Unidade
+Espírito Santo;MAR;2024;UEP - instalação;1,0;Unidade
+Espírito Santo;TERRA;2024;Abandono Permanente;2,0;Unidade
+Espírito Santo;TERRA;2024;Coleta - linhas - lançamento (inclui risers);5,02;Kilômetro
+Espírito Santo;TERRA;2024;Completação para produção;10,0;Unidade
+Espírito Santo;TERRA;2024;Descomissionamento - Arrasamento de poço;2,0;Unidade
+Espírito Santo;TERRA;2024;Mudança de método de elevação artificial - poço;4,0;Unidade
+Espírito Santo;TERRA;2024;Perfuração - produtor;11,0;Unidade
+Espírito Santo;TERRA;2024;Recompletação para injeção;33,0;Unidade
+Espírito Santo;TERRA;2024;Recompletação para produção;30,0;Unidade
+Espírito Santo;TERRA;2024;Remoção de instalações associadas à Unidades Produção Terrestres;1,0;Unidade
+Espírito Santo;TERRA;2024;Teste de Formação - poço explotatório;1,0;Unidade
+Espírito Santo;TERRA;2024;UEP - alteração/ampliação/melhorias;7,0;Unidade
+Espírito Santo;TERRA;2024;UEP - instalação;1,0;Unidade
+Paraná;TERRA;2022;Escoamento - compressor - instalação;1,0;Unidade
+Paraná;TERRA;2023;Recuperação Ambiental;1,0;Kilômetro Quadrado
+Paraná;TERRA;2023;UEP - alteração/ampliação/melhorias;1,0;Unidade
+Paraná;TERRA;2024;Recuperação Ambiental;1,0;Kilômetro Quadrado
+Parnaíba;TERRA;2022;Coleta - linhas - lançamento (inclui risers);65,7;Kilômetro
+Parnaíba;TERRA;2022;Coleta - manifold - instalação;10,0;Unidade
+Parnaíba;TERRA;2022;Completação para produção;5,0;Unidade
+Parnaíba;TERRA;2022;Escoamento - compressor - instalação;1,0;Unidade
+Parnaíba;TERRA;2022;Escoamento - gasoduto - lançamento;41,0;Kilômetro
+Parnaíba;TERRA;2022;Levantamento de Sísmica 2D - Aquisição;84,0;Kilômetro
+Parnaíba;TERRA;2022;Perfuração - produtor;6,0;Unidade
+Parnaíba;TERRA;2022;UEP - instalação;1,0;Unidade
+Parnaíba;TERRA;2023;Coleta - linhas - lançamento (inclui risers);10,5;Kilômetro
+Parnaíba;TERRA;2023;Coleta - manifold - instalação;1,0;Unidade
+Parnaíba;TERRA;2023;Completação para produção;6,0;Unidade
+Parnaíba;TERRA;2023;Escoamento - gasoduto - lançamento;40,0;Kilômetro
+Parnaíba;TERRA;2023;Perfuração - produtor;7,0;Unidade
+Parnaíba;TERRA;2024;Completação para produção;1,0;Unidade
+Parnaíba;TERRA;2024;Escoamento - gasoduto - lançamento;90,8;Kilômetro
+Parnaíba;TERRA;2024;Perfuração - produtor;1,0;Unidade
+Potiguar;MAR;2022;Abandono Permanente;1,18;Unidade
+Potiguar;TERRA;2022;Abandono Permanente;9,0;Unidade
+Potiguar;TERRA;2022;Coleta - linhas - lançamento (inclui risers);26,28;Kilômetro
+Potiguar;TERRA;2022;Coleta - manifold - instalação;3,0;Unidade
+Potiguar;TERRA;2022;Completação para outros fins;1,0;Unidade
+Potiguar;TERRA;2022;Completação para produção;69,0;Unidade
+Potiguar;TERRA;2022;Descomissionamento - Arrasamento de poço;1,0;Unidade
+Potiguar;TERRA;2022;Mudança de método de elevação artificial - poço;15,0;Unidade
+Potiguar;TERRA;2022;Perfuração - exploratório;1,0;Unidade
+Potiguar;TERRA;2022;Perfuração - produtor;79,0;Unidade
+Potiguar;TERRA;2022;Recompletação para injeção;34,0;Unidade
+Potiguar;TERRA;2022;Recompletação para produção;245,0;Unidade
+Potiguar;TERRA;2022;Recuperação Ambiental;6,0;Kilômetro Quadrado
+Potiguar;TERRA;2022;Teste de Formação - poço explotatório;3,0;Unidade
+Potiguar;TERRA;2022;UEP - alteração/ampliação/melhorias;8,23;Unidade
+Potiguar;MAR;2023;Abandono Permanente;1,63;Unidade
+Potiguar;MAR;2023;Descomissionamento - Arrasamento de poço;2,0;Unidade
+Potiguar;TERRA;2023;Abandono Permanente;5,0;Unidade
+Potiguar;TERRA;2023;Coleta - linhas - lançamento (inclui risers);56,01;Kilômetro
+Potiguar;TERRA;2023;Completação para outros fins;1,0;Unidade
+Potiguar;TERRA;2023;Completação para produção;67,0;Unidade
+Potiguar;TERRA;2023;Descomissionamento - Arrasamento de poço;1,0;Unidade
+Potiguar;TERRA;2023;Escoamento - oleoduto - lançamento;11,81;Kilômetro
+Potiguar;TERRA;2023;Mudança de método de elevação artificial - poço;4,0;Unidade
+Potiguar;TERRA;2023;Perfuração - exploratório;1,0;Unidade
+Potiguar;TERRA;2023;Perfuração - produtor;72,0;Unidade
+Potiguar;TERRA;2023;Recompletação para injeção;30,0;Unidade
+Potiguar;TERRA;2023;Recompletação para produção;525,0;Unidade
+Potiguar;TERRA;2023;Recuperação Ambiental;0,01;Kilômetro Quadrado
+Potiguar;TERRA;2023;UEP - alteração/ampliação/melhorias;19,0;Unidade
+Potiguar;MAR;2024;Descomissionamento - desmobilização UEP;0,17;Unidade
+Potiguar;MAR;2024;Descomissionamento - remoção de linhas;46,65;Kilômetro
+Potiguar;TERRA;2024;Abandono Permanente;5,0;Unidade
+Potiguar;TERRA;2024;Coleta - linhas - lançamento (inclui risers);32,23;Kilômetro
+Potiguar;TERRA;2024;Coleta - manifold - instalação;1,0;Unidade
+Potiguar;TERRA;2024;Completação para produção;48,0;Unidade
+Potiguar;TERRA;2024;Descomissionamento - Arrasamento de poço;2,0;Unidade
+Potiguar;TERRA;2024;Escoamento - oleoduto - lançamento;4,8;Kilômetro
+Potiguar;TERRA;2024;Mudança de método de elevação artificial - poço;19,0;Unidade
+Potiguar;TERRA;2024;Perfuração - exploratório;1,0;Unidade
+Potiguar;TERRA;2024;Perfuração - produtor;47,0;Unidade
+Potiguar;TERRA;2024;Recompletação para injeção;4,0;Unidade
+Potiguar;TERRA;2024;Recompletação para produção;553,0;Unidade
+Potiguar;TERRA;2024;Recuperação Ambiental;6,19;Kilômetro Quadrado
+Potiguar;TERRA;2024;Teste de Formação - poço explotatório;3,0;Unidade
+Potiguar;TERRA;2024;UEP - alteração/ampliação/melhorias;22,0;Unidade
+Potiguar;TERRA;2024;UEP - construção;2,0;Unidade
+Recôncavo;TERRA;2022;Abandono Permanente;16,0;Unidade
+Recôncavo;TERRA;2022;Coleta - linhas - lançamento (inclui risers);41,07;Kilômetro
+Recôncavo;TERRA;2022;Completação para injeção;2,0;Unidade
+Recôncavo;TERRA;2022;Completação para outros fins;2,0;Unidade
+Recôncavo;TERRA;2022;Completação para produção;3,0;Unidade
+Recôncavo;TERRA;2022;Descomissionamento - Arrasamento de poço;1,0;Unidade
+Recôncavo;TERRA;2022;Mudança de método de elevação artificial - poço;48,0;Unidade
+Recôncavo;TERRA;2022;Perfuração - injetor;1,0;Unidade
+Recôncavo;TERRA;2022;Perfuração - outro;1,0;Unidade
+Recôncavo;TERRA;2022;Perfuração - produtor;4,0;Unidade
+Recôncavo;TERRA;2022;Recompletação para injeção;29,0;Unidade
+Recôncavo;TERRA;2022;Recompletação para produção;230,0;Unidade
+Recôncavo;TERRA;2022;Recuperação Ambiental;11,0;Kilômetro Quadrado
+Recôncavo;TERRA;2022;Remoção de instalações associadas à Unidades Produção Terrestres;1,0;Unidade
+Recôncavo;TERRA;2022;Teste de Formação - poço explotatório;2,0;Unidade
+Recôncavo;TERRA;2022;UEP - alteração/ampliação/melhorias;2,0;Unidade
+Recôncavo;TERRA;2022;UEP - construção;1,0;Unidade
+Recôncavo;TERRA;2022;UEP - instalação;3,0;Unidade
+Recôncavo;TERRA;2023;Abandono Permanente;23,7;Unidade
+Recôncavo;TERRA;2023;Coleta - linhas - lançamento (inclui risers);27,15;Kilômetro
+Recôncavo;TERRA;2023;Coleta - manifold - instalação;4,0;Unidade
+Recôncavo;TERRA;2023;Completação para produção;12,0;Unidade
+Recôncavo;TERRA;2023;Descomissionamento - Arrasamento de poço;14,0;Unidade
+Recôncavo;TERRA;2023;Levantamento de Sísmica 3D - Aquisição;48,5;Kilômetro Quadrado
+Recôncavo;TERRA;2023;Mudança de método de elevação artificial - poço;9,0;Unidade
+Recôncavo;TERRA;2023;Perfuração - produtor;11,0;Unidade
+Recôncavo;TERRA;2023;Recompletação para injeção;29,0;Unidade
+Recôncavo;TERRA;2023;Recompletação para produção;213,0;Unidade
+Recôncavo;TERRA;2023;Recuperação Ambiental;0,01;Kilômetro Quadrado
+Recôncavo;TERRA;2023;Teste de Formação - poço exploratório;1,0;Unidade
+Recôncavo;TERRA;2023;Teste de Formação - poço explotatório;5,0;Unidade
+Recôncavo;TERRA;2023;UEP - alteração/ampliação/melhorias;11,0;Unidade
+Recôncavo;TERRA;2023;UEP - construção;2,0;Unidade
+Recôncavo;TERRA;2023;UEP - instalação;1,0;Unidade
+Recôncavo;TERRA;2024;Abandono Permanente;21,0;Unidade
+Recôncavo;TERRA;2024;Coleta - linhas - lançamento (inclui risers);45,22;Kilômetro
+Recôncavo;TERRA;2024;Completação para produção;9,0;Unidade
+Recôncavo;TERRA;2024;Descomissionamento - Arrasamento de poço;14,0;Unidade
+Recôncavo;TERRA;2024;Escoamento - compressor - instalação;4,0;Unidade
+Recôncavo;TERRA;2024;Escoamento - gasoduto - lançamento;3,0;Kilômetro
+Recôncavo;TERRA;2024;Escoamento - oleoduto - lançamento;1,0;Kilômetro
+Recôncavo;TERRA;2024;Levantamento de Sísmica 3D - Aquisição;115,5;Kilômetro Quadrado
+Recôncavo;TERRA;2024;Mudança de método de elevação artificial - poço;40,0;Unidade
+Recôncavo;TERRA;2024;Perfuração - produtor;9,0;Unidade
+Recôncavo;TERRA;2024;Recompletação para injeção;27,0;Unidade
+Recôncavo;TERRA;2024;Recompletação para produção;127,6;Unidade
+Recôncavo;TERRA;2024;Recuperação Ambiental;0,06;Kilômetro Quadrado
+Recôncavo;TERRA;2024;Teste de Longa Duração - TLD;3,0;Unidade
+Recôncavo;TERRA;2024;UEP - alteração/ampliação/melhorias;24,0;Unidade
+Recôncavo;TERRA;2024;UEP - instalação;2,0;Unidade
+Santos;MAR;2022;Coleta - linhas - lançamento (inclui risers);490,46;Kilômetro
+Santos;MAR;2022;Coleta - manifold - instalação;2,0;Unidade
+Santos;MAR;2022;Coleta - sistema de processamento submarino - instalação;5,89;Unidade
+Santos;MAR;2022;Completação para injeção;9,99;Unidade
+Santos;MAR;2022;Completação para produção;12,32;Unidade
+Santos;MAR;2022;Descomissionamento - desmobilização UEP;1,04;Unidade
+Santos;MAR;2022;Elevação Artificial - sistema submarino;0,32;Unidade
+Santos;MAR;2022;Escoamento - compressor - instalação;4,0;Unidade
+Santos;MAR;2022;Escoamento - gasoduto - lançamento;34,76;Kilômetro
+Santos;MAR;2022;Levantamento de Sísmica 3D - Aquisição;3515,72;Kilômetro Quadrado
+Santos;MAR;2022;Mudança de método de elevação artificial - poço;3,0;Unidade
+Santos;MAR;2022;Perfuração - exploratório;1,0;Unidade
+Santos;MAR;2022;Perfuração - injetor;12,13;Unidade
+Santos;MAR;2022;Perfuração - produtor;19,09;Unidade
+Santos;MAR;2022;Recompletação para injeção;2,0;Unidade
+Santos;MAR;2022;Recompletação para outros fins;1,0;Unidade
+Santos;MAR;2022;Recuperação Ambiental;5,0;Kilômetro Quadrado
+Santos;MAR;2022;Teste de Formação - poço exploratório;0,6;Unidade
+Santos;MAR;2022;UEP - alteração/ampliação/melhorias;4,24;Unidade
+Santos;MAR;2022;UEP - construção;4,94;Unidade
+Santos;MAR;2022;UEP - instalação;5,0;Unidade
+Santos;MAR;2023;Abandono Permanente;1,37;Unidade
+Santos;MAR;2023;Coleta - linhas - lançamento (inclui risers);402,73;Kilômetro
+Santos;MAR;2023;Coleta - manifold - instalação;0,8;Unidade
+Santos;MAR;2023;Coleta - sistema de processamento submarino - instalação;5,0;Unidade
+Santos;MAR;2023;Completação para injeção;21,81;Unidade
+Santos;MAR;2023;Completação para produção;16,34;Unidade
+Santos;MAR;2023;Descomissionamento - Arrasamento de poço;1,0;Unidade
+Santos;MAR;2023;Descomissionamento - remoção de linhas;13,41;Kilômetro
+Santos;MAR;2023;Elevação Artificial - sistema submarino;0,05;Unidade
+Santos;MAR;2023;Escoamento - gasoduto - lançamento;13,99;Kilômetro
+Santos;MAR;2023;Levantamento de Sísmica 3D - Aquisição;4714,99;Kilômetro Quadrado
+Santos;MAR;2023;Perfuração - injetor;16,08;Unidade
+Santos;MAR;2023;Perfuração - outro;3,75;Unidade
+Santos;MAR;2023;Perfuração - produtor;14,56;Unidade
+Santos;MAR;2023;Recompletação para produção;1,0;Unidade
+Santos;MAR;2023;Recuperação Ambiental;8,0;Kilômetro Quadrado
+Santos;MAR;2023;UEP - alteração/ampliação/melhorias;7,35;Unidade
+Santos;MAR;2023;UEP - construção;3,14;Unidade
+Santos;MAR;2023;UEP - instalação;7,0;Unidade
+Santos;MAR;2024;Abandono Permanente;5,0;Unidade
+Santos;MAR;2024;Coleta - linhas - lançamento (inclui risers);339,11;Kilômetro
+Santos;MAR;2024;Coleta - manifold - instalação;34,5;Unidade
+Santos;MAR;2024;Coleta - sistema de processamento submarino - instalação;3,83;Unidade
+Santos;MAR;2024;Completação para injeção;15,3;Unidade
+Santos;MAR;2024;Completação para outros fins;1,0;Unidade
+Santos;MAR;2024;Completação para produção;27,85;Unidade
+Santos;MAR;2024;Descomissionamento - desmobilização UEP;3,0;Unidade
+Santos;MAR;2024;Descomissionamento - remoção de linhas;8,0;Kilômetro
+Santos;MAR;2024;Elevação Artificial - sistema submarino;1,0;Unidade
+Santos;MAR;2024;Escoamento - gasoduto - lançamento;15,8;Kilômetro
+Santos;MAR;2024;Levantamento de Sísmica 3D - Aquisição;1879,32;Kilômetro Quadrado
+Santos;MAR;2024;Perfuração - injetor;21,9;Unidade
+Santos;MAR;2024;Perfuração - outro;5,25;Unidade
+Santos;MAR;2024;Perfuração - produtor;30,27;Unidade
+Santos;MAR;2024;Recompletação para injeção;1,0;Unidade
+Santos;MAR;2024;Recuperação Ambiental;6,25;Kilômetro Quadrado
+Santos;MAR;2024;Teste de Formação - poço explotatório;1,0;Unidade
+Santos;MAR;2024;Teste de Longa Duração - TLD;0,2;Unidade
+Santos;MAR;2024;UEP - alteração/ampliação/melhorias;3,62;Unidade
+Santos;MAR;2024;UEP - construção;4,96;Unidade
+Santos;MAR;2024;UEP - instalação;9,0;Unidade
+Sergipe;MAR;2022;Abandono Permanente;1,4;Unidade
+Sergipe;MAR;2022;UEP - alteração/ampliação/melhorias;1,0;Unidade
+Sergipe;TERRA;2022;Abandono Permanente;8,0;Unidade
+Sergipe;TERRA;2022;Completação para produção;1,0;Unidade
+Sergipe;TERRA;2022;Perfuração - produtor;1,0;Unidade
+Sergipe;TERRA;2022;Recompletação para produção;46,0;Unidade
+Sergipe;MAR;2023;Descomissionamento - remoção de linhas;120,2;Kilômetro
+Sergipe;TERRA;2023;Abandono Permanente;4,0;Unidade
+Sergipe;TERRA;2023;Coleta - linhas - lançamento (inclui risers);2,0;Kilômetro
+Sergipe;TERRA;2023;Coleta - manifold - instalação;2,0;Unidade
+Sergipe;TERRA;2023;Mudança de método de elevação artificial - poço;1,0;Unidade
+Sergipe;TERRA;2023;Perfuração - produtor;4,0;Unidade
+Sergipe;TERRA;2023;Recompletação para injeção;1,0;Unidade
+Sergipe;TERRA;2023;Recompletação para produção;12,0;Unidade
+Sergipe;TERRA;2023;UEP - instalação;3,0;Unidade
+Sergipe;MAR;2024;Descomissionamento - Arrasamento de poço;17,15;Unidade
+Sergipe;MAR;2024;Descomissionamento - desmobilização UEP;0,31;Unidade
+Sergipe;MAR;2024;Descomissionamento - remoção de linhas;18,24;Kilômetro
+Sergipe;TERRA;2024;Abandono Permanente;57,0;Unidade
+Sergipe;TERRA;2024;Coleta - linhas - lançamento (inclui risers);1,0;Kilômetro
+Sergipe;TERRA;2024;Completação para injeção;1,0;Unidade
+Sergipe;TERRA;2024;Completação para produção;86,0;Unidade
+Sergipe;TERRA;2024;Mudança de método de elevação artificial - poço;54,0;Unidade
+Sergipe;TERRA;2024;Perfuração - injetor;1,0;Unidade
+Sergipe;TERRA;2024;Perfuração - produtor;86,0;Unidade
+Sergipe;TERRA;2024;Recompletação para injeção;83,0;Unidade
+Sergipe;TERRA;2024;Recompletação para produção;222,0;Unidade
+Solimões;TERRA;2022;Coleta - linhas - lançamento (inclui risers);5,0;Kilômetro
+Solimões;TERRA;2022;Completação para outros fins;15,5;Unidade
+Solimões;TERRA;2022;Mudança de método de elevação artificial - poço;0,1;Unidade
+Solimões;TERRA;2023;Completação para outros fins;4,0;Unidade
+Solimões;TERRA;2023;Mudança de método de elevação artificial - poço;1,0;Unidade
+Solimões;TERRA;2023;Recompletação para outros fins;3,0;Unidade
+Solimões;TERRA;2023;Recompletação para produção;1,0;Unidade
+Solimões;TERRA;2024;Coleta - linhas - lançamento (inclui risers);12,1;Kilômetro
+Solimões;TERRA;2024;Recompletação para outros fins;12,0;Unidade
+Solimões;TERRA;2024;Recompletação para produção;3,0;Unidade
+Tucano Sul;TERRA;2022;Abandono Permanente;6,0;Unidade
+Tucano Sul;TERRA;2022;Escoamento - gasoduto - lançamento;19,0;Kilômetro
+Tucano Sul;TERRA;2022;Levantamento de Sísmica 2D - Aquisição;33,91;Kilômetro
+Tucano Sul;TERRA;2022;Levantamento de Sísmica 3D - Aquisição;297,3;Kilômetro Quadrado
+Tucano Sul;TERRA;2022;Recompletação para produção;5,0;Unidade
+Tucano Sul;TERRA;2022;Recuperação Ambiental;6,0;Kilômetro Quadrado
+Tucano Sul;TERRA;2023;Recompletação para produção;2,0;Unidade
