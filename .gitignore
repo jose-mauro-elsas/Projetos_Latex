@@ -40,3 +40,7 @@ _INBOX/
 
 _backup_git_Estatistica/
 Projetos_Latex/
+
+# Excel lock files
+~$*.xlsx
+
