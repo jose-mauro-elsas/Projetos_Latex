@@ -46,6 +46,14 @@
 % ===== Citações ABNT (autor-data) + BibTeX =====
 \usepackage[alf]{abntex2cite}
 
+% --- tabela em landscape + longtable ---
+\usepackage{pdflscape}  % fornece o ambiente landscape (gira a página no PDF)
+\usepackage{longtable}  % fornece longtable e também \LTpre/\LTpost se você usar
+
+\usepackage{booktabs}
+\usepackage{ragged2e}
+\usepackage{array}
+
 \begin{document}
 
 \begin{titlepage}
@@ -101,7 +109,11 @@ Portanto, em diferentes contextos operacionais — seja no Brasil, na África ou
 
 Dados de ondas, ventos, salinidade e correntezas entram na equação pelo lado do desgaste do sistema, ao contribuir para a diminução da integridade estrutural. Os projetos são feitos com o objetivo de superar esses fatores, no entanto, as probabilidades de falhas  cobertas até certa medida, pela robustez do projeto encontram um limite intransponível nos custos de produção \emph{versus} o preço do óleo no mercado internacional.
 
+Em relação à questão regulatória, podemos dizer que as principais normas que regem local e internacionalmente, a resolução ANP 817--2020\footnote{\cite{ANP_Resolucao_817_2020}} e a IMO-A/672(16)\footnote{\cite{IMO_A672_16_1989}}, tem em vários pontos de abordagem semelhante quanto pontos em que têm diferenças regulatórias. 
 
+
+
+\input{comparativo_anp_imo.tex}
 
 % ================== REFERÊNCIAS ==================
 \bibliographystyle{abntex2-alf}
