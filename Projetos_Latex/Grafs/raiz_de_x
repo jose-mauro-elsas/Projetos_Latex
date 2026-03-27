@@ -1,0 +1,26 @@
+%----------------------------------------
+% 7) Função raiz quadrada f(x) = sqrt(x)
+%---------------------------------------
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      axis line style={->},
+      xmin=-1, xmax=5,
+      ymin=-1, ymax=3,
+      axis x line=middle,
+      axis y line=middle,
+      axis line style={-},
+      tick align=outside,
+      grid=both,
+      minor tick num=1,
+      xlabel={$x$},
+      ylabel={$y$},
+      title={$f(x)=\sqrt{x}$}
+    ]
+      \addplot[domain=0:5, samples=200] {sqrt(x)};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Função raiz quadrada $f(x)=\sqrt{x}$.}
+\end{figure}

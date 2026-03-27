@@ -1,0 +1,20 @@
+\begin{figure}[hbt]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  axis x line=middle, axis y line=middle, axis line style={->},
+  xlabel={$x$}, ylabel={$y$}, xmin=0, xmax=4, ymin=-2.5, ymax=1,
+  title={Caso 2: $f(x) \le 0$ em $[a,b]$},
+]
+  \def\a{0.5} \def\b{3.5}
+  \addplot[name path=curva, thick, blue, domain=\a:\b, samples=200] {-0.5*(x-2)^2-1};
+  \addplot[name path=eixo, draw=none, domain=\a:\b] {0};
+  \addplot[fill=gray!20, draw=none] fill between[of=eixo and curva];
+  \draw[line width=0.6pt] (axis cs:\a,0) -- (axis cs:\a,{-0.5*(\a-2)^2-1});
+  \draw[line width=0.6pt] (axis cs:\b,0) -- (axis cs:\b,{-0.5*(\b-2)^2-1});
+  \node[above] at (axis cs:\a,0) {$a$};
+  \node[above] at (axis cs:\b,0) {$b$};
+\end{axis}
+\end{tikzpicture}
+\caption{Se $f(x)\le 0$, a área geométrica é $A=-\int_a^b f(x)\,dx$.}
+\end{figure}

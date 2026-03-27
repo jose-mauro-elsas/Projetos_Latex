@@ -1,0 +1,423 @@
+%!TEX program = lualatex
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[main=portuguese]{babel}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multicol}
+\usetikzlibrary{arrows.meta,calc,positioning,decorations.pathreplacing}
+
+\definecolor{quadroazul}{RGB}{35,75,160}
+\definecolor{quadrovermelho}{RGB}{180,55,55}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{1º Experimento: Medidas Elétricas}}
+\end{center}
+
+\hrule
+\vspace{1em}
+
+\section*{1. Conceitos iniciais}
+
+\subsection*{Fontes}
+\textbf{Fontes:} fornecem energia ao circuito.
+
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{Fontes de Tensão:}
+    \textcolor{quadrovermelho}{fornecem uma tensão de saída estabilizada, independente da corrente.}
+
+    \item \textbf{Fontes de Corrente:}
+    \textcolor{quadrovermelho}{fornecem uma corrente de saída estabilizada, independente da tensão.}
+\end{itemize}
+
+\textbf{Fonte ideal:} \textcolor{quadroazul}{sem perdas}
+
+\textbf{Fonte real:} \textcolor{quadroazul}{possui perdas}
+
+\subsection*{Regimes de corrente e tensão}
+
+\begin{minipage}[t]{0.48\textwidth}
+\textbf{Regime de corrente e tensão contínuas:}
+
+\textcolor{quadrovermelho}{A corrente e a tensão não variam no tempo.}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.95]
+    \draw[->] (0,0) -- (5,0) node[right] {$t(s)$};
+    \draw[->] (0,0) -- (0,3) node[above] {$I,V$};
+    \draw[quadroazul,very thick] (0.5,1.7) -- (4.5,1.7);
+    \node[left] at (0,1.7) {$I_{cc},V_{cc}$};
+\end{tikzpicture}
+\end{center}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\textbf{Regime de corrente e tensão alternadas:}
+
+\textcolor{quadrovermelho}{A corrente e a tensão variam ciclicamente no tempo com uma frequência $f$ e um período $T$.}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.95]
+    \draw[->] (0,0) -- (5.2,0) node[right] {$t(s)$};
+    \draw[->] (0,-2) -- (0,2.4) node[above] {$V_{ca},I_{ca}$};
+
+    \draw[quadroazul,very thick,domain=0:4.7,samples=200]
+        plot (\x,{1.35*sin(180*\x)});
+
+    \draw[dashed] (0,1.35) -- (4.8,1.35);
+    \draw[dashed] (0,-1.35) -- (4.8,-1.35);
+
+    \node[left,text=quadrovermelho] at (0,1.35) {$I_{\max},V_{\max}$};
+    \node[left,text=quadrovermelho] at (0,-1.35) {$I_{\min},V_{\min}$};
+
+    \draw[<->,text=quadrovermelho,thick] (0.4,-1.75) -- (2.4,-1.75)
+        node[midway,below] {$T$};
+\end{tikzpicture}
+\end{center}
+\end{minipage}
+
+\subsection*{Valor eficaz}
+\textbf{Valor eficaz de corrente/tensão:}
+\textcolor{quadrovermelho}{intensidade de uma corrente/tensão contínua que produz a mesma dissipação de energia que a corrente/tensão alternada,}
+\textcolor{quadroazul}{nas mesmas condições, em um intervalo de tempo $T$.}
+
+\medskip
+
+\textbf{Frequência da rede elétrica no Brasil:} \textbf{60 Hz}
+
+\section*{2. Equipamentos}
+
+\begin{minipage}[t]{0.48\textwidth}
+\subsection*{Fonte de tensão}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.95, every node/.style={font=\small}]
+    % caixa principal
+    \draw[thick] (0,0.8) rectangle (5.5,4.5);
+
+    % chave seletora
+    \node[text=quadrovermelho] at (4.2,5.0) {chave seletora};
+    \draw[quadrovermelho,->,thick] (3.9,4.8) -- (3.0,4.2);
+
+    % números do seletor
+    \foreach \txt/\x/\y in {
+        5/2.75/3.8,
+        6/3.60/3.35,
+        7/4.20/2.85,
+        8/3.55/2.30,
+        9/2.85/1.80,
+        10/3.85/1.45,
+        4/1.75/3.35,
+        3/1.25/2.80,
+        2/1.65/2.05,
+        1/2.10/1.45}
+    {
+        \node at (\x,\y) {\txt};
+    }
+
+    % ponteiro
+    \draw[thick,->] (2.75,2.85) -- (2.35,3.6);
+
+    % saídas laterais
+    \fill[quadrovermelho] (0,3.6) circle (2pt);
+    \fill (0,3.15) circle (2pt);
+    \fill[quadrovermelho] (5.5,3.35) circle (2pt);
+    \fill (5.5,2.95) circle (2pt);
+
+    \node[left] at (-0.1,3.6) {$+$};
+    \node[left] at (-0.1,3.15) {$-$};
+    \node[right] at (5.6,3.35) {$+$};
+    \node[right] at (5.6,2.95) {$-$};
+
+    \node[left] at (-0.5,3.35) {$V_{cc}\,(0\text{--}30\,V)$};
+    \node[right] at (6.2,3.15) {$V_{cc}\,(0\text{--}30\,V)$};
+
+    % saídas inferiores
+    \draw[thick] (0.9,0.8) rectangle (2.1,1.3);
+    \draw[thick] (3.5,0.8) rectangle (4.7,1.3);
+    \foreach \x in {1.2,1.5,1.8,3.8,4.1,4.4}
+        \fill (\x,1.05) circle (1.1pt);
+
+    \node[left] at (0.7,1.1) {$V_{ca}$};
+    \node[left] at (0.65,0.75) {$(0\text{--}6\,V)$};
+
+    \node[right] at (4.95,1.1) {$V_{ca}$};
+    \node[right] at (5.0,0.75) {$(0\text{--}20\,V)$};
+
+    % chave liga/desliga
+    \draw[thick] (2.55,0.8) rectangle (2.95,1.3);
+    \node[text=quadrovermelho,below] at (2.75,0.8) {chave liga/desliga};
+
+    \node[text=quadrovermelho,below] at (2.75,0.15) {Não usaremos no curso};
+\end{tikzpicture}
+\end{center}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\subsection*{Multímetro}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.95, every node/.style={font=\small}]
+    \draw[thick] (0,0) rectangle (4.5,6.0);
+
+    % quadrantes do seletor
+    \node at (1.0,5.1) {\textbf{DCV}};
+    \node at (3.6,5.1) {\textbf{ACV}};
+    \node at (1.0,2.0) {$\mathbf{\Omega}$};
+    \node at (3.6,2.0) {\textbf{DCA}};
+
+    \draw[thick] (1.4,4.8) arc[start angle=150,end angle=210,radius=0.7];
+    \draw[thick] (3.1,4.8) arc[start angle=30,end angle=-30,radius=0.7];
+    \draw[thick] (1.4,2.4) arc[start angle=210,end angle=150,radius=0.7];
+    \draw[thick] (3.1,2.4) arc[start angle=-30,end angle=30,radius=0.7];
+
+    % entradas
+    \fill[quadrovermelho] (4.5,1.4) circle (2pt);
+    \fill[quadrovermelho] (4.5,1.0) circle (2pt);
+    \fill (4.5,0.6) circle (2pt);
+
+    \node[left,text=quadrovermelho] at (4.35,1.0) {$V\Omega\,mA$};
+
+    \draw[thick,quadrovermelho] (5.1,1.4) rectangle (6.4,1.9);
+    \node at (5.75,1.65) {\textbf{10A}};
+
+    \node[right] at (4.7,1.0) {$(+)$};
+    \node[right] at (4.7,0.6) {Terra $=(-)$};
+
+    \node[text=black] at (6.0,4.3) {\shortstack{NÃO\\usaremos\\no curso}};
+    \draw[->,thick] (5.7,3.4) -- (5.15,1.95);
+\end{tikzpicture}
+\end{center}
+
+Instrumento que mede diversas grandezas elétricas:
+
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{DCV} $\rightarrow$ tensão contínua
+    \item \textbf{ACV} $\rightarrow$ tensão alternada
+    \item \textbf{DCA} $\rightarrow$ corrente contínua
+    \item $\boldsymbol{\Omega}$ $\rightarrow$ resistência
+\end{itemize}
+
+\end{minipage}
+
+\subsection*{Escalas do multímetro}
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{DCV} $\rightarrow$ $1000\,V$, $200\,V$, $20\,V$, $2000\,mV\,(2\,V)$, $200\,mV\,(0{,}2\,V)$
+    \item \textbf{ACV} $\rightarrow$ $750\,V$, $200\,V$
+    \item \textbf{DCA} $\rightarrow$ $2000\,\mu A\,(2\,mA)$, $20\,mA$, $200\,mA$
+    \item $\boldsymbol{\Omega}$ $\rightarrow$ $2000\,k\Omega$, $200\,k\Omega$, $20\,k\Omega$, $2000\,\Omega$, $200\,\Omega$
+\end{itemize}
+
+\newpage
+
+\section*{3. Procedimento experimental}
+
+\textbf{Observação importante:}
+
+\textit{Sempre devemos iniciar as medidas pela maior escala para evitar dano ao instrumento.}
+
+\subsection*{1ª parte}
+\begin{enumerate}[leftmargin=2em, label=\arabic*)]
+    \item Meça a tensão contínua com o multímetro variando o seletor da fonte de $1$ a $10$.  
+    Anote os valores na tabela.
+
+    \item Meça a tensão alternada com o multímetro variando o seletor da fonte de $1$ a $10$.  
+    Anote os valores na tabela.
+
+    \item Faça o gráfico $V_{cc}$ (eixo $y$) $\times$ $V_{ca}$ (eixo $x$).
+
+    \item Determine o coeficiente angular da reta.
+\end{enumerate}
+
+\subsection*{2ª parte}
+\begin{enumerate}[leftmargin=2em, label=\arabic*), start=5]
+    \item Meça a resistência de cada resistor diretamente com o multímetro e usando o protoboard.
+
+    \item Anote os valores experimentais na tabela $\left(R_{\mathrm{exp}}\right)$.
+
+    \item Anote os valores do fabricante na tabela
+    $\left(R_{\mathrm{nom}}\right)$, valor nominal.
+
+    \item Calcule a diferença percentual usando o valor do fabricante como referência.
+\end{enumerate}
+
+\subsection*{Unidades}
+\begin{itemize}[leftmargin=2em]
+    \item Tensão $\rightarrow$ Volt $(V)$
+    \item Corrente $\rightarrow$ Ampère $(A)$
+    \item Resistência $\rightarrow$ Ohm $(\Omega)$
+\end{itemize}
+
+\section*{4. Esquemas de medição}
+
+\subsection*{4.1 Medida de tensão contínua}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.0, every node/.style={font=\small}]
+    % Fonte
+    \draw[thick] (0,2.5) rectangle (2.8,5.0);
+    \fill[quadrovermelho] (2.8,4.1) circle (2pt);
+    \fill (2.8,3.6) circle (2pt);
+    \node[right] at (3.0,4.1) {$+$};
+    \node[right] at (3.0,3.6) {$-$};
+
+    \node[text=quadrovermelho,above] at (1.4,5.2) {\textbf{Medida de tensão contínua}};
+
+    % Multímetro
+    \draw[thick] (5.0,0.6) rectangle (7.2,3.1);
+    \node at (6.1,2.6) {\textbf{DCV}};
+    \draw[->,thick] (6.1,1.8) -- (5.6,2.2);
+
+    \fill[quadrovermelho] (7.2,1.4) circle (2pt);
+    \fill[quadrovermelho] (7.2,1.0) circle (2pt);
+    \fill (7.2,0.6) circle (2pt);
+
+    % fios
+    \draw[quadroazul,very thick] (2.8,4.1) -- (7.2,1.4);
+    \draw[quadroazul,very thick] (2.8,3.6) -- (7.2,1.0);
+\end{tikzpicture}
+\end{center}
+
+\subsection*{4.2 Medida de tensão alternada}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.0, every node/.style={font=\small}]
+    % Fonte
+    \draw[thick] (0,2.5) rectangle (2.8,5.0);
+    \fill (1.2,2.5) circle (2pt);
+    \fill (1.7,2.5) circle (2pt);
+
+    \node[text=quadrovermelho,above] at (1.4,5.2) {\textbf{Medida de tensão alternada}};
+
+    % Multímetro
+    \draw[thick] (5.0,0.6) rectangle (7.2,3.1);
+    \node at (6.1,2.6) {\textbf{ACV}};
+    \draw[->,thick] (6.1,1.8) -- (6.7,2.2);
+
+    \fill[quadrovermelho] (7.2,1.4) circle (2pt);
+    \fill[quadrovermelho] (7.2,1.0) circle (2pt);
+    \fill (7.2,0.6) circle (2pt);
+
+    % fios
+    \draw[quadroazul,very thick] (1.2,2.5) -- (7.2,1.4);
+    \draw[quadroazul,very thick] (1.7,2.5) -- (7.2,1.0);
+\end{tikzpicture}
+\end{center}
+
+\subsection*{4.3 Medida de resistência no protoboard}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.0, every node/.style={font=\small}]
+    % Protoboard
+    \draw[thick] (0,0) rectangle (3.4,6.0);
+    \node[above] at (1.7,6.1) {\textbf{Protoboard}};
+
+    % furos
+    \foreach \x in {0.7,1.7,2.7} {
+        \foreach \y in {5.3,4.6,3.9,3.2,2.5,1.8} {
+            \draw[quadrovermelho] (\x,\y) circle (2pt);
+        }
+    }
+
+    % resistor
+    \draw[thick]
+        (0.7,5.65) -- (0.95,5.45) -- (1.15,5.85) -- (1.35,5.45) --
+        (1.55,5.85) -- (1.75,5.45) -- (1.95,5.85) -- (2.15,5.45) --
+        (2.35,5.65);
+    \node[above] at (1.55,5.85) {$R$};
+
+    % multímetro
+    \draw[thick] (5.0,0.8) rectangle (7.3,3.2);
+    \node at (6.15,2.7) {$\Omega$};
+    \draw[->,thick] (6.15,1.8) -- (5.55,2.2);
+
+    \fill[quadrovermelho] (7.3,1.5) circle (2pt);
+    \fill[quadrovermelho] (7.3,1.1) circle (2pt);
+    \fill (7.3,0.7) circle (2pt);
+
+    % fios
+    \draw[quadroazul,very thick] (0.7,2.5) -- (0.7,-0.2) -- (7.3,-0.2) -- (7.3,1.5);
+    \draw[quadroazul,very thick] (1.7,2.5) -- (1.7,0.2) -- (6.7,0.2) -- (7.3,1.1);
+\end{tikzpicture}
+\end{center}
+
+\section*{5. Gráfico $V_{cc}$ em função de $V_{ca}$}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.2, every node/.style={font=\small}]
+    % eixos
+    \draw[->] (0,0) -- (6,0) node[right] {$V_{ca}\,(\text{volts})$};
+    \draw[->] (0,0) -- (0,5) node[above] {$V_{cc}\,(\text{volts})$};
+
+    % reta
+    \draw[quadroazul,very thick] (0,0) -- (5.1,4.3);
+
+    % pontos escolhidos
+    \coordinate (P1) at (1.8,1.52);
+    \coordinate (P2) at (3.5,2.95);
+
+    \fill[quadroazul] (P1) circle (1.5pt);
+    \fill[quadroazul] (P2) circle (1.5pt);
+
+    % projeções
+    \draw[dashed,quadrovermelho] (P1) -- (1.8,0);
+    \draw[dashed,quadrovermelho] (P1) -- (0,1.52);
+
+    \draw[dashed,quadrovermelho] (P2) -- (3.5,0);
+    \draw[dashed,quadrovermelho] (P2) -- (0,2.95);
+
+    % deltas
+    \draw[<->,quadrovermelho,thick] (1.8,1.15) -- (3.5,1.15)
+        node[midway,below] {$\Delta V_{ca}$};
+
+    \draw[<->,quadrovermelho,thick] (3.72,1.52) -- (3.72,2.95)
+        node[midway,right] {$\Delta V_{cc}$};
+
+    % rótulos
+    \node[below] at (1.8,0) {$V_{ca1}$};
+    \node[below] at (3.5,0) {$V_{ca2}$};
+    \node[left] at (0,1.52) {$V_{cc1}$};
+    \node[left] at (0,2.95) {$V_{cc2}$};
+\end{tikzpicture}
+\end{center}
+
+\[
+\textcolor{quadrovermelho}{y=ax+b}
+\qquad
+\textcolor{quadrovermelho}{b \sim 0}
+\]
+
+\[
+V_{cc} = a\,V_{ca}
+\]
+
+\[
+y \rightarrow V_{cc}
+\qquad\qquad
+x \rightarrow V_{ca}
+\]
+
+\[
+\boxed{
+a=\frac{\Delta V_{cc}}{\Delta V_{ca}}
+=
+\frac{V_{cc2}-V_{cc1}}{V_{ca2}-V_{ca1}}
+}
+\]
+
+\end{document}

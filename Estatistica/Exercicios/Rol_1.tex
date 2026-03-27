@@ -1,0 +1,95 @@
+
+%!TEX program = lualatex
+% Arquivo: Template_Estat_Texto.tex
+
+\documentclass[a4paper,12pt]{article}
+
+% =========================================================
+% Idioma e tipografia (LuaLaTeX)
+% =========================================================
+\usepackage[portuguese]{babel}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+
+% =========================================================
+% Layout
+% =========================================================
+\usepackage[top=3cm,bottom=2.5cm,left=3cm,right=2.5cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25cm}
+
+% =========================================================
+% Matemática (align*, etc.)
+% =========================================================
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% =========================================================
+% Tabelas, listas, figuras
+% =========================================================
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\setlist[itemize]{noitemsep,topsep=3pt}
+\setlist[enumerate]{noitemsep,topsep=3pt}
+
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{pdflscape}
+\graphicspath{{./}{./imagens/}{./figuras/}}
+
+% =========================================================
+% Links
+% =========================================================
+\usepackage{hyperref}
+\usepackage{xurl}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=blue,
+  citecolor=black,
+  pdfauthor={},
+  pdftitle={}
+}
+
+\title{\textbf{Exercício: Altura de 40 alunos}}
+\author{\Aluno}
+\date{\Cidade --- \Ano}
+
+\begin{document}
+      \begin{table}[htb]
+        \centering
+\begin{tabular}{ll}
+    \toprule
+Elemento & Frequência \\
+\midrule
+5 & 2 \\
+6 & 3 \\
+7 & 6 \\
+8 & 5 \\
+9 & 2 \\
+10 & 2 \\
+11 & 4 \\
+12 & 10 \\
+13 & 1 \\
+14 & 11 \\
+15 & 2 \\
+16 & 1 \\
+22 & 1\\
+\bottomrule
+&$\sum f_i = 50$
+\end{tabular}
+\caption{}
+\label{tab:freq}
+\end{table}
+
+\begin{figure}[hbt]
+    \centering
+    \includegraphics[width=0.8\linewidth]{D:/R_Projects/Rol_e_frequencia/Rplot.png}
+\end{figure}
+\begin{figure}
+  
+\end{figure}
+\end{document}

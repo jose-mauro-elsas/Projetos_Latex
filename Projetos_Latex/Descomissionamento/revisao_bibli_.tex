@@ -1,0 +1,80 @@
+%!TEX program = lualatex
+\documentclass[a4paper,12pt]{article}
+
+% =========================================================
+% Idioma
+% =========================================================
+\usepackage[portuguese]{babel}
+
+% =========================================================
+% Fonte e acentuação (LuaLaTeX)
+% =========================================================
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+
+% =========================================================
+% Layout da página
+% =========================================================
+\usepackage[
+  top=3cm,
+  bottom=2cm,
+  left=3cm,
+  right=2cm
+]{geometry}
+
+% =========================================================
+% Parágrafos e espaçamento
+% =========================================================
+\usepackage{indentfirst}   % indenta o primeiro parágrafo
+\usepackage{setspace}
+\onehalfspacing
+\setlength{\parindent}{1.25cm}
+
+% =========================================================
+% Matemática básica
+% =========================================================
+\usepackage{amsmath,amssymb}
+
+% =========================================================
+% Figuras e tabelas
+% =========================================================
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+
+% =========================================================
+% Controle fino de listas (opcional)
+% =========================================================
+\usepackage{enumitem}
+\setlist[itemize]{noitemsep,topsep=3pt}
+\setlist[enumerate]{noitemsep,topsep=3pt}
+
+% =========================================================
+% Hiperlinks (último pacote)
+% =========================================================
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor=blue
+}
+
+\begin{document}
+\begin{enumerate}
+    \item Definição do Tema e Pergunta de Pesquisa: Escolha do tema e formulação de
+     uma pergunta clara e objetiva que guiará a revisão.
+    \item Levantamento de Literatura (Busca): Identificação de fontes relevantes em 
+    bases de dados (ex: Google Acadêmico, Scielo), utilizando palavras-chave.
+    \item Seleção de Fontes: Aplicação de critérios de inclusão e exclusão 
+    (idioma, período, tipo de estudo)
+ para filtrar o material levantado. 
+    \item Leitura e Fichamento (Coleta): Leitura técnica (resumo, introdução e 
+    conclusão) e organização dos textos principais, fichando os pontos-chave. 
+    \item Análise Crítica e Síntese: Avaliação dos estudos, identificando lacunas, 
+    padrões e semelhanças, organizando as informações para responder à pergunta de pesquisa.
+    \item Redação da Revisão: Escrita do texto estruturado, com introdução (objetivo), desenvolvimento 
+(discussão dos resultados) e conclusão, integrando as ideias dos autores. 
+\end{enumerate}
+
+\end{document}

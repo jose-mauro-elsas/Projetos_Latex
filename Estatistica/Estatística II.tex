@@ -1,0 +1,71 @@
+% !TEX program = lualatex
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[brazil]{babel}
+\usepackage{geometry}
+\geometry{top=2.5cm,bottom=2.0cm,left=2.5cm,right=2.0cm}
+
+% Matemática / tabelas
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{makecell}
+\usepackage{siunitx}
+
+% Listas e floats
+\usepackage{enumitem}
+\usepackage{float}
+
+% Figuras
+\usepackage{graphicx}
+\usepackage[table]{xcolor}
+
+% Fonte (LuaLaTeX)
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+
+% Microtipografia / links / PDFs
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{pdfpages}
+
+% Caption (carregar UMA vez)
+\usepackage[hypcap=false]{caption} % se você precisa dessa opção, mantenha
+
+% TikZ/PGFPlots
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.18, width=11cm}
+\usepgfplotslibrary{fillbetween}
+\usetikzlibrary{calc,arrows.meta,intersections,decorations.pathreplacing}
+
+% Ambientes
+\theoremstyle{definition} % texto normal (não itálico)
+\newtheorem{example}{Exemplo}[section]
+
+\theoremstyle{definition}
+\newtheorem{propriedade}{Propriedade}[section]
+
+% Header
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[R]{\nouppercase{\scshape\rightmark}}
+\lhead{\textsc{Notas sobre Estatística}}
+\setlength{\headheight}{15pt}
+\addtolength{\topmargin}{-3pt}
+
+% Títulos
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\Large\scshape}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\scshape}{\thesubsection}{1em}{}
+
+% Listas
+\setlist[itemize]{noitemsep,topsep=4pt}
+\begin{document}
+\tableofcontents
+\newpage

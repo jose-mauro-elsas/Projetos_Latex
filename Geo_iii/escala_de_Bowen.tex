@@ -1,0 +1,152 @@
+\begin{tikzpicture}[
+    x=1cm,y=1cm,
+    >=Latex,
+    font=\small,
+    titulo/.style={
+        draw,
+        rounded corners=2pt,
+        fill=gray!15,
+        font=\bfseries,
+        minimum width=3.9cm,
+        minimum height=0.8cm,
+        align=center
+    },
+    mineralL/.style={
+        draw,
+        rounded corners=2pt,
+        fill=green!18,
+        minimum width=3.6cm,
+        minimum height=0.8cm,
+        align=center
+    },
+    mineralR/.style={
+        draw,
+        rounded corners=2pt,
+        fill=blue!12,
+        text width=3.25cm,
+        minimum height=0.95cm,
+        align=center
+    },
+    tardio/.style={
+        draw,
+        rounded corners=2pt,
+        fill=orange!12,
+        minimum width=2.35cm,
+        minimum height=0.8cm,
+        align=center
+    },
+    notaL/.style={
+        align=center,
+        text width=3.0cm,
+        font=\footnotesize
+    },
+    notaR/.style={
+        align=center,
+        text width=3.3cm,
+        font=\footnotesize
+    }
+]
+
+% -------------------------------------------------
+% Título geral
+% -------------------------------------------------
+\node[font=\bfseries\large] at (0.1,6.0) {Série de Reação de Bowen};
+
+% -------------------------------------------------
+% Eixo de temperatura
+% -------------------------------------------------
+\draw[very thick,-{Latex[length=3mm]}] (-5.4,5.5) -- (-5.4,-5.4);
+\node[left] at (-5.55,5.1) {alta};
+\node[left] at (-5.55,-4.9) {baixa};
+\node[below,align=center] at (-5.4,-5.45) {Temperatura\\decrescente};
+
+% -------------------------------------------------
+% Cabeçalhos das colunas
+% -------------------------------------------------
+\node[titulo] (td) at (-1.9,5.1) {Série descontínua};
+\node[titulo] (tc) at ( 2.1,5.1) {Série contínua};
+
+% -------------------------------------------------
+% Série descontínua
+% -------------------------------------------------
+\node[mineralL] (ol) at (-1.9,4.0) {Olivina};
+\node[mineralL] (px) at (-1.9,2.8) {Piroxênio};
+\node[mineralL] (am) at (-1.9,1.6) {Anfibólio};
+\node[mineralL] (bt) at (-1.9,0.4) {Biotita};
+
+\draw[very thick,-{Latex[length=3mm]}] (ol.south) -- (px.north);
+\draw[very thick,-{Latex[length=3mm]}] (px.south) -- (am.north);
+\draw[very thick,-{Latex[length=3mm]}] (am.south) -- (bt.north);
+
+% -------------------------------------------------
+% Série contínua
+% -------------------------------------------------
+\node[mineralR] (pl1) at (2.1,4.0) {Plagioclásio\\cálcico};
+\node[mineralR] (pl2) at (2.1,2.8) {Plagioclásio\\cálcico--sódico};
+\node[mineralR] (pl3) at (2.1,1.6) {Plagioclásio\\sódico--cálcico};
+\node[mineralR] (pl4) at (2.1,0.4) {Plagioclásio\\sódico};
+
+\draw[very thick,-{Latex[length=3mm]}] (pl1.south) -- (pl2.north);
+\draw[very thick,-{Latex[length=3mm]}] (pl2.south) -- (pl3.north);
+\draw[very thick,-{Latex[length=3mm]}] (pl3.south) -- (pl4.north);
+
+% -------------------------------------------------
+% Notas explicativas (deslocadas para não cruzar setas)
+% -------------------------------------------------
+\node[notaL] at (-3.5,-0.9)
+{cada mineral reage com o magma e é \\substituído por \\outro};
+
+\node[notaR] at (4.1,-0.9)
+{a composição muda de rica em Ca\\para rica em Na};
+
+% -------------------------------------------------
+% Caixa central: minerais tardios
+% -------------------------------------------------
+\node[titulo, minimum width=5.5cm] (tf) at (0.1,-1.8) {Minerais tardios};
+
+% -------------------------------------------------
+% Conexões até a caixa central (desviadas do texto)
+% -------------------------------------------------
+\coordinate (ljoin) at (-0.95,-1.15);
+\coordinate (rjoin) at ( 1.15,-1.15);
+
+\draw[very thick]
+    (bt.south) -- ++(0,-0.15) coordinate (btA)
+    -- ++(0.95,0) coordinate (btB)
+    -- (btB |- ljoin);
+\draw[very thick,-{Latex[length=3mm]}]
+    (btB |- ljoin) -- (tf.north west);
+
+\draw[very thick]
+    (pl4.south) -- ++(0,-0.15) coordinate (plA)
+    -- ++(-0.95,0) coordinate (plB)
+    -- (plB |- rjoin);
+\draw[very thick,-{Latex[length=3mm]}]
+    (plB |- rjoin) -- (tf.north east);
+
+% -------------------------------------------------
+% Minerais tardios finais
+% -------------------------------------------------
+\node[tardio] (kf) at (-2.35,-3.45) {K-feldspato};
+\node[tardio] (ms) at ( 0.00,-3.45) {Muscovita};
+\node[tardio] (qt) at ( 2.35,-3.45) {Quartzo};
+
+% pontos de saída da caixa central
+\coordinate (tfL) at ($(tf.south west)!0.18!(tf.south east)$);
+\coordinate (tfC) at ($(tf.south west)!0.50!(tf.south east)$);
+\coordinate (tfR) at ($(tf.south west)!0.82!(tf.south east)$);
+
+\draw[very thick,-{Latex[length=3mm]}] (tfL) -- (kf.north);
+\draw[very thick,-{Latex[length=3mm]}] (tfC) -- (ms.north);
+\draw[very thick,-{Latex[length=3mm]}] (tfR) -- (qt.north);
+
+% -------------------------------------------------
+% Legendas laterais afastadas do desenho
+% -------------------------------------------------
+\node[align=left, text width=2.6cm] at (6.0,4.0)
+{minerais de\\alta temperatura};
+
+\node[align=left, text width=2.6cm] at (5.0,-3.45)
+{minerais de\\baixa temperatura};
+
+\end{tikzpicture}

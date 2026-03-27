@@ -1,0 +1,356 @@
+\subsubsection{Exemplos clássicos}
+\begin{itemize}
+  \item \(f(x)=x\) em \([0,1]\): contínua \(\Rightarrow\) integrável e 
+  \(\int_0^1 x\,\dif x=\tfrac12\).
+  \item \textbf{Dirichlet:} \(f(x)=1\) se \(x\) é racional e \(0\) se 
+  irracional em \([0,1]\). Não é Riemann integrável.
+  \item \textbf{Thomae (``pipoca''):} \(f(x)=\begin{cases}1/q,&x=p/q
+    \ (\gcd(p,q)=1)\\[2pt] 0,&x\ \text{irracional}\end{cases}\).
+  É Riemann integrável e \(\int_0^1 f\,\dif x=0\).
+\end{itemize}
+
+\subsubsection {Exemplo por somas superior/inferior}
+Para \(f(x)=x\) em \([0,1]\), use a partição uniforme \(x_i=i/n\).
+Temos \(m_i=x_{i-1}=\tfrac{i-1}{n}\) e \(M_i=x_i=\tfrac{i}{n}\). Logo,
+\[
+L(P_n,f)=\sum_{i=1}^n \frac{i-1}{n}\cdot\frac{1}{n}
+=\frac{1}{n^2}\sum_{k=0}^{n-1}k
+=\frac{n-1}{2n},
+\]
+\[
+U(P_n,f)=\sum_{i=1}^n \frac{i}{n}\cdot\frac{1}{n}
+=\frac{1}{n^2}\sum_{i=1}^{n}i
+=\frac{n+1}{2n}.
+\]
+Como \(L(P_n,f),U(P_n,f)\to \tfrac12\), conclui-se \(\displaystyle 
+\int_0^1 x\,\dif x=\tfrac12\).
+
+\subsubsection {Relação com a integral definida (TFC)}
+Se \(F\) é uma primitiva de \(f\) (\(F'=f\)), então
+\[
+\int_a^b f(x)\,\dif x = F(b)-F(a).
+\]
+
+\subsubsection {Integrais impróprias (observação)}
+Se \(f\) não é limitada em \([a,b]\) ou se o intervalo é infinito, define-se por limites:
+\[
+\int_a^b f(x)\,\dif x
+:=\lim_{t\to b^-}\int_a^t f(x)\,\dif x,\qquad
+\int_a^{+\infty} f(x)\,\dif x
+:=\lim_{t\to +\infty}\int_a^{t} f(x)\,\dif x.
+\]
+
+\subsubsection {Propriedades úteis}
+Para integráveis \(f,g\) e escalares \(\alpha,\beta\),
+\begin{align*}
+&\int_a^b (\alpha f+\beta g)\,\dif x = \alpha\int_a^b f\,\dif x+\beta\int_a^b g\,\dif x,\\
+&\int_a^b f\,\dif x = \int_a^c f\,\dif x+\int_c^b f\,\dif x,\\
+&\int_a^b f\,\dif x = -\int_b^a f\,\dif x.
+\end{align*}
+
+\[
+f: [a,a]\rightarrow{\mathbb R},\ f\geq0
+\]
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        xmin=0.5, xmax=3,
+        ymin=.55, ymax=0.95,
+        axis x line=middle,
+        axis y line=middle,
+        axis line style={-},
+        tick align=outside,
+        %grid=both,
+        minor tick num=1,
+        xlabel={$x$}, 
+        ylabel={$y$},
+          % coloca o xlabel abaixo e à direita (fora)
+        xlabel style={at={(axis description cs:1,-0.08)},anchor=north},
+        title={$0.9\sen(0.8x)$}
+          % coloca o ylabel acima e à esquerda (fora)
+        ylabel style={at={(axis description cs:-12,1.5)},anchor=south},
+      ]
+
+        % Intervalo de sombreamento
+        \def\a{1}
+        \def\b{2.5}
+
+        % 1) Curva (NOMEADA)
+        \addplot[name path=curva, domain=\a:\b, samples=250, thick]
+          {0.9*sin(deg(0.8*x))};
+
+        % 2) Base (NOMEADA)
+        \addplot[name path=base, domain=\a:\b, samples=2]
+          {0};
+
+        % 3) Preenchimento (depois dos dois paths)
+        \addplot[fill=gray!20, draw=none, opacity=.5]
+          fill between[of=curva and base];
+
+        % 4) Retas verticais (em coordenadas do eixo)
+        \draw[line width=0.6pt] (axis cs:\a,0) -- (axis cs:\a,{0.9*sin(deg(0.8*\a))});
+        \draw[line width=0.6pt] (axis cs:\b,0) -- (axis cs:\b,{0.9*sin(deg(0.8*\b))});
+
+      \end{axis}
+    \end{tikzpicture}
+    \caption{Área sob o gráfico.}
+  \end{figure}
+  Se, por hipótese, se quer calcular a área sob a curva, calcula-se a integral da função
+  entre os limites de integração [a,b], ou seja, a integral de Riemann.
+\medskip
+ 
+A área de \(S\) é
+  \[
+  \int_a^b f(x)\,\dif x \;=\;
+  \lim_{\|\Delta x\|\to 0}\sum_{i=1}^n f(c_i)\,(x_i-x_{i-1}).
+  \]
+  Seja \(f:[a,b]\to\mathbb{R}\) contínua. Se \(F\) é uma primitiva de \(f\), então
+  \[
+  \int_{a}^{b}f(x)\,\dif x = F\bigg|_{a}^{b} = F(b)-F(a).
+  \]
+
+  \subsubsection*{Exercício 1.}
+  \begin{align*}
+   &\int_{0}^{5}x^2\,\dif x = \frac{x^3}{3}\bigg|_{0}^{5} =\\
+   &\frac{5^3}{3}-\frac{0^3}{3}=\\
+   &=\boxed{\frac{125}{3}\,u.a.}
+  \end{align*}
+
+  \subsubsection*{Exercício 2.}
+  
+ \begin{align*}
+ &\int_{-1}^{1}e^x\,\dif x =\\
+ & e^x\bigg|_{-1}^{1}= e^1-e^{-1}\, =\\
+ & =\boxed{e - \frac{1}{e}}\,u.a.
+\end{align*} 
+
+  \subsubsection*{Exercício 3.}
+  \begin{align*}
+    \int_{0}^{2}(x^2 - 2x)\,\dif x
+    &= \int_{0}^{2}x^2\,\dif x -2\int_{0}^{2}x\,\dif x \\
+    &= \frac{x^3}{3}\bigg|_{0}^{2} -\cancel{2}\,\frac{x^2}{\cancel{2}}\bigg|_{0}^{2}\\
+    &= \frac{8}{3}-2 = \boxed{-\frac{4}{3}}\,u.a.
+  \end{align*}
+  \medskip
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      xmin=-2, xmax=3.5,
+      ymin=-1.5, ymax=2.5,
+      axis x line=middle,
+      axis y line=middle,
+      axis line style={-},
+      tick align=outside,
+      %grid=both,
+      minor tick num=1,
+      xlabel={$x$},
+      ylabel={$y$},
+     % title={$f(x)=x^2-2x$}
+    ]
+      \addplot[red, domain=-3:4, samples=200] {x^2-2*x};
+      \addplot[domain=0:2, samples=200, draw=none, fill=gray!20, opacity=.35] {x^2-2*x} \closedcycle;
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Função módulo $f(x)=x^2-2x$.}
+\end{figure}
+
+\subsubsection*{Exercício 4.}
+Calcular a área entre a curva e o eixo \(x\) para \([2,5]\).
+\[
+\int_{2}^{5}(4x-x^2)\,\dif x
+\]
+
+% no preâmbulo:
+% \usepgfplotslibrary{fillbetween}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      xmin=1.5, xmax=5.5,
+      ymin=-0.5, ymax=4.5,
+      axis x line=middle,
+      axis y line=middle,
+      axis line style={->},
+      tick align=outside,
+      minor tick num=1,
+      xlabel={$x$},
+      ylabel={$y$},
+      title={$f(x)=4x-x^2$},
+      clip=false,
+      xlabel style={at={(axis description cs:1,0.6)},anchor=north},
+      ylabel style={at={(axis description cs:0.1,1)},anchor=south},
+    ]
+
+      % Curva (para aparecer no gráfico, no intervalo todo)
+      \addplot[red, domain=2:5, samples=200, thick]
+        {-x^2 + 4*x};
+
+      % ===== SOMBREADO 1: entre x=1 e x=4 =====
+      \addplot[name path=curvaA, domain=2:4, samples=200]
+        {-x^2 + 4*x};
+      \addplot[name path=baseA, domain=2:4, samples=2]
+        {0};
+
+      \addplot[opacity=.5, fill=gray!20, draw=none]
+        fill between[of=curvaA and baseA];
+
+      % ===== SOMBREADO 2: entre x=4 e x=5 =====
+      \addplot[name path=curvaB, domain=4:5, samples=200]
+        {-x^2 + 4*x};
+      \addplot[name path=baseB, domain=4:5, samples=2]
+        {0};
+
+      \addplot[opacity=.5, fill=gray!20, draw=none]
+        fill between[of=curvaB and baseB];
+
+      % Retas verticais em x=2 e x=5
+      \draw[line width=0.6pt] (axis cs:2,0) -- (axis cs:2,{-(2)^2 + 4*(2)});
+      \draw[line width=0.6pt] (axis cs:5,0) -- (axis cs:5,{-(5)^2 + 4*(5)});
+
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Área entre $f(x)$ e o eixo $x$ no intervalo $[1,\,5]$.}
+\end{figure}
+
+Como parte fica abaixo do eixo \(x\), separamos:
+\[
+\int_{2}^{4}(4x-x^2)\,\dif x -\int_{4}^{5}(4x-x^2)\,\dif x
+\]
+Primeira integral:
+\begin{align*}
+  & \int_{2}^{4}(4x-x^2)\,dx = \Bigg(\frac{4x^2}{2}\Bigg) - \Bigg(\frac{x^3}{3}\Bigg)\\
+  & = \Bigg(\frac{\cancel{4}2x^2}{\cancel{2}}\Bigg) - \Bigg(\frac{x^3}{3}\Bigg)=\frac{6x^2-x^3}{3}\Bigg|_2^4=\\
+  & =\frac{32}{3}-\frac{16}{3}=\frac{16}{3}
+\end{align*}
+
+Segunda integral (atenção ao sinal global ``menos''):
+
+\begin{align*}
+  & -\int_{4}^{5}(4x-x^2)\,dx = -\Bigg[\Bigg(2x^2\Bigg) - \Bigg(\frac{x^3}{3}\Bigg)\Bigg]=\\
+  & -\Bigg[\frac{6x^2-x^3}{3}\Bigg]\Bigg|_4^5=\frac{x^3-6x^2}{3}\Bigg|_4^5=\\
+  &\frac{5^3-6\cdot5^2}{3}-\frac{4^3-6\cdot4^2}{3}=\\
+  &\frac{-25+32}{3}=\frac{7}{3}
+\end{align*}
+
+Área total:
+\[
+  \boxed{\frac{23}{3}\,u.a.}
+\]
+
+\subsubsection*{Exercício 5.}
+\begin{align*}
+\int_{-2}^{2}(4-y^2)\,dy
+&=4\int_{-2}^{2}\dif y-\int_{-2}^{2}y^2\,\dif y\\
+&=4y\bigg|_{-2}^{2}-\frac{y^3}{3}\bigg|_{-2}^{2}\\
+&=4(2-(-2))-\left(\frac{8}{3}-\frac{-8}{3}\right)\\
+&=16-\frac{16}{3}
+=\boxed{\frac{32}{3}\text{ u.a.}}
+\end{align*}
+
+
+\subsubsection*{Exercício 6. (área para \(y=x^2\) em \([0,5]\)):}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      xmin=0, xmax=6,
+      ymin=0, ymax=26,
+      axis x line=middle,
+      axis y line=middle,
+      axis line style={-},
+      tick align=outside,
+      %grid=both,
+      minor tick num=1,
+      xlabel={$x$},
+      ylabel={$y$},
+      title={$f(x)=x^2$}
+    ]
+      \addplot[domain=0:5, samples=200, draw=none, fill=gray!20] {x^2} \closedcycle;
+      \addplot[domain=0:5, samples=200] {x^2};
+      %\draw[line width=0.6pt] (1,0) -- (1,1);
+      \draw[line width=0.6pt] (5,0) -- (5,25);
+      
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Função $f(x)=x^2$.}
+\end{figure}
+\begin{align*}
+  &\int_{0}^{5}x^2\,\dif x = \frac{x^3}{3}\bigg|_{0}^{5}\\
+  &= \boxed{\frac{125}{3}}
+\end{align*}
+
+
+\subsubsection*{Exercício 7.}
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      xmin=-.6, xmax=2.5,
+      ymin=-1.1, ymax=1.5,
+      axis x line=middle,
+      axis y line=middle,
+      axis line style={-},
+      tick align=outside,
+      %grid=both,
+      minor tick num=1,
+      xlabel={$x$},
+      ylabel={$y$},
+      title={$f(x)=x^2-2x$}
+    ]
+      \addplot[domain=0:2, samples=200, draw=none, fill=gray!20, opacity=.5] {x^2-2*x} \closedcycle;
+      \addplot[domain=-.5:2.5, samples=200] {x^2-2*x};
+      %\draw[line width=0.6pt] (1,0) -- (1,1);
+      %\draw[line width=0.6pt] (2.5,0) -- (2.,-1.5);
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Função módulo $f(x)=x^2-2x$.}
+\end{figure}
+Como está abaixo do eixo \(x\):
+\[
+A=-\int_{0}^{2}(x^2-2x)\,\dif x
+= -\bigg(\frac{x^3}{3}-x^2\bigg)\bigg|_{0}^{2}
+= \boxed{\frac{4}{3}}
+\]
+
+\subsubsection*{Exercício 8.}
+\begin{align*}
+y
+&=\int_{3}^{x^2}(5t+8)^{32}\,\dif t \\[4pt]
+\text{Defina } F(u)
+&=\int_{3}^{u}(5t+8)^{32}\,\dif t
+\quad\Rightarrow\quad y = F(x^2) \\[4pt]
+\text{Pelo TFC (Parte I):}\quad
+F'(u)
+&=(5u+8)^{32} \\[4pt]
+\text{Pela regra da cadeia:}\quad
+\frac{dy}{dx}
+&=F'(x^2)\cdot \frac{d}{dx}(x^2) \\[4pt]
+&=(5x^2+8)^{32}\cdot 2x.
+\end{align*}
+
+
+\subsubsection*{Exercício 9.}
+\[
+\frac{\dif}{\dif x}\int_{1}^{x^4}\sec t\,\dif t
+= \sec(x^4)\cdot 4x^3
+\]
+(Use TFC + regra da cadeia.)
+
+\subsection*{Propriedades}
+
+  \[\int_{a}^{a}f(x)\, dx=0
+  \].
+
+  \[\int_{b}^{a}f(x)\,\dif x=-\int_{a}^{b}f(x)\,dx\].
+
+\subsubsection*{Exercício 10.}
+\[
+\frac{\dif}{\dif x}\!\left(\int_{-x}^{0}\!\sqrt{t^2+1}\,\dif t
++ \int_{0}^{5x-7}\!\sqrt{t^2+1}\,\dif t\right)
+= -\sqrt{(-x)^2+1}\cdot(-1)
++ \sqrt{(5x-7)^2+1}\cdot 5
+\]

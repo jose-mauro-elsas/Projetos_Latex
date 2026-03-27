@@ -1,0 +1,303 @@
+%!TEX program = lualatex
+% Arquivo: Descomissionamento_beamer.tex
+\documentclass[aspectratio=169,11pt]{beamer}
+
+% ===== Tema / aparência =====
+\usetheme{Madrid}
+% Aumenta o tamanho dos números do enumerate (bolinhas numeradas)
+\setbeamerfont{enumerate item}{size=\large}
+\setbeamerfont{enumerate subitem}{size=\normalsize}
+\setbeamerfont{enumerate subsubitem}{size=\normalsize}
+
+\usecolortheme{default}
+\setbeamertemplate{navigation symbols}{}
+
+% ===== Fix: evita "Referências |" quando não há subseção =====
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.6ex,dp=1.2ex,leftskip=.6em,rightskip=.6em]{frametitle}%
+    \usebeamerfont{frametitle}\insertframetitle%
+    \ifx\insertsubsectionhead\empty\else\ \textbar\ \insertsubsectionhead\fi%
+  \end{beamercolorbox}%
+}
+
+% ===== Idioma =====
+\usepackage[portuguese]{babel}
+
+% ===== Fonte (LuaLaTeX) =====
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+
+% ===== Figuras / tabelas =====
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% ===== Links =====
+\usepackage{xurl}
+\Urlmuskip=0mu plus 1mu
+
+% ===== Metadados =====
+\title[Descomissionamento offshore]{Descomissionamento de UEPs e Sistemas Subsea\\de Produção}
+\subtitle{Proposta de estudo para TCC (Oceanografia)}
+\author[José Mauro X. Elsas]{José Mauro Xavier Elsas}
+\institute[UERJ]{Universidade do Estado do Rio de Janeiro (UERJ)\\Faculdade de Oceanografia}
+\date{Janeiro de 2026}
+
+% ===== Atalhos =====
+\newcommand{\UEP}{Unidade Estacionária de Produção}
+\newcommand{\Subsea}{\textit{subsea}}
+
+% ===== TikZ =====
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,calc,backgrounds}
+
+\tikzset{
+  process/.style={
+    draw,
+    rounded corners=2pt,
+    thick,
+    align=left,
+    text width=4.9cm,
+    minimum height=1.25cm,
+    inner xsep=6pt,
+    inner ysep=6pt,
+    font=\small
+  },
+  process_final/.style={
+    process,
+    font=\small\bfseries
+  },
+  arrow/.style={
+    -{Stealth[length=3mm,width=2.2mm]},
+    thick
+  },
+  megaArrow/.style={
+    draw,
+    line width=3.2pt,
+    rounded corners=10pt,
+    -{Stealth[length=5mm,width=3.6mm]},
+    opacity=0.65
+  }
+}
+
+% ===== Citações: modo tolerante (não para a compilação se faltar bibitem) =====
+% Você pode remover isto quando as referências estiverem OK.
+\usepackage{cite}
+\makeatletter
+\renewcommand{\cite}[1]{\textsuperscript{[\@for\@tempa:=#1\do{\@tempa,}\@gobble]}}
+\makeatother
+
+\begin{document}
+
+% ================== CAPA ==================
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ================== SUMÁRIO ==================
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+% ================== 1. CONTEXTO ==================
+\section{Contexto e motivação}
+
+\begin{frame}{Por que o tema importa?}
+\begin{itemize}
+  \item Parte relevante das instalações offshore se aproxima do fim de vida útil nominal.
+  \item Decisões de descomissionamento impactam:
+    \begin{itemize}
+      \item segurança operacional e integridade estrutural;
+      \item meio ambiente marinho e riscos de impactos ambientais;
+      \item produtividade, vida útil dos ativos e impactos sociais.
+    \end{itemize}
+  \item O planejamento precisa ser antecipado e baseado em evidências (técnicas, ambientais e 
+  regulatórias).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Problema}
+\begin{block}{Questão central}
+Como avaliar se uma operação de descomissionamento pode ser feita com minimo impacto ambiental 
+seguindo a documentação regulatória em \UEP{} e sistemas de produção \Subsea{}, no contexto brasileiro, 
+conciliando requisitos normativos e boas práticas internacionais?
+\end{block}
+
+\begin{block}{Pano de fundo regulatório}
+No Brasil, a Resolução ANP n.º 817/2020 estabelece diretrizes e obrigações para o descomissionamento 
+\cite{ANP8172020}. Em paralelo, há referências internacionais relevantes, como diretrizes da IMO para 
+remoção de instalações \cite{IMOA672}.
+\end{block}
+\end{frame}
+
+% ================== 2. OBJETIVOS ==================
+\section{Objetivos}
+
+\begin{frame}{Objetivo geral}
+\begin{itemize}
+  \item Estruturar um anteprojeto de TCC que consolide um 
+  \textbf{arcabouço técnico-ambiental-regulatório} para o descomissionamento offshore (topside+\Subsea{}), com foco no contexto brasileiro.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Objetivos específicos}
+\begin{enumerate}
+  \item Mapear requisitos regulatórios nacionais aplicáveis (ANP, IBAMA, ICMbio, Inea).
+  \item Sistematizar referências e diretrizes internacionais (IMO, boas práticas, etc.).
+  \item Identificar principais impactos e receptores ambientais marinhos ao longo das etapas do descomissionamento.
+  \item Propor um roteiro metodológico de análise (dados, premissas, critérios e entregáveis).
+  \item Avaliar a relação entre ambiente oceanográfico, profundidade e complexidade do descomissionamento;
+  \end{enumerate}
+\end{frame}
+
+% ================== 3. MARCO REGULATÓRIO ==================
+\section{Marco regulatório e referências}
+
+\begin{frame}{Regulação nacional (exemplo de base)}
+\begin{itemize}
+  \item \textbf{ANP}:
+    \begin{itemize}
+      \item Resolução nº 817/2020: regras para descomissionamento, devolução de áreas e reversão de bens \cite{ANP8172020}.
+      \item Portal institucional sobre descomissionamento (visão geral e documentos) \cite{ANPDescomissionamentoPortal}.
+    \end{itemize}
+\end{itemize}
+
+\begin{block}{Nota}
+Neste anteprojeto, a regulação nacional entra como \textbf{restrição} e \textbf{critério de conformidade} para qualquer alternativa técnica.
+\end{block}
+\end{frame}
+
+\begin{frame}{Referências internacionais (exemplos)}
+\begin{itemize}
+  \item \textbf{IMO}:
+    \begin{itemize}
+      \item Diretrizes para remoção de instalações no mar (Res. A.672(16)) \cite{IMOA672}.
+      \item Convenção de Hong Kong (reciclagem de navios) — relevante para destinos/rotas de sucateamento e aspectos ambientais \cite{HKC2009}.
+    \end{itemize}
+  \item \textbf{PSA Norway}: requisitos para extensão de vida útil (quando aplicável antes do descomissionamento) \cite{PSANorwayLifeExtension2007}.
+  \item \textbf{API}: prática recomendada para plataformas fixas (base para integridade/estrutura em certos contextos) \cite{API2AWSD}.
+\end{itemize}
+\end{frame}
+
+% ================== 4. ESCOPO E ETAPAS ==================
+\section{Escopo e etapas do descomissionamento}
+
+\begin{frame}{Escopo técnico}
+\begin{itemize}
+  \item Integração topside + \Subsea{} no planejamento e execução.
+  \item Cadeia de decisão: engenharia \(\rightarrow\) conformidade \(\rightarrow\) execução \(\rightarrow\) verificação.
+  \item Considerar:
+  \begin{itemize}
+    \item logística offshore e janelas meteoceanográficas;
+    \item gestão de resíduos e limpeza;
+    \item monitoramento e critérios de aceitação pós-descomissionamento.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+% === Frame SÓ do diagrama (sem frame dentro de frame) ===
+\begin{frame}[t]{Fluxo típico de descomissionamento offshore}
+\centering
+
+\resizebox{0.6\linewidth}{!}{%
+\begin{tikzpicture}[node distance=1.05cm and 1cm]
+
+\node (s1) [process] {1. Estudos de engenharia, impacto ambiental e documentação};
+\node (s2) [process, right=of s1] {2. Abandono dos poços conectados};
+
+\node (s4) [process, below=of s2] {4. Remoção da estrutura (jaqueta, ancoragem ou CGBS)};
+\node (s3) [process, left=of s4] {3. Desmobilização do \textit{topside} (produção, habitação, energia)};
+
+\node (s5) [process, below=of s3] {5. Remoção de linhas, manifolds, ANMs e válvulas};
+\node (s6) [process, right=of s5] {6. Resíduos, limpeza e recuperação da área};
+
+\node (s7) [process_final, below=of s6, xshift=-3.45cm] {7. Desmantelamento e reciclagem em terra};
+
+\draw [arrow] (s1) -- (s2);
+\draw [arrow] (s2) -- (s4);
+\draw [arrow] (s4) -- (s3);
+\draw [arrow] (s3) -- (s5);
+\draw [arrow] (s5) -- (s6);
+\draw [arrow] (s6) -- (s7);
+
+% \begin{scope}[on background layer]
+%   \draw [megaArrow]
+%     ($(s1.south west)+(-0.15,-0.35)$)
+%       -- ($(s2.south east)+( 0.15,-0.35)$)
+%       -- ($(s4.south east)+( 0.15,-0.35)$)
+%       -- ($(s3.south west)+(-0.15,-0.35)$)
+%       -- ($(s5.south west)+(-0.15,-0.35)$)
+%       -- ($(s6.south east)+( 0.15,-0.35)$)
+%       -- ($(s7.south east)+( 0.15,-0.35)$);
+% \end{scope}
+
+\end{tikzpicture}%
+}
+
+\vspace{0.4em}
+{\footnotesize Fluxo típico de descomissionamento offshore (visão resumida).}
+
+\end{frame}
+
+% ================== 5. METODOLOGIA ==================
+\section{Metodologia proposta}
+
+\begin{frame}{Metodologia}
+\begin{enumerate}
+  \item \textbf{Levantamento documental}: normas, guias, legislação e publicações técnicas.
+  IMO, ANP, e outras.
+  \item \textbf{Estruturação do processo}: etapas, decisões-chave, atores e evidências requeridas.
+  \item \textbf{Matriz de aspectos e impactos}: por etapa (topside/\Subsea{}) e por receptor ambiental.
+  \item \textbf{Critérios de avaliação}: conformidade, risco, custo, prazo, viabilidade logística.
+  \item \textbf{Síntese}: proposta de roteiro/fluxo para estudo de caso de um ou mais campos. Exemplo: 
+  Marlim e Voador.
+\end{enumerate}
+\end{frame}
+
+%=====================Entregáveis=====================
+
+\begin{frame}{Entregáveis esperados}
+\begin{itemize}
+  \item Quadro de localização dos ativos a serem descomissionados em 5 anos.
+  \item Quadro comparativo: requisitos nacionais vs. diretrizes internacionais.
+  \item Análise das as operações de descomissionamento de plataformas “offshore” no Brasil sob uma perspetiva
+integrada, considerando aspectos técnicos, ambientais e oceanográficos.
+  \item Análise sobre futuras possibilidades de descomissionamento com menor impacto ambiental.
+\end{itemize}
+\end{frame}
+
+% ================== 6. CRONOGRAMA ==================
+\section{Proposta de execução}
+
+\begin{frame}{Cronograma (macro)}
+\begin{tabular}{p{0.22\linewidth} p{0.70\linewidth}}
+\toprule
+\textbf{Fase} & \textbf{Atividades}\\
+\midrule
+1. Base & Revisão bibliográfica; mapeamento regulatório; organização de referências\\
+2. Modelo & Definição de escopo; estudos de impactos; critérios e roteiro\\
+3. Aplicação & Estudo de caso (se aplicável); consolidação de resultados\\
+4. Escrita & Redação final; revisão; formatação.\\
+\bottomrule
+\end{tabular}
+\end{frame}
+
+% % ================== REFERÊNCIAS ==================
+% \section{Referências}
+
+% \begin{frame}[allowframebreaks]{Referências}
+% \tiny
+
+% % Se você tem este arquivo, ele deve conter \bibitem{...}
+% % Se não tiver, comente este \input por enquanto.
+% \begingroup
+%   \let\addcontentsline\relax
+%   \let\section\relax
+%   \let\subsection\relax
+%   \let\subsubsection\relax
+%   \input{descomissionamento_ref.tex}
+% \endgroup
+
+% \end{frame}
+
+\end{document}

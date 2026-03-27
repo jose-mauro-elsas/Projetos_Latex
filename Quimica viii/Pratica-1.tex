@@ -1,0 +1,176 @@
+%!TEX program = lualatex
+% Arquivo: Template_Estat_Texto.tex
+
+\documentclass[a4paper,12pt]{article}
+
+% =========================================================
+% Idioma e tipografia (LuaLaTeX)
+% =========================================================
+\usepackage[portuguese]{babel}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+
+% =========================================================
+% Layout
+% =========================================================
+\usepackage[top=3cm,bottom=2.5cm,left=3cm,right=2.5cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25cm}
+
+% =========================================================
+% Matemática (align*, etc.)
+% =========================================================
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% =========================================================
+% Tabelas, listas, figuras
+% =========================================================
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\setlist[itemize]{noitemsep,topsep=3pt}
+\setlist[enumerate]{noitemsep,topsep=3pt}
+
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{pdflscape}
+\graphicspath{{./}{./imagens/}{./figuras/}}
+
+% =========================================================
+% Links
+% =========================================================
+\usepackage{hyperref}
+\usepackage{xurl}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=blue,
+  citecolor=black,
+  pdfauthor={},
+  pdftitle={}
+}
+
+% =========================================================
+% Texto de preenchimento (lorem)
+% =========================================================
+\usepackage{lipsum}
+
+% =========================================================
+% Dados da capa
+% =========================================================
+\newcommand{\Instituicao}{Universidade do Estado do Rio de Janeiro -- Uerj}
+\newcommand{\Curso}{Química VIII / Oceanografia}
+\newcommand{\Professor}{Professor: Ítalo Vieira}
+\newcommand{\Aluno}{Aluno: José Mauro Xavier Elsas}
+\newcommand{\Cidade}{Rio de Janeiro}
+\newcommand{\Ano}{2026}
+
+\title{\textbf{Título do Documento}}
+\author{\Aluno}
+\date{\Cidade --- \Ano}
+
+\begin{document}
+
+% =========================================================
+% Capa (página de rosto)
+% =========================================================
+\begin{titlepage}
+\centering
+{\large \Instituicao \par}
+\vspace{0.5cm}
+{\large \Curso \par}
+\vspace{1.0cm}
+
+{\LARGE \textbf{Prática 1} \par}
+\vspace{0.6cm}
+{\Large Pesagem direta e por adição \par}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\linewidth]{./uerj.jpg}
+\end{figure}
+
+\vfill
+
+\begin{flushright}
+\Aluno\\
+\Professor
+\end{flushright}
+
+\vspace{1.0cm}
+{\Cidade --- \Ano \par}
+\end{titlepage}
+
+% =========================================================
+% Sumário
+% =========================================================
+% \tableofcontents
+% \newpage
+
+% =========================================================
+% Corpo do texto (exemplos)
+% =========================================================
+\section{Material Utilizado}
+\begin{itemize}[label=\alph*.]
+    \item Balança analítica com sensibilidade de 0,1 mg,
+    \item Vidro de relógio,
+    \item Lenço de papel,
+    \item Espátula
+\end{itemize}
+
+\section{Reagentes}
+
+Cloreto de Sódio. (NaCl)
+
+\section{Procedimento Experimental}
+Procedimento para pesagem por adição de 0,5000 g de NaCl com sensibilidade de 0,1 mg.
+
+\begin{itemize}
+    \item Verificar se a balança está nivelada.
+    \item Ligar a balança e verificar se a mesma encontra-se “zerada”.
+    \item Adicionar, cuidadosamente, 0,5000 g de NaCl, com auxílio de uma espátula, ao vidro de relógio.
+    \item Fechar a porta da balança e efetuar a medida.
+    \item Desligar a balança, retirar o vidro de relógio contendo o sal e verificar se a balança está limpa.
+\end{itemize}
+
+\section{Resultados}
+
+A tabela a seguir  mostra os dados experimentais obtidos na prática.
+\begin{table}[H]
+\centering
+\caption{Resultados da pesagem.}
+\label{tab:exemplo}
+%\setlength{\tabcolsep}{12pt}
+%\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{lr}
+\toprule
+\textbf{Massa} & \textbf{Valor(g)} \\
+\midrule
+Vidro de relógia ($m_1$) & 21,857 \\
+NaCl ($m_2$)& 0,499 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% =========================================================
+% Referências (entra no sumário)
+% =========================================================
+\newpage
+\phantomsection
+\addcontentsline{toc}{section}{Referências}
+\begin{thebibliography}{99}
+
+\bibitem{uerj_quimica8_2017}
+LAGO, Dalva Cristina Baptista do;
+GOIS, Jefferson Santos de;
+LANGONE, Marta Antunes Pereira;
+SENNA, Lilian Ferreira de.
+\textbf{Química VIII — Oceanografia: aulas práticas}.
+Rio de Janeiro: Universidade do Estado do Rio de Janeiro, Instituto de Química, Departamento de Química Analítica, 2017.
+
+\end{thebibliography}
+
+\end{document}

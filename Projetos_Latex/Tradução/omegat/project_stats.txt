@@ -1,0 +1,14 @@
+26/01/2026 21:50
+Estatística do projeto
+
+                           	Segmentos	Palavras	Caracteres (sem espaços)	Caracteres (com espaços)	#Arquivos	
+Total de palavras:         	       38	     919	                    4774	                    5624	        1	
+Restantes:                 	        2	      18	                     101	                     116	        1	
+Únicos:                    	       38	     919	                    4774	                    5624	        1	
+Segmentos únicos restantes:	        2	      18	                     101	                     116	        1	
+
+
+Estatísticas do arquivo individual:
+
+Nome do arquivo	Total de segmentos 	Segmentos restantes	Segmentos únicos	Segmentos únicos restantes	Total de palavras	Palavras a traduzir	Palavras únicas	Palavras únicas restantes	Total de caracteres (sem espaços)	Caracteres restantes (sem espaços)	Caracteres únicos (sem espaços)	Caracteres únicos restantes (sem espaços)	Total de caracteres (incluindo espaços)	Caracteres restantes (com espaços)	Caracteres únicos (com espaços)	Caracteres únicos restantes (com espaços)	
+Desmantle.txt  	                 38	                  2	              38	                         2	              919	                 18	            919	                       18	                             4774	                               101	                           4774	                                      101	                                   5624	                               116	                           5624	                                      116	

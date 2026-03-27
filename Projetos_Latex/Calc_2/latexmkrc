@@ -1,0 +1,18 @@
+# .latexmkrc (Windows / projeto local)
+
+$pdf_mode = 1;
+
+# Para o build parar quando der erro real
+$halt_on_error = 1;
+
+# Evita interação/travas
+$interaction = 'nonstopmode';
+
+# Mostra melhor os erros no log (file:line)
+$file_line_error = 1;
+
+# Gera PDF com pdflatex (padrão, mas deixo explícito)
+$pdflatex = 'pdflatex -interaction=nonstopmode -file-line-error %O %S';
+
+# (Opcional) manter synctex
+$clean_ext .= ' synctex.gz';

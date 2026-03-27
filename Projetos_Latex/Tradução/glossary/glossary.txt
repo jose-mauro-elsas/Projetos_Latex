@@ -1,0 +1,5 @@
+# Glossary in tab-separated format -*- coding: utf-8 -*-
+to tarnish	tarnish	manchar (marca, modelo, etc)
+wrecking ball	wrecking ball	bola de demolição
+cripled cruise vessels	cruise vessels	Parslisado os navios de cruzeiro
+wage	wage	remuneração. pagamento, salário

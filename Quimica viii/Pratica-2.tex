@@ -1,0 +1,205 @@
+%!TEX program = lualatex
+% Arquivo: Template_Estat_Texto.tex
+
+\documentclass[a4paper,12pt]{article}
+
+% =========================================================
+% Idioma e tipografia (LuaLaTeX)
+% =========================================================
+\usepackage[portuguese]{babel}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+
+% =========================================================
+% Layout
+% =========================================================
+\usepackage[top=3cm,bottom=2.5cm,left=3cm,right=2.5cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25cm}
+
+% =========================================================
+% Matemática (align*, etc.)
+% =========================================================
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% =========================================================
+% Tabelas, listas, figuras
+% =========================================================
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\setlist[itemize]{noitemsep,topsep=3pt}
+\setlist[enumerate]{noitemsep,topsep=3pt}
+
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{pdflscape}
+\graphicspath{{./}{./imagens/}{./figuras/}}
+
+% =========================================================
+% Links
+% =========================================================
+\usepackage{hyperref}
+\usepackage{xurl}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=blue,
+  citecolor=black,
+  pdfauthor={},
+  pdftitle={}
+}
+
+\usepackage{siunitx}
+
+% =========================================================
+% Texto de preenchimento (lorem)
+% =========================================================
+\usepackage{lipsum}
+
+% =========================================================
+% Dados da capa
+% =========================================================
+\newcommand{\Instituicao}{Universidade do Estado do Rio de Janeiro -- Uerj}
+\newcommand{\Curso}{Química VIII / Oceanografia}
+\newcommand{\Professor}{Professor: Ítalo Vieira}
+\newcommand{\Aluno}{Aluno: José Mauro Xavier Elsas}
+\newcommand{\Cidade}{Rio de Janeiro}
+\newcommand{\Ano}{2026}
+
+\title{\textbf{Título do Documento}}
+\author{\Aluno}
+\date{\Cidade --- \Ano}
+
+\begin{document}
+
+% =========================================================
+% Capa (página de rosto)
+% =========================================================
+\begin{titlepage}
+\centering
+{\large \Instituicao \par}
+\vspace{0.5cm}
+{\large \Curso \par}
+\vspace{1.0cm}
+
+{\LARGE \textbf{Prática 2} \par}
+\vspace{0.6cm}
+{\Large CALIBRAÇÃO DE MATERIAL VOLUMÉTRICO \par}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\linewidth]{./uerj.jpg}
+\end{figure}
+
+\vfill
+
+\begin{flushright}
+\Aluno\\
+\Professor
+\end{flushright}
+
+\vspace{1.0cm}
+{\Cidade --- \Ano \par}
+\end{titlepage}
+
+% =========================================================
+% Sumário
+% =========================================================
+% \tableofcontents
+% \newpage
+
+% =========================================================
+% Corpo do texto (exemplos)
+% =========================================================
+\section{Material Utilizado}
+\begin{itemize}[label=\alph*.]
+    \item Balança analítica,
+    \item Frasco de Erlenmeyer de 100ml com tampa esperilhada,
+    \item Lenço de papel,
+    \item Pipeta volumétrica aferida de \SI{25}{mL}
+\end{itemize}
+
+\section{Procedimento Experimental}
+
+A aferição da pipeta é feita pela medida da massa que dela escoa. É importante usar uma pipeta limpa e seca. 
+
+\begin{itemize}
+    \item Medimos e registramos a massa do Erlenmeyer ($m_1$) sem tocar nele, com a ajuda de lenço de papel,
+    \item Enchemos a pipeta com água destilada por aspiração, secamos o lado externo da pipeta e tranferimos todo o conteúdo para o Erlenmeyer.
+    \item Medimos na mesma balança de precisão o Erlenmeyer com a água transferida,
+    \item calculamos a massa de água por meio de: $m=m_2-m1$
+    \item Medimos a temperatura da água usada para a calibração que estava a \SI{26}{\degreeCelsius}, o que determina o valor da densidade: $\rho=\SI{0,996783}{g/ml}$
+\end{itemize}
+
+\section{Resultados}
+
+
+A tabela a seguir mostra os resultasos de massa
+\begin{table}[H]
+\centering
+\caption{Resultados da pesagem.}
+\label{tab:result}
+%\setlength{\tabcolsep}{12pt}
+%\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{lr}
+\toprule
+\textbf{Descrição} &\textbf{Massa (\SI{}{g})} \\
+\midrule
+Erlenmeyer vazio ($m_1$) & 65,6961\\
+Erlenmeyer + água($m_2$)& 90,6430\\
+Massa de água ($m_{H2O}$) & 24,95\\
+Temperatura ($\SI{}{\degreeCelsius}$) & 26\\
+$\rho_{H2O}(\SI{}{g/ml})$ &0,996783\\
+$m_{H2O}$(\SI{}{g})&24,95\\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+No entanto, as massas de água calculadas pelos outros integrantes do grupo (Israel Carneiro e Miguel Gayani) são:
+
+\begin{table}[H]
+\centering
+\caption{Resultados da pesagem.}
+\label{tab:resfin}
+\begin{tabular}{lr}
+\toprule
+\textbf{Descrição} &\textbf{Massa (\SI{}{g})} \\
+\midrule
+$m_{jm}$(\SI{}{g})&24,95\\
+$m_{ic}$(\SI{}{g})&25,02\\
+$m_{mg}$(\SI{}{g})&24,81\\
+$\bar{m}$(\SI{}{g})&24,97\\
+$V_{H2O}$(\SI{}{ml})&25,03\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\[
+    V_{H2O}=\frac{24,93}{0,996783}=\SI{25,03}{ml}
+\]
+
+
+% =========================================================
+% Referências (entra no sumário)
+% =========================================================
+\newpage
+\phantomsection
+\addcontentsline{toc}{section}{Referências}
+\begin{thebibliography}{99}
+
+\bibitem{uerj_quimica8_2017}
+LAGO, Dalva Cristina Baptista do;
+GOIS, Jefferson Santos de;
+LANGONE, Marta Antunes Pereira;
+SENNA, Lilian Ferreira de.
+\textbf{Química VIII — Oceanografia: aulas práticas}.
+Rio de Janeiro: Universidade do Estado do Rio de Janeiro, Instituto de Química, Departamento de Química Analítica, 2017.
+
+\end{thebibliography}
+
+\end{document}

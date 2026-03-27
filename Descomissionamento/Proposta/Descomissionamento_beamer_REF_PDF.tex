@@ -1,0 +1,340 @@
+%!TEX program = lualatex
+% Arquivo: Descomissionamento_beamer.tex
+\documentclass[aspectratio=169,11pt]{beamer}
+
+% ===== Tema / aparência =====
+\usetheme{Madrid}
+% Aumenta o tamanho dos números do enumerate (bolinhas numeradas)
+\setbeamerfont{enumerate item}{size=\large}
+\setbeamerfont{enumerate subitem}{size=\normalsize}
+\setbeamerfont{enumerate subsubitem}{size=\normalsize}
+
+\usecolortheme{default}
+\setbeamertemplate{navigation symbols}{}
+
+% ===== Fix: evita "Referências |" quando não há subseção =====
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.6ex,dp=1.2ex,leftskip=.6em,rightskip=.6em]{frametitle}%
+    \usebeamerfont{frametitle}\insertframetitle%
+    \ifx\insertsubsectionhead\empty\else\ \textbar\ \insertsubsectionhead\fi%
+  \end{beamercolorbox}%
+}
+
+% ===== Idioma =====
+\usepackage[portuguese]{babel}
+
+% ===== Fonte (LuaLaTeX) =====
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+
+% ===== Figuras / tabelas =====
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% ===== Links =====
+\usepackage{xurl}
+\Urlmuskip=0mu plus 1mu
+
+% ===== Metadados =====
+\title[Descomissionamento offshore]{Descomissionamento de UEPs e Sistemas Subsea\\de Produção}
+\subtitle{Proposta de estudo para TCC (Oceanografia)}
+\author[José Mauro X. Elsas]{José Mauro Xavier Elsas}
+\institute[UERJ]{Universidade do Estado do Rio de Janeiro (UERJ)\\Faculdade de Oceanografia}
+\date{Janeiro de 2026}
+
+% ===== Atalhos =====
+\newcommand{\UEP}{Unidade Estacionária de Produção}
+\newcommand{\Subsea}{\textit{subsea}}
+
+% ===== TikZ =====
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,calc,backgrounds}
+
+\tikzset{
+  process/.style={
+    draw,
+    rounded corners=2pt,
+    thick,
+    align=left,
+    text width=4.9cm,
+    minimum height=1.25cm,
+    inner xsep=6pt,
+    inner ysep=6pt,
+    font=\small
+  },
+  process_final/.style={
+    process,
+    font=\small\bfseries
+  },
+  arrow/.style={
+    -{Stealth[length=3mm,width=2.2mm]},
+    thick
+  },
+  megaArrow/.style={
+    draw,
+    line width=3.2pt,
+    rounded corners=10pt,
+    -{Stealth[length=5mm,width=3.6mm]},
+    opacity=0.65
+  }
+}
+
+% ===== Citações: modo tolerante (não para a compilação se faltar bibitem) =====
+% Você pode remover isto quando as referências estiverem OK.
+\usepackage{cite}
+\makeatletter
+\renewcommand{\cite}[1]{\textsuperscript{[\@for\@tempa:=#1\do{\@tempa,}\@gobble]}}
+\makeatother
+
+\begin{document}
+
+% ================== CAPA ==================
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ================== SUMÁRIO ==================
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+% ================== 1. SIGLAS ==================
+\section{Abreviaturas e siglas}
+
+\begin{frame}{Abreviaturas e siglas}
+\small
+\begin{columns}[T,onlytextwidth]
+  \begin{column}{0.48\textwidth}
+    \begin{description}
+      \item[ANM] Árvore de Natal Molhada
+      \item[ANP] Agência Nacional do Petróleo, Gás Natural e Biocombustíveis
+      \item[API] \textit{American Petroleum Institute}
+      \item[CGBS] \textit{Concrete Gravity Based Structure}
+      \item[DNV] \textit{Det Norske Veritas}
+      \item[FPSO] \textit{Floating Production, Storage and Offloading}
+      \item[FSO] \textit{Floating Storage and Offloading}
+    \end{description}
+  \end{column}
+  \begin{column}{0.48\textwidth}
+    \begin{description}
+      \item[ISO] \textit{International Organization for Standardization}
+      \item[IMO] \textit{International Maritime Organization}
+      \item[PDI] Plano de Descomissionamento de Instalações
+      \item[REVAMP] Modernização para aumentar produtividade e vida útil
+      \item[PETROBRAS] Petróleo Brasileiro S.A.
+      \item[UEP] Unidade Estacionária de Produção
+    \end{description}
+  \end{column}
+\end{columns}
+\end{frame}
+
+% ================== 2. INTRODUÇÃO ==================
+\section{Introdução}
+
+\begin{frame}{Vida útil e condicionantes meteoceanográficos}
+\begin{itemize}
+  \item Plataformas offshore são projetadas, tipicamente, para \textbf{25--30 anos} de vida útil nominal \cite{PSANorwayLifeExtension2007}.
+  \item Critérios de projeto incluem: fadiga, cargas ambientais extremas e hipóteses conservadoras de degradação.
+  \item Parâmetros oceanográficos relevantes:
+    \begin{itemize}
+      \item altura significativa de ondas, correntes de fundo/superfície e eventos extremos;
+      \item processos de corrosão influenciados pela hidrodinâmica local.
+    \end{itemize}
+  \item A experiência operacional mostra que a vida produtiva pode exceder a nominal: revisões de reservas, melhorias tecnológicas, EOR e contexto econômico.
+  \item Nesses casos, são comuns \textbf{programas de extensão de vida} (REVAMPs, reforços, substituições e avaliações de integridade).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Descomissionamento offshore no Brasil: o ``nó'' do problema}
+\begin{itemize}
+  \item Quando a continuidade operacional deixa de ser técnica ou economicamente viável, impõe-se o \textbf{planejamento e execução do descomissionamento}.
+  \item O descomissionamento não é somente remoção física:
+    \begin{itemize}
+      \item destinação de materiais e gestão de resíduos;
+      \item recuperação/monitoramento ambiental;
+      \item atendimento a requisitos regulatórios.
+    \end{itemize}
+  \item Do ponto de vista oceanográfico, decisões de remoção/permanência influenciam:
+    \begin{itemize}
+      \item ressuspensão de sedimentos, dispersão de contaminantes e estabilidade do leito;
+      \item habitats artificiais, conectividade ecológica e resiliência de ecossistemas.
+    \end{itemize}
+  \item Marco regulatório nacional: \textbf{Resolução ANP nº 817/2020} (PDI, devolução de áreas e reversão de bens) \cite{ANP8172020}.
+  \item Referência internacional relevante: \textbf{IMO Res. A.672(16)} (remoção de instalações/estruturas offshore) \cite{IMOA672}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Questões norteadoras (a partir de dados públicos da ANP)}
+\begin{enumerate}
+  \item Coerência econômica entre \textbf{idade das instalações} e estratégias de \textbf{extensão de vida}.
+  \item Impacto do descomissionamento sobre \textbf{bacias produtoras} e \textbf{áreas costeiras} onde ocorrem desmantelamentos (condicionantes oceanográficos/ambientais).
+  \item Adequação do \textbf{arcabouço normativo} nacional frente à diversidade de cenários técnicos e ambientais.
+  \item Oportunidades de aprimoramento em planejamento, governança e gestão de risco, com ênfase em mitigação de impactos ambientais.
+\end{enumerate}
+\end{frame}
+
+% ================== 3. JUSTIFICATIVA ==================
+\section{Justificativa e motivação}
+
+\begin{frame}{Justificativa}
+\begin{itemize}
+  \item Etapa crítica do ciclo de vida: impactos diretos sobre meio ambiente marinho, segurança operacional e governança de recursos.
+  \item Tendência de aumento de unidades próximas ao fim de vida útil nominal: necessidade de \textbf{planejamento antecipado} e avaliações técnicas/ambientais robustas.
+  \item Integridade estrutural e durabilidade do sistema de produção estão ligadas à vida econômica do campo.
+  \item Plataformas fixas podem ter base normativa estrutural (ex.: \textbf{API 2A-WSD}) \cite{API2AWSD}, mas o descomissionamento exige integração com requisitos ambientais e logísticos.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Marcos ambientais e reciclagem: Basileia, Hong Kong e CONAMA}
+\begin{itemize}
+  \item A dinâmica histórica do desmantelamento naval (migração para regiões com menor regulação) motivou acordos ambientais e padrões de segurança.
+  \item \textbf{Convenção da Basileia (1989)}: controle de movimentos transfronteiriços de resíduos perigosos \cite{Basel1989}.
+  \item \textbf{Convenção de Hong Kong (2009)}: reciclagem segura e ambientalmente adequada de navios \cite{HKC2009}.
+  \item No Brasil: \textbf{Resolução CONAMA nº 452/2012} aplica princípios da Basileia a procedimentos de controle de importação de resíduos \cite{CONAMA4522012}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Estudo de referência: NAe São Paulo (2023)}
+\small
+\begin{itemize}
+  \item Caso ilustra discrepâncias entre texto legal, inventários de materiais perigosos e viabilidade prática do desmantelamento.
+  \item Tentativa de desmantelamento na Turquia foi interrompida por divergências no inventário (ex.: amianto); retorno ao Brasil.
+  \item Após meses fundeado ao largo de Pernambuco, houve \textbf{afundamento controlado em fevereiro de 2023}, em águas profundas, a centenas de km da costa.
+  \item Organizações internacionais (ex.: BAN) criticaram a destinação por potencial violação de princípios associados à Basileia.
+\end{itemize}
+\end{frame}
+
+% ================== 4. OBJETIVOS ==================
+\section{Objetivos}
+
+\begin{frame}{Objetivo geral}
+\begin{itemize}
+  \item \textbf{Analisar o descomissionamento de plataformas offshore no Brasil} sob uma perspetiva integrada, considerando aspectos técnicos, ambientais e oceanográficos associados ao fim de vida das instalações.
+  \item Observação de escopo: a distância entre locações e estaleiros não é, por si só, impeditiva (cadeias globais de construção/integração já são comuns).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Objetivos específicos}
+\begin{itemize}
+  \item Caracterizar o parque offshore brasileiro: tipo de instalação, idade, bacia sedimentar e lâmina d'água; identificar unidades próximas do fim de vida útil nominal (ANP/API/DNV).
+  \item Avaliar a relação entre ambiente oceanográfico, profundidade de instalação e complexidade das operações de descomissionamento.
+  \item Analisar o arcabouço regulatório nacional aplicável ao descomissionamento offshore.
+  \item Discutir impactos ambientais associados a diferentes estratégias de descomissionamento.
+\end{itemize}
+\end{frame}
+
+% ================== 5. REVISÃO BIBLIOGRÁFICA ==================
+\section{Revisão bibliográfica}
+
+\begin{frame}{Eixos da revisão bibliográfica}
+\begin{itemize}
+  \item Fundamentos conceituais e técnicos do descomissionamento offshore.
+  \item Práticas consolidadas em bacias maduras (ex.: Mar do Norte) e lições para o contexto brasileiro.
+  \item Engenharia offshore ao longo do ciclo de vida: integridade, risco e decisões de fim de vida.
+  \item Oceanografia física aplicada a operações marítimas: correntes, ondas, processos sedimentares e influência na estabilidade/impacto ambiental.
+  \item Estudos sobre impactos ambientais, recuperação de áreas marinhas e papel de estruturas como habitats artificiais.
+\end{itemize}
+\end{frame}
+
+% ================== 6. ETAPAS DO DESCOMISSIONAMENTO ============
+\section{Etapas do descomissionamento}
+
+\begin{frame}[t]{Fluxo típico do descomissionamento offshore}
+\centering
+
+\resizebox{0.6 \linewidth}{!}{%
+\begin{tikzpicture}[node distance=1.05cm and 1cm]
+
+\node (s1) [process] {1. Estudos de engenharia, impacto ambiental e documentação};
+\node (s2) [process, right=of s1] {2. Abandono dos poços conectados};
+
+\node (s4) [process, below=of s2] {4. Remoção da estrutura (jaqueta, ancoragem ou GBS)};
+\node (s3) [process, left=of s4] {3. Desmobilização do \textit{topside} (produção, habitação, energia)};
+
+\node (s5) [process, below=of s3] {5. Remoção de linhas rígidas/flexíveis, risers, manifolds, ANMs e válvulas};
+\node (s6) [process, right=of s5] {6. Resíduos, limpeza e recuperação da área};
+
+\node (s7) [process_final, below=of s6, xshift=-3.45cm] {7. Desmantelamento e reciclagem em terra};
+
+\draw [arrow] (s1) -- (s2);
+\draw [arrow] (s2) -- (s4);
+\draw [arrow] (s4) -- (s3);
+\draw [arrow] (s3) -- (s5);
+\draw [arrow] (s5) -- (s6);
+\draw [arrow] (s6) -- (s7);
+
+\end{tikzpicture}%
+}
+
+\vspace{0.4em}
+{\footnotesize Fluxo resumido do processo de descomissionamento.}
+\end{frame}
+
+% ================== 7. METODOLOGIA ==================
+\section{Metodologia}
+
+\begin{frame}{Abordagem metodológica}
+\begin{itemize}
+  \item Pesquisa \textbf{exploratória e descritiva}, baseada em:
+    \begin{itemize}
+      \item análise de dados secundários;
+      \item revisão bibliográfica e normativa.
+    \end{itemize}
+  \item Base de dados: informações públicas da \textbf{ANP} (plataformas em operação), incluindo tipo de unidade, bacia, operador, lâmina d'água e ano de início \cite{ANPDescomissionamentoPortal}.
+  \item Possível recorte para estudo de caso: campos de \textbf{Marlim} e \textbf{Voador} (PDI publicado), para análise documental mais aprofundada.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Etapas analíticas (síntese)}
+\begin{enumerate}
+  \item Organizar e qualificar a base de dados (idade, tipologia, distribuição espacial e profundidade).
+  \item Identificar padrões e unidades potencialmente próximas do fim de vida nominal.
+  \item Confrontar cenários técnicos com o arcabouço regulatório (ANP/IMO e demais referências).
+  \item Integrar condicionantes oceanográficos (correntes, ondas, sedimentação) à análise de risco/impacto.
+  \item Consolidar discussão e recomendações para governança e planejamento do fim de vida.
+\end{enumerate}
+\end{frame}
+
+% ================== 8. RESULTADOS ESPERADOS ==================
+\section{Resultados esperados}
+
+\begin{frame}{Resultados esperados}
+\begin{itemize}
+  \item Diagnóstico do parque offshore brasileiro sob a ótica do descomissionamento: tendências, distribuição e horizonte de desafios.
+  \item Discussão do papel dos condicionantes oceanográficos/ambientais no planejamento de operações.
+  \item Subsídios para aprimoramento de práticas de gestão e governança do descomissionamento offshore no Brasil.
+\end{itemize}
+\end{frame}
+
+% ================== 9. PROPOSTA PARA EXECUÇÃO ==================
+\section{Proposta para execução}
+
+\begin{frame}{Etapas de execução (macro)}
+\begin{enumerate}
+  \item Levantamento e revisão bibliográfica/normativa.
+  \item Organização e análise da base de dados (ANP).
+  \item Integração dos aspectos técnicos, ambientais e oceanográficos.
+  \item Redação e revisão do trabalho final.
+\end{enumerate}
+\end{frame}
+
+% ================== 10. REFERÊNCIAS ==================
+\section{Referências}
+
+\begin{frame}{Referências-chave}
+\footnotesize
+\begin{itemize}
+  \item ANP. Resolução nº 817/2020 \cite{ANP8172020}.
+  \item ANP. Portal: Descomissionamento de instalações \cite{ANPDescomissionamentoPortal}.
+  \item IMO. Hong Kong Convention (2009) \cite{HKC2009}.
+  \item IMO. Resolução A.672(16) (1989) \cite{IMOA672}.
+  \item API. RP 2A-WSD (2014) \cite{API2AWSD}.
+  \item PSA Norway. Requirements for Life Extension (2007) \cite{PSANorwayLifeExtension2007}.
+  \item ONU/PNUMA. Convenção da Basileia (1989) \cite{Basel1989}.
+  \item CONAMA. Resolução nº 452/2012 \cite{CONAMA4522012}.
+\end{itemize}
+\end{frame}
+
+
+\end{document}

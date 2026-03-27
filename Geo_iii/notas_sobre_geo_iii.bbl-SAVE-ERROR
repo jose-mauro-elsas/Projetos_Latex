@@ -1,0 +1,116 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global/global}
+    \entry{milhomem2023baciassedimentares}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=875bf77b8a67ba50c6aa78ec1ff04707}{%
+           family={Milhomem},
+           familyi={M\bibinitperiod},
+           given={Lucas},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Conhecimento Científico}%
+      }
+      \strng{namehash}{875bf77b8a67ba50c6aa78ec1ff04707}
+      \strng{fullhash}{875bf77b8a67ba50c6aa78ec1ff04707}
+      \strng{fullhashraw}{875bf77b8a67ba50c6aa78ec1ff04707}
+      \strng{bibnamehash}{875bf77b8a67ba50c6aa78ec1ff04707}
+      \strng{authorbibnamehash}{875bf77b8a67ba50c6aa78ec1ff04707}
+      \strng{authornamehash}{875bf77b8a67ba50c6aa78ec1ff04707}
+      \strng{authorfullhash}{875bf77b8a67ba50c6aa78ec1ff04707}
+      \strng{authorfullhashraw}{875bf77b8a67ba50c6aa78ec1ff04707}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{20}
+      \field{month}{1}
+      \field{note}{Publicado em 2 fev. 2021}
+      \field{title}{Bacias sedimentares -- Conceito, formação e importância para o relevo}
+      \field{urlday}{10}
+      \field{urlmonth}{3}
+      \field{urlyear}{2026}
+      \field{year}{2023}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://conhecimentocientifico.r7.com/bacias-sedimentares/
+      \endverb
+      \verb{url}
+      \verb https://conhecimentocientifico.r7.com/bacias-sedimentares/
+      \endverb
+    \endentry
+    \entry{zerfass2008foraminiferos}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=0a9f48e129a317cbbaa90a008d93224c}{%
+           family={Zerfass},
+           familyi={Z\bibinitperiod},
+           given={Geise\bibnamedelimb de\bibnamedelimb Santana\bibnamedelimb dos\bibnamedelima Anjos},
+           giveni={G\bibinitperiod\bibinitdelim d\bibinitperiod\bibinitdelim S\bibinitperiod\bibinitdelim d\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e38f8959d52d42f5201aa76c17a03b9e}{%
+           family={Andrade},
+           familyi={A\bibinitperiod},
+           given={Edilma\bibnamedelimb de\bibnamedelima Jesus},
+           giveni={E\bibinitperiod\bibinitdelim d\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{af4a57a440133cd127279bfc225dfc46}
+      \strng{fullhash}{af4a57a440133cd127279bfc225dfc46}
+      \strng{fullhashraw}{af4a57a440133cd127279bfc225dfc46}
+      \strng{bibnamehash}{af4a57a440133cd127279bfc225dfc46}
+      \strng{authorbibnamehash}{af4a57a440133cd127279bfc225dfc46}
+      \strng{authornamehash}{af4a57a440133cd127279bfc225dfc46}
+      \strng{authorfullhash}{af4a57a440133cd127279bfc225dfc46}
+      \strng{authorfullhashraw}{af4a57a440133cd127279bfc225dfc46}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Terr{æ} Didatica}
+      \field{number}{1}
+      \field{title}{Foraminíferos e Bioestratigrafia: uma abordagem didática}
+      \field{urlday}{16}
+      \field{urlmonth}{3}
+      \field{urlyear}{2026}
+      \field{volume}{3}
+      \field{year}{2008}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{18\bibrangedash 35}
+      \range{pages}{18}
+      \verb{urlraw}
+      \verb https://www.ige.unicamp.br/terraedidatica/v3/pdf-v3/TD3-18_35.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.ige.unicamp.br/terraedidatica/v3/pdf-v3/TD3-18_35.pdf
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

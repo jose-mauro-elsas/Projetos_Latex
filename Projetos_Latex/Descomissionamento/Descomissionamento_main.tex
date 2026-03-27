@@ -1,0 +1,119 @@
+%!TEX program = lualatex
+% Arquivo: Descomissionamento_main.tex
+\documentclass[a4paper,12pt]{article}
+
+% ===== Idioma =====
+\usepackage[portuguese]{babel}
+\addto\captionsportuguese{%
+  \renewcommand{\contentsname}{Sumário}%
+}
+
+% ===== Fonte (LuaLaTeX) =====
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+
+% ===== Layout =====
+\usepackage[top=3cm,bottom=2cm,left=3cm,right=2cm]{geometry}
+\usepackage{indentfirst}
+\usepackage{setspace}
+\onehalfspacing
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0pt}
+
+% ===== Tabelas / listas =====
+\usepackage{booktabs}
+\usepackage{enumitem}
+\setlist[itemize]{noitemsep,topsep=3pt}
+
+% ===== Figuras gerais =====
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{pdflscape}
+\graphicspath{{./}{./imagens/}{./figuras/}}
+
+% ===== Links =====
+\usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
+\Urlmuskip=0mu plus 1mu
+
+% ===== TikZ (fluxogramas/diagramas) =====
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning}
+\input{flu1_styles}  % define process/process_final/arrow
+
+\begin{document}
+
+% ================== FOLHA DE ROSTO ==================
+\begin{titlepage}
+  \begin{center}
+    \vspace*{-1cm}
+    \includegraphics[width=3cm]{uerj.jpg}\\[0.8cm]
+
+    \textbf{UNIVERSIDADE DO ESTADO DO RIO DE JANEIRO}\\[0.2cm]
+    \textbf{FACULDADE DE OCEANOGRAFIA}\\[0.2cm]
+
+    \textbf{Proposta de estudo para TCC}\\[0.5cm]
+    \textbf{Descomissionamento de UEPs e sistemas Subsea de Produção.}\\[8cm]
+  \end{center}
+
+  \vfill
+
+  \begin{flushright}
+  Aluno: José Mauro Xavier Elsas\par
+  Disciplina: Oceanografia\par
+  Professor: David Zee
+  \end{flushright}
+
+  \vfill
+
+  \begin{center}
+    Rio de Janeiro\\
+    Janeiro de 2026
+  \end{center}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section{Abreviaturas e Siglas}
+\input{abreviaturas_e_siglas.tex}
+\newpage
+
+\section{Introdução}
+\input{descomissionamento_intro.tex}
+
+\section{Justificativa e Motivação}
+\input{descomissionamento_justif.tex}
+
+% ===== Fluxograma (entra aqui, depois da Justificativa) =====
+\newpage
+Então graficamente temos:
+
+\begin{figure}[H]
+  \centering
+  \input{flu1_body}
+  \caption{Fluxograma do processo de descomissionamento.}
+  \label{fig:flu1}
+\end{figure}
+
+\section{Objetivos}
+\input{descomissionamento_obj.tex}
+
+\section{Revisão Bibliográfica}
+\input{descomissionamento_rbib.tex}
+
+\section{Metodologia}
+\input{descomissionamento_met.tex}
+
+\section{Resultados esperados}
+\input{descomissionamento_res.tex}
+
+\section{Proposta para execução}
+\input{descomissionamento_cro.tex}
+
+% ===== Referências =====
+\newpage
+\input{descomissionamento_ref.tex}
+
+\end{document}

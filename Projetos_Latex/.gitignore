@@ -1,0 +1,39 @@
+﻿# LaTeX / latexmk
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.nav
+*.snm
+
+# TikZ externalization cache (se usar)
+externalized/
+
+# Backups operacionais
+_backup_git_*.zip
+
+# Editor/OS
+.vscode/
+Thumbs.db
+.DS_Store
+
+# TikZ/PGFPlots externalization outputs (quando o prefix não está em externalized/)
+*.dpth
+*.md5
+*.auxlock
+
+# PDFs gerados automaticamente (se você não quer versionar PDFs de build)
+*-figure*.pdf
+
+# Inbox/quarentena
+_INBOX/
+

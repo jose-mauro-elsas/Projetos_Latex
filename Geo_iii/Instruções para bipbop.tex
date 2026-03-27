@@ -1,0 +1,361 @@
+%!TEX program = lualatex
+\documentclass[12pt,a4paper]{article}
+
+% =========================================================
+% CONFIGURAÇÃO BÁSICA
+% =========================================================
+\usepackage[brazil]{babel}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{csquotes}
+\usepackage{fancyvrb}
+
+% =========================================================
+% BIBLIOGRAFIA
+% =========================================================
+\usepackage[
+    backend=biber,
+    style=authoryear,
+    sorting=nyt
+]{biblatex}
+
+\addbibresource{referencias.bib}
+
+% =========================================================
+% COMANDOS AUXILIARES
+% =========================================================
+\newcommand{\arquivo}[1]{\texttt{#1}}
+\newcommand{\comando}[1]{\texttt{#1}}
+
+\DefineVerbatimEnvironment{bloco}{Verbatim}{
+    fontsize=\small,
+    frame=single,
+    rulecolor=\color{black},
+    numbers=none
+}
+
+\title{Guia Prático para usar \texttt{biblatex} + \texttt{biber} no LuaLaTeX}
+\author{}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\onehalfspacing
+
+\section{Objetivo}
+
+Este documento registra o procedimento correto para usar referências bibliográficas em um projeto \LaTeX\ com:
+
+\begin{itemize}[leftmargin=1.5cm]
+    \item \textbf{LuaLaTeX} como motor de compilação;
+    \item \textbf{biblatex} como pacote de bibliografia;
+    \item \textbf{biber} como processador do arquivo \arquivo{.bib}.
+\end{itemize}
+
+A lógica de funcionamento é:
+
+\begin{enumerate}[leftmargin=1.5cm]
+    \item criar um arquivo de referências, por exemplo \arquivo{referencias.bib};
+    \item inserir no texto comandos como \comando{\textbackslash cite\{...\}};
+    \item compilar com \comando{lualatex};
+    \item processar a bibliografia com \comando{biber};
+    \item recompilar com \comando{lualatex}.
+\end{enumerate}
+
+\section{Estrutura mínima do projeto}
+
+Uma estrutura simples e funcional é:
+
+\begin{bloco}
+Geo_iii/
+|-- notas_sobre_geo_iii.tex
+|-- referencias.bib
+\end{bloco}
+
+O arquivo principal do texto é \arquivo{notas_sobre_geo_iii.tex}.  
+O banco de referências é \arquivo{referencias.bib}.
+
+\section{Modelo correto do preâmbulo}
+
+No preâmbulo do arquivo principal, o trecho essencial é:
+
+\begin{bloco}
+\usepackage[
+    backend=biber,
+    style=authoryear,
+    sorting=nyt
+]{biblatex}
+
+\addbibresource{referencias.bib}
+\end{bloco}
+
+Esse trecho informa ao \LaTeX\ que:
+
+\begin{itemize}[leftmargin=1.5cm]
+    \item o pacote de bibliografia usado será o \texttt{biblatex};
+    \item o processador será o \texttt{biber};
+    \item as referências estão armazenadas em \arquivo{referencias.bib}.
+\end{itemize}
+
+\section{Como citar no texto}
+
+Supondo que existam no arquivo \arquivo{referencias.bib} as chaves
+
+\begin{bloco}
+zerfass2008foraminiferos
+milhomem2023baciassedimentares
+\end{bloco}
+
+as citações no texto podem ser feitas assim:
+
+\begin{bloco}
+Segundo \cite{zerfass2008foraminiferos}, os foraminíferos ...
+
+Uma introdução ao tema pode ser vista em \cite{milhomem2023baciassedimentares}.
+\end{bloco}
+
+Também é possível citar mais de uma referência ao mesmo tempo:
+
+\begin{bloco}
+\cite{zerfass2008foraminiferos,milhomem2023baciassedimentares}
+\end{bloco}
+
+\section{Como imprimir a bibliografia}
+
+No final do documento, antes de \comando{\textbackslash end\{document\}}, deve aparecer:
+
+\begin{bloco}
+\printbibliography
+\end{bloco}
+
+Sem esse comando, a lista de referências não será exibida no PDF.
+
+\section{O que não deve ser misturado}
+
+Se você usa \texttt{biblatex}, \textbf{não deve misturar} com o esquema antigo do BibTeX, isto é, não deve usar comandos como:
+
+\begin{bloco}
+\bibliographystyle{plain}
+\bibliography{referencias}
+\end{bloco}
+
+Esses comandos pertencem ao fluxo antigo de BibTeX.  
+No caso de \texttt{biblatex}, o correto é:
+
+\begin{bloco}
+\usepackage[backend=biber]{biblatex}
+\addbibresource{referencias.bib}
+...
+\printbibliography
+\end{bloco}
+
+\section{Sequência correta de compilação}
+
+No PowerShell, dentro da pasta do projeto, o fluxo recomendado é:
+
+\begin{bloco}
+cd D:\LaTex_Projects\Geo_iii
+del *.aux, *.bcf, *.bbl, *.blg, *.run.xml -ErrorAction SilentlyContinue
+lualatex notas_sobre_geo_iii.tex
+biber notas_sobre_geo_iii
+lualatex notas_sobre_geo_iii.tex
+lualatex notas_sobre_geo_iii.tex
+\end{bloco}
+
+\subsection*{Interpretação da sequência}
+
+\begin{enumerate}[leftmargin=1.5cm]
+    \item o primeiro \comando{lualatex} gera os arquivos auxiliares;
+    \item o \comando{biber} lê o arquivo \arquivo{.bcf} e produz a bibliografia;
+    \item os dois \comando{lualatex} finais resolvem as citações e atualizam a lista bibliográfica.
+\end{enumerate}
+
+\section{Como usar no terminal do VS Code}
+
+No terminal integrado do VS Code, você deve digitar \textbf{somente o comando}, e nunca o prompt.
+
+Exemplo de prompt:
+
+\begin{bloco}
+PS D:\LaTex_Projects\Geo_iii>
+\end{bloco}
+
+Isso \textbf{não} deve ser digitado.  
+O que deve ser digitado é apenas:
+
+\begin{bloco}
+cd D:\LaTex_Projects\Geo_iii
+\end{bloco}
+
+ou, se já estiver na pasta correta:
+
+\begin{bloco}
+biber notas_sobre_geo_iii
+\end{bloco}
+
+\section{Erros mais comuns}
+
+\subsection*{1. Citation undefined}
+
+Mensagem típica:
+
+\begin{bloco}
+LaTeX: Citation 'zerfass2008foraminiferos' undefined
+\end{bloco}
+
+Significa que a chave da referência ainda não foi resolvida.  
+As causas mais comuns são:
+
+\begin{itemize}[leftmargin=1.5cm]
+    \item a chave não existe no arquivo \arquivo{.bib};
+    \item o \comando{biber} não foi executado;
+    \item o documento foi recompilado em ordem errada;
+    \item houve falha em algum arquivo auxiliar.
+\end{itemize}
+
+\subsection*{2. Please (re)run Biber}
+
+Mensagem típica:
+
+\begin{bloco}
+Package biblatex: Please (re)run Biber on the file:
+notas_sobre_geo_iii
+and rerun LaTeX afterwards.
+\end{bloco}
+
+Essa mensagem deve ser interpretada literalmente: é preciso rodar
+
+\begin{bloco}
+biber notas_sobre_geo_iii
+\end{bloco}
+
+e depois recompilar com \comando{lualatex}.
+
+\subsection*{3. Empty bibliography}
+
+Mensagem típica:
+
+\begin{bloco}
+LaTeX: Empty bibliography.
+\end{bloco}
+
+Isso geralmente significa uma das seguintes coisas:
+
+\begin{itemize}[leftmargin=1.5cm]
+    \item o arquivo \arquivo{referencias.bib} não foi encontrado;
+    \item o \comando{biber} não rodou corretamente;
+    \item o documento não conseguiu montar a bibliografia a partir das entradas disponíveis.
+\end{itemize}
+
+\section{Checklist de diagnóstico}
+
+Quando a bibliografia falhar, verificar na seguinte ordem:
+
+\begin{enumerate}[leftmargin=1.5cm]
+    \item o arquivo \arquivo{referencias.bib} existe na pasta do projeto;
+    \item o nome dado em \comando{\textbackslash addbibresource\{referencias.bib\}} está correto;
+    \item as chaves usadas em \comando{\textbackslash cite\{...\}} existem exatamente no \arquivo{.bib};
+    \item o comando \comando{biber notas_sobre_geo_iii} foi executado;
+    \item o documento foi recompilado com \comando{lualatex} depois do \comando{biber};
+    \item não há mistura de \texttt{biblatex} com comandos do BibTeX antigo.
+\end{enumerate}
+
+\section{Modelo mínimo funcional do arquivo principal}
+
+A seguir está um exemplo mínimo de arquivo principal funcional:
+
+\begin{bloco}
+%!TEX program = lualatex
+\documentclass{article}
+\usepackage[brazil]{babel}
+\usepackage{fontspec}
+\usepackage[backend=biber,style=authoryear]{biblatex}
+\addbibresource{referencias.bib}
+
+\begin{document}
+
+Texto de teste com citação \cite{zerfass2008foraminiferos}.
+
+\printbibliography
+
+\end{document}
+\end{bloco}
+
+\section{Modelo mínimo funcional do arquivo \arquivo{referencias.bib}}
+
+\begin{bloco}
+@online{milhomem2023baciassedimentares,
+  author  = {Milhomem, Autor Exemplo},
+  title   = {Bacias sedimentares: introdução e conceitos fundamentais},
+  year    = {2023},
+  url     = {https://exemplo.org/bacias-sedimentares},
+  urldate = {2026-03-17}
+}
+
+@article{zerfass2008foraminiferos,
+  author       = {Zerfass, Autor Exemplo},
+  title        = {Foraminíferos e sua aplicação em estudos geológicos},
+  journaltitle = {Revista Exemplo de Geociências},
+  year         = {2008},
+  volume       = {12},
+  number       = {3},
+  pages        = {45--60}
+}
+\end{bloco}
+
+\section{Observação sobre codificação}
+
+Como o projeto está sendo compilado com LuaLaTeX, os arquivos devem ser mantidos em:
+
+\begin{itemize}[leftmargin=1.5cm]
+    \item UTF-8;
+    \item sem BOM.
+\end{itemize}
+
+Nesse caso, não é necessário usar \comando{\textbackslash usepackage[utf8]\{inputenc\}}.
+
+\section{Procedimento recomendado para o projeto real}
+
+Para o arquivo \arquivo{notas_sobre_geo_iii.tex}, o procedimento recomendado é:
+
+\begin{enumerate}[leftmargin=1.5cm]
+    \item manter \arquivo{referencias.bib} na mesma pasta do arquivo principal;
+    \item usar \comando{\textbackslash addbibresource\{referencias.bib\}};
+    \item citar com \comando{\textbackslash cite\{...\}};
+    \item incluir \comando{\textbackslash printbibliography} no fim do documento;
+    \item compilar pela sequência \comando{lualatex} $\rightarrow$ \comando{biber} $\rightarrow$ \comando{lualatex} $\rightarrow$ \comando{lualatex}.
+\end{enumerate}
+
+\section{Conclusão}
+
+O problema mais frequente não está na chave da citação, mas no fluxo de compilação.
+
+Se:
+
+\begin{itemize}[leftmargin=1.5cm]
+    \item o arquivo \arquivo{.bib} existe,
+    \item a chave existe,
+    \item o preâmbulo está correto,
+\end{itemize}
+
+então a correção quase sempre consiste em rodar corretamente:
+
+\begin{bloco}
+lualatex arquivo.tex
+biber arquivo
+lualatex arquivo.tex
+lualatex arquivo.tex
+\end{bloco}
+
+\printbibliography
+
+\end{document}
