@@ -1,4 +1,12 @@
-﻿# LaTeX / latexmk
+﻿# ===== Dados pesados =====
+Cartografia/dados_brutos/
+Cartografia/mapas/*.gpkg
+
+*.gpkg
+*.tif
+*.zip
+
+# ===== LaTeX =====
 *.aux
 *.log
 *.out
@@ -8,39 +16,22 @@
 *.fls
 *.fdb_latexmk
 *.synctex.gz
+*.run.xml
 *.bbl
 *.blg
 *.bcf
-*.run.xml
-*.nav
-*.snm
-*.pdf
-
-# TikZ externalization cache (se usar)
-externalized/
-
-# Backups operacionais
-_backup_git_*.zip
-
-# Editor/OS
-.vscode/
-Thumbs.db
-.DS_Store
-
-# TikZ/PGFPlots externalization outputs (quando o prefix não está em externalized/)
-*.dpth
-*.md5
 *.auxlock
 
-# PDFs gerados automaticamente (se você não quer versionar PDFs de build)
-*-figure*.pdf
+# ===== PDFs gerados =====
+*.pdf
 
-# Inbox/quarentena
-_INBOX/
+# (se quiser manter PDFs finais, trate caso a caso)
 
-_backup_git_Estatistica/
-Projetos_Latex/
+# ===== VS Code =====
+.vscode/
 
-# Excel lock files
+# ===== arquivos temporários Excel =====
 ~$*.xlsx
 
+# ===== backups =====
+_backup_git_*
