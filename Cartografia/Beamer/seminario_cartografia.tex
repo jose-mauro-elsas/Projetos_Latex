@@ -1,22 +1,7 @@
 %!TEX program = lualatex
 \documentclass[aspectratio=169,11pt]{beamer}
 
-\usepackage{draftwatermark}
-
-\usepackage{tikz}
-\usetikzlibrary{calc}
-
-\setbeamertemplate{background}{%
-  \begin{tikzpicture}[remember picture,overlay]
-    \node[
-      rotate=45,
-      scale=4.5,
-      text opacity=0.08
-    ] at (current page.center) {RASCUNHO};
-  \end{tikzpicture}%
-}
-
-% ===== Tema / aparência =====
+% ===== Tema =====
 \usetheme{Madrid}
 \usecolortheme{whale}
 \setbeamertemplate{navigation symbols}{}
@@ -24,7 +9,7 @@
 % ===== Idioma =====
 \usepackage[portuguese]{babel}
 
-% ===== Fonte (LuaLaTeX) =====
+% ===== Fonte =====
 \usepackage{fontspec}
 \setmainfont{Latin Modern Roman}
 
@@ -32,138 +17,210 @@
 \usepackage{graphicx}
 \usepackage{booktabs}
 
-% ===== Links =====
+% ===== URLs =====
 \usepackage{xurl}
-\Urlmuskip=0mu plus 1mu
 
-%=======Lipsum============
-\usepackage{lipsum}
+% ===== TikZ / watermark =====
+\usepackage{tikz}
+\usetikzlibrary{calc}
 
-% ===== Logo na capa =====
+% \setbeamertemplate{background}{%
+%   \begin{tikzpicture}[remember picture,overlay]
+%     \node[
+%       rotate=45,
+%       text opacity=0.05
+%     ] at (current page.center)
+%     {\fontsize{20}{20}\selectfont RASCUNHO};
+%   \end{tikzpicture}%
+% }
+
+% ===== Referências =====
+\usepackage[style=abnt, backend=biber]{biblatex}
+\usepackage{csquotes}
+\addbibresource{referencias.bib}
+
+% ===== Logo =====
 \titlegraphic{\includegraphics[width=1.8cm]{uerj.jpg}}
 
 % ===== Metadados =====
-\title[Seminário de Cartografia X]{Seminário de Cartografia X}
-\subtitle{Caracterização fisiográfica e aspectos oceanográficos do litoral de Atafona}
-\author[Carneiro, Gaiani e Elsas]{%
-Israel de Oliveira Carneiro \and Miguel Gayani \and José Mauro Elsas
-}
-\institute[UERJ]{Universidade do Estado do Rio de Janeiro \\Faculdade de Oceanografia}
+\title[Sem. Cartografia X]{Seminário de Cartografia X}
+\subtitle[Aspectos de Atafona]{Caracterização fisiográfica e aspectos oceanográficos de Atafona}
+\author[Carneiro, Gaiani e Elsas]{Israel Carneiro \and Miguel Gaiani \and José Mauro Elsas}
+\institute[UERJ]{UERJ -- Faculdade de Oceanografia}
 \date{março de 2026}
 
 \begin{document}
 
-% ===== Capa =====
+% =========================================================
+% CAPA
 \begin{frame}
-  \titlepage
-  \section{Objetivo}
-  \section{Caracterização Fisiográfica de Atafona}
-  \section{Metodologia}
-  \section{Discussão e Resultados}
-  \section{Referências}
+\titlepage
 \end{frame}
 
-% ===== Sumário =====
+% =========================================================
+% SEÇÕES
+\section{Objetivo}
+\section{Caracterização Fisiográfica}
+\section{Metodologia}
+\section{Discussão}
+\section{Conclusão}
+\section{Referências}
+
+% =========================================================
+% SUMÁRIO
 \begin{frame}{Sumário}
-  \tableofcontents
+\tableofcontents
 \end{frame}
 
+% =========================================================
 \begin{frame}{Objetivo}
-  \lipsum[1]
-\end{frame}
-
-\begin{frame}{Caracterização Fisiográfica de Atafona}
 \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.48\textwidth}
-        \textbf{Texto sobre caracterização.}
-        \begin{itemize}
-            \item Primeiro ponto
-            \item Segundo ponto
-            \item Terceiro ponto.
-        \end{itemize}
-    \end{column}
 
-    \begin{column}{0.48\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{Atafona_1.png}
-        
-        \vspace{0.3em}
-        {\footnotesize Atafona, São João da Barra}
-    \end{column}
+\begin{column}{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=0.62\textheight,keepaspectratio]{Atafona_2.png}
+
+\vspace{0.3em}
+{\small O mar está engolindo esta cidade brasileira.}
+
+{\tiny Fonte: \cite{briso_atafona_2021}}
+\end{column}
+
+\begin{column}{0.48\textwidth}
+\begin{itemize}
+    \item Identificar as causas da erosão costeira em Atafona e o desequilíbrio entre processos fluviais e marinhos.
+    \item Propor medidas de mitigação frente à elevação do nível do mar.
+\end{itemize}
+\end{column}
+
 \end{columns}
 \end{frame}
 
+% =========================================================
+\begin{frame}{Caracterização fisiográfica I}
+\begin{columns}[T,onlytextwidth]
+
+\begin{column}{0.48\textwidth}
+A região de Atafona, localizada em São João da Barra, na desembocadura do rio Paraíba do Sul, apresenta:
+
+\begin{itemize}
+    \item ambiente costeiro e fluviodeltaico de baixa altitude;
+    \item planície costeira e deltaica composta por sedimentos inconsolidados;
+    \item predomínio de areias, siltes e argilas.
+\end{itemize}
+
+{\small O delta do Paraíba do Sul também é uma área de intensa mineração de areia.}
+\end{column}
+
+\begin{column}{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=0.7\textheight,keepaspectratio]{Atafona_1.png}
+
+\vspace{0.3em}
+{\footnotesize Atafona, São João da Barra}
+\end{column}
+
+\end{columns}
+\end{frame}
+
+% =========================================================
+\begin{frame}{Caracterização fisiográfica II}
+\begin{columns}[T,onlytextwidth]
+
+\begin{column}{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=0.7\textheight,keepaspectratio]{Atafona_1.png}
+
+\vspace{0.3em}
+{\footnotesize Atafona, São João da Barra}
+\end{column}
+
+\begin{column}{0.48\textwidth}
+A dinâmica da região resulta da interação entre processos:
+
+\begin{itemize}
+    \item fluviais, associados à descarga e ao transporte sedimentar;
+    \item marinhos, associados às ondas e correntes;
+    \item atmosféricos, associados aos ventos.
+\end{itemize}
+
+Essa interação confere elevada mobilidade morfológica, favorecendo a erosão costeira.
+
+{\small Destaca-se o papel do equilíbrio morfodinâmico na região do delta.}
+\end{column}
+
+\end{columns}
+\end{frame}
+
+% =========================================================
 \begin{frame}{Metodologia}
 \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.48\textwidth}
-        \textbf{Texto sobre a metodologia.}
-        \begin{itemize}
-            \item Primeiro ponto
-            \item Segundo ponto
-            \item Terceiro ponto.
-        \end{itemize}
-    \end{column}
 
-    \begin{column}{0.48\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{rj_regiao.png}
-        
-        \vspace{0.3em}
-        {\footnotesize Rio de Janeiro}
-    \end{column}
+\begin{column}{0.48\textwidth}
+A metodologia consiste na análise de:
+
+\begin{itemize}
+    \item mapas batimétricos;
+    \item imagens de satélite;
+    \item material cartográfico;
+    \item bibliografia especializada.
+\end{itemize}
+
+Objetivo: avaliar a hipótese de alteração do equilíbrio hidrossedimentar na foz do rio Paraíba do Sul.
+\end{column}
+
+\begin{column}{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=0.7\textheight,keepaspectratio]{rj_regiao.png}
+
+\vspace{0.3em}
+{\footnotesize Litoral norte do Rio de Janeiro}
+\end{column}
+
 \end{columns}
 \end{frame}
 
-\begin{frame}{Discussão e Resultados}
+% =========================================================
+\begin{frame}{Discussão e resultados}
 \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.48\textwidth}
-        \textbf{Texto sobre os resultados.}
-        \begin{itemize}
-            \item Primeiro ponto
-            \item Segundo ponto
-            \item Terceiro ponto.
-        \end{itemize}
-    \end{column}
 
-    \begin{column}{0.48\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{Atafona_1.png}
-        
-        \vspace{0.3em}
-        {\footnotesize Atafona, São João da Barra}
-    \end{column}
+\begin{column}{0.48\textwidth}
+\begin{itemize}
+    \item redução da vazão do rio;
+    \item diminuição do aporte sedimentar;
+    \item avanço da cunha salina;
+    \item intensificação dos processos marinhos.
+\end{itemize}
+
+Consequência: erosão costeira e recuo da linha de costa em Atafona.
+\end{column}
+
+\begin{column}{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=0.7\textheight,keepaspectratio]{Atafona_1.png}
+
+\vspace{0.3em}
+{\footnotesize Atafona, São João da Barra}
+\end{column}
+
 \end{columns}
 \end{frame}
 
-\begin{frame}{Discussões e Recomendações}
-\begin{columns}[T,onlytextwidth]
-    \begin{column}{0.48\textwidth}
-        \textbf{Texto sobre Discussões e remomencações.}
-        \begin{itemize}
-            \item Primeiro ponto
-            \item Segundo ponto
-            \item Terceiro ponto.
-        \end{itemize}
-    \end{column}
-
-    \begin{column}{0.48\textwidth}
-        \centering
-        \includegraphics[width=0.5\linewidth]{norte_rj.png}
-        
-        \vspace{0.3em}
-        {\footnotesize Atafona, São João da Barra}
-    \end{column}
-\end{columns}
+% =========================================================
+\begin{frame}{Conclusões}
+\begin{itemize}
+    \item A erosão em Atafona resulta de múltiplos fatores.
+    \item A redução da vazão do rio é um elemento chave.
+    \item O sistema apresenta alta vulnerabilidade ambiental.
+    \item Medidas de mitigação devem considerar o equilíbrio morfodinâmico.
+\end{itemize}
 \end{frame}
 
-  \begin{frame}{Referências}
+% =========================================================
+\nocite{briso_atafona_2021}
 
-  \begin{itemize}
-    \item Ref 1
-    \item Ref 2
-    \item Ref 3
-  \end{itemize}
-  
+\begin{frame}[allowframebreaks]{Referências}
+\printbibliography
 \end{frame}
 
 \end{document}

@@ -137,52 +137,64 @@ A aferição da pipeta é feita pela medida da massa que dela escoa. É importan
 
 \section{Resultados}
 
+A tabela a seguir mostra os resultados da pesagem individual.
 
-A tabela a seguir mostra os resultasos de massa
 \begin{table}[H]
 \centering
-\caption{Resultados da pesagem.}
+\caption{Resultados da pesagem individual.}
 \label{tab:result}
-%\setlength{\tabcolsep}{12pt}
-%\renewcommand{\arraystretch}{1.2}
 \begin{tabular}{lr}
 \toprule
-\textbf{Descrição} &\textbf{Massa (\SI{}{g})} \\
+\textbf{Descrição} & \textbf{Massa (\si{g})} \\
 \midrule
-Erlenmeyer vazio ($m_1$) & 65,6961\\
-Erlenmeyer + água($m_2$)& 90,6430\\
-Massa de água ($m_{H2O}$) & 24,95\\
-Temperatura ($\SI{}{\degreeCelsius}$) & 26\\
-$\rho_{H2O}(\SI{}{g/ml})$ &0,996783\\
-$m_{H2O}$(\SI{}{g})&24,95\\
-
+Erlenmeyer vazio ($m_1$)        & 65,6961 \\
+Erlenmeyer + água ($m_2$)       & 90,6430 \\
+Massa de água ($m_{H_2O}$)      & 24,9469 \\
+Temperatura                     & \SI{26}{\degreeCelsius} \\
+$\rho_{H_2O}$                   & \SI{0,996783}{g/mL} \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-No entanto, as massas de água calculadas pelos outros integrantes do grupo (Israel Carneiro e Miguel Gayani) são:
+A massa de água escoada foi obtida por
+\[
+m_{H_2O}=m_2-m_1=90,6430-65,6961=\SI{24,9469}{g}
+\]
+
+Considerando também os resultados obtidos pelos outros integrantes do grupo, tem-se:
 
 \begin{table}[H]
 \centering
-\caption{Resultados da pesagem.}
+\caption{Massas de água obtidas pelo grupo.}
 \label{tab:resfin}
 \begin{tabular}{lr}
 \toprule
-\textbf{Descrição} &\textbf{Massa (\SI{}{g})} \\
+\textbf{Descrição} & \textbf{Massa (\si{g})} \\
 \midrule
-$m_{jm}$(\SI{}{g})&24,95\\
-$m_{ic}$(\SI{}{g})&25,02\\
-$m_{mg}$(\SI{}{g})&24,81\\
-$\bar{m}$(\SI{}{g})&24,97\\
-$V_{H2O}$(\SI{}{ml})&25,03\\
+$m_{jm}$      & 24,95 \\
+$m_{ic}$      & 25,02 \\
+$m_{mg}$      & 24,81 \\
+$\bar{m}$     & 24,93 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
+A média das massas foi calculada por
 \[
-    V_{H2O}=\frac{24,93}{0,996783}=\SI{25,03}{ml}
+\bar{m}=\frac{24,95+25,02+24,81}{3}=\SI{24,93}{g}
 \]
 
+\section{Cálculos}
+
+O volume da pipeta foi determinado a partir da massa média de água escoada e da densidade da água a \SI{26}{\degreeCelsius}:
+
+\[
+V_{H_2O}=\frac{\bar{m}}{\rho}
+=\frac{24,93}{0,996783}
+=\SI{25,01}{mL}
+\]
+
+Portanto, o volume experimental médio da pipeta foi de \SI{25,01}{mL}.
 
 % =========================================================
 % Referências (entra no sumário)
