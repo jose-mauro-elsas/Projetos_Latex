@@ -1,0 +1,203 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{parskip}
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0.3cm}
+
+% \usepackage{parskip}
+% \setlength{\parindent}{0pt}
+% \setlength{\parskip}{0.3cm}
+
+\usepackage[portuguese]{babel}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+
+\usepackage{geometry}
+\geometry{left=3cm,right=3cm,top=3.5cm,bottom=2.5cm}
+
+\usepackage{setspace}
+\setstretch{1.0}
+
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{wasysym}
+
+
+\title{Plano de Trabalho}
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{center}
+{\Large \textbf{Plano de Trabalho}}\\[1em]
+Nome do(a) Candidato(a): José Mauro Xavier Elsas\\
+1ª opção: Helga Dolorico Balbi\\
+2ª opção: Jorge de Abreu Soares\\
+3ª opção: Eduardo Soares Ogasawara
+\end{center}
+
+\section*{Resumo}
+
+Este trabalho propõe a aplicação de técnicas de ciência de dados para análise e priorização de sistemas de produção offshore em fim de vida útil no Brasil. A presença de instalações operando próximas ou além da vida útil de projeto impõe desafios técnicos e decisórios relevantes. A proposta consiste na estruturação de uma base de dados a partir de informações públicas, seguida de análise exploratória e construção de um índice de criticidade para apoio à priorização de descomissionamento. A metodologia envolve tratamento de dados, construção de variáveis derivadas e análise estatística. Espera-se contribuir com uma abordagem estruturada e replicável para suporte à decisão em sistemas complexos da indústria offshore.
+
+\section{Introdução}
+
+A exploração offshore de petróleo e gás natural no Brasil tem sido responsável pela implantação de um grande número de sistemas de produção ao longo das últimas décadas, particularmente em bacias sedimentares como a de Campos. Essas instalações, que incluem plataformas fixas, unidades flutuantes e sistemas submarinos, foram projetadas para operar dentro de uma vida útil estimada, tipicamente da ordem de 30 anos.
+
+Com o passar do tempo, essas estruturas passam a apresentar desafios associados ao envelhecimento de seus componentes, aumento de custos de manutenção e possíveis limitações operacionais. Nesse contexto, torna-se necessário avaliar estratégias relacionadas à continuidade da operação, intervenções técnicas ou descomissionamento.
+
+A decisão sobre o descomissionamento de sistemas offshore é inerentemente complexa, envolvendo múltiplos fatores, tais como características técnicas da instalação, condições operacionais, localização, viabilidade econômica e aspectos regulatórios. Tradicionalmente, essas decisões são tomadas com base em análises pontuais e experiência técnica, o que pode dificultar a sistematização e comparação entre diferentes unidades.
+
+Diante desse cenário, abordagens baseadas em ciência de dados surgem como uma alternativa promissora para organizar, integrar e analisar grandes volumes de informação, permitindo a identificação de padrões e a construção de indicadores que apoiem processos decisórios mais consistentes.
+
+A motivação deste trabalho está também associada à experiência profissional do candidato na indústria offshore, envolvendo atividades de engenharia, gestão de projetos e coordenação de equipes técnicas em projetos de grande porte. Essa vivência permite uma compreensão prática das implicações técnicas e operacionais associadas ao ciclo de vida dessas instalações.
+
+Dessa forma, o problema de pesquisa que orienta este trabalho pode ser formulado como: como estruturar e analisar dados disponíveis sobre sistemas de produção offshore de modo a permitir sua classificação e priorização para descomissionamento?
+
+O problema do descomissionamento offshore tende a se tornar mais relevante à medida que envelhece o parque de instalações em operação. Em sistemas complexos, a proximidade ou superação da vida útil de projeto não implica automaticamente a retirada imediata da unidade, mas sinaliza a necessidade de avaliações mais criteriosas quanto à continuidade operacional, manutenção, intervenções e eventual desativação. Nesse sentido, a definição de prioridades entre unidades distintas torna-se um problema de análise comparativa e apoio à decisão.
+
+Além disso, a heterogeneidade entre as instalações offshore amplia a dificuldade de avaliação. Diferentes tipos de unidade, lâminas d'água, sistemas de escoamento, operadores e históricos operacionais produzem contextos distintos, que não podem ser tratados adequadamente apenas por análise descritiva simples. Assim, uma abordagem estruturada baseada em dados pode contribuir para sintetizar essa diversidade em indicadores comparáveis, favorecendo maior consistência analítica.
+
+Do ponto de vista científico, a proposta situa-se na interface entre engenharia, análise de dados e apoio à decisão. Do ponto de vista aplicado, busca oferecer uma forma de organizar e interpretar informações disponíveis de modo útil para problemas reais da indústria offshore. Essa combinação entre relevância prática e estrutura metodológica compatível com ciência de dados constitui a principal justificativa da pesquisa.
+
+Além dos aspectos técnicos e operacionais, o problema do descomissionamento offshore apresenta também uma dimensão de gestão de ativos, na qual a priorização de intervenções assume papel central. Em contextos industriais complexos, nos quais recursos são limitados e as decisões possuem impacto significativo, a capacidade de comparar diferentes unidades de forma estruturada torna-se um elemento essencial para o planejamento estratégico.
+
+Nesse sentido, a proposta de construção de um índice de criticidade pode ser interpretada como uma ferramenta intermediária entre a análise puramente técnica e a tomada de decisão gerencial. Ao sintetizar múltiplas variáveis em um indicador comparativo, busca-se fornecer uma base mais consistente para discussão e definição de prioridades.
+
+\section*{Justificativa}
+
+O descomissionamento de sistemas offshore representa um desafio crescente na indústria de óleo e gás, especialmente em países com histórico de exploração em águas profundas, como o Brasil. A presença de um número significativo de unidades próximas ou além de sua vida útil de projeto impõe a necessidade de abordagens estruturadas para avaliação e priorização dessas instalações.
+
+A tomada de decisão nesse contexto envolve múltiplas dimensões, incluindo aspectos técnicos, operacionais, econômicos e regulatórios. No entanto, a ausência de métodos sistemáticos baseados em dados dificulta a comparação objetiva entre diferentes unidades, o que pode levar a decisões baseadas predominantemente em julgamento qualitativo.
+
+Nesse cenário, a aplicação de técnicas de ciência de dados apresenta potencial para contribuir na organização e análise dessas informações, permitindo a construção de indicadores que sintetizem diferentes variáveis relevantes. A utilização de abordagens quantitativas pode auxiliar na identificação de padrões e na priorização de sistemas de forma mais consistente e transparente.
+
+Além disso, a proposta se insere em um contexto de crescente digitalização da indústria de óleo e gás, no qual a análise de dados assume papel cada vez mais relevante no suporte à tomada de decisão. Dessa forma, o desenvolvimento de uma metodologia estruturada para análise de criticidade de sistemas offshore pode representar uma contribuição relevante tanto do ponto de vista acadêmico quanto aplicado.
+
+\section{Objetivos}
+
+\subsection*{Objetivo Geral}
+
+Desenvolver uma abordagem baseada em ciência de dados para análise e priorização de sistemas offshore em fim de vida útil.
+
+\subsection*{Objetivos Específicos}
+
+\begin{itemize}
+\item Estruturar base de dados a partir de informações públicas;
+\item Realizar análise exploratória dos dados;
+\item Construir variáveis como idade operacional e anos além da vida útil;
+\item Desenvolver índice de criticidade;
+\item Avaliar aplicabilidade dos resultados.
+\end{itemize}
+
+\section{Metodologia e Etapas}
+
+\subsection*{Etapa 1 – Coleta e organização dos dados}
+
+Serão utilizados dados provenientes de fontes públicas, especialmente da Agência Nacional do Petróleo, Gás Natural e Biocombustíveis (ANP), contendo informações sobre unidades offshore, como tipo de instalação, operador, ano de início de operação, sistema de escoamento e lâmina d’água.
+
+Os dados serão inicialmente organizados em uma base estruturada, permitindo sua posterior análise.
+
+\subsection*{Etapa 2 – Tratamento e preparação dos dados}
+
+Os dados coletados serão organizados e tratados, incluindo padronização de formatos, tratamento de valores ausentes e verificação de consistência.
+
+Serão construídas variáveis derivadas relevantes para a análise, tais como idade da instalação, anos além da vida útil de referência, tipo de unidade, lâmina d’água, sistema de escoamento e operador.
+
+\subsection*{Etapa 3 – Análise exploratória dos dados}
+
+A análise exploratória será realizada com o objetivo de identificar padrões, distribuições e possíveis agrupamentos entre as unidades analisadas.
+
+Serão utilizadas estatísticas descritivas, como média, mediana e quartis, bem como representações gráficas, incluindo histogramas, gráficos de barras e tabelas de frequência, permitindo compreender a distribuição das idades e sua relação com outras variáveis.
+
+\subsection*{Etapa 4 – Construção do índice de criticidade}
+
+Com base nas variáveis analisadas, será desenvolvido um índice de criticidade que permita classificar as unidades quanto à prioridade de descomissionamento.
+
+Esse índice será construído a partir da combinação de diferentes fatores, incluindo idade da instalação, tempo além da vida útil e características operacionais.
+
+O objetivo não é produzir um valor absoluto de risco, mas um indicador comparativo que permita ordenar ou agrupar unidades segundo sua criticidade relativa.
+
+A definição das ponderações associadas a cada variável será realizada de forma exploratória, buscando refletir a relevância relativa de cada fator no contexto do problema. Alternativamente, poderão ser testadas diferentes configurações do índice, permitindo avaliar a sensibilidade dos resultados às escolhas realizadas.
+
+O índice poderá assumir forma aditiva simples ou normalizada, dependendo da escala das variáveis consideradas. A normalização dos dados poderá ser realizada por meio de técnicas como reescalonamento linear, de modo a permitir a combinação de variáveis de naturezas distintas.
+
+Além disso, será avaliada a possibilidade de segmentação das unidades em classes de criticidade, em vez de um ranking contínuo, facilitando a interpretação dos resultados e sua aplicação prática em contextos decisórios.
+
+\subsection*{Etapa 5 – Avaliação dos resultados}
+
+Os resultados obtidos serão analisados criticamente, buscando verificar a coerência da classificação proposta com o comportamento esperado das instalações analisadas.
+
+Também serão discutidas as limitações do método, especialmente quanto à simplificação de um problema complexo e à dependência de dados públicos.
+
+Cabe destacar que a abordagem adotada neste trabalho privilegia a interpretabilidade dos resultados. Diferentemente de modelos preditivos complexos, cuja interpretação pode ser limitada, a construção de um índice baseado em variáveis explicitamente definidas permite maior transparência no processo de análise.
+
+Essa característica é particularmente relevante em contextos de engenharia, nos quais a justificativa técnica das decisões é um elemento fundamental. Dessa forma, busca-se equilibrar simplicidade metodológica e utilidade prática, garantindo que os resultados possam ser compreendidos e utilizados como suporte efetivo à tomada de decisão.
+
+\subsection*{Cronograma}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\textwidth}{|X|c|c|}
+\hline
+\textbf{Etapa} & \textbf{Meses 1--6} & \textbf{Meses 7--12} \\
+\hline
+Coleta e organização dos dados & X &  \\
+\hline
+Tratamento e análise exploratória & X & X \\
+\hline
+Construção do índice &  & X \\
+\hline
+Avaliação e redação final &  & X \\
+\hline
+\end{tabularx}
+\end{table} 
+
+\section{Contribuições e Relevância}
+
+Este trabalho apresenta relevância tanto do ponto de vista acadêmico quanto aplicado. Do ponto de vista acadêmico, contribui para a aplicação de técnicas de ciência de dados em um problema com forte componente industrial, explorando a construção de indicadores a partir de dados heterogêneos.
+
+Do ponto de vista aplicado, a proposta busca oferecer uma ferramenta preliminar de apoio à decisão, capaz de organizar informações dispersas e permitir a comparação entre diferentes unidades offshore. Essa abordagem pode auxiliar na identificação de padrões e na definição de prioridades em contextos onde a análise puramente qualitativa apresenta limitações.
+
+Adicionalmente, a metodologia proposta possui potencial de generalização para outros tipos de ativos industriais, nos quais a priorização de intervenções depende da análise integrada de múltiplas variáveis.
+
+\section{Resultados Esperados}
+
+Espera-se desenvolver uma metodologia estruturada para análise de sistemas offshore, incluindo a construção de um índice de criticidade. Espera-se também contribuir para a aplicação de ciência de dados em problemas reais da engenharia offshore.
+
+Também se reconhece que a proposta apresenta limitações inerentes ao uso de dados públicos, os quais podem não refletir integralmente a complexidade técnica e operacional envolvida na decisão de descomissionamento. Ainda assim, a metodologia proposta oferece uma etapa inicial estruturada de análise comparativa, podendo servir como base para estudos mais detalhados.
+
+Espera-se ainda que o trabalho contribua para a consolidação de uma abordagem integrada entre engenharia e ciência de dados, evidenciando o potencial dessa interação na análise de problemas complexos. Tal integração pode representar um caminho relevante para o desenvolvimento de soluções mais estruturadas e quantitativas no contexto da indústria offshore.
+
+\section*{Referências}
+
+AGÊNCIA NACIONAL DO PETRÓLEO, GÁS NATURAL E BIOCOMBUSTÍVEIS (ANP). Dados públicos de instalações de produção offshore. Disponível em: <https://www.gov.br/anp/>. Acesso em: 23 mar. 2026.
+
+INTERNATIONAL ORGANIZATION FOR STANDARDIZATION (ISO). ISO 19902:2020. Petroleum and natural gas industries — Fixed steel offshore structures. Geneva: ISO, 2020.
+
+INTERNATIONAL MARITIME ORGANIZATION (IMO). Resolution A.672(16): Guidelines and standards for the removal of offshore installations and structures. London: IMO, 1989.
+
+\section*{CHECK-LIST DE CONFORMIDADE}
+
+\begin{itemize}[label=\CheckedBox]
+    \item O plano possui entre 6 e 8 páginas (excluindo capa e elementos pré-textuais).
+    \item  O texto está formatado em fonte 12pt, espaçamento simples e margens exigidas.
+    \item Foram indicados de 1 a 3 orientadores, em ordem decrescente de preferência.
+    \item O(a) orientador(a) indicado(a) como primeira opção possui vaga no edital vigente.
+    \item O tema do plano está aderente à área de atuação do(a) orientador(a) indicado(a) como primeira opção.
+    \item O plano demonstra conhecimento das referências sugeridas pelo(a) orientador(a) escolhido(a).
+    \item Todas as citações estão devidamente referenciadas conforme normas da SBC.
+    \item  O texto foi revisado quanto a possíveis ocorrências de plágio.
+    \item O documento está completo e pronto para submissão.
+\end{itemize}
+
+Declaro que revisei todos os itens acima e que o plano atende às exigências do edital.
+
+\noindent\rule{8cm}{0.4pt}
+\end{document}
