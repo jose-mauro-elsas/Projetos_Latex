@@ -16,6 +16,7 @@
 % ===== Figuras / tabelas =====
 \usepackage{graphicx}
 \usepackage{booktabs}
+\usepackage{siunitx}
 
 % ===== URLs =====
 \usepackage{xurl}
@@ -80,8 +81,12 @@
 \begin{column}{0.48\textwidth}
 \begin{itemize}
     \item Identificar as causas da erosão costeira em Atafona e o desequilíbrio entre processos fluviais e marinhos.
+
+     \item Avaliar a hipótese de alteração do equilíbrio hidrossedimentar na foz do rio Paraíba do Sul.
     
     \item Propor medidas de mitigação frente à erosão de linha de costa que tem atingido Atafona por muitos anos.
+
+   
 \end{itemize}
 \end{column}
 
@@ -121,7 +126,7 @@ A região de Atafona, localizada em São João da Barra, no delta do rio Paraíb
 
 \begin{column}{0.48\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=0.7\textheight,keepaspectratio]{batimetria_Atafona.png}
+\includegraphics[width=\linewidth,height=0.7\textheight,keepaspectratio]{Aprox_195°.png}
 
 \vspace{0.3em}
 {\footnotesize Batimetria em Atafona, São João da Barra}
@@ -140,12 +145,11 @@ Essa interação confere elevada mobilidade morfológica, favorecendo a erosão 
 
 {\small Destaca-se o papel do equilíbrio morfodinâmico na região do delta.}
 \end{column}
-
 \end{columns}
 \end{frame}
 
 % =========================================================
-\begin{frame}{Metodologia}
+\begin{frame}{Metodologia I}
 \begin{columns}[T,onlytextwidth]
 
 \begin{column}{0.48\textwidth}
@@ -155,15 +159,41 @@ A metodologia consiste na análise de:
     \item mapas batimétricos;
     \item imagens de satélite;
     \item material cartográfico;
-    \item bibliografia especializada.
+    \item Base de dados de direção e velocidade de corrente medida por ACDP (\emph{Acoustic Doppler Current Profile}).
 \end{itemize}
 
-Avaliar a hipótese de alteração do equilíbrio hidrossedimentar na foz do rio Paraíba do Sul.
 \end{column}
 
 \begin{column}{0.48\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=0.7\textheight,keepaspectratio]{rj_regiao.png}
+
+\vspace{0.3em}
+{\footnotesize Litoral norte do Rio de Janeiro}
+\end{column}
+
+\end{columns}
+\end{frame}
+
+% =========================================================
+\begin{frame}{Metodologia II}
+\begin{columns}[T,onlytextwidth]
+
+\begin{column}{0.48\textwidth}
+Para a análise de corrente temos:
+
+\begin{itemize}
+    \item Coordenadas: lat.= -19.69518331 lon = -39.77213332,
+    \item Equipamento: Nortek Aquadopp Profiler 600kHz
+    \item A análise foi feita com 10 células,
+    \item O vetor representativo é \SI{0,165}{m/s} azimute $\SI{195}{\degree}$
+\end{itemize}
+
+\end{column}
+
+\begin{column}{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=0.7\textheight,keepaspectratio]{direcao_velocidade_cells.png}
 
 \vspace{0.3em}
 {\footnotesize Litoral norte do Rio de Janeiro}
@@ -225,7 +255,7 @@ Avaliar a hipótese de alteração do equilíbrio hidrossedimentar na foz do rio
         \centering
         \includegraphics[width=\linewidth]{quebra_mar.png}
         \vspace{0.3em}
-        {\footnotesize Quebra-mar, Rio de Janeiro.}\\
+        {\footnotesize Quebra-mar, Barra da Tijuca, Rio de Janeiro.}\\
         {\tiny \cite{wiki_marpedia_quebra}}
     \end{column}
 
@@ -246,7 +276,7 @@ Avaliar a hipótese de alteração do equilíbrio hidrossedimentar na foz do rio
 \begin{columns}[T]
     \begin{column}{0.48\textwidth}
         \centering
-        \includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{batimetria_Atafona._II.png}
+        \includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{batimetria_Atafona.png}
         
         \vspace{0.15cm}
         \footnotesize Batimetria da região
@@ -291,6 +321,7 @@ Avaliar a hipótese de alteração do equilíbrio hidrossedimentar na foz do rio
 \begin{columns}[T]
     \begin{column}{0.48\textwidth}
         \centering
+        \vspace{3em}
         \includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{Holly_beach.png}
         
         \vspace{0.15cm}
@@ -328,8 +359,9 @@ Avaliar a hipótese de alteração do equilíbrio hidrossedimentar na foz do rio
 
     \begin{column}{0.48\textwidth}
         \centering
-        \includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{configs.png}
-        
+        \vspace{5em}
+        \includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{Figs_a_b.png
+        }
         \vspace{0.15cm}
         \footnotesize Fonte: \cite{asbpa2011_erosion_control_structures}.
     \end{column}
@@ -341,7 +373,11 @@ Avaliar a hipótese de alteração do equilíbrio hidrossedimentar na foz do rio
 \nocite{briso_atafona_2021}
 
 \begin{frame}[allowframebreaks]{Referências}
-\printbibliography
+\scriptsize
+\setlength{\bibitemsep}{0pt}
+\setlength{\bibhang}{0pt}
+\renewcommand*{\bibfont}{\scriptsize}
+\printbibliography[heading=none]
 \end{frame}
 
 \end{document}
