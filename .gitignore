@@ -35,3 +35,20 @@ Cartografia/mapas/*.gpkg
 
 # ===== backups =====
 _backup_git_*
+# ===== GIS pesado / arquivos derivados =====
+*.shp
+*.dbf
+*.shx
+*.prj
+*.cpg
+*.qix
+*.sbn
+*.sbx
+*.vrt
+*.aux.xml
+
+# ===== LaTeX auxiliares adicionais =====
+*.nav
+*.snm
+*.vrb
+*.xdv
