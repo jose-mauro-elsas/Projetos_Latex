@@ -1,0 +1,238 @@
+%!TEX program = lualatex
+% Rascunho: preencher as duas massas dos filtros antes de concluir os resultados.
+\documentclass[a4paper,12pt]{article}
+\usepackage[brazilian]{babel}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\usepackage{microtype}
+\usepackage[top=3cm,bottom=2.5cm,left=3cm,right=2.5cm]{geometry}
+\usepackage{setspace,indentfirst}
+\onehalfspacing
+\usepackage{amsmath,amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{siunitx}
+\sisetup{locale=DE,output-decimal-marker={,},per-mode=symbol}
+\usepackage{booktabs,array}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\hypersetup{hidelinks,pdftitle={Prática 9 -- Determinação gravimétrica de sulfato em água do mar}}
+
+\begin{document}
+\begin{titlepage}
+\centering
+{\large Universidade do Estado do Rio de Janeiro -- UERJ\par}
+\vspace{0.3cm}{\large Química VIII / Oceanografia\par}
+\vspace{1.0cm}\includegraphics[width=0.28\linewidth]{uerj.jpg}\par
+\vspace{0.8cm}{\LARGE\bfseries Prática 9\par}
+\vspace{0.5cm}{\Large\bfseries DETERMINAÇÃO GRAVIMÉTRICA DE SULFATO\\ EM ÁGUA DO MAR\par}
+\vfill
+\begin{flushright}
+\textbf{Alunos:}\\ Israel Carneiro\\ José Mauro Xavier Elsas\\ Miguel Gayani\\[0.5cm]
+\textbf{Professora:} Priscilla Magalhães de Souza
+\end{flushright}
+\vspace{1cm}Rio de Janeiro -- 2026
+\end{titlepage}
+
+\section{Introdução}
+A água do mar contém principalmente água e sais dissolvidos; entre os íons
+mais abundantes estão \ce{Cl-}, \ce{Na+}, \ce{SO4^{2-}}, \ce{Mg^{2+}},
+\ce{Ca^{2+}} e \ce{K+}. A proporção desses constituintes pode variar com
+mistura, evaporação e processos biogeoquímicos. O sulfato é um dos
+constituintes dissolvidos da água do mar. Sua determinação
+gravimétrica baseia-se na formação de sulfato de bário, pouco solúvel, a partir
+da adição de íons bário à amostra:
+\begin{equation}
+  \ce{Ba^{2+}(aq) + SO4^{2-}(aq) -> BaSO4(s)}.
+\end{equation}
+A relação em quantidade de matéria entre o sulfato presente na alíquota e o
+\ce{BaSO4} formado é de 1:1. A precipitação a quente e a digestão favorecem
+a obtenção de partículas filtráveis. O meio ácido ajuda a reduzir a
+interferência de carbonatos, conforme discutido nas anotações da aula:
+\ce{CO3^{2-} + H+ -> HCO3-} e
+\ce{HCO3- + H+ -> H2CO3 -> CO2 + H2O}.
+
+Uma vantagem da gravimetria é medir diretamente a massa de um composto de
+composição conhecida, relacionando-a à massa do analito por estequiometria,
+sem construir uma curva de calibração instrumental. Para que essa vantagem
+se concretize, a precipitação deve ser completa e o sólido deve estar livre
+de contaminantes e com massa estabilizada após secagem.
+
+Também se pode determinar sulfato por cromatografia de íons (separação e
+quantificação do ânion), por turbidimetria (medida da turbidez do
+\ce{BaSO4} disperso) e por métodos complexométricos indiretos. A apostila
+apresenta uma prática específica de dosagem complexométrica de sulfato;
+a EPA descreve métodos de cromatografia de íons e turbidimetria nas
+referências finais.
+
+\section{Objetivos}
+\begin{itemize}
+  \item precipitar o sulfato presente em uma amostra de água do mar na forma de
+        \ce{BaSO4};
+  \item calcular a massa de precipitado após descontar a massa de cada filtro;
+  \item determinar a concentração de \ce{SO4^{2-}} em
+        \si{\milli\gram\per\litre} e em porcentagem massa/volume.
+\end{itemize}
+
+\section{Material utilizado}
+\begin{itemize}
+  \item béquer de \SI{400}{\milli\litre} e béquer de
+        \SI{50}{\milli\litre}, indicados no quadro;
+  \item material para medir e transferir os volumes da amostra e das soluções;
+  \item utensílio para agitação durante a adição do precipitante;
+  \item equipamento de aquecimento;
+  \item dispositivo de filtração e dois filtros de massas previamente medidas;
+  \item equipamento de secagem e balança para a pesagem dos filtros e
+        precipitados.
+\end{itemize}
+O quadro não especifica os modelos da vidraria volumétrica, do dispositivo
+de filtração e do equipamento de secagem. A apostila apresenta uma relação
+mais detalhada de materiais, mas descreve uma versão diferente do
+procedimento; por isso, esses detalhes não foram tomados como confirmação
+do que foi utilizado em sala.
+
+\section{Reagentes e soluções}
+\begin{itemize}
+  \item amostra de água do mar;
+  \item água para diluição da amostra e lavagem do precipitado;
+  \item solução de \ce{HCl} \SI{3}{\mole\per\litre};
+  \item solução de \ce{BaCl2} 4\% m/v.
+\end{itemize}
+O registro da aula não distingue a forma anidra da hidratada do cloreto de
+bário empregado no preparo da solução.
+
+\section{Procedimento experimental}
+O presente relatório corresponde ao grupo da capela 2. O quadro e os dados
+compartilhados registram pesagens das capelas 1 e 2; ambas foram mantidas
+para o cálculo da média solicitado, sujeita à confirmação de que as duas
+capelas analisaram alíquotas da mesma amostra.
+
+\subsection{Precipitação do sulfato}
+O roteiro do quadro da aula, datado de 21/09/2026, indica adicionar a um
+béquer de \SI{400}{\milli\litre} uma alíquota de \SI{25}{\milli\litre} de
+água do mar, \SI{100}{\milli\litre} de água e \SI{2}{\milli\litre} de
+\ce{HCl} \SI{3}{\mole\per\litre}. Aquecer sem deixar entrar em ebulição.
+Adicionar aproximadamente \SI{25}{\milli\litre} de solução de \ce{BaCl2}
+4\% m/v, gota a gota sob agitação. Verificar a precipitação completa
+pela adição de mais precipitante ao sobrenadante, observando a eventual
+formação de sólido.
+
+\subsection{Digestão, filtração e pesagem}
+Deixar o precipitado em digestão por cerca de 30 minutos, filtrar e secar.
+Pesar os filtros vazios e, após a separação e a secagem, pesar cada conjunto
+filtro + precipitado.
+O registro fornecido informa duas pesagens finais de filtro com precipitado
+e as massas dos filtros vazios. A condição exata de secagem não foi informada.
+
+\noindent\textit{Critério de registro:} a apostila identifica o experimento
+como Prática 11 e descreve outras quantidades (por exemplo, alíquota de
+\SI{50.00}{\milli\litre}). Este relatório o denomina Prática 9 e usa as
+quantidades do quadro da aula. Detalhes de operação presentes apenas na
+apostila não foram atribuídos à execução da turma.
+
+\section{Resultados e cálculos}
+As duas massas iniciais correspondem ao conjunto filtro + precipitado.
+As massas dos filtros vazios foram informadas posteriormente, em gramas.
+\begin{table}[h]
+\centering
+\caption{Pesagens e correção pela massa do filtro.}
+\begin{tabular}{c c c c}
+\toprule
+Capela & Filtro + \ce{BaSO4} (g) & Filtro vazio (g) & \ce{BaSO4} (g)\\
+\midrule
+1 & 0,7337 & 0,5990 & 0,1347\\
+2 & 0,7515 & 0,6150 & 0,1365\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+As massas dos filtros foram descontadas \emph{antes} de calcular a média:
+\begin{equation}
+  \overline m_{\ce{BaSO4}} =
+  \frac{(0,7337-0,5990)+(0,7515-0,6150)}{2}
+  =\frac{0,1347+0,1365}{2}=\SI{0.1356}{\gram}.
+\end{equation}
+As massas individuais de precipitado diferem em \SI{0.0018}{\gram},
+aproximadamente 1,33\% da média.
+
+Empregando as massas molares registradas no quadro,
+$M(\ce{SO4^{2-}})=\SI{96.06}{\gram\per\mole}$ e
+$M(\ce{BaSO4})=\SI{233.39}{\gram\per\mole}$,
+\begin{equation}
+ m_{\ce{SO4^{2-}}}
+ =\SI{0.1356}{\gram}\,
+ \frac{\SI{96.06}{\gram\per\mole}}{\SI{233.39}{\gram\per\mole}}
+ =\SI{0.05581}{\gram}.
+\end{equation}
+Para uma alíquota de \SI{25}{\milli\litre}, a concentração na amostra
+original, expressa em mg/L, é
+\begin{equation}
+ C_{\ce{SO4^{2-}}}=\frac{\SI{0.1356}{\gram}}{\SI{0.025}{\litre}}
+ \frac{96,06}{233,39}\times 1000\ \mathrm{mg\,g^{-1}}
+ \simeq\SI{2232}{\milli\gram\per\litre}.
+ \label{eq:conc}
+\end{equation}
+Em porcentagem massa/volume (gramas de sulfato por 100 mL da amostra):
+\begin{equation}
+ \%\,(m/v)=0,1356\frac{96,06}{233,39}\frac{100}{25}
+ \simeq 0,2232\%.
+\end{equation}
+Individualmente, as capelas 1 e 2 correspondem, respectivamente, a
+\SI{2218}{\milli\gram\per\litre} e
+\SI{2247}{\milli\gram\per\litre}, considerando alíquotas de
+\SI{25}{\milli\litre} da mesma amostra.
+O volume de água adicionado serve à precipitação e não substitui os
+\SI{25}{\milli\litre} da amostra no denominador.
+
+\subsection*{Preparo das soluções: relações solicitadas no quadro}
+Uma solução de \ce{BaCl2} 4\% m/v contém \SI{4}{\gram} de soluto em
+\SI{100}{\milli\litre} de solução, ou \SI{40}{\gram\per\litre}.
+Se o reagente for \ce{BaCl2} anidro ($M=\SI{208.23}{\gram\per\mole}$),
+$C=40/208,23\simeq\SI{0.1921}{\mole\per\litre}$.
+Se for \ce{BaCl2.2H2O} ($M\simeq\SI{244.26}{\gram\per\mole}$),
+$C\simeq\SI{0.1638}{\mole\per\litre}$. Conferir o rótulo antes de
+escolher uma das duas conversões.
+Para preparar \ce{HCl} \SI{3}{\mole\per\litre} por diluição,
+$C_1V_1=C_2V_2$ e $V_1=(3,00\,V_2)/C_1$; a concentração de partida e o
+volume final preparado ainda não foram informados.
+
+\section{Discussão}
+O método vincula diretamente a massa corrigida de \ce{BaSO4} à quantidade de
+sulfato da alíquota. As duas massas corrigidas, \SI{0.1347}{\gram} e
+\SI{0.1365}{\gram}, produziram uma média de \SI{0.1356}{\gram} e uma
+concentração média estimada de \SI{2232}{\milli\gram\per\litre} de
+\ce{SO4^{2-}} na amostra original. O quadro pede conferência da
+precipitação completa com excesso de \ce{BaCl2}; perdas na transferência
+e retenção de água ou impurezas no filtro também alterariam a massa final.
+O uso da média pressupõe que as duas capelas analisaram alíquotas da mesma
+amostra sob as condições registradas no quadro. Essa informação deve ser
+confirmada com o grupo antes da entrega definitiva.
+
+\section{Conclusão}
+Após a correção pelas massas dos filtros, a massa média de \ce{BaSO4} foi
+\SI{0.1356}{\gram}. Considerando alíquotas de \SI{25}{\milli\litre}
+da mesma amostra, a concentração calculada de sulfato na água do mar foi
+aproximadamente \SI{2232}{\milli\gram\per\litre}, equivalente a
+0,2232\% m/v. A identificação comum da amostra nas duas capelas ainda
+precisa ser confirmada.
+
+\section*{Referência}
+LAGO, Dalva Cristina Baptista do; GOIS, Jefferson Santos de; LANGONE,
+Marta Antunes Pereira; SENNA, Lilian Ferreira de.
+\textit{Química VIII -- Oceanografia: aulas práticas}. Rio de Janeiro:
+UERJ, Instituto de Química, Departamento de Química Analítica, 2017,
+Prática 11, pp.~47--49.
+
+\noindent NATIONAL OCEANIC AND ATMOSPHERIC ADMINISTRATION (NOAA).
+\textit{Concentration of the major components of seawater}, tabela 1.1.
+Disponível em: \url{https://repository.library.noaa.gov/view/noaa/12066/noaa_12066_DS1.pdf}.
+
+\noindent UNITED STATES ENVIRONMENTAL PROTECTION AGENCY (EPA).
+\textit{Method 300.0: Determination of inorganic anions by ion chromatography},
+rev. 2.1, 1993. Disponível em:
+\url{https://www.epa.gov/sites/default/files/2015-08/documents/method_300-0_rev_2-1_1993.pdf}.
+
+\noindent UNITED STATES ENVIRONMENTAL PROTECTION AGENCY (EPA).
+\textit{SW-846 Test Method 9038: Sulfate (Turbidimetric)}.
+Disponível em:
+\url{https://www.epa.gov/hw-sw846/sw-846-test-method-9038-sulfate-turbidimetric}.
+\end{document}

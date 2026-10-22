@@ -1,0 +1,479 @@
+%!TEX program = lualatex
+% Arquivo: relatorio_pratica_3_HCl_combinado_rev01.tex
+
+\documentclass[a4paper,12pt]{article}
+
+% =========================================================
+% Idioma e tipografia (LuaLaTeX)
+% =========================================================
+\usepackage[brazilian]{babel}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\usepackage{microtype}
+
+% =========================================================
+% Layout
+% =========================================================
+\usepackage[top=3cm,bottom=2.5cm,left=3cm,right=2.5cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25cm}
+
+% =========================================================
+% Matemática, unidades e fórmulas químicas
+% =========================================================
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{siunitx}
+\sisetup{
+  locale = DE,
+  output-decimal-marker = {,},
+  per-mode = symbol,
+  exponent-product = \cdot
+}
+\usepackage[version=4]{mhchem}
+
+% =========================================================
+% Tabelas, listas, figuras e desenhos
+% =========================================================
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\setlist[itemize]{noitemsep,topsep=3pt}
+\setlist[enumerate]{noitemsep,topsep=3pt}
+
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{pdflscape}
+\graphicspath{{./}{./imagens/}{./figuras/}}
+
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,positioning,shapes.geometric}
+\usepackage[most]{tcolorbox}
+
+% =========================================================
+% Links
+% =========================================================
+\usepackage{hyperref}
+\usepackage{xurl}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=blue,
+  citecolor=black,
+  pdfauthor={Israel Carneiro; José Mauro Xavier Elsas; Miguel Gayani},
+  pdftitle={Prática 3 -- Preparo e padronização de solução de HCl}
+}
+
+% =========================================================
+% Cores e comandos usados nos esquemas da prática
+% =========================================================
+\definecolor{quadroazul}{RGB}{40,91,140}
+\definecolor{quadrovermelho}{RGB}{177,69,60}
+\definecolor{quadrocinza}{RGB}{245,245,245}
+
+\newcommand{\subtitulo}[1]{%
+  \par\medskip
+  {\color{quadroazul}\bfseries\large #1}\par\smallskip
+}
+
+% =========================================================
+% Dados da capa
+% =========================================================
+\newcommand{\Instituicao}{Universidade do Estado do Rio de Janeiro -- UERJ}
+\newcommand{\Curso}{Química VIII / Oceanografia}
+\newcommand{\Professor}{Professor: Ítalo Vieira}
+\newcommand{\Aluno}{Alunos: Israel Carneiro\\
+José Mauro Xavier Elsas\\
+Miguel Gayani}
+\newcommand{\Cidade}{Rio de Janeiro}
+\newcommand{\Ano}{2026}
+
+\title{\textbf{Prática 3}}
+\author{\Aluno}
+\date{\Cidade{} -- \Ano}
+
+\begin{document}
+
+% =========================================================
+% Capa (página de rosto)
+% =========================================================
+\begin{titlepage}
+\centering
+{\large \Instituicao \par}
+\vspace{0.5cm}
+{\large \Curso \par}
+\vspace{1.0cm}
+
+{\LARGE \textbf{Prática 3} \par}
+\vspace{0.6cm}
+{\Large \textbf{PREPARO E PADRONIZAÇÃO DE SOLUÇÃO\\
+DE \ce{HCl} \qty{0.1}{\mole\per\litre}} \par}
+
+\vspace{1cm}
+
+% O logotipo será inserido quando o arquivo uerj.jpg estiver na pasta
+% principal, em imagens/ ou em figuras/.
+\IfFileExists{uerj.jpg}{%
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\linewidth]{uerj.jpg}
+  \end{figure}
+}{%
+  \begin{tcolorbox}[
+    width=0.32\textwidth,
+    colback=white,
+    colframe=black!35,
+    boxrule=0.5pt,
+    arc=0mm
+  ]
+  \centering
+  \vspace{1.2cm}
+  \textit{Logotipo da UERJ}
+  \vspace{1.2cm}
+  \end{tcolorbox}
+}
+
+\vfill
+
+\begin{flushright}
+\Aluno\\
+\Professor
+\end{flushright}
+
+\vspace{1.0cm}
+{\Cidade{} -- \Ano \par}
+\end{titlepage}
+
+% =========================================================
+% Sumário
+% =========================================================
+% \tableofcontents
+% \newpage
+
+\section{Introdução}
+
+Os reagentes mais comumente usados para o preparo de soluções padrão de ácidos são o ácido
+clorídrico, o ácido sulfúrico e o ácido perclórico. A solução de ácido clorídrico é frequentemente preferida, pois:
+
+\begin{itemize}
+    \item é estável por longos períodos;
+    \item pode ser usada na presença da maior parte dos cátions sem sofrer interferência significativa decorrente da formação de sais pouco solúveis.
+\end{itemize}
+
+A solução concentrada de \ce{HCl} apresenta, aproximadamente, \qty{37}{\percent} em massa e densidade de \qty{1.19}{\gram\per\milli\litre}. Como essa solução não constitui um padrão primário, a solução de \ce{HCl} \qty{0.1}{\mole\per\litre} deve ser inicialmente preparada por diluição de um volume calculado do ácido concentrado e, posteriormente, padronizada.
+
+\section{Material Utilizado}
+
+\begin{enumerate}[label=\alph*.]
+    \item cilindro graduado de \qty{500}{\milli\litre};
+    \item balão volumétrico de \qty{250}{\milli\litre};
+    \item pipeta graduada;
+    \item béquer de \qtyrange{200}{300}{\milli\litre};
+    \item bastão de vidro;
+    \item funil;
+    \item dois frascos de vidro ou plástico com capacidade de \qty{500}{\milli\litre}.
+\end{enumerate}
+
+\section{Reagentes}
+
+\begin{enumerate}[label=\alph*.]
+    \item ácido clorídrico concentrado, \ce{HCl}, grau p.a.;
+    \item solução do indicador alaranjado de metila;
+    \item tetraborato de sódio deca-hidratado, \ce{Na2B4O7.10H2O} (bórax), grau p.a.
+\end{enumerate}
+
+\section{Procedimento Experimental}
+
+\subsection{Preparo da solução de \ce{HCl} \qty{0.1}{\mole\per\litre}}
+
+Para preparar \qty{500}{\milli\litre} de solução de \ce{HCl}
+\qty{0.1}{\mole\per\litre}, determinou-se inicialmente a quantidade de matéria de ácido necessária.
+
+\begin{minipage}[t]{0.48\textwidth}
+\subtitulo{Número de mols}
+
+\begin{align*}
+  n &= C\,V \\
+    &= \left(\qty{0.1}{\mole\per\litre}\right)
+       \left(\qty{0.5}{\litre}\right) \\
+    &= \boxed{\qty{0.05}{\mole}}
+\end{align*}
+
+\subtitulo{Massa de \ce{HCl} puro}
+
+\begin{align*}
+  m_{\ce{HCl}} &= MM\,n \\
+    &= \left(\qty{36.5}{\gram\per\mole}\right)
+       \left(\qty{0.05}{\mole}\right) \\
+    &= \boxed{\qty{1.825}{\gram}}
+\end{align*}
+
+\begin{tcolorbox}[
+  title=Etiqueta da solução,
+  colback=quadrocinza,
+  colframe=black!65,
+  boxrule=0.6pt,
+  arc=1mm
+]
+\begin{tabular}{@{}ll@{}}
+Data: & \rule{2.8cm}{0.4pt}\\[1.3ex]
+Nome da solução: & \rule{2.2cm}{0.4pt}\\[1.3ex]
+Nome do grupo: & \rule{2.5cm}{0.4pt}\\[1.3ex]
+Turma: & 1\\[1.3ex]
+Concentração: & \rule{2.8cm}{0.4pt}
+\end{tabular}
+\end{tcolorbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\begin{tcolorbox}[
+  title=Dados da solução concentrada de \ce{HCl},
+  colback=quadrocinza,
+  colframe=black!65,
+  boxrule=0.6pt,
+  arc=1mm
+]
+\[
+  T = \qty{37}{\percent}\;(m/m)
+  \qquad
+  d = \qty{1.19}{\gram\per\milli\litre}
+\]
+\end{tcolorbox}
+
+\subtitulo{Massa da solução concentrada}
+
+Como a solução comercial contém \qty{37}{\percent} de \ce{HCl} em massa:
+
+\begin{align*}
+  m_{\mathrm{sol.\,conc.}}
+    &= m_{\ce{HCl}}\frac{100}{T(\%)} \\
+    &= \qty{1.825}{\gram}\frac{100}{37} \\
+    &= \boxed{\qty{4.93}{\gram}}
+\end{align*}
+
+\subtitulo{Volume da solução concentrada}
+
+\begin{align*}
+  V_{\mathrm{sol.\,conc.}}
+    &= \frac{m_{\mathrm{sol.\,conc.}}}{d} \\
+    &= \frac{\qty{4.932}{\gram}}
+             {\qty{1.19}{\gram\per\milli\litre}} \\
+    &\approx \boxed{\qty{4.1}{\milli\litre}}
+\end{align*}
+\end{minipage}
+
+\vspace{0.5cm}
+
+\begin{tcolorbox}[
+  colback=quadrovermelho!6,
+  colframe=quadrovermelho,
+  boxrule=1pt,
+  arc=2mm
+]
+\centering
+{\color{quadrovermelho}\bfseries\Large Adicionar sempre o ácido sobre a água.}
+\end{tcolorbox}
+
+\begin{figure}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[>=Latex,thick,font=\small]
+  % Pipeta
+  \draw[quadrovermelho,fill=quadrovermelho!8]
+    (-3.6,3.4) -- (-3.25,3.4) -- (-3.25,1.65)
+    -- (-3.38,1.25) -- (-3.51,1.65) -- cycle;
+  \draw[quadrovermelho] (-3.62,3.55) -- (-3.23,3.55);
+  \node[quadrovermelho,above] at (-3.42,3.55) {pipeta};
+  \node[quadrovermelho,align=center,left=3mm] at (-3.65,2.35)
+    {\qty{4.1}{\milli\litre}\\de \ce{HCl} concentrado};
+
+  % Seta para o cilindro
+  \draw[->,quadrovermelho] (-3.05,1.55) .. controls (-2.4,1.1) and (-1.8,1.0) .. (-1.1,1.25);
+
+  % Cilindro graduado
+  \draw[quadrovermelho,fill=white] (-0.8,0) rectangle (0.2,3.4);
+  \draw[quadrovermelho] (-0.95,3.4) -- (0.35,3.4);
+  \draw[quadrovermelho] (-1.0,0) -- (0.4,0);
+  \fill[quadroazul!16] (-0.77,0.05) rectangle (0.17,1.75);
+  \draw[quadroazul] (-0.77,1.75) -- (0.17,1.75);
+  \foreach \y in {0.4,0.8,1.2,1.6,2.0,2.4,2.8,3.2}
+    \draw[quadrovermelho] (-0.8,\y) -- (-0.55,\y);
+  \node[quadrovermelho,below=2mm] at (-0.3,0) {cilindro de \qty{500}{\milli\litre}};
+  \draw[->,quadrovermelho] (2.8,2.05) -- (0.3,1.78);
+  \node[quadrovermelho,align=left,right] at (2.85,2.05)
+    {\qty{250}{\milli\litre} de\\água destilada};
+
+  % Balão volumétrico final
+  \draw[->,black!65] (0.65,0.9) -- (2.15,0.9);
+  \draw[black!70]
+    (2.65,0.25) .. controls (2.05,0.65) and (2.15,1.45) .. (2.55,1.75)
+    -- (2.55,3.05) -- (2.95,3.05) -- (2.95,1.75)
+    .. controls (3.35,1.45) and (3.45,0.65) .. (2.85,0.25)
+    .. controls (2.78,0.20) and (2.72,0.20) .. (2.65,0.25);
+  \draw[black!70] (2.48,3.05) -- (3.02,3.05);
+  \draw[quadroazul] (2.53,1.55) -- (2.97,1.55);
+  \node[below=2mm,align=center] at (2.75,0.22)
+    {balão volumétrico\\de \qty{500}{\milli\litre}};
+  \node[align=center,right=4mm] at (3.4,1.2)
+    {transferir e completar\\até o traço de aferição};
+\end{tikzpicture}%
+}
+\caption{Esquema do preparo da solução de \ce{HCl} \qty{0.1}{\mole\per\litre}.}
+\label{fig:preparo_hcl}
+\end{figure}
+
+O procedimento consistiu em adicionar inicialmente cerca de \qty{250}{\milli\litre} de água destilada ao recipiente de preparo. Em seguida, mediram-se cuidadosamente \qty{4.1}{\milli\litre} de \ce{HCl} concentrado, que foram adicionados lentamente sobre a água. A solução foi transferida quantitativamente para um balão volumétrico de \qty{500}{\milli\litre}, completando-se o volume com água destilada até o traço de aferição. Por fim, a solução foi homogeneizada e identificada.
+
+\begin{tcolorbox}[
+  title=Observação técnica,
+  colback=quadrocinza,
+  colframe=black!65,
+  boxrule=0.6pt,
+  arc=1mm
+]
+Na anotação do quadro, o recipiente intermediário foi identificado como ``cilindro de \qty{500}{\milli\litre}''. Para obter com maior precisão o volume final da solução, o ajuste a \qty{500}{\milli\litre} deve ser realizado em balão volumétrico.
+\end{tcolorbox}
+
+\subsection{Preparo da solução nominal de bórax \qty{0.025}{\mole\per\litre}}
+
+Para preparar \qty{250.0}{\milli\litre} de uma solução de tetraborato de sódio deca-hidratado com concentração nominal de \qty{0.025}{\mole\per\litre}, calculou-se inicialmente a massa teórica necessária. Considerando a massa molar do \ce{Na2B4O7.10H2O} igual a \qty{381.37}{\gram\per\mole}, tem-se:
+
+\begin{align*}
+  m_{\text{teórica}}
+    &= C_{\text{nominal}}\,MM\,V \\
+    &= \left(\qty{0.025}{\mole\per\litre}\right)
+       \left(\qty{381.37}{\gram\per\mole}\right)
+       \left(\qty{0.2500}{\litre}\right) \\
+    &= \boxed{\qty{2.3836}{\gram}}.
+\end{align*}
+
+Na execução experimental, entretanto, foram efetivamente pesados \qty{2.3516}{\gram} de bórax. Assim, a quantidade de matéria utilizada foi:
+
+\begin{figure}
+  \centering
+  \includegraphics[width=.8\linewidth]{D:/LaTex_Projects/Quimica viii/Pratica 3/massa.png}
+\end{figure}
+
+\begin{align*}
+  n_{\text{bórax}}
+    &= \frac{m_{\text{bórax}}}{MM_{\text{bórax}}} \\
+    &= \frac{\qty{2.3516}{\gram}}
+             {\qty{381.37}{\gram\per\mole}} \\
+    &= \boxed{\qty{0.006166}{\mole}}.
+\end{align*}
+
+Considerando que o volume final da solução foi ajustado para \qty{250.0}{\milli\litre}, correspondente a \qty{0.2500}{\litre}, a concentração efetiva da solução preparada foi:
+
+\begin{align*}
+  C_{\text{efetiva}}
+    &= \frac{n_{\text{bórax}}}{V} \\
+    &= \frac{\qty{0.006166}{\mole}}
+             {\qty{0.2500}{\litre}} \\
+    &= \boxed{\qty{0.02466}{\mole\per\litre}}.
+\end{align*}
+
+A diferença relativa entre a concentração efetiva e a concentração nominal foi calculada por:
+
+\begin{align*}
+  \Delta C(\%)
+    &= \frac{C_{\text{efetiva}}-C_{\text{nominal}}}
+             {C_{\text{nominal}}}\times 100 \\
+    &= \frac{0.02466-0.02500}{0.02500}\times 100 \\
+    &\approx \boxed{-\qty{1.34}{\percent}}.
+\end{align*}
+
+Portanto, a concentração efetiva da solução ficou aproximadamente \qty{1.34}{\percent} abaixo da concentração nominal prevista.
+
+\begin{figure}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[>=Latex,thick,font=\small,node distance=2cm]
+  % Béquer 1
+  \begin{scope}[shift={(-5,0)}]
+    \draw[quadrovermelho] (-0.75,1.8) -- (-0.55,0.15) -- (0.55,0.15) -- (0.75,1.8);
+    \draw[quadrovermelho] (-0.85,1.8) -- (0.85,1.8);
+    \fill[quadrovermelho!15] (-0.53,0.18) rectangle (0.53,0.45);
+    \node[quadrovermelho,below=2mm] at (0,0.15) {béquer};
+    \node[quadrovermelho,align=center,above=4mm] at (0,1.8)
+      {pesar \qty{2.3516}{\gram}\\de bórax};
+  \end{scope}
+
+  % Seta 1
+  \draw[->,quadrovermelho] (-3.7,1.0) -- (-1.7,1.0);
+
+  % Béquer 2 com água e bastão
+  \begin{scope}[shift={(0,0)}]
+    \draw[quadrovermelho] (-0.75,1.8) -- (-0.55,0.15) -- (0.55,0.15) -- (0.75,1.8);
+    \draw[quadrovermelho] (-0.85,1.8) -- (0.85,1.8);
+    \fill[quadroazul!16] (-0.61,0.18) -- (-0.50,1.15) -- (0.50,1.15) -- (0.61,0.18) -- cycle;
+    \draw[quadroazul] (-0.50,1.15) -- (0.50,1.15);
+    \draw[black!65] (-0.15,0.4) -- (0.28,2.35);
+    \node[quadrovermelho,align=center] at (0,2.75)
+      {aproximadamente\\\qty{150}{\milli\litre} de\\água destilada};
+    \node[below=2mm,align=center] at (0,0.15)
+      {dissolver e homogeneizar};
+  \end{scope}
+
+  % Seta 2
+  \draw[->,quadrovermelho] (1.7,1.0) -- (3.4,1.0);
+
+  % Balão volumétrico
+  \begin{scope}[shift={(5,0)}]
+    \draw[quadrovermelho]
+      (-0.22,2.55) -- (-0.22,1.65)
+      .. controls (-0.95,1.20) and (-0.90,0.35) .. (-0.30,0.08)
+      .. controls (-0.10,0.00) and (0.10,0.00) .. (0.30,0.08)
+      .. controls (0.90,0.35) and (0.95,1.20) .. (0.22,1.65)
+      -- (0.22,2.55);
+    \draw[quadrovermelho] (-0.33,2.55) -- (0.33,2.55);
+    \draw[quadroazul] (-0.22,1.55) -- (0.22,1.55);
+    \node[quadrovermelho,below=2mm,align=center] at (0,0.08)
+      {balão de \qty{250.0}{\milli\litre}};
+    \node[align=center,right=4mm] at (0.65,1.15)
+      {transferir quantitativamente\\e completar até o traço};
+  \end{scope}
+\end{tikzpicture}%
+}
+\caption{Esquema do preparo da solução nominal de bórax \qty{0.025}{\mole\per\litre}, utilizando-se a massa experimental de \qty{2.3516}{\gram}.}
+\label{fig:preparo_borax}
+\end{figure}
+
+Foram pesados \qty{2.3516}{\gram} de tetraborato de sódio deca-hidratado em um béquer. Adicionaram-se aproximadamente \qty{150}{\milli\litre} de água destilada, e a mistura foi agitada com bastão de vidro até a completa dissolução do sólido. A solução foi transferida quantitativamente para um balão volumétrico de \qty{250.0}{\milli\litre}. O béquer, o bastão de vidro e o funil foram lavados com pequenas porções de água destilada, sendo as águas de lavagem também transferidas para o balão. Em seguida, o volume foi completado até o traço de aferição com água destilada, e a solução foi homogeneizada.
+
+\begin{tcolorbox}[
+  title=Concentração da solução preparada,
+  colback=quadrocinza,
+  colframe=black!65,
+  boxrule=0.6pt,
+  arc=1mm
+]
+Embora a concentração nominal prevista fosse \qty{0.025}{\mole\per\litre}, a massa efetivamente pesada resultou em uma concentração calculada de \qty{0.02466}{\mole\per\litre}. Esse valor deverá ser considerado nos cálculos posteriores que utilizem a solução de bórax.
+\end{tcolorbox}
+
+% A etapa de padronização pode ser inserida a seguir quando os dados e o
+% procedimento experimental estiverem completos.
+%
+% \subsection{Padronização da solução de \ce{HCl}}
+
+% =========================================================
+% Referências
+% =========================================================
+\newpage
+\phantomsection
+\addcontentsline{toc}{section}{Referências}
+\begin{thebibliography}{99}
+
+\bibitem{uerj_quimica8_2017}
+LAGO, Dalva Cristina Baptista do;
+GOIS, Jefferson Santos de;
+LANGONE, Marta Antunes Pereira;
+SENNA, Lilian Ferreira de.
+\textbf{Química VIII -- Oceanografia: aulas práticas}.
+Rio de Janeiro: Universidade do Estado do Rio de Janeiro, Instituto de Química, Departamento de Química Analítica, 2017.
+
+\end{thebibliography}
+
+\end{document}

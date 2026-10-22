@@ -1,0 +1,189 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,tabularx,array}
+\usepackage{geometry}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\geometry{margin=2.2cm,headheight=15pt}
+\definecolor{azul}{HTML}{173B59}
+\definecolor{cinza}{HTML}{EDF3F7}
+\hypersetup{colorlinks=true,linkcolor=azul,urlcolor=azul}
+\setlist[itemize]{leftmargin=*,topsep=3pt,itemsep=2pt}
+\setlist[enumerate]{leftmargin=*,topsep=3pt,itemsep=2pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small Química Analítica --- revisão dos cálculos}
+\fancyhead[R]{\small Práticas 5, 6, 7, 10 e 11}
+\fancyfoot[C]{\thepage}
+\newcommand{\molL}{\mathrm{mol\,L^{-1}}}
+\newcommand{\mgL}{\mathrm{mg\,L^{-1}}}
+\newcommand{\mL}{\mathrm{mL}}
+\newcommand{\destaque}[1]{\par\medskip\noindent\colorbox{cinza}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\strut #1\strut}}\par\medskip}
+\newcommand{\caixa}[1]{\fcolorbox{azul}{cinza}{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{#1}}}
+\begin{document}
+\begin{center}
+{\Large\bfseries\color{azul} Guia de estudo: cálculos das práticas}\\[5pt]
+{\large Química Analítica --- Oceanografia}\\[5pt]
+\small José Mauro Xavier Elsas \quad | \quad 28 de setembro de 2026
+\end{center}
+
+\noindent Este guia usa a \emph{numeração da apostila} e os dados dos cinco relatórios entregues. Em cada conta, primeiro identifique a reação e a proporção estequiométrica; depois confira qual volume é da amostra original, da alíquota diluída ou do titulante. Os resultados numéricos servem como conferência, não como valores a decorar.
+
+\begin{center}
+\begin{tabularx}{\linewidth}{@{}cXc@{}}\toprule
+Apostila & Determinação & Relatório\\\midrule
+5 & Alcalinidade da água do mar & 6\\
+6 & Cloreto pelo método de Mohr & 5\\
+7 & Dureza total por complexometria com EDTA & 7\\
+10 & Oxigênio dissolvido pelo método de Winkler & 8\\
+11 & Sulfato por gravimetria como BaSO$_4$ & 9\\\bottomrule
+\end{tabularx}
+\end{center}
+
+\section*{Antes de começar: três relações recorrentes}
+\begin{enumerate}
+\item \textbf{Quantidade de matéria:} $n=CV$ se $C$ estiver em $\molL$ e $V$ em L. Em razões de volumes, é possível usar mL no numerador e no denominador, desde que ambos usem a mesma unidade.
+\item \textbf{Concentração molar para massa:} $C\;(\molL)\times M\;(\mathrm{g\,mol^{-1}})=\rho\;(\mathrm{g\,L^{-1}})$. Portanto $\mathrm{mg/L}=1000CM$ e $\%\,(m/v)=CM/10$.
+\item \textbf{Diluição:} $C_iV_i=C_fV_f$. A concentração na solução inicial é $C_i=C_f(V_f/V_i)$. Água adicionada apenas durante a reação não muda o volume da \emph{amostra original} usado para reportar sua concentração.
+\end{enumerate}
+\noindent A aproximação numérica $1\,\mathrm{mg/L}\approx1\,\mathrm{ppm}$ supõe densidade próxima de $1\,\mathrm{kg/L}$. Como a amostra é água do mar, use-a quando o enunciado ou o tratamento adotado no relatório pedir essa convenção; sem uma densidade informada, não a trate como identidade exata.
+
+\section{Apostila 5 --- alcalinidade (relatório 6)}
+\subsection*{Ideia e pontos de viragem}
+A alcalinidade mede a capacidade da amostra de consumir ácido. Na primeira viragem (fenolftaleína, $P$), o ácido neutraliza $\mathrm{OH^-}$ e converte $\mathrm{CO_3^{2-}}$ em $\mathrm{HCO_3^-}$. Na viragem com alaranjado de metila ($T$), alcança-se a alcalinidade total, incluindo a neutralização do bicarbonato. O HCl fornece um mol de $\mathrm{H^+}$ por mol:
+\begin{equation}
+A\;(\molL\text{ de }\mathrm{H^+})=\frac{C_{\mathrm{HCl}}V_{\mathrm{HCl}}}{V_{\mathrm{amostra}}}.
+\end{equation}
+No relatório, $C_{\mathrm{HCl}}=0{,}00869\,\molL$, $V_{\mathrm{amostra}}=50{,}00\,\mL$, $\overline V_P=0{,}5667\,\mL$ e $\overline V_T=12{,}5667\,\mL$. Logo,
+\begin{align*}
+P&=\frac{0{,}00869(0{,}5667)}{50{,}00}=9{,}85\times10^{-5}\,\molL,\\
+T&=\frac{0{,}00869(12{,}5667)}{50{,}00}=2{,}184\times10^{-3}\,\molL.
+\end{align*}
+Cada mol de CaCO$_3$ (aproximadamente $100\,\mathrm{g}$) equivale a dois mols de $\mathrm{H^+}$; sua massa equivalente é $50\,\mathrm{g}$, ou $50\,000\,\mathrm{mg}$. Por isso,
+\begin{equation}
+A\;(\mgL\text{ como CaCO}_3)=50\,000\,A\;(\molL\text{ de }\mathrm{H^+}).
+\end{equation}
+Assim, $P=4{,}92\,\mgL$ e $T=109{,}2\,\mgL$, ambos \emph{como CaCO$_3$}. Isso expressa equivalência de neutralização, não massa medida de CaCO$_3$ sólido.
+
+\subsection*{Identificação das contribuições}
+Como $P<T/2$ ($4{,}92<54{,}6$), a interpretação convencional da apostila é:
+\begin{center}
+\begin{tabular}{@{}lll@{}}\toprule
+Componente & Conta & Contribuição ($\mgL$ como CaCO$_3$)\\\midrule
+Hidróxido & $0$ & $0$\\
+Carbonato & $2P$ & $9{,}84$\\
+Bicarbonato & $T-2P$ & $99{,}36\simeq99{,}4$\\\bottomrule
+\end{tabular}
+\end{center}
+As contribuições somam $T$. Os valores da tabela \textbf{não} são as massas reais dos íons em mg/L; são parcelas da alcalinidade expressas como CaCO$_3$. O valor pequeno de $P$ merece atenção experimental: o relatório registra que foram necessárias oito gotas de fenolftaleína para a amostra ficar levemente rosada.
+\destaque{\textbf{Sequência de prova:} calcular $P$ e $T$ separadamente $\rightarrow$ converter para CaCO$_3$ $\rightarrow$ comparar $P$ com $T/2$ $\rightarrow$ aplicar o caso correspondente da tabela da apostila.}
+
+\section{Apostila 6 --- cloreto, método de Mohr (relatório 5)}
+\subsection*{Padronização e titulação}
+A reação analítica é $\mathrm{Ag^++Cl^-\rightarrow AgCl(s)}$, na proporção $1{:}1$. Primeiro se determina a concentração real do AgNO$_3$ com NaCl padrão. Com $C_{\mathrm{NaCl}}=0{,}0141\,\molL$, $V_{\mathrm{NaCl}}=10{,}00\,\mL$ e $\overline V_{\mathrm{AgNO_3,pad}}=10{,}30\,\mL$:
+\begin{equation}
+C_{\mathrm{AgNO_3}}=\frac{C_{\mathrm{NaCl}}V_{\mathrm{NaCl}}}{V_{\mathrm{AgNO_3,pad}}}
+=\frac{0{,}0141(10{,}00)}{10{,}30}=0{,}01369\,\molL.
+\end{equation}
+Titula-se então uma alíquota de $10{,}00\,\mL$ da \emph{solução diluída}. O gasto médio de AgNO$_3$ foi $20{,}3667\,\mL$:
+\begin{equation}
+C_{\mathrm{Cl^-,dil}}=\frac{C_{\mathrm{AgNO_3}}V_{\mathrm{AgNO_3,am}}}{V_{\mathrm{aliquota}}}
+=\frac{0{,}0136893(20{,}3667)}{10{,}00}=0{,}02788\,\molL.
+\end{equation}
+Os $5{,}00\,\mL$ da amostra original foram diluídos para $100{,}00\,\mL$. O fator de diluição é 20:
+\begin{equation}
+C_{\mathrm{Cl^-,orig}}=\frac{100{,}00}{5{,}00}\,C_{\mathrm{Cl^-,dil}}
+=0{,}5576\,\molL.
+\end{equation}
+Com $M_{\mathrm{Cl^-}}=35{,}45\,\mathrm{g\,mol^{-1}}$, obtém-se $19{,}77\,\mathrm{g/L}=1{,}977\%\,(m/v)$ e $19\,770\,\mgL\approx19\,770\,\mathrm{ppm}$ na aproximação usada no relatório.
+
+\destaque{\textbf{Branco:} a apostila prevê $V_{\mathrm{real}}=V_{\mathrm{gasto}}-V_{\mathrm{branco}}$, mas o ensaio em branco não foi realizado para este relatório. Não invente uma correção: nos dados do relatório usa-se o volume medido. Se a prova fornecer um branco, subtraia-o antes da conta estequiométrica.}
+
+\section{Apostila 7 --- dureza total com EDTA (relatório 7)}
+\subsection*{Duas titulações, dois resultados}
+O EDTA complexa Ca$^{2+}$ e Mg$^{2+}$ em proporção $1{:}1$ com \emph{cada} íon. A carga $2+$ não introduz fator 2 na quantidade de EDTA. O relatório usou $C_{\mathrm{EDTA}}=0{,}009512\,\molL$ e duas alíquotas de $5{,}00\,\mL$: uma para Ca$^{2+}$+Mg$^{2+}$ ($35{,}4667\,\mL$ de EDTA) e outra apenas para Ca$^{2+}$ ($6{,}20\,\mL$).
+\begin{align}
+[\mathrm{Ca^{2+}}]+[\mathrm{Mg^{2+}}]
+&=\frac{0{,}009512(35{,}4667)}{5{,}00}=0{,}06747\,\molL,\\
+[\mathrm{Ca^{2+}}]
+&=\frac{0{,}009512(6{,}20)}{5{,}00}=0{,}01179\,\molL,\\
+[\mathrm{Mg^{2+}}]
+&=0{,}0674718-0{,}0117949=0{,}05568\,\molL.
+\end{align}
+Os resultados por íon usam $M_{\mathrm{Ca}}=40{,}08$ e $M_{\mathrm{Mg}}=24{,}31\,\mathrm{g\,mol^{-1}}$:
+\begin{center}
+\begin{tabular}{@{}lrrr@{}}\toprule
+Íon & mol/L & $\%\,(m/v)$ & mg/L (aprox. ppm)\\\midrule
+Ca$^{2+}$ & $0{,}01179$ & $0{,}04727$ & $472{,}7$\\
+Mg$^{2+}$ & $0{,}05568$ & $0{,}1354$ & $1354$\\\bottomrule
+\end{tabular}
+\end{center}
+A dureza total \emph{como CaCO$_3$} usa a concentração molar conjunta, com $M_{\mathrm{CaCO_3}}=100{,}09\,\mathrm{g\,mol^{-1}}$:
+\begin{equation}
+D_{\mathrm{total}}=([\mathrm{Ca^{2+}}]+[\mathrm{Mg^{2+}}])\,M_{\mathrm{CaCO_3}}\,1000
+=0{,}0674718(100{,}09)(1000)=6753\,\mgL\text{ como CaCO}_3.
+\end{equation}
+Não se obtém esse número somando as massas em mg/L de Ca$^{2+}$ e Mg$^{2+}$. Se houver ensaio em branco no enunciado, corrija \emph{cada} volume de EDTA antes das duas titulações; no relatório, os volumes foram usados como registrados.
+
+\section{Apostila 10 --- oxigênio dissolvido, Winkler (relatório 8)}
+\subsection*{Primeiro fator: padronização do tiossulfato}
+Na padronização, $1\,\mathrm{mol}$ de KIO$_3$ corresponde a $6\,\mathrm{mol}$ de Na$_2$S$_2$O$_3$. Com massa média de $0{,}0151\,\mathrm{g}$ de KIO$_3$, massa molar $214{,}00\,\mathrm{g\,mol^{-1}}$ e volume médio de tiossulfato $15{,}7\,\mL=0{,}0157\,\mathrm{L}$:
+\begin{equation}
+C_{\mathrm{tio}}=\frac{6m_{\mathrm{KIO_3}}}{M_{\mathrm{KIO_3}}V_{\mathrm{tio,pad}}}
+=\frac{6(0{,}0151)}{214{,}00(0{,}0157)}
+=0{,}02697\,\molL.
+\end{equation}
+O relatório informa que a segunda leitura de volume, parcialmente rasurada, foi \emph{reconstruída} como $13{,}5\,\mL$, compondo a média $15{,}7\,\mL$. Este é um dado com ressalva, não uma medição confirmada separadamente.
+
+\subsection*{Segundo fator: relação com o oxigênio}
+Na determinação da amostra, $1\,\mathrm{mol}$ de O$_2$ corresponde a $4\,\mathrm{mol}$ de tiossulfato. Logo, cada mol de tiossulfato equivale a $M_{\mathrm{O_2}}/4=32{,}00/4=8{,}00\,\mathrm{g}$ de oxigênio. Os três gastos foram $1{,}6$, $1{,}9$ e $1{,}2\,\mL$; a média não arredondada é $1{,}5667\,\mL$ para $50{,}0\,\mL$ de amostra:
+\begin{equation}
+\mathrm{OD}\;(\mgL)
+=\frac{C_{\mathrm{tio}}V_{\mathrm{tio,am}}}{V_{\mathrm{amostra}}}
+\frac{M_{\mathrm{O_2}}}{4}\,1000
+=\frac{0{,}02697(1{,}5667)}{50{,}0}\,(8{,}00)(1000)
+=6{,}76.
+\end{equation}
+Na última razão, ambos os volumes estão em mL e suas unidades se cancelam. O fator \textbf{6} é exclusivo da padronização com KIO$_3$; o fator \textbf{4} é exclusivo da relação O$_2$--tiossulfato. As três determinações individuais do relatório foram $6{,}90$, $8{,}20$ e $5{,}18\,\mgL$: há dispersão considerável entre elas.
+
+\section{Apostila 11 --- sulfato por gravimetria (relatório 9)}
+O sulfato precipita segundo $\mathrm{Ba^{2+}+SO_4^{2-}\rightarrow BaSO_4(s)}$: $1\,\mathrm{mol}$ de BaSO$_4$ contém $1\,\mathrm{mol}$ de SO$_4^{2-}$. Antes de qualquer conversão, desconta-se a massa do filtro:
+\begin{center}
+\begin{tabular}{@{}lrr@{}}\toprule
+Pesagem & Filtro 1 (g) & Filtro 2 (g)\\\midrule
+Filtro + BaSO$_4$ & $0{,}7337$ & $0{,}7515$\\
+Filtro vazio & $0{,}5990$ & $0{,}6150$\\
+BaSO$_4$ por diferença & $0{,}1347$ & $0{,}1365$\\\bottomrule
+\end{tabular}
+\end{center}
+A massa média do precipitado é $0{,}1356\,\mathrm{g}$. Com $M_{\mathrm{SO_4}}=96{,}06$ e $M_{\mathrm{BaSO_4}}=233{,}39\,\mathrm{g\,mol^{-1}}$:
+\begin{align}
+m_{\mathrm{SO_4^{2-}}}
+&=0{,}1356\frac{96{,}06}{233{,}39}=0{,}05581\,\mathrm{g},\\
+C_{\mathrm{SO_4^{2-}}}
+&=\frac{0{,}1356}{0{,}025}\frac{96{,}06}{233{,}39}\,1000
+\simeq2232\,\mgL.
+\end{align}
+O denominador $0{,}025\,\mathrm{L}$ representa os $25\,\mL$ da \emph{amostra original}. A água acrescentada para conduzir a precipitação não altera essa quantidade. Em porcentagem massa/volume, o resultado é $0{,}2232\%\,(m/v)$.
+
+\section*{Revisão rápida antes da prova}
+\begin{tabularx}{\linewidth}{@{}lX@{}}\toprule
+Determinação & Pergunta a fazer antes de calcular\\\midrule
+Alcalinidade & Qual indicador define o volume: fenolftaleína ($P$) ou alaranjado de metila ($T$)?\\
+Cloreto & Já padronizei AgNO$_3$? Houve branco? Qual é o fator de diluição da amostra?\\
+Dureza & Esta alíquota mede Ca+Mg ou apenas Ca? Os volumes de EDTA receberam correção pelo branco?\\
+Winkler & Estou usando o fator 6 para iodato/tiossulfato ou o fator 4 para O$_2$/tiossulfato?\\
+Gravimetria & Já retirei a massa do filtro? O volume no denominador é o da amostra original?\\\bottomrule
+\end{tabularx}
+
+\subsection*{Cinco contas de conferência}
+Para testar a sequência sem olhar os resultados acima, refaça: (1) a alcalinidade total em mg/L como CaCO$_3$; (2) a concentração padronizada de AgNO$_3$; (3) $[\mathrm{Mg^{2+}}]$ por diferença; (4) o OD médio; (5) a massa média de BaSO$_4$ e o sulfato em mg/L. Os resultados de conferência são, respectivamente, $109{,}2\,\mgL$; $0{,}01369\,\molL$; $0{,}05568\,\molL$; $6{,}76\,\mgL$; $0{,}1356\,\mathrm{g}$ e $2232\,\mgL$.
+
+\bigskip\noindent\textbf{Fontes de estudo:} \emph{Apostila de Química VIII para Oceanografia}, 7ª versão, práticas 5, 6, 7, 10 e 11; relatórios entregues das práticas 5 (cloreto), 6 (alcalinidade), 7 (dureza), 8 (oxigênio dissolvido) e 9 (sulfato). A nomenclatura das variáveis para a HP50g será organizada em documento posterior.
+\end{document}

@@ -1,0 +1,95 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,tabularx,array}
+\usepackage{geometry,microtype,enumitem,xcolor,fancyhdr,hyperref}
+\geometry{margin=2.15cm,headheight=15pt}
+\definecolor{azul}{HTML}{173B59}
+\definecolor{claro}{HTML}{EDF3F7}
+\hypersetup{colorlinks=true,linkcolor=azul,urlcolor=azul}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small HP50g --- arsenal das práticas}
+\fancyhead[R]{\small Química Analítica}
+\fancyfoot[C]{\thepage}
+\setlist[itemize]{leftmargin=*,topsep=3pt,itemsep=2pt}
+\newcommand{\eqhp}[2]{\par\smallskip\noindent\textbf{#1}\quad\fcolorbox{azul}{claro}{\strut\texttt{#2}}\par\smallskip}
+\newcommand{\dica}[1]{\par\medskip\noindent\colorbox{claro}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\strut #1\strut}}\par\medskip}
+\begin{document}
+\begin{center}
+{\Large\bfseries\color{azul} Arsenal de equações para a HP50g}\\[4pt]
+{\large Práticas de Química Analítica --- Oceanografia}\\[4pt]
+\small Complemento do guia de estudo \quad | \quad 28 de setembro de 2026
+\end{center}
+
+\noindent As expressões em caixas são as \textbf{equações algébricas a digitar}, com ponto decimal e multiplicação explícita por \texttt{*}. O nome em negrito à esquerda é o \textbf{nome sugerido para guardar a equação}; ele não faz parte da expressão. Todas as grandezas numéricas aqui são introduzidas \emph{sem unidades anexadas na calculadora}, seguindo as unidades fixas da tabela de cada prática. Os fatores 1000 e 1000000 fazem as conversões indicadas. Não misture mL com L dentro da mesma razão de volumes.
+
+\section*{Organização e uso}
+\begin{enumerate}
+\item Crie, se desejar, um diretório \texttt{PRAT} dentro de \texttt{QUIM}; guarde nele as equações com os nomes da coluna esquerda. Confira primeiro se nenhum nome já está em uso. Os nomes de variáveis terminam no número da prática \emph{da apostila}, quando pertinente. Isso reduz colisões com seus diretórios anteriores.
+\item Guarde cada expressão como \emph{objeto algébrico}, com apóstrofos ao redor da equação ao usar a linha de comando. No Solver numérico, escolha a equação guardada no campo \texttt{EQ} por \texttt{CHOOS}, ou digite-a por \texttt{EDIT}. Selecione a variável de saída e mande resolver. Não digite os apóstrofos \emph{dentro} do Equation Writer.
+\item Confira todos os campos antes de cada nova conta. O Solver mantém valores de variáveis que já existam; ao reutilizar uma equação, substitua os dados antigos e resolva explicitamente a incógnita desejada. Resultado de uma equação usado na seguinte pode ser informado no campo correspondente da próxima.
+\end{enumerate}
+\dica{\textbf{Convenção para o branco:} \texttt{BP6}, \texttt{BT6}, \texttt{BT7} e \texttt{BC7} são volumes de ensaio em branco em mL. Nos relatórios em que o branco não foi medido, use \texttt{0} apenas como convenção de cálculo; isso não representa uma medição de branco igual a zero. Se o problema fornecer o branco, informe o valor medido.}
+
+\section{Alcalinidade --- apostila 5, relatório 6}
+\eqhp{AL5}{A5=CH5*VH5/VA5}
+Calcula a alcalinidade \texttt{A5} em mol/L de $\mathrm{H^+}$, usando $\mathrm{HCl}$ monoprótico. \texttt{CH5}: concentração do HCl em mol/L; \texttt{VH5}: volume de HCl gasto em mL; \texttt{VA5}: volume da amostra em mL. Rode uma vez para fenolftaleína ($P$) e outra para alaranjado de metila ($T$).
+\eqhp{CVC5}{AC5=50000*A5}
+Converte \texttt{A5} para alcalinidade \texttt{AC5} em mg/L \emph{como CaCO$_3$}. Registre à parte o primeiro resultado como \texttt{P5} e o segundo como \texttt{T5}, ambos em mg/L como CaCO$_3$, para as próximas equações.
+\eqhp{CAR5}{CO5=2*P5}
+\eqhp{BIC5}{BI5=T5-2*P5}
+Se $0<P<T/2$, \texttt{CO5} e \texttt{BI5} são as contribuições do carbonato e bicarbonato em mg/L \emph{como CaCO$_3$}; a de hidróxido é zero. \textbf{Não} use estas duas equações sem verificar a condição. Elas não retornam massas reais dos íons.
+
+\noindent\textbf{Teste com o relatório:} \texttt{CH5=0.00869}, \texttt{VA5=50}; para \texttt{VH5=0.5667}, $A5\simeq9{,}85\times10^{-5}$ e $AC5\simeq4{,}92$. Para \texttt{VH5=12.5667}, $A5\simeq0{,}002184$ e $AC5\simeq109{,}2$. Informando \texttt{P5=4.92} e \texttt{T5=109.2}, obtém-se \texttt{CO5=9.84} e \texttt{BI5=99.36}.
+
+\section{Cloreto --- apostila 6, relatório 5}
+\eqhp{PAD6}{CA6=CN6*VN6/(VP6-BP6)}
+Padroniza AgNO$_3$. \texttt{CA6}: concentração real do AgNO$_3$ em mol/L; \texttt{CN6}: concentração do NaCl padrão em mol/L; \texttt{VN6}: volume do padrão em mL; \texttt{VP6}: volume de AgNO$_3$ na padronização em mL; \texttt{BP6}: branco da padronização em mL.
+\eqhp{CLOR6}{CL6=CA6*(VT6-BT6)*VF6/(VL6*VI6)}
+Calcula \texttt{CL6}, concentração de Cl$^-$ \emph{na amostra original}, em mol/L. \texttt{VT6}: volume de AgNO$_3$ na titulação da amostra diluída; \texttt{BT6}: branco dessa titulação; \texttt{VL6}: volume da alíquota da solução diluída titulada; \texttt{VI6}: volume da amostra original levado à diluição; \texttt{VF6}: volume final da solução diluída. \textbf{Todos esses volumes em mL.} A primeira razão usa Ag$^+$:Cl$^-=1{:}1$; $VF6/VI6$ desfaz a diluição.
+
+\noindent\textbf{Teste:} \texttt{CN6=0.0141}, \texttt{VN6=10}, \texttt{VP6=10.3}, \texttt{BP6=0} dão \texttt{CA6=0.0136893}. Depois, \texttt{VT6=20.3667}, \texttt{BT6=0}, \texttt{VL6=10}, \texttt{VI6=5}, \texttt{VF6=100} dão \texttt{CL6=0.5576} mol/L. O relatório não fez ensaio em branco; estes zeros são apenas entradas para usar a expressão geral.
+
+\section{Dureza --- apostila e relatório 7}
+\eqhp{TOT7}{CT7=CE7*(VT7-BT7)/VA7}
+\eqhp{CAL7}{CC7=CE7*(VC7-BC7)/VA7}
+\eqhp{MAG7}{CM7=CT7-CC7}
+\eqhp{DUR7}{DC7=CT7*100.09*1000}
+\texttt{CE7}: concentração do EDTA (mol/L). \texttt{VT7} e \texttt{BT7}: titulante e branco para Ca$^{2+}$+Mg$^{2+}$ (mL); \texttt{VC7} e \texttt{BC7}: titulante e branco para apenas Ca$^{2+}$ (mL); \texttt{VA7}: volume da amostra (mL). \texttt{CT7}, \texttt{CC7} e \texttt{CM7} são concentrações em mol/L do total, cálcio e magnésio. \texttt{DC7} é dureza total em mg/L \emph{como CaCO$_3$}. O EDTA complexa cada íon em proporção 1:1.
+
+\noindent\textbf{Teste:} \texttt{CE7=0.009512}, \texttt{VA7=5}, \texttt{VT7=35.4667}, \texttt{VC7=6.2}, \texttt{BT7=0} e \texttt{BC7=0} resultam em \texttt{CT7=0.06747}, \texttt{CC7=0.01179}, \texttt{CM7=0.05568} mol/L e \texttt{DC7=6753} mg/L como CaCO$_3$.
+
+\section{Oxigênio dissolvido --- apostila 10, relatório 8}
+\eqhp{PAD10}{CT10=6000*MK10/(MMK10*VP10)}
+Padroniza tiossulfato: \texttt{MK10} é massa de KIO$_3$ em g, \texttt{MMK10} sua massa molar em g/mol, \texttt{VP10} o volume de tiossulfato em mL e \texttt{CT10} a concentração resultante em mol/L. O \texttt{6000} reúne a proporção $6\,\mathrm{mol}$ de tiossulfato por mol de iodato e $1000\,\mathrm{mL/L}$.
+\eqhp{OX10}{O10=CT10*VO10*MO10*1000/(4*VA10)}
+\texttt{VO10}: volume de tiossulfato na amostra em mL; \texttt{VA10}: volume da amostra em mL; \texttt{MO10}: massa molar de O$_2$ em g/mol; \texttt{O10}: OD em mg/L. O divisor 4 vem de $4\,\mathrm{mol}$ de tiossulfato por mol de O$_2$; o fator 1000 converte g em mg.
+
+\noindent\textbf{Teste:} \texttt{MK10=0.0151}, \texttt{MMK10=214}, \texttt{VP10=15.7} dão \texttt{CT10=0.02697}. Com \texttt{VO10=1.5667}, \texttt{VA10=50} e \texttt{MO10=32}, obtém-se \texttt{O10=6.76} mg/L. A média da padronização do relatório inclui uma leitura reconstruída de $13{,}5\,\mathrm{mL}$.
+
+\section{Sulfato --- apostila 11, relatório 9}
+\eqhp{PES11}{MB11=((MT1-MF1)+(MT2-MF2))/2}
+\texttt{MT1}, \texttt{MT2}: massas de filtro + BaSO$_4$ nas duas determinações (g). \texttt{MF1}, \texttt{MF2}: massas dos filtros vazios (g). \texttt{MB11}: massa média de BaSO$_4$ isolado (g). Se o exercício trouxer uma única pesagem, use diretamente a diferença filtro+precipitado menos filtro, sem fazer média artificial.
+\eqhp{SUL11}{CS11=MB11*MMS11*1000000/(MMB11*VA11)}
+\texttt{MMS11}: massa molar de SO$_4^{2-}$ em g/mol; \texttt{MMB11}: massa molar de BaSO$_4$ em g/mol; \texttt{VA11}: volume da amostra original em mL; \texttt{CS11}: sulfato em mg/L. O fator $10^6$ resulta de $1000\,\mathrm{mg/g}\times1000\,\mathrm{mL/L}$.
+\eqhp{POR11}{PS11=CS11/10000}
+Converte mg/L de sulfato para \texttt{PS11} em porcentagem massa/volume: $1\%\,(m/v)=10\,000\,\mathrm{mg/L}$.
+
+\noindent\textbf{Teste:} \texttt{MT1=0.7337}, \texttt{MF1=0.5990}, \texttt{MT2=0.7515}, \texttt{MF2=0.6150} dão \texttt{MB11=0.1356} g. Com \texttt{MMS11=96.06}, \texttt{MMB11=233.39}, \texttt{VA11=25}, resultam \texttt{CS11=2232} mg/L e \texttt{PS11=0.2232}.
+
+\section*{Conversões gerais, quando o problema pedir}
+\eqhp{CVGM}{MGX=CMX*MMX*1000}
+\eqhp{CVPC}{PCX=CMX*MMX/10}
+\texttt{CMX}: concentração molar de \emph{um soluto/íon} em mol/L; \texttt{MMX}: massa molar \emph{desse mesmo soluto/íon} em g/mol; \texttt{MGX}: mg/L; \texttt{PCX}: \% m/v. Por exemplo: cloreto, \texttt{CMX=CL6}, \texttt{MMX=35.45} $\Rightarrow$ 19770 mg/L e $1{,}977\%$; cálcio, \texttt{CMX=CC7}, \texttt{MMX=40.08} $\Rightarrow$ 472,7 mg/L e $0{,}04727\%$. Troque \emph{ambos} os campos ao mudar de substância. Para converter mg/L em ppm, verifique a convenção e a densidade no enunciado.
+
+\section*{Checklist de digitação e alcance}
+\begin{itemize}
+\item Faça o primeiro teste com os dados impressos aqui e confronte o resultado com a linha \textbf{Teste} antes de confiar na equação em outra questão.
+\item O nome da equação guardada (por exemplo, \texttt{PAD6}) deve ser diferente do nome de sua saída (\texttt{CA6}). Observe letras parecidas: \texttt{CT10} (tiossulfato), \texttt{CT7} (cálcio+magnésio) e \texttt{CS11} (sulfato) são variáveis distintas.
+\item Se o Solver não mostrar uma variável esperada, confira primeiro se há uma variável previamente armazenada com o mesmo nome e se a expressão escolhida no campo \texttt{EQ} é a correta. As variáveis existentes e seus valores podem persistir ao trocar de equação.
+\item As fórmulas e testes numéricos foram conferidos com os relatórios; a digitação e a operação no aparelho físico devem ser validadas com o primeiro teste acima, pois o estado dos diretórios e variáveis da sua HP não está disponível aqui.
+\end{itemize}
+\noindent\textbf{Referências:} apostila da disciplina e relatórios 5--9 entregues; HP, \emph{HP 50g User's Guide}, seções ``Different ways to enter equations into EQ'', ``The SOLVE soft menu'' e ``Typing directory and variable names'': \url{https://literature.hpcalc.org/official/hp50g-ug-en.pdf}.
+\end{document}

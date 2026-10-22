@@ -1,0 +1,63 @@
+CLORE 1/7
+ORDEM
+PAD6 > CLOR6
+CVGM > CVPC
+Resultado: Cl original
+
+---
+
+CLORE 2/7
+PAD6: padronizar AgNO3
+CN6: NaCl, mol/L
+VN6: NaCl, mL
+VP6: AgNO3 gasto, mL
+BP6: branco, mL
+
+---
+
+CLORE 3/7
+PAD6: resolver CA6
+CA6: AgNO3, mol/L
+Ag+ e Cl- reagem 1:1
+Sem branco registrado:
+BP6=0, sem correcao
+
+---
+
+CLORE 4/7
+CLOR6: titular amostra
+CA6: vem de PAD6
+VT6: AgNO3 gasto, mL
+BT6: branco, mL
+Sem correcao: BT6=0
+
+---
+
+CLORE 5/7
+CLOR6: diluicao
+VI6: amostra orig., mL
+VF6: vol. final, mL
+VL6: vol. titulado, mL
+CL6: Cl- orig., mol/L
+
+---
+
+CLORE 6/7
+CVGM: Cl- em mg/L
+CMX: copiar valor CL6
+MMX: 35.45 g/mol
+MGX=CMX*MMX*1000
+Resolver MGX: mg/L
+
+---
+
+CLORE 7/7
+CVPC: Cl- em % m/V
+CMX: copiar valor CL6
+MMX: 35.45 g/mol
+PCX=CMX*MMX/10
+Resolver PCX: % m/V
+
+---
+
+FIM

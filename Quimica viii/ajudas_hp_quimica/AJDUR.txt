@@ -1,0 +1,81 @@
+DUREZ 1/9
+ORDEM
+TOT7 > CAL7 > MAG7
+DUR7 > CVGM > CVPC
+Converter Ca e Mg
+
+---
+
+DUREZ 2/9
+TOT7: Ca+Mg total
+CE7: EDTA, mol/L
+VT7: EDTA total, mL
+BT7: branco, mL
+VA7: amostra orig., mL
+
+---
+
+DUREZ 3/9
+TOT7: resolver CT7
+CT7: Ca+Mg, mol/L
+EDTA: proporcao 1:1
+Agua adicionada nao
+muda VA7 original
+
+---
+
+DUREZ 4/9
+CAL7: so calcio
+CE7 e VA7: mesmos
+VC7: EDTA para Ca, mL
+BC7: branco Ca, mL
+CC7: Ca, mol/L
+
+---
+
+DUREZ 5/9
+MAG7: magnesio
+CM7=CT7-CC7
+CT7: total, mol/L
+CC7: calcio, mol/L
+CM7: magnesio, mol/L
+
+---
+
+DUREZ 6/9
+DUR7: dureza total
+DC7=CT7*100.09*1000
+CT7: total, mol/L
+DC7: mg/L como CaCO3
+Usar CT7, nao CM7
+
+---
+
+DUREZ 7/9
+CVGM: massa por litro
+CMX: CC7 ou CM7
+MMX: massa molar g/mol
+Ca:40.08; Mg:24.31
+MGX: mg/L do ion
+
+---
+
+DUREZ 8/9
+CVPC: porcentagem
+CMX: CC7 ou CM7
+MMX: Ca ou Mg, g/mol
+PCX=CMX*MMX/10
+PCX: % m/V do ion
+
+---
+
+DUREZ 9/9
+ATENCAO
+Copiar CC7/CM7 a CMX
+Trocar MMX com o ion
+Ca e Mg: massa real
+DC7: equiv. de CaCO3
+
+---
+
+FIM

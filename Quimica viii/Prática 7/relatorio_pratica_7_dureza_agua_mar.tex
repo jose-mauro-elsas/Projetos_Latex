@@ -1,0 +1,640 @@
+%!TEX program = lualatex
+% Arquivo: relatorio_pratica_7_dureza_agua_mar.tex
+
+\documentclass[a4paper,12pt]{article}
+
+% =========================================================
+% Idioma e tipografia
+% =========================================================
+\usepackage[brazilian]{babel}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\usepackage{microtype}
+
+% =========================================================
+% Layout
+% =========================================================
+\usepackage[top=3cm,bottom=2.5cm,left=3cm,right=2.5cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25cm}
+
+% =========================================================
+% Matemática, química e unidades
+% =========================================================
+\usepackage{amsmath,amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{siunitx}
+\sisetup{
+  locale = DE,
+  output-decimal-marker = {,},
+  per-mode = symbol,
+  exponent-product = \cdot
+}
+
+% =========================================================
+% Tabelas, figuras e listas
+% =========================================================
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+
+\setlist[itemize]{noitemsep,topsep=3pt}
+\setlist[enumerate]{noitemsep,topsep=3pt}
+
+% =========================================================
+% Links
+% =========================================================
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=blue,
+  citecolor=black,
+  pdfauthor={Israel Carneiro; José Mauro Xavier Elsas; Miguel Gayani},
+  pdftitle={Prática 7 -- Determinação da dureza total da água do mar}
+}
+
+% =========================================================
+% Dados experimentais
+% =========================================================
+\newcommand{\ConcEDTA}{0.009512}
+\newcommand{\VolAmostra}{5.00}
+\newcommand{\VolMedioTotal}{35.47}
+\newcommand{\VolMedioCalcio}{6.20}
+
+\begin{document}
+
+% =========================================================
+% Capa
+% =========================================================
+\begin{titlepage}
+\centering
+
+{\large Universidade do Estado do Rio de Janeiro -- UERJ\par}
+\vspace{0.3cm}
+{\large Química VIII / Oceanografia\par}
+
+\vspace{1.2cm}
+
+{\LARGE\bfseries Prática 7\par}
+\vspace{0.4cm}
+{\Large\bfseries DETERMINAÇÃO DA DUREZA TOTAL\\
+DA ÁGUA DO MAR\par}
+
+\vspace{0.8cm}
+
+\IfFileExists{uerj.jpg}{
+  \includegraphics[width=0.28\linewidth]{uerj.jpg}
+}{
+  \begin{tcolorbox}[
+    width=0.30\textwidth,
+    colback=white,
+    colframe=black!35,
+    boxrule=0.5pt,
+    arc=0mm
+  ]
+  \centering
+  \vspace{1.0cm}
+  \textit{Logotipo da UERJ}
+  \vspace{1.0cm}
+  \end{tcolorbox}
+}
+
+\vfill
+
+\begin{flushright}
+\textbf{Alunos:}\\
+Israel Carneiro\\
+José Mauro Xavier Elsas\\
+Miguel Gayani\\[0.5cm]
+\textbf{Professor:} Ítalo Vieira
+\end{flushright}
+
+\vspace{1cm}
+Rio de Janeiro -- 2026
+
+\end{titlepage}
+
+% =========================================================
+\section{Introdução}
+
+A dureza da água está relacionada principalmente à presença de cátions
+metálicos multivalentes, com destaque para os íons cálcio, \ce{Ca^2+}, e
+magnésio, \ce{Mg^2+}. Em água do mar, esses íons estão naturalmente
+presentes em concentrações elevadas e participam de processos químicos e
+biogeoquímicos importantes, como a formação de minerais carbonáticos e a
+regulação do equilíbrio iônico do meio.
+
+Outros cátions, como ferro, alumínio, cobre e zinco, também podem reagir
+com o agente complexante e interferir na determinação. Caso estejam
+presentes em quantidades relevantes, devem ser removidos ou mascarados antes
+da análise. Neste experimento, a dureza total foi considerada como a soma
+das contribuições de cálcio e magnésio, conforme o procedimento proposto na
+apostila da disciplina.
+
+A determinação da dureza pode ser realizada por volumetria de complexação
+utilizando o ácido etilenodiaminotetracético (EDTA) como agente titulante.
+O EDTA forma complexos estáveis com diversos íons metálicos. Para um cátion
+divalente genérico, representado por \ce{M^2+}, a reação pode ser escrita,
+de forma simplificada, como:
+
+\begin{equation}
+\ce{M^2+(aq) + Y^4-(aq) -> MY^2-(aq)},
+\end{equation}
+
+em que \ce{Y^4-} representa a forma do EDTA que participa da complexação.
+A estequiometria da reação é de \textbf{1:1}; portanto, um mol de EDTA
+complexa um mol de \ce{Ca^2+} ou um mol de \ce{Mg^2+}.
+
+O EDTA atua como agente quelante hexadentado: seus dois átomos de nitrogênio
+e quatro grupos carboxilato podem fornecer pares de elétrons para a formação
+de ligações coordenadas com o íon metálico. O complexo resultante é
+denominado quelato.
+
+Os pontos finais das titulações foram identificados com indicadores
+metalocrômicos. Esses indicadores formam complexos coloridos com os cátions,
+mas o complexo metal--EDTA deve ser mais estável que o complexo
+metal--indicador. Durante a titulação, o EDTA desloca o indicador:
+
+\begin{equation}
+\ce{M-Ind + EDTA -> M-EDTA + Ind}.
+\end{equation}
+
+As cores diferentes do indicador ligado e livre permitem reconhecer o ponto
+final da titulação.
+
+Neste experimento foram realizadas duas titulações. Na primeira,
+determinou-se a quantidade total de \ce{Ca^2+} e \ce{Mg^2+} em meio
+tamponado a pH 10, usando negro de eriocromo T como indicador. A viragem foi
+observada pela mudança de vermelho para azul.
+
+Na segunda titulação, determinou-se apenas o cálcio. A adição de solução de
+\ce{NaOH} elevou o pH e retirou o magnésio da titulação por precipitação na
+forma de \ce{Mg(OH)2}. Empregou-se calcon como indicador, com mudança de
+rosa para azul. A concentração de magnésio foi então obtida pela diferença
+entre a concentração total dos dois cátions e a concentração de cálcio.
+
+% =========================================================
+\section{Objetivos}
+
+\begin{itemize}
+  \item determinar a concentração total de \ce{Ca^2+} e \ce{Mg^2+} em uma
+        amostra de água do mar por titulação complexométrica com EDTA;
+  \item determinar separadamente a concentração de \ce{Ca^2+};
+  \item calcular a concentração de \ce{Mg^2+} por diferença;
+  \item expressar as concentrações em \si{\mole\per\litre}, percentual
+        massa por volume (\% $m/V$) e ppm;
+  \item expressar adicionalmente a dureza total em
+        \si{\milli\gram\per\litre} como \ce{CaCO3}.
+\end{itemize}
+
+% =========================================================
+\section{Material utilizado}
+
+\begin{itemize}
+  \item bureta de \qty{50.00}{\milli\litre};
+  \item Erlenmeyers de \qty{250}{\milli\litre};
+  \item pipeta aferida de \qty{5.00}{\milli\litre};
+  \item pipeta graduada de \qty{5}{\milli\litre};
+  \item proveta de \qty{50}{\milli\litre};
+  \item béquer de \qty{400}{\milli\litre};
+  \item bastão de vidro;
+  \item suporte universal e garra para bureta;
+  \item frasco lavador com água destilada.
+\end{itemize}
+
+% =========================================================
+\section{Reagentes e soluções}
+
+\begin{itemize}
+  \item solução padrão de EDTA dissódico de concentração
+        \qty{\ConcEDTA}{\mole\per\litre}, fornecida pronta pelo laboratório;
+  \item amostra de água do mar;
+  \item solução-tampão de pH 10;
+  \item solução de \ce{NaOH} a 10\% ($m/V$);
+  \item negro de eriocromo T;
+  \item calcon;
+  \item água destilada.
+\end{itemize}
+
+A apostila descreve o preparo da solução padrão a partir de EDTA dissódico
+di-hidratado. Entretanto, nesta aula a solução foi fornecida pronta, com
+concentração informada de \qty{\ConcEDTA}{\mole\per\litre}, pois a etapa de
+preparo consumiria uma parcela excessiva do tempo disponível para a prática.
+
+% =========================================================
+\section{Procedimento experimental}
+
+\subsection{Titulação conjunta de \ce{Ca^2+} e \ce{Mg^2+}}
+
+Foram transferidos \qty{\VolAmostra}{\milli\litre} de água do mar para um
+Erlenmeyer. Adicionaram-se \qty{50}{\milli\litre} de água destilada,
+\qty{3}{\milli\litre} de solução-tampão de pH 10 e negro de eriocromo T.
+A bureta foi rinsada e preenchida com a solução de EDTA. O Erlenmeyer foi
+colocado sobre fundo branco e a amostra foi titulada com solução de EDTA
+\qty{\ConcEDTA}{\mole\per\litre} até a mudança de coloração de vermelho
+vinho para azul. Próximo ao ponto final, as paredes do Erlenmeyer foram
+lavadas com água destilada e o titulante foi adicionado gota a gota. O
+procedimento foi realizado em triplicata.
+
+\subsection{Titulação de \ce{Ca^2+}}
+
+Em outra alíquota de \qty{\VolAmostra}{\milli\litre} de água do mar,
+adicionaram-se \qty{50}{\milli\litre} de água destilada,
+\qty{2.5}{\milli\litre} de solução de \ce{NaOH} a 10\% ($m/V$) e calcon.
+A solução foi agitada por dois minutos após a adição de \ce{NaOH}, para
+favorecer a precipitação do magnésio como \ce{Mg(OH)2}. Em seguida,
+adicionou-se o calcon e titulou-se com o mesmo EDTA, sobre fundo branco, até
+a mudança de rosa para azul.
+
+Depois de atingido o ponto final, a amostra permaneceu em repouso por cinco
+minutos, com agitação ocasional. Essa etapa permite verificar se houve
+formação de precipitado de \ce{Ca(OH)2}; caso a coloração vermelha
+reaparecesse, a titulação deveria prosseguir até a obtenção de um novo ponto
+final azul. A determinação foi realizada em triplicata.
+
+Embora a relação geral de reagentes da apostila mencione solução de
+\ce{NaOH} a 50\% ($m/V$), tanto o procedimento específico da Prática 7
+quanto o quadro da aula indicavam \ce{NaOH} a 10\% ($m/V$). Por isso, foi
+registrada no relatório a concentração efetivamente orientada para o
+experimento.
+
+A água destilada adicionada nas duas etapas apenas aumentou o volume da
+solução no Erlenmeyer e facilitou a observação da viragem. Ela não alterou
+a quantidade de matéria dos íons presentes na alíquota. Por isso, nos
+cálculos das concentrações foi utilizado o volume original de
+\qty{\VolAmostra}{\milli\litre} da amostra, e não o volume total após a
+diluição no Erlenmeyer.
+
+% =========================================================
+\section{Resultados e cálculos}
+
+\subsection{Volumes de EDTA consumidos}
+
+\begin{table}[H]
+\centering
+\caption{Dados da titulação conjunta de \ce{Ca^2+} e \ce{Mg^2+}, em tabela
+adaptada da apostila da disciplina.}
+\label{tab:dados_total}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Dados da titulação} & \textbf{I} & \textbf{II} & \textbf{III}\\
+\midrule
+Concentração do EDTA (\si{\mole\per\litre})
+  & 0,009512 & 0,009512 & 0,009512\\
+Volume da amostra (\si{\milli\litre})
+  & 5,00 & 5,00 & 5,00\\
+Volume de titulante gasto (\si{\milli\litre})
+  & 35,1 & 35,2 & 36,1\\
+Ensaio em branco
+  & \multicolumn{3}{c}{Não realizado}\\
+Volume real de EDTA (\si{\milli\litre})
+  & 35,1 & 35,2 & 36,1\\
+\textbf{Volume médio real de EDTA (\si{\milli\litre})}
+  & \multicolumn{3}{c}{\textbf{35,47}}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Dados da titulação de \ce{Ca^2+}, em tabela adaptada da apostila
+da disciplina.}
+\label{tab:dados_calcio}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Dados da titulação} & \textbf{I} & \textbf{II} & \textbf{III}\\
+\midrule
+Concentração do EDTA (\si{\mole\per\litre})
+  & 0,009512 & 0,009512 & 0,009512\\
+Volume da amostra (\si{\milli\litre})
+  & 5,00 & 5,00 & 5,00\\
+Volume de titulante gasto (\si{\milli\litre})
+  & 6,3 & 6,0 & 6,3\\
+Ensaio em branco
+  & \multicolumn{3}{c}{Não realizado}\\
+Volume real de EDTA (\si{\milli\litre})
+  & 6,3 & 6,0 & 6,3\\
+\textbf{Volume médio real de EDTA (\si{\milli\litre})}
+  & \multicolumn{3}{c}{\textbf{6,20}}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Como não foi realizado ensaio em branco, não houve volume a subtrair dos
+valores medidos. Desse modo, neste relatório:
+
+\begin{equation}
+V_{\text{real}}=V_{\text{gasto}}.
+\end{equation}
+
+Para a titulação conjunta:
+
+\begin{align}
+\overline{V}_{\ce{Ca + Mg}}
+&=
+\frac{35.1+35.2+36.1}{3}\\
+&=
+\qty{35.4667}{\milli\litre}
+\approx
+\boxed{\qty{35.47}{\milli\litre}}.
+\end{align}
+
+Para a titulação do cálcio:
+
+\begin{align}
+\overline{V}_{\ce{Ca}}
+&=
+\frac{6.3+6.0+6.3}{3}\\
+&=
+\boxed{\qty{6.20}{\milli\litre}}.
+\end{align}
+
+\subsection{Concentração total de \ce{Ca^2+} e \ce{Mg^2+}}
+
+Como a proporção estequiométrica entre o EDTA e os cátions divalentes é
+1:1:
+
+\begin{equation}
+n_{\mathrm{EDTA}}=n_{\ce{Ca^2+}}+n_{\ce{Mg^2+}}.
+\end{equation}
+
+Assim:
+
+\begin{align}
+[\ce{Ca^2+}]+[\ce{Mg^2+}]
+&=
+\frac{C_{\mathrm{EDTA}}\,\overline{V}_{\ce{Ca + Mg}}}
+{V_{\mathrm{amostra}}}\\
+&=
+\frac{
+\left(\qty{0.009512}{\mole\per\litre}\right)
+\left(\qty{35.4667e-3}{\litre}\right)}
+{\qty{5.00e-3}{\litre}}\\
+&=
+\boxed{\qty{0.06747}{\mole\per\litre}}.
+\end{align}
+
+\subsection{Concentração de \ce{Ca^2+}}
+
+Na segunda titulação, o EDTA consumido corresponde apenas ao cálcio:
+
+\begin{align}
+[\ce{Ca^2+}]
+&=
+\frac{C_{\mathrm{EDTA}}\,\overline{V}_{\ce{Ca}}}
+{V_{\mathrm{amostra}}}\\
+&=
+\frac{
+\left(\qty{0.009512}{\mole\per\litre}\right)
+\left(\qty{6.20e-3}{\litre}\right)}
+{\qty{5.00e-3}{\litre}}\\
+&=
+\boxed{\qty{0.01179}{\mole\per\litre}}.
+\end{align}
+
+\subsection{Concentração de \ce{Mg^2+}}
+
+A concentração de magnésio foi calculada por diferença:
+
+\begin{align}
+[\ce{Mg^2+}]
+&=
+\left([\ce{Ca^2+}]+[\ce{Mg^2+}]\right)-[\ce{Ca^2+}]\\
+&=
+0.0674718-0.0117949\\
+&=
+\boxed{\qty{0.05568}{\mole\per\litre}}.
+\end{align}
+
+% =========================================================
+\subsection{Conversão para percentual massa por volume}
+
+O percentual massa por volume indica a massa, em gramas, do soluto contida
+em \qty{100}{\milli\litre} de solução. Para uma concentração molar $C$ e
+massa molar $M$:
+
+\begin{equation}
+\%\,(m/V)=\frac{C\left(\si{\mole\per\litre}\right)
+M\left(\si{\gram\per\mole}\right)}{10}.
+\end{equation}
+
+Foram utilizadas as massas molares
+$M_{\ce{Ca}}=\qty{40.08}{\gram\per\mole}$ e
+$M_{\ce{Mg}}=\qty{24.31}{\gram\per\mole}$.
+
+Para o cálcio:
+
+\begin{align}
+\%\,(m/V)_{\ce{Ca^2+}}
+&=
+\frac{(0.0117949)(40.08)}{10}\\
+&=
+\boxed{0.04727\%\ (m/V)}.
+\end{align}
+
+Para o magnésio:
+
+\begin{align}
+\%\,(m/V)_{\ce{Mg^2+}}
+&=
+\frac{(0.0556769)(24.31)}{10}\\
+&=
+\boxed{0.1354\%\ (m/V)}.
+\end{align}
+
+% =========================================================
+\subsection{Conversão para ppm}
+
+Para soluções aquosas diluídas, a concentração em ppm pode ser expressa
+numericamente em \si{\milli\gram\per\litre}. A conversão foi realizada por:
+
+\begin{equation}
+C(\mathrm{ppm})=
+C\left(\si{\mole\per\litre}\right)
+M\left(\si{\gram\per\mole}\right)
+\times 1000.
+\end{equation}
+
+Para o cálcio:
+
+\begin{align}
+C_{\ce{Ca^2+}}
+&=
+(0.0117949)(40.08)(1000)\\
+&=
+\boxed{\qty{472.7}{\milli\gram\per\litre}}
+\approx
+\boxed{472.7\ \mathrm{ppm}}.
+\end{align}
+
+Para o magnésio:
+
+\begin{align}
+C_{\ce{Mg^2+}}
+&=
+(0.0556769)(24.31)(1000)\\
+&=
+\boxed{\qty{1354}{\milli\gram\per\litre}}
+\approx
+\boxed{1354\ \mathrm{ppm}}.
+\end{align}
+
+% =========================================================
+\subsection{Dureza total expressa como \ce{CaCO3}}
+
+Embora o quadro solicite as concentrações individuais de cálcio e magnésio,
+a dureza também é convencionalmente expressa em
+\si{\milli\gram\per\litre} como \ce{CaCO3}. Como um mol de cada cátion
+divalente corresponde, em termos de equivalência, a um mol de \ce{CaCO3}:
+
+\begin{align}
+\text{Dureza total}
+&=
+\left([\ce{Ca^2+}]+[\ce{Mg^2+}]\right)
+M_{\ce{CaCO3}}\times1000\\
+&=
+(0.0674718)(100.09)(1000)\\
+&=
+\boxed{\qty{6753}{\milli\gram\per\litre}
+\ \text{como \ce{CaCO3}}}.
+\end{align}
+
+% =========================================================
+\subsection{Resumo dos resultados}
+
+\begin{table}[H]
+\centering
+\caption{Concentrações de cálcio e magnésio na amostra de água do mar.}
+\label{tab:resultados}
+\begin{tabular}{
+l
+S[table-format=1.5]
+S[table-format=1.5]
+S[table-format=4.1]
+}
+\toprule
+\textbf{Íon}
+& {\textbf{Concentração} (\si{\mole\per\litre})}
+& {\textbf{\%} ($m/V$)}
+& {\textbf{ppm}}\\
+\midrule
+\ce{Ca^2+} & 0,01179 & 0,04727 & 472,7\\
+\ce{Mg^2+} & 0,05568 & 0,1354  & 1354,0\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% =========================================================
+\section{Discussão}
+
+A titulação conjunta consumiu, em média,
+\qty{35.47}{\milli\litre} de EDTA, enquanto a titulação seletiva do cálcio
+consumiu \qty{6.20}{\milli\litre}. Como o EDTA reage na proporção 1:1 com
+os dois cátions, a diferença entre esses volumes está associada ao magnésio.
+Consequentemente, a concentração molar de \ce{Mg^2+} foi superior à de
+\ce{Ca^2+} na amostra analisada.
+
+As concentrações calculadas foram de
+\qty{0.01179}{\mole\per\litre} para o cálcio e
+\qty{0.05568}{\mole\per\litre} para o magnésio. Em concentração mássica,
+esses valores correspondem a aproximadamente \qty{472.7}{\milli\gram\per\litre}
+de cálcio e \qty{1354}{\milli\gram\per\litre} de magnésio. Os resultados
+apresentam a predominância do magnésio característica da composição iônica
+da água do mar.
+
+Na titulação conjunta, o tampão de pH 10 forneceu as condições adequadas
+para a complexação dos dois cátions pelo EDTA e para o funcionamento do
+negro de eriocromo T. Na titulação seletiva, a adição de \ce{NaOH} tornou
+o meio fortemente básico, promovendo a precipitação do magnésio como
+\ce{Mg(OH)2}. Dessa forma, o EDTA permaneceu disponível para reagir
+predominantemente com o cálcio, e a viragem foi acompanhada com calcon.
+
+Os volumes da primeira titulação variaram entre
+\qty{35.1}{\milli\litre} e \qty{36.1}{\milli\litre}, enquanto os da
+segunda variaram entre \qty{6.0}{\milli\litre} e
+\qty{6.3}{\milli\litre}. Apesar dessas diferenças, os três resultados de
+cada etapa foram mantidos no cálculo das médias, pois não havia evidência
+experimental suficiente para classificar qualquer medida como resultado
+anômalo.
+
+A diluição com \qty{50}{\milli\litre} de água destilada não foi incluída
+no denominador das equações de concentração. Isso ocorre porque a diluição
+não modifica a quantidade de matéria de cálcio e magnésio originalmente
+presente nos \qty{5.00}{\milli\litre} da amostra; modifica apenas o volume
+ocupado pela solução durante a titulação.
+
+A solução de EDTA não foi preparada durante a aula. Ela foi fornecida pronta
+pelo laboratório, com concentração de
+\qty{0.009512}{\mole\per\litre}, valor informado no quadro para as duas
+titulações. Essa adaptação permitiu dedicar o tempo da aula às determinações
+complexométricas e não modifica os cálculos, desde que seja empregada a
+concentração efetiva informada para o titulante.
+
+O roteiro prevê a determinação de um volume de branco, que deveria ser
+subtraído do volume gasto para obtenção do volume real de EDTA. Como o ensaio
+em branco não foi realizado nesta aula, adotou-se
+$V_{\text{real}}=V_{\text{gasto}}$. A ausência dessa correção constitui uma
+limitação do experimento: eventual consumo de titulante por reagentes ou por
+outras contribuições do procedimento permanece incorporado aos volumes
+medidos e pode produzir um pequeno erro sistemático positivo nas
+concentrações calculadas.
+
+% =========================================================
+\section{Conclusão}
+
+A dureza total da amostra de água do mar foi determinada por titulação
+complexométrica com solução de EDTA
+\qty{0.009512}{\mole\per\litre}. A primeira titulação forneceu a soma das
+concentrações de cálcio e magnésio:
+
+\begin{equation*}
+\boxed{
+[\ce{Ca^2+}]+[\ce{Mg^2+}]
+=
+\qty{0.06747}{\mole\per\litre}
+}.
+\end{equation*}
+
+A titulação seletiva do cálcio e o cálculo do magnésio por diferença
+produziram os seguintes resultados:
+
+\begin{align*}
+[\ce{Ca^2+}]
+&=
+\boxed{\qty{0.01179}{\mole\per\litre}}
+=
+\boxed{472.7\ \mathrm{ppm}},\\[0.2cm]
+[\ce{Mg^2+}]
+&=
+\boxed{\qty{0.05568}{\mole\per\litre}}
+=
+\boxed{1354\ \mathrm{ppm}}.
+\end{align*}
+
+Em percentual massa por volume, foram obtidos 0,04727\% ($m/V$) de cálcio
+e 0,1354\% ($m/V$) de magnésio. A dureza total, expressa de forma
+convencional como \ce{CaCO3}, foi de aproximadamente
+\qty{6753}{\milli\gram\per\litre}. Os resultados mostraram concentração de
+magnésio superior à de cálcio, comportamento compatível com a composição
+iônica esperada para a água do mar. Como não foi realizado ensaio em branco,
+os volumes reais foram considerados iguais aos volumes gastos; portanto, os
+resultados devem ser interpretados levando em conta essa limitação
+experimental.
+
+% =========================================================
+\section*{Referência}
+
+LAGO, Dalva Cristina Baptista do; GOIS, Jefferson Santos de; LANGONE,
+Marta Antunes Pereira; SENNA, Lilian Ferreira de.
+\textit{Química VIII -- Oceanografia: aulas práticas}.
+Rio de Janeiro: Universidade do Estado do Rio de Janeiro,
+Instituto de Química, Departamento de Química Analítica, 2017.
+
+\end{document}

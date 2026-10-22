@@ -1,0 +1,594 @@
+%!TEX program = lualatex
+% Arquivo: relatorio_pratica_6_alcalinidade_agua_mar.tex
+
+\documentclass[a4paper,12pt]{article}
+
+% =========================================================
+% Idioma e tipografia
+% =========================================================
+\usepackage[brazilian]{babel}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\usepackage{microtype}
+
+% =========================================================
+% Layout
+% =========================================================
+\usepackage[top=3cm,bottom=2.5cm,left=3cm,right=2.5cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25cm}
+
+% =========================================================
+% Matemática, química e unidades
+% =========================================================
+\usepackage{amsmath,amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{siunitx}
+\sisetup{
+  locale = DE,
+  output-decimal-marker = {,},
+  per-mode = symbol,
+  exponent-product = \cdot
+}
+
+% =========================================================
+% Tabelas, figuras e listas
+% =========================================================
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\usepackage[most]{tcolorbox}
+
+\setlist[itemize]{noitemsep,topsep=3pt}
+\setlist[enumerate]{noitemsep,topsep=3pt}
+
+% =========================================================
+% Links
+% =========================================================
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=blue,
+  citecolor=black,
+  pdfauthor={Israel Carneiro; José Mauro Xavier Elsas; Miguel Gayani},
+  pdftitle={Prática 6 -- Determinação da alcalinidade em água do mar}
+}
+
+% =========================================================
+% Dados
+% =========================================================
+\newcommand{\ConcHClEstoque}{0.0869}
+\newcommand{\VolHClEstoque}{25.0}
+\newcommand{\VolHClFinal}{250.0}
+\newcommand{\ConcHClTrabalho}{0.00869}
+\newcommand{\VolAmostra}{50.00}
+
+\begin{document}
+
+% =========================================================
+% Capa
+% =========================================================
+\begin{titlepage}
+\centering
+
+{\large Universidade do Estado do Rio de Janeiro -- UERJ\par}
+\vspace{0.3cm}
+{\large Química VIII / Oceanografia\par}
+
+\vspace{1.2cm}
+
+{\LARGE\bfseries Prática 6\par}
+\vspace{0.4cm}
+{\Large\bfseries DETERMINAÇÃO DA ALCALINIDADE\\
+EM ÁGUA DO MAR\par}
+
+\vspace{0.8cm}
+
+\IfFileExists{uerj.jpg}{
+  \includegraphics[width=0.28\linewidth]{uerj.jpg}
+}{
+  \begin{tcolorbox}[
+    width=0.30\textwidth,
+    colback=white,
+    colframe=black!35,
+    boxrule=0.5pt,
+    arc=0mm
+  ]
+  \centering
+  \vspace{1.0cm}
+  \textit{Logotipo da UERJ}
+  \vspace{1.0cm}
+  \end{tcolorbox}
+}
+
+\vfill
+
+\begin{flushright}
+\textbf{Alunos:}\\
+Israel Carneiro\\
+José Mauro Xavier Elsas\\
+Miguel Gayani\\[0.5cm]
+\textbf{Professor:} Ítalo Vieira
+\end{flushright}
+
+\vspace{1cm}
+Rio de Janeiro -- 2026
+
+\end{titlepage}
+
+% =========================================================
+\section{Observação sobre a numeração da prática}
+
+Na apostila da disciplina, a atividade \textit{Determinação da alcalinidade
+em água do mar} aparece como \textbf{Prática 5}. Entretanto, por razões de
+organização do laboratório, houve uma inversão na sequência das atividades,
+e este experimento foi efetivamente realizado como \textbf{Prática 6}.
+Neste relatório será adotada a numeração correspondente à ordem em que a
+atividade foi executada.
+
+% =========================================================
+\section{Introdução}
+
+A alcalinidade de uma água representa sua capacidade de neutralizar íons
+\ce{H3O+}, ou, de forma equivalente, sua capacidade de aceitar prótons.
+Nas águas naturais, essa propriedade está associada principalmente às
+espécies do sistema carbonato, sobretudo bicarbonato
+(\ce{HCO3-}) e carbonato (\ce{CO3^2-}), além de possíveis contribuições de
+hidróxido (\ce{OH-}) e, em menores proporções, de boratos, fosfatos,
+silicatos e espécies orgânicas de caráter básico.
+
+O dióxido de carbono dissolvido participa de equilíbrios ácido--base que
+originam as espécies carbonatadas:
+
+\begin{align}
+\ce{CO2(g) + 2H2O(l)}
+&\ce{<=> H3O+(aq) + HCO3-(aq)},\\
+\ce{HCO3-(aq) + H2O(l)}
+&\ce{<=> H3O+(aq) + CO3^2-(aq)}.
+\end{align}
+
+A determinação da alcalinidade foi realizada por titulação de neutralização
+com solução ácida. Foram empregados dois indicadores para identificar
+diferentes pontos de neutralização.
+
+Na primeira determinação, utilizou-se fenolftaleína. A viragem desse
+indicador permite avaliar a denominada \textit{alcalinidade à
+fenolftaleína}, associada à neutralização de \ce{OH-} e à conversão de
+\ce{CO3^2-} em \ce{HCO3-}:
+
+\begin{align}
+\ce{OH-(aq) + H3O+(aq)}
+&\ce{-> 2H2O(l)},\\
+\ce{CO3^2-(aq) + H3O+(aq)}
+&\ce{-> HCO3-(aq) + H2O(l)}.
+\end{align}
+
+Na segunda determinação, empregou-se alaranjado de metila para obtenção da
+\textit{alcalinidade total}. Nesse ponto, também ocorre a neutralização do
+bicarbonato:
+
+\begin{equation}
+\ce{HCO3-(aq) + H3O+(aq) -> CO2(g) + 2H2O(l)}.
+\end{equation}
+
+% =========================================================
+\section{Objetivos}
+
+\begin{itemize}
+  \item preparar, por diluição, a solução de HCl utilizada como titulante;
+  \item determinar a alcalinidade à fenolftaleína de uma amostra de água do mar;
+  \item determinar a alcalinidade total da amostra com alaranjado de metila;
+  \item expressar os resultados em \si{\mole\per\litre} de \ce{H3O+} e em
+        \si{\milli\gram\per\litre} como \ce{CaCO3};
+  \item estimar as contribuições relativas de hidróxido, carbonato e
+        bicarbonato para a alcalinidade da amostra.
+\end{itemize}
+
+% =========================================================
+\section{Material utilizado}
+
+\begin{itemize}
+  \item bureta de \qty{50.00}{\milli\litre};
+  \item Erlenmeyers de \qty{250}{\milli\litre};
+  \item balão volumétrico de \qty{250.00}{\milli\litre};
+  \item pipeta para transferência de \qty{25.0}{\milli\litre};
+  \item material volumétrico para transferência de
+        \qty{50.00}{\milli\litre} de amostra;
+  \item suporte universal e garra para bureta;
+  \item frasco lavador com água destilada.
+\end{itemize}
+
+% =========================================================
+\section{Reagentes e soluções}
+
+\begin{itemize}
+  \item solução de HCl previamente padronizada, de concentração
+        \qty{\ConcHClEstoque}{\mole\per\litre};
+  \item solução diluída de HCl usada como titulante;
+  \item fenolftaleína;
+  \item alaranjado de metila;
+  \item amostra de água do mar;
+  \item água destilada.
+\end{itemize}
+
+% =========================================================
+\section{Procedimento experimental}
+
+\subsection{Preparo da solução diluída de HCl}
+
+O quadro da aula indicava o preparo de uma solução aproximadamente
+\qty{0.01}{\mole\per\litre} por diluição de \qty{25.0}{\milli\litre} da
+solução de HCl para um volume final de \qty{250.0}{\milli\litre}.
+Como a solução estoque havia sido previamente padronizada e sua concentração
+experimental era \qty{\ConcHClEstoque}{\mole\per\litre}, utilizou-se esse
+valor exato no cálculo da concentração efetiva da solução diluída.
+
+A relação de diluição é:
+
+\begin{equation}
+C_1V_1=C_2V_2.
+\end{equation}
+
+Assim:
+
+\begin{align}
+C_2
+&=
+\frac{C_1V_1}{V_2}\\
+&=
+\frac{
+\left(\qty{\ConcHClEstoque}{\mole\per\litre}\right)
+\left(\qty{\VolHClEstoque}{\milli\litre}\right)}
+{\qty{\VolHClFinal}{\milli\litre}}\\
+&=
+\boxed{\qty{\ConcHClTrabalho}{\mole\per\litre}}.
+\end{align}
+
+Portanto, embora a solução seja referida no roteiro como HCl
+\qty{0.010}{\mole\per\litre}, a concentração efetivamente utilizada nos
+cálculos deste relatório foi \qty{\ConcHClTrabalho}{\mole\per\litre}.
+
+\subsection{Alcalinidade à fenolftaleína}
+
+Foram transferidos \qty{\VolAmostra}{\milli\litre} da amostra de água do
+mar para um Erlenmeyer de \qty{250}{\milli\litre}. Adicionou-se
+fenolftaleína e observou-se a coloração da amostra.
+
+Durante a execução ocorreu uma dificuldade experimental importante: foram
+necessárias \textbf{oito gotas de fenolftaleína} para que a solução
+apresentasse uma coloração apenas levemente rosada. Em seguida, a amostra
+foi titulada com a solução de HCl até o desaparecimento da coloração rosa.
+O procedimento foi realizado em triplicata.
+
+\subsection{Alcalinidade total com alaranjado de metila}
+
+Em outra alíquota de \qty{\VolAmostra}{\milli\litre} da mesma amostra,
+adicionou-se alaranjado de metila conforme a orientação experimental do
+quadro. A solução foi titulada com HCl até a mudança da coloração amarela
+para vermelho-rosa. A determinação também foi realizada em triplicata.
+
+% =========================================================
+\section{Resultados e cálculos}
+
+\subsection{Volumes de HCl consumidos}
+
+Os volumes experimentais obtidos foram:
+
+\begin{table}[H]
+\centering
+\caption{Volumes de HCl consumidos nas determinações de alcalinidade.}
+\label{tab:volumes}
+\begin{tabular}{
+c
+S[table-format=2.2]
+S[table-format=2.1]
+}
+\toprule
+\textbf{Determinação}
+& {\textbf{Fenolftaleína} (\si{\milli\litre})}
+& {\textbf{Alaranjado de metila} (\si{\milli\litre})}\\
+\midrule
+1 & 0,60 & 12,7\\
+2 & 0,60 & 12,4\\
+3 & 0,50 & 12,6\\
+\midrule
+\textbf{Média} & 0,57 & 12,57\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Para a fenolftaleína:
+
+\begin{align}
+\overline{V}_{P}
+&=
+\frac{0.60+0.60+0.50}{3}\\
+&=
+\qty{0.5667}{\milli\litre}
+\approx
+\boxed{\qty{0.57}{\milli\litre}}.
+\end{align}
+
+Para a alcalinidade total:
+
+\begin{align}
+\overline{V}_{T}
+&=
+\frac{12.7+12.4+12.6}{3}\\
+&=
+\boxed{\qty{12.57}{\milli\litre}}.
+\end{align}
+
+\subsection{Alcalinidade em mol L\texorpdfstring{$^{-1}$}{-1} de \ce{H3O+}}
+
+A alcalinidade correspondente ao volume de ácido consumido pode ser
+expressa pela razão entre a quantidade de matéria de \ce{H3O+} fornecida
+pelo titulante e o volume da amostra:
+
+\begin{equation}
+A=
+\frac{C_{\ce{HCl}}V_{\ce{HCl}}}{V_{\text{amostra}}}.
+\label{eq:alcalinidade_molar}
+\end{equation}
+
+\subsubsection*{Alcalinidade à fenolftaleína}
+
+\begin{align}
+P
+&=
+\frac{
+\left(\qty{0.00869}{\mole\per\litre}\right)
+\left(\qty{0.5667e-3}{\litre}\right)}
+{\qty{0.05000}{\litre}}\\
+&=
+\boxed{\qty{9.85e-5}{\mole\per\litre}}.
+\end{align}
+
+\subsubsection*{Alcalinidade total}
+
+\begin{align}
+T
+&=
+\frac{
+\left(\qty{0.00869}{\mole\per\litre}\right)
+\left(\qty{12.5667e-3}{\litre}\right)}
+{\qty{0.05000}{\litre}}\\
+&=
+\boxed{\qty{2.184e-3}{\mole\per\litre}}.
+\end{align}
+
+% =========================================================
+\subsection{Alcalinidade expressa como \ce{CaCO3}}
+
+Para expressar a alcalinidade como \ce{CaCO3}, empregou-se o fator
+\qty{50000}{\milli\gram\per\equiv}, correspondente à massa equivalente do
+\ce{CaCO3} expressa em miligramas. Assim:
+
+\begin{equation}
+A\left(\si{\milli\gram\per\litre}\ \text{como \ce{CaCO3}}\right)
+=
+A\left(\si{\equiv\per\litre}\right)
+\times
+50000.
+\end{equation}
+
+Como o HCl é monoprótico, a concentração em
+\si{\mole\per\litre} de \ce{H3O+} é numericamente igual à concentração
+em \si{\equiv\per\litre}.
+
+Para a alcalinidade à fenolftaleína:
+
+\begin{align}
+P
+&=
+\left(9.85\times10^{-5}\right)
+\left(50000\right)\\
+&=
+\boxed{\qty{4.92}{\milli\gram\per\litre}\ \text{como \ce{CaCO3}}}.
+\end{align}
+
+Para a alcalinidade total:
+
+\begin{align}
+T
+&=
+\left(2.184\times10^{-3}\right)
+\left(50000\right)\\
+&=
+\boxed{\qty{109.2}{\milli\gram\per\litre}\ \text{como \ce{CaCO3}}}.
+\end{align}
+
+\subsection{Resultados individuais}
+
+\begin{table}[H]
+\centering
+\caption{Alcalinidade calculada para cada determinação.}
+\label{tab:resultados_individuais}
+\begin{tabular}{
+c
+S[table-format=3.3]
+S[table-format=3.3]
+}
+\toprule
+\textbf{Determinação}
+& {\textbf{$P$} (\si{\milli\gram\per\litre} como \ce{CaCO3})}
+& {\textbf{$T$} (\si{\milli\gram\per\litre} como \ce{CaCO3})}\\
+\midrule
+1 & 5,214 & 110,363\\
+2 & 5,214 & 107,756\\
+3 & 4,345 & 109,494\\
+\midrule
+\textbf{Média} & 4,924 & 109,204\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% =========================================================
+\subsection{Componentes da alcalinidade}
+
+A apostila relaciona a alcalinidade à fenolftaleína ($P$) e a
+alcalinidade total ($T$) com as contribuições de \ce{OH-},
+\ce{CO3^2-} e \ce{HCO3-}.
+
+Neste experimento:
+
+\begin{equation}
+P=\qty{4.92}{\milli\gram\per\litre}
+\qquad\text{e}\qquad
+T=\qty{109.2}{\milli\gram\per\litre},
+\end{equation}
+
+ambos expressos como \ce{CaCO3}. Como:
+
+\begin{equation}
+P<\frac{T}{2},
+\end{equation}
+
+aplica-se a condição:
+
+\begin{align}
+\text{hidróxido} &= 0,\\
+\text{carbonato} &= 2P,\\
+\text{bicarbonato} &= T-2P.
+\end{align}
+
+Portanto:
+
+\begin{align}
+\text{Contribuição de \ce{OH-}}
+&=
+\boxed{0},\\[0.2cm]
+\text{Contribuição de \ce{CO3^2-}}
+&=
+2(4.92)\\
+&=
+\boxed{\qty{9.84}{\milli\gram\per\litre}\ \text{como \ce{CaCO3}}},\\[0.2cm]
+\text{Contribuição de \ce{HCO3-}}
+&=
+109.2-9.84\\
+&=
+\boxed{\qty{99.4}{\milli\gram\per\litre}\ \text{como \ce{CaCO3}}}.
+\end{align}
+
+Esses valores representam \textbf{contribuições para a alcalinidade
+expressas como \ce{CaCO3}}, e não as concentrações mássicas reais dos íons
+\ce{CO3^2-} e \ce{HCO3-}.
+
+% =========================================================
+\section{Discussão}
+
+A alcalinidade total determinada para a amostra foi de aproximadamente
+\qty{109.2}{\milli\gram\per\litre} como \ce{CaCO3}. De acordo com a
+classificação apresentada na apostila da disciplina, esse valor situa a
+amostra na faixa de alcalinidade média.
+
+A alcalinidade à fenolftaleína foi muito inferior à alcalinidade total:
+
+\begin{equation}
+P=\qty{4.92}{\milli\gram\per\litre}
+\ll
+\frac{T}{2}
+=
+\qty{54.6}{\milli\gram\per\litre}.
+\end{equation}
+
+Essa relação conduz, segundo o critério apresentado no roteiro, à ausência
+de contribuição calculada de \ce{OH-}, à presença de uma pequena parcela
+atribuída a \ce{CO3^2-} e à predominância da contribuição de
+\ce{HCO3-}.
+
+Um aspecto importante observado durante a determinação com fenolftaleína
+foi a dificuldade de visualização da coloração inicial. Foram necessárias
+oito gotas do indicador para que a amostra apresentasse apenas uma
+coloração levemente rosada. Esse comportamento indica que a amostra se
+encontrava muito próxima da faixa de transição do indicador e é coerente
+com o pequeno volume de HCl consumido nessa etapa.
+
+Os volumes medidos na titulação à fenolftaleína foram apenas
+\qty{0.60}{\milli\litre}, \qty{0.60}{\milli\litre} e
+\qty{0.50}{\milli\litre}. Para volumes tão pequenos, uma diferença de uma
+gota de titulante ou uma pequena diferença na percepção visual da viragem
+representa uma fração relativamente elevada do resultado. Por isso, a
+alcalinidade à fenolftaleína apresenta maior incerteza relativa que a
+alcalinidade total.
+
+Essa limitação, entretanto, não altera a interpretação geral dos
+componentes da alcalinidade, pois mesmo uma variação relativamente grande
+em $P$ não seria suficiente para aproximá-lo de $T/2$. Assim, a condição
+$P<T/2$ permanece bem estabelecida pelos dados experimentais.
+
+Na determinação com alaranjado de metila, os volumes de
+\qty{12.7}{\milli\litre}, \qty{12.4}{\milli\litre} e
+\qty{12.6}{\milli\litre} mostraram maior concordância entre as replicatas,
+tornando a determinação da alcalinidade total mais robusta.
+
+Também é importante observar que a solução de HCl utilizada não possuía
+exatamente a concentração nominal de \qty{0.010}{\mole\per\litre}.
+Como foi preparada a partir da solução previamente padronizada de
+\qty{0.0869}{\mole\per\litre}, utilizando-se
+\qty{25.0}{\milli\litre} e diluindo-se para
+\qty{250.0}{\milli\litre}, sua concentração efetiva foi
+\qty{0.00869}{\mole\per\litre}. O uso desse valor é necessário para que os
+resultados reflitam as condições efetivamente empregadas no laboratório.
+
+% =========================================================
+\section{Conclusão}
+
+A determinação da alcalinidade da amostra de água do mar foi realizada por
+titulação com solução de HCl de concentração efetiva
+\qty{0.00869}{\mole\per\litre}.
+
+A alcalinidade à fenolftaleína obtida foi:
+
+\begin{equation*}
+\boxed{
+P=
+\qty{9.85e-5}{\mole\per\litre}\ \text{de \ce{H3O+}}
+=
+\qty{4.92}{\milli\gram\per\litre}\ \text{como \ce{CaCO3}}
+}.
+\end{equation*}
+
+A alcalinidade total foi:
+
+\begin{equation*}
+\boxed{
+T=
+\qty{2.184e-3}{\mole\per\litre}\ \text{de \ce{H3O+}}
+=
+\qty{109.2}{\milli\gram\per\litre}\ \text{como \ce{CaCO3}}
+}.
+\end{equation*}
+
+Como $P<T/2$, a interpretação dos componentes indicou ausência de
+contribuição calculada de hidróxido, uma contribuição de aproximadamente
+\qty{9.84}{\milli\gram\per\litre} atribuída ao carbonato e uma contribuição
+predominante de aproximadamente
+\qty{99.4}{\milli\gram\per\litre} atribuída ao bicarbonato, todas expressas
+como \ce{CaCO3}.
+
+A determinação à fenolftaleína deve ser interpretada com maior cautela,
+pois foram necessárias oito gotas de indicador para produzir uma coloração
+apenas levemente rosada e os volumes de titulante consumidos foram muito
+pequenos. Apesar dessa limitação experimental, a relação $P<T/2$ e a
+predominância da contribuição bicarbonato permaneceram claramente
+definidas.
+
+% =========================================================
+\section*{Referência}
+
+LAGO, Dalva Cristina Baptista do; GOIS, Jefferson Santos de; LANGONE,
+Marta Antunes Pereira; SENNA, Lilian Ferreira de.
+\textit{Química VIII -- Oceanografia: aulas práticas}.
+Rio de Janeiro: Universidade do Estado do Rio de Janeiro,
+Instituto de Química, Departamento de Química Analítica, 2017.
+
+\end{document}

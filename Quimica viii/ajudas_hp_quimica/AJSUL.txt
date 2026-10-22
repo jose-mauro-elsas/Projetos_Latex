@@ -1,0 +1,54 @@
+SULFA 1/6
+ORDEM
+PES11 > SUL11 > POR11
+Pratica 11 apostila
+Relatorio 9
+
+---
+
+SULFA 2/6
+PES11: precipitado
+MT1/MT2: filtro+BaSO4
+MF1/MF2: filtro vazio
+Todas as massas em g
+MB11: media BaSO4, g
+
+---
+
+SULFA 3/6
+PES11: significado
+Subtrair cada filtro
+do total correspondente
+Depois tirar a media
+Resolver MB11
+
+---
+
+SULFA 4/6
+SUL11: sulfato
+MB11: vem de PES11, g
+MMS11: SO4, 96.06
+MMB11: BaSO4, 233.39
+Massas molares: g/mol
+
+---
+
+SULFA 5/6
+SUL11: concentracao
+VA11: amostra orig. mL
+Resolver CS11: mg/L
+1 mol BaSO4 = 1 mol SO4
+Agua extra nao muda VA11
+
+---
+
+SULFA 6/6
+POR11: porcentagem
+CS11: vem de SUL11
+PS11=CS11/10000
+Resolver PS11: % m/V
+Nao usar MB11 aqui
+
+---
+
+FIM

@@ -1,0 +1,296 @@
+% !TEX program = lualatex
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[brazilian]{babel}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\usepackage{geometry}
+\geometry{margin=2cm}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\sisetup{
+  locale = DE,
+  output-decimal-marker = {,},
+  per-mode = symbol,
+  exponent-product = \cdot
+}
+\usepackage[version=4]{mhchem}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,positioning,shapes.geometric}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+
+\definecolor{quadroazul}{RGB}{40,91,140}
+\definecolor{quadrovermelho}{RGB}{177,69,60}
+\definecolor{quadrocinza}{RGB}{245,245,245}
+
+\newcommand{\destaque}[1]{%
+  \begin{tcolorbox}[
+    colback=white,
+    colframe=quadrovermelho,
+    boxrule=0.8pt,
+    arc=1mm,
+    left=2mm,right=2mm,top=1mm,bottom=1mm
+  ]
+  \centering\bfseries #1
+  \end{tcolorbox}%
+}
+
+\newcommand{\subtitulo}[1]{%
+  \par\medskip
+  {\color{quadroazul}\bfseries\large #1}\par\smallskip
+}
+
+\begin{document}
+
+\begin{center}
+  {\color{quadrovermelho}\bfseries\LARGE
+  Preparo e padronização de solução de \ce{HCl} \qty{0.1}{\mole\per\litre}}
+\end{center}
+
+\vspace{0.3cm}
+
+\section*{1. Preparo da solução de \ce{HCl} \qty{0.1}{\mole\per\litre}}
+
+Para preparar \qty{500}{\milli\litre} de solução de \ce{HCl}
+\qty{0.1}{\mole\per\litre}:
+
+\begin{minipage}[t]{0.48\textwidth}
+\subtitulo{Número de mols}
+
+\begin{align*}
+  n &= C\,V \\
+    &= \left(\qty{0.1}{\mole\per\litre}\right)
+       \left(\qty{0.5}{\litre}\right) \\
+    &= \boxed{\qty{0.05}{\mole}}
+\end{align*}
+
+\subtitulo{Massa de \ce{HCl} puro}
+
+\begin{align*}
+  m_{\ce{HCl}} &= MM\,n \\
+    &= \left(\qty{36.5}{\gram\per\mole}\right)
+       \left(\qty{0.05}{\mole}\right) \\
+    &= \boxed{\qty{1.825}{\gram}}
+\end{align*}
+
+\begin{tcolorbox}[
+  title=Etiqueta,
+  colback=quadrocinza,
+  colframe=black!65,
+  boxrule=0.6pt,
+  arc=1mm
+]
+\begin{tabular}{@{}ll@{}}
+Data: & \rule{4.3cm}{0.4pt}\\[1.3ex]
+Nome da solução: & \rule{2.5cm}{0.4pt}\\[1.3ex]
+Nome do grupo: & \rule{2.8cm}{0.4pt}\\[1.3ex]
+Turma: & 2\\[1.3ex]
+Concentração: & \rule{3.1cm}{0.4pt}
+\end{tabular}
+\end{tcolorbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\begin{tcolorbox}[
+  title=Dados da solução concentrada de \ce{HCl},
+  colback=quadrocinza,
+  colframe=black!65,
+  boxrule=0.6pt,
+  arc=1mm
+]
+\[
+  T = \qty{37}{\percent}\;(m/m)
+  \qquad
+  d = \qty{1.19}{\gram\per\milli\litre}
+\]
+\end{tcolorbox}
+
+\subtitulo{Massa da solução concentrada}
+
+A solução comercial contém \qty{37}{\percent} de \ce{HCl} em massa:
+
+\begin{align*}
+  m_{\mathrm{sol.\,conc.}}
+    &= m_{\ce{HCl}}\frac{100}{T(\%)} \\
+    &= \qty{1.825}{\gram}\frac{100}{37} \\
+    &= \boxed{\qty{4.93}{\gram}}
+\end{align*}
+
+\subtitulo{Volume da solução concentrada}
+
+\begin{align*}
+  V_{\mathrm{sol.\,conc.}}
+    &= \frac{m_{\mathrm{sol.\,conc.}}}{d} \\
+    &= \frac{\qty{4.932}{\gram}}
+             {\qty{1.19}{\gram\per\milli\litre}} \\
+    &\approx \boxed{\qty{4.1}{\milli\litre}}
+\end{align*}
+\end{minipage}
+
+\vspace{0.5cm}
+
+\begin{tcolorbox}[
+  colback=quadrovermelho!6,
+  colframe=quadrovermelho,
+  boxrule=1pt,
+  arc=2mm
+]
+\centering
+{\color{quadrovermelho}\bfseries\Large Adicione sempre o ácido sobre a água.}
+\end{tcolorbox}
+
+\begin{center}
+\begin{tikzpicture}[>=Latex,thick,font=\small]
+  % Pipeta
+  \draw[quadrovermelho,fill=quadrovermelho!8]
+    (-3.6,3.4) -- (-3.25,3.4) -- (-3.25,1.65)
+    -- (-3.38,1.25) -- (-3.51,1.65) -- cycle;
+  \draw[quadrovermelho] (-3.62,3.55) -- (-3.23,3.55);
+  \node[quadrovermelho,above] at (-3.42,3.55) {pipeta};
+  \node[quadrovermelho,align=center,left=3mm] at (-3.65,2.35)
+    {\qty{4.1}{\milli\litre}\\de \ce{HCl} concentrado};
+
+  % Arrow from pipette to cylinder
+  \draw[->,quadrovermelho] (-3.05,1.55) .. controls (-2.4,1.1) and (-1.8,1.0) .. (-1.1,1.25);
+
+  % Graduated cylinder
+  \draw[quadrovermelho,fill=white] (-0.8,0) rectangle (0.2,3.4);
+  \draw[quadrovermelho] (-0.95,3.4) -- (0.35,3.4);
+  \draw[quadrovermelho] (-1.0,0) -- (0.4,0);
+  \fill[quadroazul!16] (-0.77,0.05) rectangle (0.17,1.75);
+  \draw[quadroazul] (-0.77,1.75) -- (0.17,1.75);
+  \foreach \y in {0.4,0.8,1.2,1.6,2.0,2.4,2.8,3.2}
+    \draw[quadrovermelho] (-0.8,\y) -- (-0.55,\y);
+  \node[quadrovermelho,below=2mm] at (-0.3,0) {cilindro de \qty{500}{\milli\litre}};
+  \draw[->,quadrovermelho] (2.8,2.05) -- (0.3,1.78);
+  \node[quadrovermelho,align=left,right] at (2.85,2.05)
+    {\qty{250}{\milli\litre} de\\água destilada};
+
+  % Final volumetric flask
+  \draw[->,black!65] (0.65,0.9) -- (2.15,0.9);
+  \draw[black!70]
+    (2.65,0.25) .. controls (2.05,0.65) and (2.15,1.45) .. (2.55,1.75)
+    -- (2.55,3.05) -- (2.95,3.05) -- (2.95,1.75)
+    .. controls (3.35,1.45) and (3.45,0.65) .. (2.85,0.25)
+    .. controls (2.78,0.20) and (2.72,0.20) .. (2.65,0.25);
+  \draw[black!70] (2.48,3.05) -- (3.02,3.05);
+  \draw[quadroazul] (2.53,1.55) -- (2.97,1.55);
+  \node[below=2mm,align=center] at (2.75,0.22)
+    {balão volumétrico\\de \qty{500}{\milli\litre}};
+  \node[align=center,right=4mm] at (3.4,1.2)
+    {transferir e completar\\até o traço de aferição};
+\end{tikzpicture}
+\end{center}
+
+\begin{tcolorbox}[
+  title=Nota técnica,
+  colback=quadrocinza,
+  colframe=black!65,
+  boxrule=0.6pt,
+  arc=1mm
+]
+Na fotografia, o recipiente intermediário está identificado como ``cilindro de
+\qty{500}{\milli\litre}''. Para preparar uma solução com volume final preciso,
+o ajuste ao volume de \qty{500}{\milli\litre} deve ser realizado em balão
+volumétrico.
+\end{tcolorbox}
+
+
+\section*{2. Preparo da solução de bórax \qty{0.025}{\mole\per\litre}}
+
+Para preparar \qty{250}{\milli\litre} de solução de bórax, considerando
+\(MM=\qty{381.37}{\gram\per\mole}\):
+
+\begin{align*}
+  M &= \frac{m}{MM\,V}
+  &\Longrightarrow\qquad
+  m &= M\,MM\,V \\
+  m &= \left(\qty{0.025}{\mole\per\litre}\right)
+       \left(\qty{381.37}{\gram\per\mole}\right)
+       \left(\qty{0.250}{\litre}\right)
+  &= \boxed{\qty{2.38}{\gram}}
+\end{align*}
+
+\begin{center}
+\begin{tikzpicture}[>=Latex,thick,font=\small,node distance=2cm]
+  % Beaker 1
+  \begin{scope}[shift={(-5,0)}]
+    \draw[quadrovermelho] (-0.75,1.8) -- (-0.55,0.15) -- (0.55,0.15) -- (0.75,1.8);
+    \draw[quadrovermelho] (-0.85,1.8) -- (0.85,1.8);
+    \fill[quadrovermelho!15] (-0.53,0.18) rectangle (0.53,0.45);
+    \node[quadrovermelho,below=2mm] at (0,0.15) {béquer};
+    \node[quadrovermelho,align=center,above=4mm] at (0,1.8)
+      {pesar \qty{2.38}{\gram}\\de bórax};
+  \end{scope}
+
+  % Arrow 1
+  \draw[->,quadrovermelho] (-3.7,1.0) -- (-1.7,1.0);
+
+  % Beaker 2 with water and rod
+  \begin{scope}[shift={(0,0)}]
+    \draw[quadrovermelho] (-0.75,1.8) -- (-0.55,0.15) -- (0.55,0.15) -- (0.75,1.8);
+    \draw[quadrovermelho] (-0.85,1.8) -- (0.85,1.8);
+    \fill[quadroazul!16] (-0.61,0.18) -- (-0.50,1.15) -- (0.50,1.15) -- (0.61,0.18) -- cycle;
+    \draw[quadroazul] (-0.50,1.15) -- (0.50,1.15);
+    \draw[black!65] (-0.15,0.4) -- (0.28,2.35);
+    \node[quadrovermelho,align=center,above right=1mm] at (0.8,1.4)
+      {\qty{150}{\milli\litre} de\\água destilada};
+    \node[below=2mm,align=center] at (0,0.15)
+      {dissolver e homogeneizar};
+  \end{scope}
+
+  % Arrow 2
+  \draw[->,quadrovermelho] (1.7,1.0) -- (3.4,1.0);
+
+  % Volumetric flask
+  \begin{scope}[shift={(5,0)}]
+    \draw[quadrovermelho]
+      (-0.22,2.55) -- (-0.22,1.65)
+      .. controls (-0.95,1.20) and (-0.90,0.35) .. (-0.30,0.08)
+      .. controls (-0.10,0.00) and (0.10,0.00) .. (0.30,0.08)
+      .. controls (0.90,0.35) and (0.95,1.20) .. (0.22,1.65)
+      -- (0.22,2.55);
+    \draw[quadrovermelho] (-0.33,2.55) -- (0.33,2.55);
+    \draw[quadroazul] (-0.22,1.55) -- (0.22,1.55);
+    \node[quadrovermelho,below=2mm,align=center] at (0,0.08)
+      {balão de \qty{250}{\milli\litre}};
+    \node[align=center,right=4mm] at (0.65,1.15)
+      {transferir quantitativamente\\e completar até o traço};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+
+\begin{tcolorbox}[
+  title=Sequência resumida,
+  colback=quadrocinza,
+  colframe=quadroazul,
+  boxrule=0.7pt,
+  arc=1mm
+]
+\begin{enumerate}[leftmargin=*,itemsep=0.3em]
+  \item pesar \qty{2.38}{\gram} de bórax em um béquer;
+  \item adicionar aproximadamente \qty{150}{\milli\litre} de água destilada e dissolver;
+  \item transferir quantitativamente para um balão volumétrico de
+        \qty{250}{\milli\litre};
+  \item completar com água destilada até o traço de aferição e homogeneizar.
+\end{enumerate}
+\end{tcolorbox}
+
+\begin{tcolorbox}[
+  colback=quadrovermelho!5,
+  colframe=quadrovermelho,
+  boxrule=0.7pt,
+  arc=1mm
+]
+\textbf{Limite da transcrição:} embora o título do quadro mencione
+``padronização'', a fotografia registra apenas os cálculos e o preparo das duas
+soluções. O procedimento de padronização do \ce{HCl} não aparece na imagem e,
+por isso, não foi acrescentado.
+\end{tcolorbox}
+
+\end{document}

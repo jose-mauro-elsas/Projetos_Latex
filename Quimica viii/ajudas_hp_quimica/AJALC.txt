@@ -1,0 +1,72 @@
+ALCAL 1/8
+ORDEM
+ALC5 > CVC5
+Comparar P com T/2
+CAR5 > BIC5
+
+---
+
+ALCAL 2/8
+ALC5: alcalinidade
+CH5: HCl, mol/L
+VH5: HCl gasto, mL
+VA5: amostra, mL
+Resolver A5: mol/L H+
+
+---
+
+ALCAL 3/8
+ALC5: fazer 2 vezes
+P: VH5 ate fenolft.
+T: VH5 ate metila
+CH5 e VA5 iguais
+Anotar P e T separados
+
+---
+
+ALCAL 4/8
+CVC5: converter A5
+AC5=50000*A5
+A5: mol/L H+ consumido
+AC5: mg/L como CaCO3
+Fazer para P e T
+
+---
+
+ALCAL 5/8
+CAR5: carbonato
+Usar se 0<P<T/2
+P5: P, mg/L CaCO3
+CO5=2*P5
+CO5: mg/L como CaCO3
+
+---
+
+ALCAL 6/8
+BIC5: bicarbonato
+Usar se 0<P<T/2
+P5 e T5: mg/L CaCO3
+BI5=T5-2*P5
+BI5: mg/L como CaCO3
+
+---
+
+ALCAL 7/8
+CONDICOES
+P=0: so bicarbonato
+P=T/2: so carbonato
+P>T/2: outras relacoes
+CAR5/BIC5 nao servem
+
+---
+
+ALCAL 8/8
+UNIDADES
+CO5/BI5: equivalentes
+expressos como CaCO3
+Nao sao mg/L reais
+dos ions CO3 e HCO3
+
+---
+
+FIM

@@ -56,3 +56,6 @@ _backup_git_*
 tempCodeRunnerFile.*
 
 *.bbl-SAVE-ERROR
+
+*.old
+*.eld

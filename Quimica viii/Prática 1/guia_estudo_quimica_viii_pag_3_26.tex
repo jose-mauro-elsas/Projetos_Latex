@@ -1,0 +1,750 @@
+%!TEX program = lualatex
+\documentclass[a4paper,12pt]{article}
+
+% =========================================================
+% Idioma e tipografia - LuaLaTeX
+% =========================================================
+\usepackage[brazilian]{babel}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+
+% =========================================================
+% Layout
+% =========================================================
+\usepackage[top=2.4cm,bottom=2.3cm,left=2.5cm,right=2.5cm]{geometry}
+\usepackage{setspace}
+\setstretch{1.15}
+\usepackage{indentfirst}
+\setlength{\parindent}{1.0cm}
+\setlength{\parskip}{0.25em}
+
+% =========================================================
+% Matemática, química e tabelas
+% =========================================================
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\sisetup{output-decimal-marker={,},per-mode=symbol}
+\usepackage[version=4]{mhchem}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
+
+% =========================================================
+% Caixas e cores
+% =========================================================
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\definecolor{azulestudo}{RGB}{37,84,132}
+\definecolor{laranjaestudo}{RGB}{202,112,27}
+\definecolor{verdeestudo}{RGB}{52,112,73}
+\definecolor{cinzaestudo}{RGB}{245,245,245}
+
+\newtcolorbox{memorize}{
+  breakable,
+  colback=azulestudo!5,
+  colframe=azulestudo,
+  title=\textbf{Ponto para memorizar},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{procedimento}{
+  breakable,
+  colback=verdeestudo!5,
+  colframe=verdeestudo,
+  title=\textbf{Procedimento},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{atencao}{
+  breakable,
+  colback=laranjaestudo!7,
+  colframe=laranjaestudo,
+  title=\textbf{Atenção},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{conta}{
+  breakable,
+  colback=cinzaestudo,
+  colframe=black!55,
+  title=\textbf{Conta essencial},
+  fonttitle=\bfseries
+}
+
+% =========================================================
+% Cabeçalho
+% =========================================================
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Química VIII -- Oceanografia}
+\rhead{Guia de estudo -- prova de laboratório}
+\cfoot{\thepage}
+\setlength{\headheight}{15pt}
+
+\usepackage[hidelinks]{hyperref}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries Guia de Estudo -- Prova de Laboratório}\\[0.4em]
+    {\large Química VIII -- Oceanografia}\\[0.4em]
+    {\normalsize Conteúdo da apostila até a página 26}
+\end{center}
+
+\vspace{0.5em}
+
+\begin{atencao}
+Este material foi organizado para revisão da prova prática, com prioridade para os pontos explicitamente indicados: \textbf{segurança}, \textbf{procedimentos de pesagem}, \textbf{uso correto de material volumétrico}, \textbf{preparo de soluções}, \textbf{titulação/padronização} e \textbf{cálculos}. O conteúdo-base é o das páginas 3 a 26 da apostila de Química VIII.
+\end{atencao}
+
+\tableofcontents
+\newpage
+
+% =========================================================
+\section{Segurança no laboratório}
+% =========================================================
+
+A segurança não deve ser estudada apenas como uma lista de proibições. Em prova prática, é comum a pergunta ser formulada como uma situação: \emph{``o que você faria antes de...?'', ``qual é a ordem correta?'', ``qual é o erro neste procedimento?''}. Portanto, é importante saber a regra e reconhecer sua aplicação.
+
+\subsection{Regras que merecem atenção especial}
+
+\begin{itemize}[leftmargin=1.6em]
+    \item Seguir as instruções do professor ou técnico e \textbf{não trabalhar sozinho}.
+    \item Comunicar imediatamente qualquer acidente.
+    \item Não comer, beber, fumar ou brincar no laboratório.
+    \item Usar guarda-pó comprido, fechado e de algodão, além de \textbf{óculos de segurança}.
+    \item Não usar roupas ou calçados que deixem as pernas e pés expostos; cabelos longos devem permanecer presos.
+    \item Não inalar nem provar reagentes.
+    \item Conferir o \textbf{rótulo} antes de usar qualquer reagente e manter os frascos fechados quando não estiverem em uso.
+    \item Manter solventes inflamáveis afastados de chama, forno, aquecimento e luz solar direta.
+    \item Não aquecer líquidos inflamáveis em chama direta.
+    \item Vidro quente tem aparência semelhante à de vidro frio.
+    \item Nunca pipetar líquidos cáusticos ou tóxicos com a boca: usar pipetador ou pera de borracha.
+    \item Não descartar sólidos na pia. O descarte de reagentes e materiais deve seguir a orientação do técnico.
+    \item Ao terminar, lavar e guardar a vidraria, limpar a bancada e verificar torneiras e gás.
+\end{itemize}
+
+\begin{memorize}
+\textbf{ÁCIDO NA ÁGUA, NUNCA ÁGUA NO ÁCIDO.}\\
+Ao preparar uma solução aquosa de ácido, primeiro deve existir água no recipiente; o ácido concentrado é então adicionado \textbf{lentamente} à água.
+\end{memorize}
+
+\begin{procedimento}
+\textbf{Exemplo da própria prática de HCl:}
+\begin{enumerate}[leftmargin=1.7em]
+    \item colocar cerca de \SI{250}{\milli\liter} de água destilada no recipiente;
+    \item adicionar lentamente o HCl concentrado;
+    \item esperar o sistema resfriar;
+    \item somente depois completar o volume com água destilada e homogeneizar.
+\end{enumerate}
+\end{procedimento}
+
+\paragraph{Explicação complementar útil para a prova.}
+A diluição de um ácido concentrado libera calor. Colocar o ácido lentamente em uma quantidade maior de água favorece a dissipação desse calor e reduz o risco de aquecimento localizado e respingos. Esta explicação é complementar; a regra operacional da apostila é: \textbf{ácido concentrado na água, nunca o contrário}.
+
+% =========================================================
+\section{Técnicas básicas de laboratório}
+% =========================================================
+
+\subsection{Seleção de reagentes}
+
+A pureza do reagente deve ser compatível com o uso analítico. A apostila destaca:
+
+\begin{itemize}[leftmargin=1.6em]
+    \item \textbf{P.A. (pró-análise):} reagentes que atendem requisitos mínimos de pureza e são usados, sempre que possível, em trabalhos analíticos;
+    \item \textbf{reagentes de uso específico:} preparados para técnicas determinadas, como grau HPLC ou padrões para espectrometria atômica.
+\end{itemize}
+
+\subsection{Limpeza e identificação}
+
+Como as análises são frequentemente realizadas em duplicata ou triplicata, os frascos precisam ser identificados. A sequência de limpeza apresentada é:
+
+\begin{procedimento}
+\begin{enumerate}[leftmargin=1.7em]
+    \item lavar com detergente;
+    \item enxaguar exaustivamente com água corrente;
+    \item fazer a \textbf{rinsagem final} com água destilada e/ou deionizada.
+\end{enumerate}
+Em uma vidraria perfeitamente limpa, gotas de água não devem permanecer aderidas às paredes.
+\end{procedimento}
+
+\subsection{Evaporação}
+
+A evaporação pode ser usada para reduzir o volume de uma solução contendo soluto não volátil. O arranjo mostrado na apostila usa um \textbf{vidro de relógio apoiado em bastão de vidro}: o vapor consegue sair, enquanto o sistema fica parcialmente protegido contra contaminação e respingos.
+
+\subsection{Dessecador e dessecantes}
+
+Materiais secos em estufa podem reabsorver umidade do ar. Por isso, são mantidos em dessecador. A apostila cita como dessecantes \ce{CaCl2} anidro, \ce{CaSO4}, \ce{Mg(ClO4)2} e sílica-gel.
+
+\subsection{Filtração e lavagem}
+
+A filtração é uma separação sólido--líquido, importante quando se forma um precipitado.
+
+\begin{memorize}
+A sequência destacada é: \textbf{decantação $\rightarrow$ lavagem $\rightarrow$ transferência do precipitado}.
+\end{memorize}
+
+Cuidados relevantes:
+
+\begin{itemize}[leftmargin=1.6em]
+    \item usar bastão de vidro para dirigir o fluxo;
+    \item encostar a extremidade da haste do funil na parede interna do béquer que recebe o filtrado;
+    \item não deixar o precipitado secar no filtro durante a filtração;
+    \item manter o nível da solução em aproximadamente $3/4$ da altura do papel de filtro;
+    \item umedecer o papel de filtro para que ele fique bem aderido ao funil;
+    \item escolher papel de filtro cujo topo fique cerca de \SIrange{1}{2}{\centi\meter} abaixo da borda do funil.
+\end{itemize}
+
+\subsection{Secagem e calcinação}
+
+\begin{center}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{3.2cm} X X}
+\toprule
+ & Secagem & Calcinação \\
+\midrule
+Temperatura & inferior a \SI{250}{\degreeCelsius} & superior a \SI{250}{\degreeCelsius} \\
+Objetivo típico & remover água residual de lavagem & promover transformação/decomposição térmica até a forma final a ser pesada \\
+Equipamento & estufa & mufla ou aquecimento direto, conforme o procedimento \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+% =========================================================
+\section{Medidas de massa e balança analítica}
+% =========================================================
+
+A balança analítica é empregada quando se necessita de medida precisa de massa. A apostila chama atenção para \textbf{sensibilidade} e \textbf{exatidão}, além do controle de tara nas balanças eletrônicas.
+
+\subsection{Principais fontes de erro}
+
+\begin{center}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{3.5cm} X}
+\toprule
+Fonte de erro & Consequência / prevenção \\
+\midrule
+Carga estática & Vidro ou porcelana atritados com papel/tecido podem eletrizar-se. Deve-se aguardar dissipação da carga antes da pesagem. \\
+Atmosfera & Alguns materiais ganham ou perdem massa por absorção/perda de água, \ce{CO2}, etc. \\
+Objeto quente & Pode produzir correntes de convecção e alterar a leitura. Deve estar na mesma temperatura da balança. \\
+Reabsorção de umidade & Objetos aquecidos devem resfriar em dessecador antes da medida. \\
+Empuxo do ar & Produz massa aparente; em sólidos, a correção é geralmente pequena, mas pode ser importante para materiais de baixa densidade. \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\subsection{Cuidados com a balança}
+
+\begin{itemize}[leftmargin=1.6em]
+    \item Colocar o objeto próximo ao \textbf{centro do prato}.
+    \item Não tocar com as mãos o objeto a ser pesado; usar pinça ou papel limpo.
+    \item O objeto deve estar à temperatura da balança.
+    \item Nunca colocar reagente diretamente sobre o prato; usar vidro de relógio, pesa-filtro, béquer pequeno etc.
+    \item Se houver derramamento, limpar imediatamente com pincel macio.
+    \item Manter as portas da balança fechadas durante a leitura.
+    \item Ao terminar, retirar o material e deixar a balança limpa e na condição indicada pelo equipamento.
+\end{itemize}
+
+\subsection{Métodos de pesagem}
+
+\begin{center}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{3.7cm} X}
+\toprule
+Método & Uso indicado na apostila \\
+\midrule
+Pesagem direta & Determinar a massa de objetos ou materiais delimitados, como cadinho, vidro de relógio e pesa-filtro. \\
+Pesagem por adição & Obter uma massa previamente estabelecida de sólido a granel ou líquido. \\
+Pesagem por diferença & Usada para substâncias higroscópicas ou que se alterem em contato com o ar. \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\subsection{Prática 1: pesagem por adição de NaCl}
+
+\begin{procedimento}
+Para obter aproximadamente \SI{0.5000}{\gram} de \ce{NaCl}:
+\begin{enumerate}[leftmargin=1.7em]
+    \item verificar se a balança está nivelada;
+    \item ligar e verificar o zero;
+    \item pesar diretamente um vidro de relógio limpo, seco e à temperatura ambiente: $m_1$;
+    \item adicionar cuidadosamente o NaCl com espátula;
+    \item fechar a porta da balança e registrar a massa do conjunto: $m_2$;
+    \item retirar o conjunto e verificar se a balança ficou limpa.
+\end{enumerate}
+\end{procedimento}
+
+\begin{conta}
+A massa de NaCl é obtida por diferença:
+\[
+\boxed{m_{\ce{NaCl}} = m_2 - m_1}
+\]
+Embora o procedimento seja chamado de \textbf{pesagem por adição}, a massa efetivamente adicionada é determinada pela diferença entre a massa final do conjunto e a massa inicial do recipiente.
+\end{conta}
+
+% =========================================================
+\section{Medidas de volume}
+% =========================================================
+
+A precisão das medidas volumétricas é tão importante quanto a precisão da massa. Os materiais volumétricos são calibrados a uma temperatura de referência, geralmente \SI{20}{\degreeCelsius}.
+
+\subsection{Pipeta volumétrica}
+
+\begin{procedimento}
+Sequência de uso:
+\begin{enumerate}[leftmargin=1.7em]
+    \item limpar: detergente $\rightarrow$ água corrente $\rightarrow$ água destilada/deionizada;
+    \item rinsar internamente com pequena quantidade da solução que será transferida;
+    \item aspirar com pera de borracha até um pouco acima do traço;
+    \item verificar se existem bolhas;
+    \item ajustar lentamente o menisco ao traço de referência;
+    \item transferir mantendo a pipeta na vertical;
+    \item deixar a ponta encostada na parede do recipiente por cerca de \SI{15}{\second} após o escoamento.
+\end{enumerate}
+\end{procedimento}
+
+\begin{memorize}
+Na pipeta volumétrica comum, \textbf{não se sopra automaticamente a gota residual da ponta}. A apostila ressalta que somente alguns tipos especiais exigem a eliminação desse líquido residual.
+\end{memorize}
+
+\subsection{Bureta}
+
+A bureta transfere volumes variáveis e é o equipamento fundamental para titulações.
+
+\begin{procedimento}
+Antes da titulação:
+\begin{enumerate}[leftmargin=1.7em]
+    \item garantir que a bureta esteja perfeitamente limpa;
+    \item conferir se a torneira está fechada;
+    \item colocar \SIrange{5}{10}{\milli\liter} do titulante, girar a bureta para molhar o interior e deixar essa porção escoar;
+    \item preencher acima da marca de \SI{0.00}{\milli\liter};
+    \item escoar até ajustar o nível inicial.
+\end{enumerate}
+Durante a titulação: manter o erlenmeyer em agitação; próximo ao ponto final, rinsar suas paredes com água destilada e adicionar o titulante \textbf{gota a gota}.
+\end{procedimento}
+
+\begin{memorize}
+A leitura do nível da bureta deve ser feita com os \textbf{olhos no nível do menisco}, evitando erro de paralaxe. A apostila pede leitura do volume gasto com precisão de \SI{0.05}{\milli\liter} nos procedimentos de titulação descritos.
+\end{memorize}
+
+\subsection{Balão volumétrico}
+
+O balão volumétrico é calibrado para \textbf{conter} um volume fixo quando o menisco está no traço.
+
+\begin{procedimento}
+Preparo de solução a partir de um soluto sólido:
+\begin{enumerate}[leftmargin=1.7em]
+    \item pesar o soluto em pequeno béquer ou pesa-filtro;
+    \item dissolver usando o menor volume possível de solvente;
+    \item transferir quantitativamente para o balão com funil/bastão;
+    \item rinsar béquer, bastão e funil e transferir também as águas de lavagem;
+    \item completar até o traço com água destilada;
+    \item tampar e homogeneizar.
+\end{enumerate}
+\end{procedimento}
+
+% =========================================================
+\section{Prática 2: calibração de uma pipeta volumétrica}
+% =========================================================
+
+A calibração é feita medindo a massa de água entregue pela pipeta e convertendo essa massa em volume usando a densidade da água na temperatura medida.
+
+Para a pipeta de \SI{25.00}{\milli\liter}, a apostila informa desvio máximo de
+$\pm\SI{0.02}{\milli\liter}$. O tempo de escoamento indicado é de aproximadamente \SI{25}{\second}.
+
+\begin{procedimento}
+\begin{enumerate}[leftmargin=1.7em]
+    \item medir a massa do erlenmeyer vazio: $m_1$;
+    \item transferir a água da pipeta para o erlenmeyer;
+    \item medir a massa do conjunto: $m_2$;
+    \item calcular a massa de água;
+    \item medir a temperatura da água e obter $\rho$ na tabela;
+    \item calcular o volume da pipeta;
+    \item repetir a determinação e usar a média.
+\end{enumerate}
+\end{procedimento}
+
+\begin{conta}
+\[
+\boxed{m_{\ce{H2O}} = m_2-m_1}
+\]
+\[
+\boxed{V = \frac{m_{\ce{H2O}}}{\rho_{\ce{H2O}}}}
+\]
+Se forem feitas duas determinações:
+\[
+\boxed{\overline{V}=\frac{V_1+V_2}{2}}
+\]
+Unidades: se $m$ estiver em g e $\rho$ em g/mL, $V$ sai em mL.
+\end{conta}
+
+% =========================================================
+\section{Análise volumétrica e titulação}
+% =========================================================
+
+Na análise volumétrica, mede-se com exatidão o volume de uma solução de concentração conhecida necessário para reagir completamente com o analito.
+
+\subsection{Classificação}
+
+\begin{itemize}[leftmargin=1.6em]
+    \item volumetria de neutralização;
+    \item volumetria de precipitação;
+    \item volumetria de complexação;
+    \item volumetria de oxirredução.
+\end{itemize}
+
+\subsection{Requisitos da reação}
+
+A reação usada deve ser rápida, completa, descrita por uma única equação ajustada, possuir estequiometria conhecida e permitir a determinação satisfatória do ponto final.
+
+\begin{memorize}
+Em uma titulação, não basta ``mudar de cor''. A mudança observada com o indicador é o sinal experimental usado para reconhecer o ponto final; o cálculo depende da \textbf{estequiometria da reação} e do \textbf{volume efetivamente gasto} do titulante.
+\end{memorize}
+
+% =========================================================
+\section{Prática 3: preparo e padronização de HCl}
+% =========================================================
+
+A solução concentrada de HCl indicada na apostila tem aproximadamente \SI{37}{\percent} (m/m) e densidade aproximada de \SI{1.19}{\gram\per\milli\liter}. Ela \textbf{não é padrão primário}; por isso, prepara-se uma concentração aproximada por diluição e depois se faz a padronização.
+
+\subsection{Cálculo geral do volume de HCl concentrado}
+
+Para preparar uma solução de concentração $C_f$ e volume final $V_f$:
+
+\begin{conta}
+\textbf{1. Mols necessários:}
+\[
+\boxed{n=C_fV_f}
+\]
+
+\textbf{2. Massa de HCl puro:}
+\[
+\boxed{m_{\ce{HCl}}=n\,M_{\ce{HCl}}}
+\]
+
+\textbf{3. Massa de solução concentrada}, usando a fração mássica $w=T/100$:
+\[
+\boxed{m_{\mathrm{sol.conc.}}=\frac{m_{\ce{HCl}}}{w}}
+\]
+
+\textbf{4. Volume da solução concentrada:}
+\[
+\boxed{V_{\mathrm{sol.conc.}}=\frac{m_{\mathrm{sol.conc.}}}{\rho}}
+\]
+\end{conta}
+
+\subsection{Exemplo: \SI{500}{\milli\liter} de HCl \SI{0.1}{\mole\per\liter}}
+
+Usando $M_{\ce{HCl}}=\SI{36.5}{\gram\per\mole}$, $w=0{,}37$ e $\rho=\SI{1.19}{\gram\per\milli\liter}$:
+
+\[
+n=(0{,}1)(0{,}500)=0{,}050\ \mathrm{mol}
+\]
+\[
+m_{\ce{HCl}}=(0{,}050)(36{,}5)=1{,}825\ \mathrm{g}
+\]
+\[
+m_{\mathrm{sol.conc.}}=\frac{1{,}825}{0{,}37}\approx4{,}93\ \mathrm{g}
+\]
+\[
+V_{\mathrm{sol.conc.}}=\frac{4{,}93}{1{,}19}\approx\boxed{4{,}14\ \mathrm{mL}}
+\]
+
+\begin{atencao}
+\textbf{Inconsistência numérica da apostila:} o texto da Prática 3 declara o preparo de \SI{500}{\milli\liter} de HCl \SI{0.1}{\mole\per\liter}, mas o cálculo intermediário impresso usa \SI{1000}{\milli\liter} e chega a \SI{3.65}{\gram} de HCl puro. Para \SI{500}{\milli\liter}, o cálculo estequiométrico direto fornece \SI{1.825}{\gram} de HCl puro e, com os valores aproximados de 37\% e \SI{1.19}{\gram\per\milli\liter}, cerca de \SI{4.14}{\milli\liter} do ácido concentrado. Em prova, confira se o enunciado pede \SI{500}{\milli\liter} ou \SI{1}{\liter} antes de substituir os números.
+\end{atencao}
+
+\subsection{Procedimento de preparo do HCl}
+
+\begin{procedimento}
+\begin{enumerate}[leftmargin=1.7em]
+    \item verificar no rótulo a densidade e a percentagem mássica do HCl concentrado;
+    \item calcular o volume necessário;
+    \item medir o ácido usando o material indicado e fazer a transferência \textbf{na capela}, com exaustão ligada e pipetador/bulbo;
+    \item colocar cerca de \SI{250}{\milli\liter} de água destilada no recipiente de \SI{500}{\milli\liter};
+    \item adicionar o ácido concentrado \textbf{lentamente à água};
+    \item esperar resfriar;
+    \item completar o volume com água destilada e homogeneizar;
+    \item transferir para frasco limpo e previamente rinsado;
+    \item identificar com nome da solução, concentração, fator, data e analista.
+\end{enumerate}
+\end{procedimento}
+
+\subsection{Padronização do HCl com bórax}
+
+O bórax, \ce{Na2B4O7.10H2O}, é usado como padrão primário alcalino. A apostila fornece massa molar \SI{381.37}{\gram\per\mole}.
+
+A reação global apresentada é:
+\[
+\ce{Na2B4O7 + 2HCl + 5H2O -> 2NaCl + 4H3BO3}
+\]
+Portanto, \textbf{1 mol de bórax corresponde a 2 mol de HCl}.
+
+\begin{conta}
+Concentração do bórax preparado a partir de massa $m$ e volume $V$ em litros:
+\[
+\boxed{C_{\mathrm{borax}}=\frac{m}{381{,}37\,V}}
+\]
+
+Correção pelo ensaio em branco:
+\[
+\boxed{V_{\ce{HCl}}=V_t-V_B}
+\]
+
+Concentração do HCl:
+\[
+\boxed{C_{\ce{HCl}}=\frac{2\,C_{\mathrm{borax}}\,V_{\mathrm{borax}}}{V_{\ce{HCl}}}}
+\]
+Os volumes do numerador e denominador podem estar ambos em mL, pois a razão cancela a unidade de volume.
+
+Resultado final de duas determinações:
+\[
+\boxed{\overline{C}_{\ce{HCl}}=\frac{C_{\ce{HCl},1}+C_{\ce{HCl},2}}{2}}
+\]
+\end{conta}
+
+\begin{procedimento}
+Titulação pelo bórax:
+\begin{enumerate}[leftmargin=1.7em]
+    \item transferir \SI{50.00}{\milli\liter} da solução de bórax para o erlenmeyer;
+    \item adicionar 2--3 gotas de alaranjado de metila;
+    \item rinsar a bureta com o HCl preparado;
+    \item preencher a bureta com HCl;
+    \item colocar o erlenmeyer sobre fundo branco;
+    \item adicionar ácido lentamente, agitando;
+    \item perto da virada, lavar as paredes do erlenmeyer com água destilada e prosseguir gota a gota;
+    \item registrar $V_t$;
+    \item corrigir pelo branco: $V_{\ce{HCl}}=V_t-V_B$;
+    \item repetir com outra alíquota.
+\end{enumerate}
+\end{procedimento}
+
+% =========================================================
+\section{Prática 4: preparo e padronização de NaOH}
+% =========================================================
+
+O NaOH não é padrão primário. A apostila destaca dois problemas: \textbf{pureza do reagente} e \textbf{reação com o \ce{CO2} do ar}.
+
+\subsection{Efeito do \texorpdfstring{\ce{CO2}}{CO2}}
+
+\[
+\ce{CO2(g) + 2OH^- -> CO3^{2-} + H2O}
+\]
+
+A presença de carbonato altera o comportamento da titulação dependendo do indicador. A apostila explica que, com indicador na faixa alcalina, como fenolftaleína, o carbonato reage com apenas um \ce{H3O+} até o ponto observado, podendo diminuir a concentração efetiva da base e produzir erro sistemático.
+
+\begin{memorize}
+Para reduzir a interferência de \ce{CO2}:
+\begin{itemize}[leftmargin=1.6em]
+    \item a água usada no preparo deve ser pobre em \ce{CO2};
+    \item se for usada água destilada, a apostila recomenda fervê-la para remover o gás e depois deixá-la \textbf{resfriar antes de adicionar a base};
+    \item a água deionizada é preferida no procedimento descrito;
+    \item a solução padronizada não deve permanecer longos períodos em frasco de vidro; a apostila recomenda frasco de polietileno para armazenamento da solução preparada.
+\end{itemize}
+\end{memorize}
+
+\subsection{Preparo da solução de NaOH}
+
+\begin{procedimento}
+\begin{enumerate}[leftmargin=1.7em]
+    \item pesar \SI{50}{\gram} de NaOH em béquer de \SI{250}{\milli\liter};
+    \item dissolver em \SI{50}{\milli\liter} de água destilada isenta de \ce{CO2};
+    \item transferir para proveta de \SI{100}{\milli\liter} e deixar o precipitado sedimentar por \SI{24}{\hour};
+    \item retirar cuidadosamente \SI{3.20}{\milli\liter} da solução concentrada e límpida;
+    \item transferir para recipiente de \SI{500}{\milli\liter} que já contenha cerca de \SI{250}{\milli\liter} de água destilada;
+    \item aguardar resfriamento e completar o volume com água isenta de \ce{CO2};
+    \item homogeneizar;
+    \item transferir para frasco de polietileno previamente lavado e rinsado com a própria solução;
+    \item identificar com nome, concentração molar, fator, data e analista.
+\end{enumerate}
+\end{procedimento}
+
+\subsection{Padronização do NaOH com HCl}
+
+A reação é 1:1:
+\[
+\ce{HCl + NaOH -> NaCl + H2O}
+\]
+
+\begin{conta}
+Após corrigir o volume de HCl pelo ensaio em branco:
+\[
+V_{\ce{HCl}}=V_t-V_B
+\]
+
+A concentração do NaOH é:
+\[
+\boxed{C_{\ce{NaOH}}=\frac{C_{\ce{HCl}}\,V_{\ce{HCl}}}{V_{\ce{NaOH}}}}
+\]
+
+Para duas determinações:
+\[
+\boxed{\overline{C}_{\ce{NaOH}}=\frac{C_{\ce{NaOH},1}+C_{\ce{NaOH},2}}{2}}
+\]
+\end{conta}
+
+\begin{procedimento}
+\begin{enumerate}[leftmargin=1.7em]
+    \item transferir \SI{25}{\milli\liter} de NaOH para erlenmeyer;
+    \item adicionar \SI{25}{\milli\liter} de água destilada e 3--4 gotas de alaranjado de metila;
+    \item rinsar a bureta com HCl padrão e preenchê-la;
+    \item colocar o erlenmeyer sobre fundo branco;
+    \item titular lentamente, agitando;
+    \item próximo à virada, lavar as paredes do erlenmeyer e adicionar HCl gota a gota;
+    \item registrar o volume gasto, corrigir pelo branco e repetir com nova alíquota.
+\end{enumerate}
+\end{procedimento}
+
+\begin{atencao}
+Na página 26, o item 5.2 contém a frase ``anotar o volume de base consumido'', mas o próprio procedimento estabelece que a \textbf{bureta contém HCl} e, no item 5.8, manda registrar o \textbf{volume de ácido consumido}. Para estudar o procedimento, considere o HCl como titulante e o NaOH como solução no erlenmeyer.
+\end{atencao}
+
+% =========================================================
+\section{Roteiros de cálculo para a prova}
+% =========================================================
+
+\subsection{Tipo A: ``prepare uma solução a partir de reagente sólido''}
+
+Se o soluto sólido tiver pureza tratada como adequada para o cálculo:
+\[
+n=CV
+\]
+\[
+m=nM
+\]
+Logo:
+\[
+\boxed{m=CVM}
+\]
+Depois: pesar $\rightarrow$ dissolver $\rightarrow$ transferir quantitativamente $\rightarrow$ completar até o traço $\rightarrow$ homogeneizar.
+
+\subsection{Tipo B: ``prepare uma solução por diluição de reagente concentrado''}
+
+Se forem dados densidade e teor em massa:
+\[
+\boxed{n=C_fV_f}
+\]
+\[
+\boxed{m_{\mathrm{soluto}}=nM}
+\]
+\[
+\boxed{m_{\mathrm{solucao}}=\frac{m_{\mathrm{soluto}}}{T/100}}
+\]
+\[
+\boxed{V_{\mathrm{concentrado}}=\frac{m_{\mathrm{solucao}}}{\rho}}
+\]
+
+\subsection{Tipo C: ``calibre a pipeta''}
+
+\[
+\boxed{m_{\ce{H2O}}=m_2-m_1}
+\qquad
+\boxed{V=\frac{m}{\rho}}
+\]
+
+\subsection{Tipo D: ``padronize o HCl com bórax''}
+
+\[
+\boxed{C_{\mathrm{borax}}=\frac{m}{381{,}37V}}
+\]
+\[
+\boxed{V_{\ce{HCl}}=V_t-V_B}
+\]
+\[
+\boxed{C_{\ce{HCl}}=\frac{2C_{\mathrm{borax}}V_{\mathrm{borax}}}{V_{\ce{HCl}}}}
+\]
+
+\subsection{Tipo E: ``padronize o NaOH com HCl''}
+
+\[
+\boxed{V_{\ce{HCl}}=V_t-V_B}
+\]
+\[
+\boxed{C_{\ce{NaOH}}=\frac{C_{\ce{HCl}}V_{\ce{HCl}}}{V_{\ce{NaOH}}}}
+\]
+
+% =========================================================
+\section{Perguntas de revisão rápida}
+% =========================================================
+
+\begin{enumerate}[leftmargin=1.8em]
+    \item \textbf{Ao preparar ácido diluído, o que entra primeiro no recipiente?}\\
+    Água. O ácido concentrado é adicionado lentamente à água.
+
+    \item \textbf{Por que se espera o HCl diluído resfriar antes de completar o volume?}\\
+    O procedimento da apostila exige o resfriamento antes da aferição final; como explicação complementar, a diluição libera calor e a temperatura afeta o volume.
+
+    \item \textbf{Pode pipetar HCl com a boca?}\\
+    Não. Deve-se usar pipetador ou pera de borracha, e o procedimento com HCl concentrado é realizado em capela.
+
+    \item \textbf{Qual é a sequência de limpeza da vidraria?}\\
+    Detergente $\rightarrow$ água corrente $\rightarrow$ água destilada/deionizada.
+
+    \item \textbf{O que indica uma vidraria perfeitamente limpa?}\\
+    Gotas de água não ficam retidas nas paredes.
+
+    \item \textbf{Qual a diferença entre pesagem direta, por adição e por diferença?}\\
+    Direta: massa do objeto/material delimitado. Adição: obtenção de massa previamente estabelecida. Diferença: indicada para substâncias higroscópicas ou alteráveis pelo ar.
+
+    \item \textbf{Por que não se pesa um objeto quente?}\\
+    Porque a diferença de temperatura pode gerar correntes de convecção e erro de leitura.
+
+    \item \textbf{Por que não se toca com a mão no recipiente que será pesado?}\\
+    Para evitar contaminação/engorduramento e alteração da massa medida.
+
+    \item \textbf{Como se lê corretamente uma bureta?}\\
+    Com os olhos no nível do menisco.
+
+    \item \textbf{O que se faz perto do ponto final de uma titulação?}\\
+    Rinsa-se a parede do erlenmeyer com água destilada, mantém-se a agitação e adiciona-se o titulante gota a gota.
+
+    \item \textbf{Por que a bureta é rinsada com o titulante antes do enchimento?}\\
+    O procedimento da apostila exige a rinsagem com a própria solução que será usada na titulação, evitando que água residual permaneça como meio de diluição do titulante.
+
+    \item \textbf{Para que serve o ensaio em branco?}\\
+    Para corrigir o volume medido: $V_{\mathrm{real}}=V_t-V_B$.
+
+    \item \textbf{Por que o HCl preparado precisa ser padronizado?}\\
+    Porque o HCl concentrado usado na diluição não é padrão primário; a solução preparada é inicialmente apenas aproximada.
+
+    \item \textbf{Por que o NaOH precisa ser padronizado?}\\
+    Porque não possui pureza de padrão primário e pode reagir com \ce{CO2} atmosférico.
+
+    \item \textbf{Qual é a estequiometria entre bórax e HCl na reação global?}\\
+    1 mol de bórax para 2 mol de HCl.
+
+    \item \textbf{Qual é a estequiometria entre HCl e NaOH?}\\
+    1:1.
+\end{enumerate}
+
+% =========================================================
+\section{Checklist final para a véspera}
+% =========================================================
+
+\begin{memorize}
+Antes da prova, verifique se você consegue explicar sem consultar:
+\begin{itemize}[leftmargin=1.6em]
+    \item ácido na água, nunca o contrário;
+    \item sequência de limpeza e rinsagem;
+    \item pesagem direta, por adição e por diferença;
+    \item cuidados com a balança e principais erros de massa;
+    \item uso correto de pipeta, bureta e balão volumétrico;
+    \item leitura do menisco sem paralaxe;
+    \item calibração da pipeta por $V=m/\rho$;
+    \item cálculo de solução a partir de $n=CV$;
+    \item cálculo de HCl concentrado usando teor mássico e densidade;
+    \item preparo seguro do HCl;
+    \item por que HCl e NaOH são padronizados;
+    \item correção por ensaio em branco;
+    \item fator estequiométrico 2 entre bórax e HCl;
+    \item relação 1:1 entre HCl e NaOH;
+    \item efeito de \ce{CO2} sobre soluções de NaOH;
+    \item armazenamento do NaOH em frasco de polietileno no procedimento da apostila.
+\end{itemize}
+\end{memorize}
+
+\vfill
+\begin{center}
+\small\textit{Material de estudo elaborado a partir da apostila de aulas práticas de Química VIII -- Oceanografia, conteúdo até a página 26.}
+\end{center}
+
+\end{document}

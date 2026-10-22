@@ -1,0 +1,54 @@
+OXIG 1/6
+ORDEM
+PAD10 > OX10
+Pratica 10 apostila
+Relatorio 8
+
+---
+
+OXIG 2/6
+PAD10: tiossulfato
+MK10: massa KIO3, g
+MMK10: KIO3, g/mol
+VP10: padroniz., mL
+CT10: resolver, mol/L
+
+---
+
+OXIG 3/6
+PAD10: significado
+1 mol KIO3 equivale a
+6 mol de tiossulfato
+6000 = 6 x 1000
+VP10 em mL
+
+---
+
+OXIG 4/6
+OX10: oxigenio
+CT10: vem de PAD10
+VO10: titulacao, mL
+MO10: O2, 32 g/mol
+VA10: amostra, mL
+
+---
+
+OXIG 5/6
+OX10: resultado
+Resolver O10: mg/L O2
+4 mol tiossulfato
+para 1 mol de O2
+Ja inclui conversao
+
+---
+
+OXIG 6/6
+VOLUMES DIFERENTES
+VP10: padronizacao
+VO10: amostra de agua
+VA10: agua analisada
+Todos em mL
+
+---
+
+FIM

@@ -1,0 +1,533 @@
+%!TEX program = lualatex
+% Arquivo: relatorio_pratica_8_oxigenio_dissolvido_winkler.tex
+
+\documentclass[a4paper,12pt]{article}
+
+% =========================================================
+% Idioma e tipografia
+% =========================================================
+\usepackage[brazilian]{babel}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\usepackage{microtype}
+
+% =========================================================
+% Layout
+% =========================================================
+\usepackage[top=3cm,bottom=2.5cm,left=3cm,right=2.5cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25cm}
+
+% =========================================================
+% Matemática, química e unidades
+% =========================================================
+\usepackage{amsmath,amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{siunitx}
+\sisetup{
+  locale = DE,
+  output-decimal-marker = {,},
+  per-mode = symbol,
+  exponent-product = \cdot
+}
+
+% =========================================================
+% Tabelas, figuras e listas
+% =========================================================
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+
+\setlist[itemize]{noitemsep,topsep=3pt}
+\setlist[enumerate]{noitemsep,topsep=3pt}
+
+% =========================================================
+% Links
+% =========================================================
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=blue,
+  citecolor=black,
+  pdfauthor={Israel Carneiro; José Mauro Xavier Elsas; Miguel Gayani},
+  pdftitle={Prática 8 -- Determinação de oxigênio dissolvido em águas pelo método de Winkler}
+}
+
+% =========================================================
+% Dados experimentais
+% =========================================================
+\newcommand{\MassaMediaIodato}{0.0151}
+\newcommand{\VolMedioPadronizacao}{15.7}
+\newcommand{\ConcTiossulfato}{0.02697}
+\newcommand{\VolAmostra}{50.0}
+\newcommand{\VolMedioAmostra}{1.57}
+\newcommand{\OxigenioDissolvido}{6.76}
+
+\begin{document}
+
+% =========================================================
+% Capa
+% =========================================================
+\begin{titlepage}
+\centering
+
+{\large Universidade do Estado do Rio de Janeiro -- UERJ\par}
+\vspace{0.3cm}
+{\large Química VIII / Oceanografia\par}
+
+\vspace{1.2cm}
+
+{\LARGE\bfseries Prática 8\par}
+\vspace{0.4cm}
+{\Large\bfseries DETERMINAÇÃO DE OXIGÊNIO DISSOLVIDO\\
+EM ÁGUAS PELO MÉTODO DE WINKLER\par}
+
+\vspace{0.8cm}
+
+\IfFileExists{uerj.jpg}{
+  \includegraphics[width=0.28\linewidth]{uerj.jpg}
+}{
+  \begin{tcolorbox}[
+    width=0.30\textwidth,
+    colback=white,
+    colframe=black!35,
+    boxrule=0.5pt,
+    arc=0mm
+  ]
+  \centering
+  \vspace{1.0cm}
+  \textit{Logotipo da UERJ}
+  \vspace{1.0cm}
+  \end{tcolorbox}
+}
+
+\vfill
+
+\begin{flushright}
+\textbf{Alunos:}\\
+Israel Carneiro\\
+José Mauro Xavier Elsas\\
+Miguel Gayani\\[0.5cm]
+\textbf{Professor:} Ítalo Vieira
+\end{flushright}
+
+\vspace{1cm}
+Rio de Janeiro -- 2026
+
+\end{titlepage}
+
+% =========================================================
+\section{Introdução}
+
+O oxigênio dissolvido (OD) é um dos parâmetros mais importantes para a
+avaliação da qualidade de ambientes aquáticos. Sua presença está associada
+principalmente à transferência de oxigênio da atmosfera para a água e à
+produção fotossintética. Por outro lado, a respiração dos organismos, a
+oxidação de espécies químicas reduzidas e a decomposição da matéria orgânica
+consomem oxigênio. Dessa forma, a concentração de OD resulta do balanço entre
+processos de produção, transferência e consumo.
+
+A solubilidade do oxigênio depende de fatores como temperatura, pressão,
+salinidade e circulação da água. Em sistemas naturais, valores muito baixos
+podem indicar consumo elevado de matéria orgânica e condições desfavoráveis
+aos organismos aeróbios. Em águas que circulam por estruturas metálicas,
+entretanto, o poder oxidante do oxigênio também pode favorecer processos de
+corrosão.
+
+Neste experimento, o oxigênio dissolvido foi determinado pelo método de
+Winkler, uma análise volumétrica de oxidação-redução baseada em iodometria.
+Inicialmente, adiciona-se sulfato manganoso à amostra em meio alcalino,
+formando-se hidróxido de manganês(II):
+
+\begin{equation}
+\ce{MnSO4 + 2NaOH -> Mn(OH)2 + Na2SO4}.
+\end{equation}
+
+Na presença de oxigênio, o manganês é oxidado e forma um precipitado marrom.
+A apostila representa essa etapa por:
+
+\begin{equation}
+\ce{2Mn(OH)2 + O2 -> 2MnO(OH)2}.
+\end{equation}
+
+Essa etapa é denominada \textit{fixação} do oxigênio, pois converte o
+\ce{O2} dissolvido em uma espécie química que pode ser determinada
+posteriormente. Após a acidificação e a adição de iodeto de potássio, ocorre
+a liberação de iodo, cuja quantidade é estequiometricamente relacionada ao
+oxigênio originalmente presente na amostra. As etapas podem ser representadas
+por:
+
+\begin{align}
+\ce{MnO(OH)2 + 2H2SO4 &-> Mn(SO4)2 + 3H2O},\\
+\ce{Mn(SO4)2 + 2KI &-> MnSO4 + K2SO4 + I2}.
+\end{align}
+
+O iodo produzido é titulado com tiossulfato de sódio:
+
+\begin{equation}
+\ce{I2 + 2S2O3^2- -> 2I- + S4O6^2-}.
+\end{equation}
+
+O amido é adicionado próximo ao ponto final e forma um complexo intensamente
+azul com as espécies de iodo presentes. O desaparecimento dessa coloração
+indica o término da titulação. Pela estequiometria global do método, um mol de
+\ce{O2} corresponde a quatro mols de \ce{S2O3^2-}.
+
+Antes da análise da amostra, a solução de tiossulfato foi padronizada com
+iodato de potássio, empregado como padrão primário. Em meio ácido e na
+presença de excesso de iodeto, o iodato produz triiodeto, que reage com o
+tiossulfato segundo:
+
+\begin{align}
+\ce{IO3- + 8I- + 6H+ &-> 3I3- + 3H2O},\\
+\ce{3I3- + 6S2O3^2- &-> 9I- + 3S4O6^2-}.
+\end{align}
+
+Consequentemente, um mol de \ce{KIO3} corresponde a seis mols de
+\ce{Na2S2O3}, relação utilizada na determinação da concentração efetiva do
+titulante.
+
+% =========================================================
+\section{Objetivos}
+
+\begin{itemize}
+  \item padronizar uma solução de tiossulfato de sódio empregando iodato de
+        potássio como padrão primário;
+  \item determinar a concentração de oxigênio dissolvido em uma amostra de
+        água do mar pelo método de Winkler;
+  \item relacionar a quantidade de tiossulfato consumida à quantidade de
+        oxigênio presente na amostra;
+  \item expressar o resultado de oxigênio dissolvido em
+        \si{\milli\gram\per\litre}.
+\end{itemize}
+
+% =========================================================
+\section{Material utilizado}
+
+\begin{itemize}
+  \item bureta de \qty{50.00}{\milli\litre};
+  \item suporte universal e garra para bureta;
+  \item balança analítica;
+  \item Erlenmeyers;
+  \item recipiente de aproximadamente \qty{500}{\milli\litre} com rolha;
+  \item pipetas volumétricas e graduadas;
+  \item proveta;
+  \item béquer;
+  \item frasco lavador com água destilada;
+  \item papel-toalha.
+\end{itemize}
+
+% =========================================================
+\section{Reagentes e soluções}
+
+\begin{itemize}
+  \item iodato de potássio, \ce{KIO3}, previamente dessecado;
+  \item solução de tiossulfato de sódio, \ce{Na2S2O3}, de concentração
+        nominal \qty{0.025}{\mole\per\litre};
+  \item solução de iodeto de potássio, \ce{KI}, a 10\%;
+  \item solução de ácido sulfúrico, \ce{H2SO4},
+        \qty{0.5}{\mole\per\litre};
+  \item solução de ácido sulfúrico a 50\%;
+  \item solução de sulfato manganoso, \ce{MnSO4}, a 80\%;
+  \item solução de hidróxido de sódio, \ce{NaOH}, a 30\%;
+  \item suspensão de amido, empregada como indicador;
+  \item água destilada;
+  \item amostra de água do mar.
+\end{itemize}
+
+% =========================================================
+\section{Procedimento experimental}
+
+O procedimento descrito a seguir corresponde às orientações registradas no
+quadro durante a aula. Quando há diferença entre essas anotações e o roteiro
+impresso da apostila, foram mantidos os volumes e as concentrações indicados
+em sala, por representarem a execução efetiva da prática.
+
+\subsection{Padronização da solução de \ce{Na2S2O3}}
+
+Pesou-se aproximadamente \qty{0.0150}{\gram} de \ce{KIO3}, que foi
+transferido para um Erlenmeyer e dissolvido em cerca de
+\qty{25}{\milli\litre} de água destilada. Adicionaram-se
+\qty{5}{\milli\litre} de solução de \ce{KI} a 10\% e
+\qty{10}{\milli\litre} de solução de \ce{H2SO4}
+\qty{0.5}{\mole\per\litre}.
+
+A solução formada, inicialmente castanha, foi titulada com \ce{Na2S2O3}
+até adquirir coloração amarelo-clara. Próximo ao ponto final, adicionou-se o
+indicador de amido e prosseguiu-se a titulação, gota a gota, até o
+desaparecimento da coloração azul. As medições realizadas foram reunidas para
+o cálculo da massa média de \ce{KIO3} e do volume médio de titulante.
+
+\subsection{Preparo da amostra e fixação do oxigênio}
+
+Um recipiente com rolha foi preenchido com aproximadamente
+\qty{500}{\milli\litre} de água do mar. Adicionou-se
+\qty{1}{\milli\litre} de solução de \ce{MnSO4} a 80\%, seguida de
+\qty{1}{\milli\litre} de solução de \ce{NaOH} a 30\%. O recipiente foi
+tampado e agitado, promovendo a formação do precipitado e a fixação do
+oxigênio dissolvido.
+
+Em seguida, foram acrescentados \qty{1}{\milli\litre} de solução de
+\ce{KI} a 10\% e \qty{5}{\milli\litre} de solução de \ce{H2SO4} a 50\%.
+O frasco foi novamente tampado e agitado cuidadosamente, até a dissolução do
+precipitado e a liberação do iodo.
+
+\subsection{Titulação da amostra}
+
+Transferiram-se \qty{50.0}{\milli\litre} da amostra preparada para um
+Erlenmeyer. A solução foi titulada com o \ce{Na2S2O3} padronizado até a
+mudança de castanho-escuro para amarelo-claro. Adicionou-se então
+\qty{1}{\milli\litre} de suspensão de amido, produzindo coloração azul, e
+a titulação prosseguiu até a solução ficar incolor. Foram reunidos três
+volumes de titulante, correspondentes às determinações realizadas pelos
+integrantes do grupo, para o cálculo do volume médio.
+
+% =========================================================
+\section{Resultados e cálculos}
+
+\subsection{Padronização da solução de \ce{Na2S2O3}}
+
+Os dados empregados na padronização estão apresentados na
+Tabela~\ref{tab:padronizacao}. A segunda leitura de volume, parcialmente
+rasurada na ficha, foi reconstruída como \qty{13.5}{\milli\litre}, valor
+compatível com a média de \qty{15.7}{\milli\litre} registrada no próprio
+documento.
+
+\begin{table}[H]
+\centering
+\caption{Dados empregados na padronização da solução de tiossulfato de
+sódio.}
+\label{tab:padronizacao}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Grandeza} & \textbf{I} & \textbf{II} & \textbf{Média}\\
+\midrule
+Massa de \ce{KIO3} (\si{\gram})
+  & 0,0150 & 0,0152 & 0,0151\\
+Volume de \ce{Na2S2O3} (\si{\milli\litre})
+  & 17,9 & 13,5 & 15,7\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+As médias foram calculadas por:
+
+\begin{align}
+\overline{m}_{\ce{KIO3}}
+&=\frac{0.0150+0.0152}{2}
+=\boxed{\qty{0.0151}{\gram}},\\[0.2cm]
+\overline{V}_{\ce{Na2S2O3}}
+&=\frac{17.9+13.5}{2}
+=\boxed{\qty{15.7}{\milli\litre}}.
+\end{align}
+
+A massa molar empregada para o \ce{KIO3} foi
+\qty{214.00}{\gram\per\mole}. Como um mol de iodato corresponde a seis
+mols de tiossulfato:
+
+\begin{equation}
+n_{\ce{Na2S2O3}}=6n_{\ce{KIO3}}
+=6\frac{m_{\ce{KIO3}}}{M_{\ce{KIO3}}}.
+\end{equation}
+
+Logo, a concentração padronizada foi:
+
+\begin{align}
+C_{\ce{Na2S2O3}}
+&=
+\frac{6\overline{m}_{\ce{KIO3}}}
+{M_{\ce{KIO3}}\overline{V}_{\ce{Na2S2O3}}}\\
+&=
+\frac{6\left(\qty{0.0151}{\gram}\right)}
+{\left(\qty{214.00}{\gram\per\mole}\right)
+ \left(\qty{15.7e-3}{\litre}\right)}\\
+&=\qty{0.02697}{\mole\per\litre}
+\approx
+\boxed{\qty{0.027}{\mole\per\litre}}.
+\end{align}
+
+\subsection{Volume médio gasto na titulação da amostra}
+
+Os volumes de titulante consumidos nas três determinações da amostra estão
+apresentados na Tabela~\ref{tab:amostra}.
+
+\begin{table}[H]
+\centering
+\caption{Volumes de tiossulfato consumidos na titulação da amostra.}
+\label{tab:amostra}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Dados da titulação} & \textbf{I} & \textbf{II} & \textbf{III}\\
+\midrule
+Volume da amostra (\si{\milli\litre})
+  & 50,0 & 50,0 & 50,0\\
+Volume de \ce{Na2S2O3} (\si{\milli\litre})
+  & 1,6 & 1,9 & 1,2\\
+\textbf{Volume médio de \ce{Na2S2O3} (\si{\milli\litre})}
+  & \multicolumn{3}{c}{\textbf{1,57}}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+O volume médio foi:
+
+\begin{align}
+\overline{V}_{\ce{Na2S2O3}}
+&=\frac{1.6+1.9+1.2}{3}\\
+&=\qty{1.5667}{\milli\litre}
+\approx\boxed{\qty{1.57}{\milli\litre}}.
+\end{align}
+
+\subsection{Concentração de oxigênio dissolvido}
+
+Um mol de \ce{O2}, de massa molar \qty{32.00}{\gram\per\mole}, corresponde
+a quatro mols de tiossulfato. Portanto, cada mol de \ce{Na2S2O3} consumido
+equivale a:
+
+\begin{equation}
+\frac{\qty{32.00}{\gram\per\mole}}{4}
+=\qty{8.00}{\gram\per\mole}
+\end{equation}
+
+de oxigênio. A concentração de OD pode ser calculada por:
+
+\begin{equation}
+OD\,(\si{\milli\gram\per\litre})=
+\frac{
+C_{\ce{Na2S2O3}}\,
+V_{\ce{Na2S2O3}}\,
+8.00\times1000
+}{V_{\mathrm{amostra}}},
+\end{equation}
+
+com os volumes expressos em litros. Substituindo a concentração padronizada
+e o volume médio:
+
+\begin{align}
+OD
+&=
+\frac{
+\left(\qty{0.02697}{\mole\per\litre}\right)
+\left(\qty{1.5667e-3}{\litre}\right)
+\left(\qty{8.00}{\gram\per\mole}\right)
+\left(\qty{1000}{\milli\gram\per\gram}\right)
+}{\qty{50.0e-3}{\litre}}\\
+&=\boxed{\qty{6.76}{\milli\gram\per\litre}}.
+\end{align}
+
+Para mostrar a variação entre as determinações, também foram calculados os
+resultados individuais mantendo-se a mesma concentração padronizada.
+
+\begin{table}[H]
+\centering
+\caption{Resultados individuais e médio de oxigênio dissolvido.}
+\label{tab:od}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Determinação}
+& \textbf{Volume de \ce{Na2S2O3} (\si{\milli\litre})}
+& \textbf{OD (\si{\milli\gram\per\litre})}\\
+\midrule
+I   & 1,6  & 6,90\\
+II  & 1,9  & 8,20\\
+III & 1,2  & 5,18\\
+\midrule
+\textbf{Média} & \textbf{1,57} & \textbf{6,76}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% =========================================================
+\section{Discussão}
+
+A padronização forneceu concentração de
+\qty{0.02697}{\mole\per\litre} para o \ce{Na2S2O3}, valor próximo da
+concentração nominal de \qty{0.025}{\mole\per\litre}. A diferença entre os
+dois valores justifica a padronização prévia, pois soluções de tiossulfato
+podem sofrer alterações durante o armazenamento. O cálculo baseado no
+\ce{KIO3} permite utilizar a concentração efetivamente determinada, em vez
+de assumir apenas o valor nominal.
+
+O volume médio de tiossulfato consumido na análise da água do mar foi
+\qty{1.57}{\milli\litre}, correspondendo a uma concentração média de
+oxigênio dissolvido de \qty{6.76}{\milli\gram\per\litre}. Esse resultado
+indica que a amostra continha quantidade mensurável de oxigênio disponível e
+é compatível, em ordem de grandeza, com uma água aerada. A comparação mais
+específica com a saturação de oxigênio exigiria informações não registradas,
+como a temperatura, a salinidade e a pressão no momento da coleta.
+
+Os resultados individuais variaram de
+\qty{5.18}{\milli\gram\per\litre} a
+\qty{8.20}{\milli\gram\per\litre}. Essa dispersão pode estar associada à
+identificação visual do ponto final, ao pequeno volume de titulante consumido
+e à leitura da bureta. Quando o volume gasto é reduzido, diferenças de poucas
+décimas de mililitro representam uma fração relevante do resultado final.
+
+O método também é sensível ao manuseio da amostra. A introdução de bolhas, o
+contato excessivo com o ar antes da fixação ou a existência de espaço vazio
+no recipiente podem alterar a quantidade de oxigênio dissolvido. A adição dos
+reagentes e o fechamento do frasco devem, portanto, ser realizados com
+cuidado. A dissolução incompleta do precipitado ou a demora entre a liberação
+do iodo e a titulação também podem contribuir para erros.
+
+O amido foi acrescentado apenas quando a solução se encontrava amarelo-clara.
+Esse procedimento favorece a observação de uma viragem mais nítida e evita a
+formação prematura de um complexo amido--iodo muito estável, que poderia
+dificultar a identificação do ponto final.
+
+O procedimento anotado no quadro apresentou algumas diferenças de volume e
+concentração em relação ao roteiro impresso da apostila. Neste relatório foram
+registradas as condições orientadas durante a aula, especialmente a utilização
+de uma alíquota de \qty{50.0}{\milli\litre} e os volumes de reagentes indicados
+no quadro. Essa escolha mantém a descrição coerente com a execução do
+experimento e com os dados empregados nos cálculos.
+
+% =========================================================
+\section{Conclusão}
+
+A solução de tiossulfato de sódio foi padronizada com iodato de potássio,
+utilizando-se a relação estequiométrica de seis mols de \ce{S2O3^2-} para
+cada mol de \ce{IO3-}. A partir da massa média de
+\qty{0.0151}{\gram} de \ce{KIO3} e do volume médio de
+\qty{15.7}{\milli\litre} de titulante, obteve-se:
+
+\begin{equation*}
+\boxed{
+C_{\ce{Na2S2O3}}=\qty{0.02697}{\mole\per\litre}
+\approx\qty{0.027}{\mole\per\litre}
+}.
+\end{equation*}
+
+Na determinação pelo método de Winkler, as três titulações da amostra
+consumiram \qty{1.6}{\milli\litre}, \qty{1.9}{\milli\litre} e
+\qty{1.2}{\milli\litre} de solução padronizada, resultando em volume médio
+de \qty{1.57}{\milli\litre}. Para uma alíquota de
+\qty{50.0}{\milli\litre}, a concentração média calculada foi:
+
+\begin{equation*}
+\boxed{OD=\qty{6.76}{\milli\gram\per\litre}}.
+\end{equation*}
+
+O experimento demonstrou a aplicação de uma titulação iodométrica à análise
+de água e permitiu relacionar quantitativamente o tiossulfato consumido ao
+oxigênio originalmente dissolvido. A dispersão observada entre as
+determinações evidencia a importância do controle da amostragem, da fixação
+do oxigênio, da leitura da bureta e da identificação do ponto final.
+
+% =========================================================
+\section*{Referência}
+
+LAGO, Dalva Cristina Baptista do; GOIS, Jefferson Santos de; LANGONE,
+Marta Antunes Pereira; SENNA, Lilian Ferreira de.
+\textit{Química VIII -- Oceanografia: aulas práticas}.
+Rio de Janeiro: Universidade do Estado do Rio de Janeiro,
+Instituto de Química, Departamento de Química Analítica, 2017.
+
+\end{document}

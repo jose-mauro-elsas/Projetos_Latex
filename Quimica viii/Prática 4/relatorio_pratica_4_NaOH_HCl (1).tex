@@ -1,0 +1,623 @@
+%!TEX program = lualatex
+% Arquivo: relatorio_pratica_4_NaOH_HCl.tex
+
+\documentclass[a4paper,12pt]{article}
+
+% =========================================================
+% Idioma e tipografia (LuaLaTeX)
+% =========================================================
+\usepackage[brazilian]{babel}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\usepackage{microtype}
+
+% =========================================================
+% Layout
+% =========================================================
+\usepackage[top=3cm,bottom=2.5cm,left=3cm,right=2.5cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25cm}
+
+% =========================================================
+% Matemática, unidades e fórmulas químicas
+% =========================================================
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\sisetup{
+  locale = DE,
+  output-decimal-marker = {,},
+  per-mode = symbol,
+  exponent-product = \cdot
+}
+\usepackage[version=4]{mhchem}
+
+% =========================================================
+% Tabelas, listas, figuras e desenhos
+% =========================================================
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\setlist[itemize]{noitemsep,topsep=3pt}
+\setlist[enumerate]{noitemsep,topsep=3pt}
+\usepackage{graphicx}
+\usepackage{float}
+\graphicspath{{./}{./imagens/}{./figuras/}}
+
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,positioning,shapes.geometric}
+\usepackage[most]{tcolorbox}
+
+% =========================================================
+% Links
+% =========================================================
+\usepackage{hyperref}
+\usepackage{xurl}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=blue,
+  citecolor=black,
+  pdfauthor={Israel Carneiro; José Mauro Xavier Elsas; Miguel Gayani},
+  pdftitle={Prática 4 -- Preparo e padronização de solução de NaOH}
+}
+
+% =========================================================
+% Cores e comandos
+% =========================================================
+\definecolor{quadroazul}{RGB}{40,91,140}
+\definecolor{quadrovermelho}{RGB}{177,69,60}
+\definecolor{quadrocinza}{RGB}{245,245,245}
+
+\newcommand{\subtitulo}[1]{%
+  \par\medskip
+  {\color{quadroazul}\bfseries\large #1}\par\smallskip
+}
+
+% =========================================================
+% Dados da capa
+% =========================================================
+\newcommand{\Instituicao}{Universidade do Estado do Rio de Janeiro -- UERJ}
+\newcommand{\Curso}{Química VIII / Oceanografia}
+\newcommand{\Professor}{Professor: Ítalo Vieira}
+\newcommand{\Aluno}{Alunos: Israel Carneiro\\
+José Mauro Xavier Elsas\\
+Miguel Gayani}
+\newcommand{\Cidade}{Rio de Janeiro}
+\newcommand{\Ano}{2026}
+
+% =========================================================
+% Dados numéricos da prática
+% =========================================================
+% A concentração abaixo foi adotada como 0,1000 mol/L por não constar,
+% no material disponível, o valor final da padronização da Prática 3.
+% Quando o valor padronizado estiver disponível, substituir aqui e
+% recalcular os resultados dependentes.
+\newcommand{\ConcHCl}{0.1000}
+
+\begin{document}
+
+% =========================================================
+% Capa
+% =========================================================
+\begin{titlepage}
+\centering
+{\large \Instituicao \par}
+\vspace{0.5cm}
+{\large \Curso \par}
+\vspace{1.0cm}
+
+{\LARGE \textbf{Prática 4} \par}
+\vspace{0.6cm}
+{\Large \textbf{PREPARO E PADRONIZAÇÃO DE SOLUÇÃO\\
+DE \ce{NaOH} \qty{0.1}{\mole\per\litre}} \par}
+
+\vspace{1cm}
+
+\IfFileExists{uerj.jpg}{%
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\linewidth]{uerj.jpg}
+  \end{figure}
+}{%
+  \begin{tcolorbox}[
+    width=0.32\textwidth,
+    colback=white,
+    colframe=black!35,
+    boxrule=0.5pt,
+    arc=0mm
+  ]
+  \centering
+  \vspace{1.2cm}
+  \textit{Logotipo da UERJ}
+  \vspace{1.2cm}
+  \end{tcolorbox}
+}
+
+\vfill
+
+\begin{flushright}
+\Aluno\\
+\Professor
+\end{flushright}
+
+\vspace{1.0cm}
+{\Cidade{} -- \Ano \par}
+\end{titlepage}
+
+% =========================================================
+\section{Introdução}
+
+O hidróxido de sódio é uma das bases mais empregadas em análise volumétrica.
+Entretanto, o \ce{NaOH} não é considerado um padrão primário, porque é
+higroscópico e absorve dióxido de carbono da atmosfera. A reação com o
+\ce{CO2} produz carbonato e altera gradualmente a composição da solução:
+
+\begin{equation}
+  \ce{CO2(g) + 2OH-(aq) -> CO3^2-(aq) + H2O(l)}.
+  \label{eq:co2}
+\end{equation}
+
+Por essa razão, uma solução de \ce{NaOH} preparada por diluição apresenta
+concentração apenas aproximada e deve ser padronizada antes de ser usada em
+determinações quantitativas. Nesta prática, a solução básica foi padronizada
+por titulação com a solução de \ce{HCl} preparada na Prática 3.
+
+A reação de neutralização entre o ácido clorídrico e o hidróxido de sódio é:
+
+\begin{equation}
+  \ce{HCl(aq) + NaOH(aq) -> NaCl(aq) + H2O(l)}.
+  \label{eq:neutralizacao}
+\end{equation}
+
+Como os coeficientes estequiométricos de \ce{HCl} e \ce{NaOH} são iguais a
+um, a relação entre as quantidades de matéria no ponto de equivalência é de
+$1:1$.
+
+% =========================================================
+\section{Objetivos}
+
+\begin{itemize}
+  \item preparar aproximadamente \qty{250}{\milli\litre} de solução de
+        \ce{NaOH} \qty{0.1}{\mole\per\litre} por diluição de uma solução
+        concentrada;
+  \item padronizar a solução preparada por titulação com a solução de
+        \ce{HCl} obtida na prática anterior;
+  \item determinar a concentração molar experimental da solução de
+        \ce{NaOH};
+  \item distinguir o volume da alíquota de \ce{NaOH} do volume total
+        existente no Erlenmeyer após a adição de água destilada.
+\end{itemize}
+
+% =========================================================
+\section{Material utilizado}
+
+\begin{enumerate}[label=\alph*.]
+  \item béquer;
+  \item cilindro graduado de \qty{500}{\milli\litre};
+  \item pipeta graduada para medir aproximadamente \qty{2.0}{\milli\litre};
+  \item pipeta de \qty{25.00}{\milli\litre};
+  \item bureta de \qty{50.00}{\milli\litre};
+  \item suporte universal e garra para bureta;
+  \item três Erlenmeyers de \qty{250}{\milli\litre};
+  \item pisseta com água destilada;
+  \item frasco para armazenamento da solução preparada.
+\end{enumerate}
+
+% =========================================================
+\section{Reagentes e soluções}
+
+\begin{enumerate}[label=\alph*.]
+  \item solução concentrada de \ce{NaOH}, aproximadamente
+        \qty{12.4}{\mole\per\litre};
+  \item solução de \ce{HCl} preparada na Prática 3, adotada neste relatório
+        como \qty{\ConcHCl}{\mole\per\litre};
+  \item água destilada;
+  \item solução indicadora de fenolftaleína.
+\end{enumerate}
+
+\begin{tcolorbox}[
+  title=Observação sobre a concentração do \ce{HCl},
+  colback=quadrocinza,
+  colframe=black!65,
+  boxrule=0.6pt,
+  arc=1mm
+]
+O valor numérico empregado nos cálculos foi
+\qty{\ConcHCl}{\mole\per\litre}. Caso a concentração padronizada obtida na
+Prática 3 seja diferente, esse valor deve substituir a concentração nominal,
+e a concentração calculada de \ce{NaOH} deve ser atualizada.
+\end{tcolorbox}
+
+% =========================================================
+\section{Procedimento experimental}
+
+\subsection{Preparo da solução aproximada de \ce{NaOH}}
+
+Pretendia-se preparar \qty{250}{\milli\litre} de solução de \ce{NaOH} com
+concentração aproximada de \qty{0.1}{\mole\per\litre}, a partir de uma solução
+concentrada de \qty{12.4}{\mole\per\litre}. O volume necessário da solução
+concentrada foi calculado pela relação de diluição:
+
+\begin{equation}
+  C_1V_1=C_2V_2.
+  \label{eq:diluicao}
+\end{equation}
+
+Isolando $V_1$:
+
+\begin{align}
+  V_1
+    &=\frac{C_2V_2}{C_1} \nonumber\\
+    &=\frac{
+       \left(\qty{0.1}{\mole\per\litre}\right)
+       \left(\qty{0.250}{\litre}\right)}
+       {\qty{12.4}{\mole\per\litre}} \nonumber\\
+    &=\qty{0.002016}{\litre} \nonumber\\
+    &=\qty{2.016}{\milli\litre}
+    \approx \boxed{\qty{2.0}{\milli\litre}}.
+  \label{eq:volume_naoh_conc}
+\end{align}
+
+Foram colocados aproximadamente \qty{100}{\milli\litre} de água destilada no
+cilindro graduado. Em seguida, adicionaram-se aproximadamente
+\qty{2.0}{\milli\litre} da solução concentrada de \ce{NaOH}. Após a mistura e
+o resfriamento, o volume foi completado até \qty{250}{\milli\litre} com água
+destilada, e a solução foi homogeneizada.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[>=Latex,thick,font=\small]
+  % pipeta
+  \begin{scope}[shift={(-4.2,2.3)},rotate=-18]
+    \draw[quadrovermelho] (-1.6,0) -- (-0.45,0);
+    \draw[quadrovermelho]
+      (-0.45,0) .. controls (-0.25,0.35) and (0.25,0.35) .. (0.45,0)
+      .. controls (0.25,-0.35) and (-0.25,-0.35) .. (-0.45,0);
+    \draw[quadrovermelho] (0.45,0) -- (1.8,0);
+    \node[quadrovermelho,above=4mm,rotate=18] at (0,0.25)
+      {\qty{2.0}{\milli\litre} de \ce{NaOH} concentrado};
+  \end{scope}
+
+  \draw[->,quadrovermelho] (-2.4,1.8) -- (-0.9,1.25);
+
+  % cilindro
+  \draw[quadrovermelho,fill=white] (-0.7,0) rectangle (0.3,3.4);
+  \draw[quadrovermelho] (-0.85,3.4) -- (0.45,3.4);
+  \draw[quadrovermelho] (-0.9,0) -- (0.5,0);
+  \fill[quadroazul!16] (-0.67,0.05) rectangle (0.27,1.30);
+  \draw[quadroazul] (-0.67,1.30) -- (0.27,1.30);
+  \foreach \y in {0.4,0.8,1.2,1.6,2.0,2.4,2.8,3.2}
+    \draw[quadrovermelho] (-0.7,\y) -- (-0.45,\y);
+  \node[below=2mm,align=center] at (-0.2,0)
+    {cilindro graduado\\de \qty{500}{\milli\litre}};
+  \node[quadroazul,right=5mm,align=left] at (0.3,1.3)
+    {aproximadamente\\\qty{100}{\milli\litre} de água};
+
+  \draw[->,black!65] (1.2,1.6) -- (3.0,1.6);
+
+  % recipiente final
+  \draw[quadrovermelho,fill=white] (3.3,0) rectangle (4.3,3.4);
+  \draw[quadrovermelho] (3.15,3.4) -- (4.45,3.4);
+  \draw[quadrovermelho] (3.1,0) -- (4.5,0);
+  \fill[quadroazul!16] (3.33,0.05) rectangle (4.27,2.1);
+  \draw[quadroazul] (3.33,2.1) -- (4.27,2.1);
+  \node[below=2mm,align=center] at (3.8,0)
+    {completar até\\\qty{250}{\milli\litre}};
+\end{tikzpicture}
+\caption{Esquema do preparo da solução aproximada de \ce{NaOH}.}
+\label{fig:preparo_naoh}
+\end{figure}
+
+\subsection{Padronização da solução de \ce{NaOH} com \ce{HCl}}
+
+A bureta foi rinsada e preenchida com a solução de \ce{HCl}. Para cada
+determinação, transferiu-se uma alíquota de \qty{25.00}{\milli\litre} da
+solução de \ce{NaOH} para um Erlenmeyer de \qty{250}{\milli\litre}.
+Adicionaram-se aproximadamente \qty{25}{\milli\litre} de água destilada e
+duas gotas de fenolftaleína.
+
+A solução no Erlenmeyer apresentou coloração rosa em meio básico. O
+\ce{HCl} foi adicionado lentamente, sob agitação, até o desaparecimento
+persistente da coloração rosa, adotado como ponto final da titulação. O
+procedimento foi realizado em triplicata.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[>=Latex,thick,font=\small]
+  % bureta
+  \draw[quadroazul] (-0.15,1.8) rectangle (0.15,5.5);
+  \draw[quadroazul] (-0.30,5.5) -- (0.30,5.5);
+  \draw[quadroazul] (-0.15,1.8) -- (0,1.3) -- (0.15,1.8);
+  \draw[quadroazul] (0,1.3) -- (0,0.9);
+  \node[quadroazul,right=5mm] at (0.15,4.7)
+    {\ce{HCl} $\approx$ \qty{0.1}{\mole\per\litre}};
+
+  % gota
+  \fill[quadroazul!50] (0,0.65) circle (0.07);
+
+  % erlenmeyer
+  \draw[quadrovermelho]
+    (-0.35,0.35) .. controls (-1.25,-0.15) and (-1.15,-1.05) .. (-0.55,-1.35)
+    -- (0.55,-1.35)
+    .. controls (1.15,-1.05) and (1.25,-0.15) .. (0.35,0.35)
+    -- (0.35,1.10) -- (-0.35,1.10) -- cycle;
+  \fill[quadrovermelho!12]
+    (-0.70,-0.95) .. controls (-0.90,-0.65) and (-0.85,-0.35) .. (-0.55,-0.20)
+    -- (0.55,-0.20)
+    .. controls (0.85,-0.35) and (0.90,-0.65) .. (0.70,-0.95) -- cycle;
+  \node[align=center,below=5mm] at (0,-1.35)
+    {\qty{25.00}{\milli\litre} de \ce{NaOH}\\
+     + \qty{25}{\milli\litre} de água\\
+     + 2 gotas de fenolftaleína};
+
+  \draw[->,quadrovermelho] (2.2,0.6) -- (0.55,-0.1);
+  \node[quadrovermelho,align=left,right] at (2.25,0.6)
+    {rosa $\longrightarrow$ incolor\\no ponto final};
+\end{tikzpicture}
+\caption{Esquema da padronização da solução de \ce{NaOH} com \ce{HCl}.}
+\label{fig:titulacao_naoh}
+\end{figure}
+
+% =========================================================
+\section{Resultados e cálculos}
+
+\subsection{Volumes de \ce{HCl} consumidos}
+
+Os volumes registrados nas três determinações foram:
+
+\begin{table}[H]
+  \centering
+  \caption{Volumes de solução de \ce{HCl} consumidos nas titulações.}
+  \label{tab:volumes}
+  \begin{tabular}{
+    c
+    S[table-format=2.2]
+  }
+    \toprule
+    \textbf{Determinação}
+      & {\textbf{Volume de \ce{HCl}} (\si{\milli\litre})} \\
+    \midrule
+    1 & 30,70 \\
+    2 & 30,30 \\
+    3 & 30,20 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+O volume médio foi:
+
+\begin{align}
+  \overline{V}_{\ce{HCl}}
+    &=\frac{V_1+V_2+V_3}{3} \nonumber\\
+    &=\frac{30.70+30.30+30.20}{3}\,\si{\milli\litre} \nonumber\\
+    &=\boxed{\qty{30.40}{\milli\litre}}.
+  \label{eq:volume_medio}
+\end{align}
+
+O desvio-padrão amostral dos volumes foi de aproximadamente
+\qty{0.26}{\milli\litre}, e o desvio-padrão relativo foi de
+aproximadamente \qty{0.87}{\percent}. Esses valores indicam boa
+proximidade entre as três determinações.
+
+\subsection{Por que os \qty{25}{\milli\litre} de água não entram no cálculo}
+
+A alíquota retirada da solução original continha
+\qty{25.00}{\milli\litre} de solução de \ce{NaOH}. A quantidade de matéria
+de base presente nessa alíquota era:
+
+\begin{equation}
+  n_{\ce{NaOH}}
+  =C_{\ce{NaOH}}V_{\ce{NaOH}}.
+  \label{eq:mols_naoh}
+\end{equation}
+
+Após a adição de aproximadamente \qty{25}{\milli\litre} de água
+destilada, o volume total no Erlenmeyer passou a ser aproximadamente
+\qty{50}{\milli\litre}. Entretanto, a água não adicionou \ce{NaOH} e,
+portanto, não alterou a quantidade de matéria da base:
+
+\begin{equation}
+  n_{\ce{NaOH},\text{antes}}
+  =
+  n_{\ce{NaOH},\text{depois}}.
+  \label{eq:mols_constantes}
+\end{equation}
+
+Considerando a diluição ideal:
+
+\begin{equation}
+  C_{\text{diluída}}
+  =
+  C_{\ce{NaOH}}
+  \frac{\qty{25.00}{\milli\litre}}
+       {\qty{50.00}{\milli\litre}}
+  =
+  \frac{C_{\ce{NaOH}}}{2}.
+  \label{eq:concentracao_diluida}
+\end{equation}
+
+Assim:
+
+\begin{align}
+  n_{\ce{NaOH}}
+    &=C_{\text{diluída}}V_{\text{total}} \nonumber\\
+    &=\frac{C_{\ce{NaOH}}}{2}
+      \left(\qty{50.00}{\milli\litre}\right) \nonumber\\
+    &=C_{\ce{NaOH}}
+      \left(\qty{25.00}{\milli\litre}\right).
+  \label{eq:demonstracao_diluicao}
+\end{align}
+
+Portanto, os \qty{25}{\milli\litre} de água contam para o volume total
+presente no Erlenmeyer, mas não são somados ao volume da alíquota de
+\ce{NaOH} na relação estequiométrica. No cálculo da concentração da
+solução original, utiliza-se:
+
+\begin{equation}
+  \boxed{V_{\ce{NaOH}}=\qty{25.00}{\milli\litre}}.
+  \label{eq:volume_correto}
+\end{equation}
+
+A água foi adicionada para aumentar o volume no Erlenmeyer, facilitar a
+agitação, lavar as paredes internas e tornar mais nítida a observação da
+mudança de cor da fenolftaleína.
+
+\subsection{Cálculo da concentração da solução de \ce{NaOH}}
+
+No ponto de equivalência, devido à proporção estequiométrica $1:1$ da
+Equação~\ref{eq:neutralizacao}:
+
+\begin{equation}
+  n_{\ce{HCl}}=n_{\ce{NaOH}}.
+\end{equation}
+
+Consequentemente:
+
+\begin{equation}
+  C_{\ce{HCl}}V_{\ce{HCl}}
+  =
+  C_{\ce{NaOH}}V_{\ce{NaOH}}.
+  \label{eq:relacao_titulacao}
+\end{equation}
+
+Isolando a concentração de \ce{NaOH}:
+
+\begin{equation}
+  C_{\ce{NaOH}}
+  =
+  \frac{C_{\ce{HCl}}V_{\ce{HCl}}}
+       {V_{\ce{NaOH}}}.
+  \label{eq:cnaoh}
+\end{equation}
+
+Usando o volume médio de \ce{HCl}, a alíquota de
+\qty{25.00}{\milli\litre} de \ce{NaOH} e
+$C_{\ce{HCl}}=\qty{\ConcHCl}{\mole\per\litre}$:
+
+\begin{align}
+  C_{\ce{NaOH}}
+    &=
+    \frac{
+      \left(\qty{\ConcHCl}{\mole\per\litre}\right)
+      \left(\qty{30.40}{\milli\litre}\right)}
+      {\qty{25.00}{\milli\litre}} \nonumber\\
+    &=\boxed{\qty{0.1216}{\mole\per\litre}}.
+  \label{eq:resultado_cnaoh}
+\end{align}
+
+As concentrações calculadas individualmente foram:
+
+\begin{table}[H]
+  \centering
+  \caption{Concentrações de \ce{NaOH} calculadas para cada determinação,
+  adotando $C_{\ce{HCl}}=\qty{\ConcHCl}{\mole\per\litre}$.}
+  \label{tab:concentracoes}
+  \begin{tabular}{
+    c
+    S[table-format=2.2]
+    S[table-format=1.4]
+  }
+    \toprule
+    \textbf{Determinação}
+      & {\textbf{$V_{\ce{HCl}}$} (\si{\milli\litre})}
+      & {\textbf{$C_{\ce{NaOH}}$} (\si{\mole\per\litre})} \\
+    \midrule
+    1 & 30,70 & 0,1228 \\
+    2 & 30,30 & 0,1212 \\
+    3 & 30,20 & 0,1208 \\
+    \midrule
+    \textbf{Média} & 30,40 & 0,1216 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+O fator da solução, tomando como referência a concentração nominal de
+\qty{0.1}{\mole\per\litre}, foi:
+
+\begin{align}
+  f
+    &=\frac{C_{\text{experimental}}}{C_{\text{nominal}}} \nonumber\\
+    &=\frac{0.1216}{0.1000} \nonumber\\
+    &=\boxed{1.216}.
+  \label{eq:fator}
+\end{align}
+
+A diferença relativa em relação à concentração nominal foi:
+
+\begin{align}
+  \Delta C(\%)
+    &=\frac{C_{\text{experimental}}-C_{\text{nominal}}}
+            {C_{\text{nominal}}}\times100 \nonumber\\
+    &=\frac{0.1216-0.1000}{0.1000}\times100 \nonumber\\
+    &=\boxed{\qty{21.6}{\percent}}.
+  \label{eq:diferenca}
+\end{align}
+
+% =========================================================
+\section{Discussão}
+
+O volume médio de \ce{HCl} consumido foi
+\qty{30.40}{\milli\litre}. Considerando a concentração de
+\qty{\ConcHCl}{\mole\per\litre} para o titulante, a solução de \ce{NaOH}
+apresentou concentração média de \qty{0.1216}{\mole\per\litre}, valor
+superior à concentração nominal de \qty{0.1}{\mole\per\litre}.
+
+A boa concordância entre os três volumes, expressa por um desvio-padrão
+relativo próximo de \qty{0.87}{\percent}, indica que a repetibilidade da
+titulação foi satisfatória. Entretanto, a diferença de
+\qty{21.6}{\percent} em relação ao valor nominal sugere a existência de
+erro sistemático na preparação ou na concentração adotada para o
+\ce{HCl}.
+
+Entre as possíveis fontes de diferença estão a medição aproximada de
+\qty{2.0}{\milli\litre} da solução concentrada de \ce{NaOH}, o uso de
+material graduado para o ajuste do volume final, a concentração real da
+solução concentrada de \ce{NaOH}, a absorção de água ou de
+\ce{CO2} pelo reagente e eventual diferença entre a concentração nominal
+e a concentração efetivamente padronizada do \ce{HCl}.
+
+A adição de \qty{25}{\milli\litre} de água destilada no Erlenmeyer não
+explica o aumento da concentração calculada. Essa água apenas diluiu
+temporariamente a solução durante a titulação; a quantidade de matéria de
+\ce{NaOH} permaneceu aquela contida nos
+\qty{25.00}{\milli\litre} da alíquota original.
+
+% =========================================================
+\section{Conclusão}
+
+Foi preparada uma solução de \ce{NaOH} com concentração nominal de
+\qty{0.1}{\mole\per\litre} por diluição de uma solução concentrada de
+aproximadamente \qty{12.4}{\mole\per\litre}. O volume calculado da solução
+concentrada foi de \qty{2.016}{\milli\litre}, aproximado
+experimentalmente para \qty{2.0}{\milli\litre}.
+
+Na padronização com \ce{HCl}, os volumes gastos foram
+\qty{30.70}{\milli\litre}, \qty{30.30}{\milli\litre} e
+\qty{30.20}{\milli\litre}, resultando em volume médio de
+\qty{30.40}{\milli\litre}. Adotando
+$C_{\ce{HCl}}=\qty{\ConcHCl}{\mole\per\litre}$, a concentração média da
+solução de \ce{NaOH} foi:
+
+\begin{equation*}
+  \boxed{C_{\ce{NaOH}}=\qty{0.1216}{\mole\per\litre}}.
+\end{equation*}
+
+Os \qty{25}{\milli\litre} de água adicionados ao Erlenmeyer não foram
+incluídos como volume de \ce{NaOH} no cálculo, pois não acrescentaram
+quantidade de matéria da base. O volume utilizado na relação
+estequiométrica foi, corretamente, o da alíquota original de
+\qty{25.00}{\milli\litre} de solução de \ce{NaOH}.
+
+% =========================================================
+\section*{Referência}
+
+LAGO, Dalva Cristina Baptista do; GOIS, Jefferson Santos de; LANGONE,
+Marta Antunes Pereira; SENNA, Lilian Ferreira de.
+\textit{Química VIII -- Oceanografia: aulas práticas}.
+Rio de Janeiro: Universidade do Estado do Rio de Janeiro,
+Instituto de Química, Departamento de Química Analítica, 2017.
+
+\end{document}
