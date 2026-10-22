@@ -1,0 +1,515 @@
+%!TEX program = lualatex
+% Relatório: Experimento 1 — Medidas Elétricas
+
+\documentclass[a4paper,12pt]{article}
+
+% =========================================================
+% Idioma e tipografia
+% =========================================================
+\usepackage[provide=*,brazilian]{babel}
+\usepackage{iftex}
+\ifLuaTeX
+  \usepackage{fontspec}
+  \setmainfont{Latin Modern Roman}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\fi
+
+% =========================================================
+% Layout
+% =========================================================
+\usepackage[top=3cm,bottom=2.5cm,left=3cm,right=2.5cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25cm}
+
+% =========================================================
+% Matemática, tabelas, listas e figuras
+% =========================================================
+\usepackage{amsmath,amssymb}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{graphicx}
+
+\setlist[itemize]{noitemsep,topsep=3pt}
+\setlist[enumerate]{noitemsep,topsep=3pt}
+
+\graphicspath{{./}{./Figs/}{./imagens/}{./figuras/}}
+
+% Mantém o documento compilável mesmo quando alguma imagem ainda não está na pasta.
+\newcommand{\imagemrelatorio}[2][width=.5\linewidth]{%
+  \IfFileExists{#2}{%
+    \includegraphics[#1]{#2}%
+  }{%
+    \fbox{\parbox[c][3.5cm][c]{.78\linewidth}{%
+      \centering Imagem não encontrada: \texttt{\detokenize{#2}}%
+    }}%
+  }%
+}
+
+% =========================================================
+% Links
+% =========================================================
+\usepackage{xurl}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=blue,
+  citecolor=black,
+  pdfauthor={José Mauro Elsas},
+  pdftitle={Experimento 1 — Medidas Elétricas}
+}
+
+% =========================================================
+% Dados da capa
+% =========================================================
+\newcommand{\Instituicao}{Universidade do Estado do Rio de Janeiro}
+\newcommand{\Curso}{Física VII --  Oceanografia}
+\newcommand{\Professor}{Professor: Alexandre Magnus Gomes Carvalho}
+\newcommand{\Aluno}{Aluno: José Mauro Elsas}
+\newcommand{\Cidade}{Rio de Janeiro}
+\newcommand{\Ano}{2026}
+
+\begin{document}
+\pagenumbering{gobble}
+
+% =========================================================
+% Capa
+% =========================================================
+\begin{titlepage}
+  \centering
+  {\large \Instituicao\par}
+  \vspace{0.5cm}
+  {\large \Curso\par}
+  \vspace{1cm}
+
+  {\LARGE\textbf{Experimento 1}\par}
+  \vspace{0.6cm}
+  {\Large Medidas Elétricas\par}
+
+  \vspace{1cm}
+  \imagemrelatorio[width=.3\linewidth]{uerj.jpg}
+
+  \vfill
+
+  \begin{flushright}
+    \Aluno\\
+    \Professor
+  \end{flushright}
+
+  \vspace{1cm}
+  {\Cidade{} --- \Ano\par}
+\end{titlepage}
+\clearpage
+\pagenumbering{arabic}
+
+% =========================================================
+% Objetivos
+% =========================================================
+\section{Objetivos}
+
+São os seguintes os objetivos deste relatório:
+
+\begin{enumerate}[label=\alph*.]
+  \item Determinar os desvios-padrão das medições da fonte elétrica, tanto em
+  tensão contínua quanto alternada;
+
+  \item Determinar os desvios-padrão dos valores medidos das resistências e
+  verificar se o valor de referência de cada resistência está no intervalo de
+  medição.
+\end{enumerate}
+
+% =========================================================
+% Introdução
+% =========================================================
+\section{Introdução}
+
+O estudo da eletricidade desenvolveu-se a partir da observação de fenômenos
+naturais e de experimentos realizados ao longo de vários séculos. Embora
+manifestações elétricas fossem conhecidas desde a Antiguidade, foi principalmente
+entre os séculos XVIII e XIX que a eletricidade passou a ser investigada de
+maneira sistemática. Posteriormente, a necessidade de comparar resultados levou
+ao desenvolvimento e à padronização internacional de unidades de tensão,
+corrente e resistência \cite{nist_ampere}.
+
+Com o avanço da instrumentação elétrica, tornou-se necessário avaliar não apenas
+o valor indicado por um aparelho, mas também a qualidade e a confiabilidade da
+medição. Nenhuma medição experimental é absolutamente exata, pois seus resultados
+podem ser influenciados pela resolução e pela calibração dos instrumentos, pelas
+condições ambientais, pelas características do circuito e pelo procedimento
+adotado. Assim, medições repetidas de uma mesma grandeza podem apresentar pequenas
+diferenças, formando um conjunto de valores distribuídos em torno de um valor
+médio.
+
+A análise estatística permite descrever essa dispersão e avaliar a repetibilidade
+dos resultados. A média aritmética representa uma estimativa do valor central das
+medições, enquanto o desvio-padrão caracteriza sua dispersão. Uma dispersão menor
+indica maior precisão das medições, mas não garante, isoladamente, sua exatidão,
+pois os resultados podem estar concentrados em torno de um valor diferente do
+valor de referência \cite{jcgm_vim,jcgm_gum}.
+
+Neste experimento, as medições de tensão contínua e de tensão alternada são
+analisadas separadamente, pois correspondem a diferentes modos de funcionamento e
+de leitura do instrumento. Para as resistências elétricas, além da determinação
+da média e do desvio-padrão, comparam-se os resultados experimentais com os
+respectivos valores de referência. Dessa forma, os conceitos de média,
+desvio-padrão, precisão, exatidão e intervalo de medição fornecem a base teórica
+para avaliar a dispersão das medições da fonte elétrica e das resistências.
+
+% =========================================================
+% Materiais e métodos
+% =========================================================
+\section{Materiais e Métodos}
+
+Neste experimento foram utilizados os seguintes materiais:
+
+\begin{enumerate}[label=\alph*.]
+  \item Multímetro digital com as respectivas pontas de prova.
+
+  \begin{figure}[H]
+    \centering
+    \imagemrelatorio{Figs/digital.jpg}
+    \caption{Multímetro digital.}
+    \label{fig:multimetro_digital}
+  \end{figure}
+
+  \item Fonte de alimentação CA/CC estabilizada.
+
+  \begin{figure}[H]
+    \centering
+    \imagemrelatorio{Figs/fonte.jpeg}
+    \caption{Fonte de alimentação CA/CC.}
+    \label{fig:fonte_alimentacao}
+  \end{figure}
+
+  \item \textit{Protoboard}, placa de ensaio constituída por uma base plástica
+  com orifícios e conexões internas condutoras, utilizada para montar e testar
+  circuitos eletrônicos sem a necessidade de solda \cite{ufg_protoboard}.
+
+  \begin{figure}[H]
+    \centering
+    \imagemrelatorio{Figs/protoboard.jpeg}
+    \caption{\textit{Protoboard}.}
+    \label{fig:protoboard}
+  \end{figure}
+
+  \item Resistores de diferentes valores nominais.
+
+  \begin{figure}[H]
+    \centering
+    \imagemrelatorio{Figs/resistores.jpeg}
+    \caption{Resistores utilizados no experimento.}
+    \label{fig:resistores}
+  \end{figure}
+\end{enumerate}
+
+\subsection{Procedimento experimental}
+
+Para medir as tensões contínua ($V_{\mathrm{CC}}$) e alternada
+($V_{\mathrm{CA}}$), a fonte de alimentação foi conectada à rede elétrica e
+ligada, mantendo-se seus controles de tensão e corrente em condições adequadas
+para as medições. Em seguida, o seletor de ajuste da fonte foi posicionado
+sucessivamente nas marcações 1, 4, 7 e 10.
+
+Em cada posição foram efetuadas cinco medições de tensão contínua e cinco de
+tensão alternada. As tensões foram medidas com o multímetro conectado em paralelo
+aos terminais de saída da fonte. Posteriormente, os resistores foram montados na
+\textit{protoboard} e suas resistências elétricas foram medidas com o multímetro
+digital na função de ohmímetro.
+
+Para cada conjunto de leituras, calculou-se a média aritmética:
+
+\[
+  \bar{x}=\frac{1}{n}\sum_{i=1}^{n}x_i,
+\]
+
+em que $x_i$ representa cada valor medido e $n$ é o número de leituras: cinco
+para cada tipo de tensão e três para cada resistor. O desvio-padrão amostral foi
+calculado por:
+
+\[
+  s=\sqrt{\frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}}.
+\]
+
+Para as tensões, considerou-se também a resolução do multímetro,
+$\Delta V=0{,}01\,\mathrm{V}$. Para evitar que séries de leituras idênticas
+fossem apresentadas com incerteza nula, adotou-se, exclusivamente para a
+apresentação dos resultados, o critério
+
+\[
+  u=\max(s,\Delta V).
+\]
+
+Esse critério combina a dispersão observada com o limite de resolução, mas não
+substitui uma avaliação metrológica completa, que também exigiria as
+especificações de exatidão e calibração do instrumento. Para as resistências,
+os resultados foram expressos como $R=(\bar R\pm s)\,\Omega$.
+
+% =========================================================
+% Resultados
+% =========================================================
+\section{Resultados}
+
+\subsection{Medições de tensão}
+
+\begin{table}[H]
+  \centering
+  \caption{Valores de tensão observados nas diferentes posições da fonte.}
+  \label{tab:medicoes_tensao}
+  \medskip
+
+  \begin{tabular}{ccc}
+    \toprule
+    {\textbf{Posição}}
+    & {\textbf{Tensão contínua} ($\mathrm{V}$)}
+    & {\textbf{Tensão alternada} ($\mathrm{V}$)} \\
+    \midrule
+    \multirow{5}{*}{1}
+      & 2,70  & 2,00 \\
+      & 2,60  & 2,00 \\
+      & 2,60  & 2,00 \\
+      & 2,60  & 2,00 \\
+      & 2,60  & 2,00 \\
+    \midrule
+    \multirow{5}{*}{4}
+      & 11,50 & 8,50 \\
+      & 11,50 & 8,60 \\
+      & 11,50 & 8,60 \\
+      & 11,50 & 8,60 \\
+      & 11,50 & 8,60 \\
+    \midrule
+    \multirow{5}{*}{7}
+      & 20,50 & 14,80 \\
+      & 20,50 & 14,80 \\
+      & 20,50 & 14,80 \\
+      & 20,50 & 14,80 \\
+      & 20,50 & 14,80 \\
+    \midrule
+    \multirow{5}{*}{10}
+      & 29,50 & 21,40 \\
+      & 29,50 & 21,40 \\
+      & 29,50 & 21,40 \\
+      & 29,50 & 21,40 \\
+      & 29,50 & 21,30 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Resultados das medições de tensão}
+
+\begin{table}[H]
+  \centering
+  \caption{Resultados experimentais das medições de tensão contínua e alternada.}
+  \label{tab:resultados_tensoes}
+  \medskip
+
+  \begin{tabular}{ccc}
+    \toprule
+    \textbf{Posição}
+    & \shortstack{\textbf{Tensão contínua}\\
+      $V_{\mathrm{CC}}=(\bar V_{\mathrm{CC}}\pm u)\,\mathrm{V}$}
+    & \shortstack{\textbf{Tensão alternada}\\
+      $V_{\mathrm{CA}}=(\bar V_{\mathrm{CA}}\pm u)\,\mathrm{V}$} \\
+    \midrule
+    1  & $2{,}62\pm0{,}04$  & $2{,}00\pm0{,}01$  \\
+    4  & $11{,}50\pm0{,}01$ & $8{,}58\pm0{,}04$  \\
+    7  & $20{,}50\pm0{,}01$ & $14{,}80\pm0{,}01$ \\
+    10 & $29{,}50\pm0{,}01$ & $21{,}38\pm0{,}04$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Nas séries em que houve variação entre as leituras, obteve-se
+$s=0{,}0447\,\mathrm{V}$, arredondado para $0{,}04\,\mathrm{V}$ na
+apresentação final. Quando as cinco leituras foram idênticas, $s=0$ e o valor
+adotado para $u$ foi a resolução do multímetro, $0{,}01\,\mathrm{V}$.
+
+\subsection{Medições das resistências}
+
+\begin{table}[H]
+  \centering
+  \caption{Valores nominais e leituras das resistências elétricas.}
+  \label{tab:leituras_resistores}
+  \medskip
+
+  \begin{tabular}{cccc}
+    \toprule
+    \textbf{Resistor}
+    & \shortstack{\textbf{Valor nominal}\\($\Omega$)}
+    & \textbf{Leitura}
+    & \shortstack{\textbf{Valor medido}\\($\Omega$)} \\
+    \midrule
+    \multirow{3}{*}{R1} & \multirow{3}{*}{47}
+      & 1 & 48,6 \\
+      & & 2 & 48,2 \\
+      & & 3 & 48,1 \\
+    \midrule
+    \multirow{3}{*}{R2} & \multirow{3}{*}{100}
+      & 1 & 98,9 \\
+      & & 2 & 98,8 \\
+      & & 3 & 99,0 \\
+    \midrule
+    \multirow{3}{*}{R3} & \multirow{3}{*}{150}
+      & 1 & 151,0 \\
+      & & 2 & 151,2 \\
+      & & 3 & 151,7 \\
+    \midrule
+    \multirow{3}{*}{R4} & \multirow{3}{*}{330}
+      & 1 & 323 \\
+      & & 2 & 327 \\
+      & & 3 & 318 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Os resultados das resistências foram apresentados na forma
+$R=(\bar R\pm s)\,\Omega$. A diferença percentual entre a média medida e o
+valor nominal foi calculada por
+
+\[
+  \varepsilon_{\%}
+  =\frac{\lvert \bar R-R_{\mathrm{nominal}}\rvert}
+  {R_{\mathrm{nominal}}}\times 100.
+\]
+
+\begin{table}[H]
+  \centering
+  \caption{Resultados experimentais das resistências e comparação com os
+  respectivos valores nominais.}
+  \label{tab:resultados_resistencias}
+  \medskip
+
+  \footnotesize
+  \setlength{\tabcolsep}{4pt}
+  \begin{tabular}{ccccc}
+    \toprule
+    \textbf{Resistor}
+    & \shortstack{\textbf{Valor nominal}\\($\Omega$)}
+    & \shortstack{\textbf{Resultado experimental}\\
+      $R=(\bar R\pm s)\,\Omega$}
+    & \shortstack{\textbf{Diferença}\\\textbf{percentual}}
+    & \shortstack{\textbf{Dentro da}\\\textbf{tolerância de 5\%?}} \\
+    \midrule
+    R1 & 47  & $48{,}30\pm0{,}26\,\Omega$ & 2,8\% & Sim \\
+    R2 & 100 & $98{,}90\pm0{,}10\,\Omega$ & 1,1\% & Sim \\
+    R3 & 150 & $151{,}30\pm0{,}36\,\Omega$ & 0,9\% & Sim \\
+    R4 & 330 & $322{,}7\pm4{,}5\,\Omega$   & 2,2\% & Sim \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Todas as diferenças percentuais ficaram abaixo de $5\%$; portanto, as médias
+medidas são compatíveis com a tolerância nominal informada. O resistor R2
+apresentou a menor dispersão absoluta entre as três leituras, enquanto R4
+apresentou a maior. Para R4, a média e o desvio-padrão foram arredondados para
+décimos de ohm, em coerência com a resolução das leituras registradas para esse
+resistor.
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width = \linewidth]{resultados_percentuais.png}
+    \caption{Resultados percentuais.}
+    \label{fig:resultados_percentuais}
+  \end{figure}
+
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width = \linewidth]{resultados em ohms.png}
+    \caption{Resultados em Ohms.}
+    \label{fig:resultados_ohms}
+  \end{figure}
+
+\section{Conclusão}
+
+O experimento permitiu avaliar a repetibilidade das medições de tensão
+contínua, tensão alternada e resistência elétrica por meio do cálculo
+das médias e dos desvios-padrão amostrais.
+
+Nas medições da fonte, observou-se baixa dispersão entre as cinco
+leituras realizadas em cada posição. Quando houve variação, o
+desvio-padrão foi de aproximadamente \(0{,}04\,\mathrm{V}\). Nas séries
+constituídas por valores idênticos, obteve-se \(s=0\). Esse resultado
+indica ausência de dispersão detectável nas leituras registradas, mas
+não significa que a incerteza da medição seja nula. Por essa razão,
+nesses casos foi considerada a resolução do multímetro, igual a
+\(0{,}01\,\mathrm{V}\), como limite instrumental para a apresentação
+dos resultados.
+
+As três leituras efetuadas para cada resistor também apresentaram
+médias próximas dos respectivos valores nominais. As diferenças
+percentuais foram de \(2{,}8\%\) para R1, \(1{,}1\%\) para R2,
+\(0{,}9\%\) para R3 e \(2{,}2\%\) para R4. Todos esses valores ficaram
+abaixo da tolerância de \(\pm 5\%\) informada para os resistores. Além
+disso, os intervalos experimentais representados por
+\(\bar{R}\pm s\) ficaram inteiramente contidos nas respectivas faixas
+nominais de tolerância.
+
+O resistor R2 apresentou a menor dispersão absoluta entre as três
+leituras, com \(s=0{,}10\,\Omega\), enquanto R4 apresentou a maior,
+com \(s=4{,}5\,\Omega\). A comparação desses desvios deve considerar
+a diferença entre os valores nominais dos componentes, pois um desvio
+absoluto maior não representa necessariamente uma variação relativa
+maior. A representação gráfica normalizada confirmou que todos os
+resultados experimentais permaneceram dentro da faixa admissível,
+apesar de os intervalos \(\bar{R}\pm s\) não incluírem exatamente os
+respectivos valores nominais.
+
+Conclui-se, portanto, que as medições apresentaram boa repetibilidade
+e foram compatíveis com as tolerâncias especificadas para os
+componentes analisados. Os resultados também evidenciam a importância
+de distinguir o desvio-padrão, que descreve a dispersão das leituras,
+da incerteza completa da medição, cuja determinação exigiria ainda as
+especificações de exatidão, calibração e demais características do
+multímetro.
+
+\newpage
+
+% =========================================================
+% Referências
+% =========================================================
+\begin{thebibliography}{99}
+
+\bibitem{jcgm_gum}
+JOINT COMMITTEE FOR GUIDES IN METROLOGY.
+\textit{Evaluation of measurement data: Guide to the expression of uncertainty
+in measurement}. JCGM 100:2008. Sèvres: BIPM, 2008.
+Disponível em: \url{https://www.bipm.org/en/committees/jc/jcgm/publications}.
+Acesso em: 14 ago. 2026.
+
+\bibitem{jcgm_vim}
+JOINT COMMITTEE FOR GUIDES IN METROLOGY.
+\textit{International vocabulary of metrology: Basic and general concepts and
+associated terms}. 3. ed. JCGM 200:2012. Sèvres: BIPM, 2012.
+Disponível em: \url{https://www.bipm.org/en/doi/10.59161/jcgm200-2012}.
+Acesso em: 14 ago. 2026.
+
+\bibitem{nist_ampere}
+NATIONAL INSTITUTE OF STANDARDS AND TECHNOLOGY.
+\textit{Ampere: History}. Gaithersburg: NIST, 2018.
+Disponível em: \url{https://www.nist.gov/si-redefinition/ampere/ampere-history}.
+Acesso em: 14 ago. 2026.
+
+\bibitem{ufg_protoboard}
+UNIVERSIDADE FEDERAL DE GOIÁS.
+\textit{Protoboard: o que é e como usar?}
+Disponível em: \url{https://ipelab.ufg.br/n/156373-protoboard-o-que-e-e-como-usar}.
+Acesso em: 14 ago. 2026.
+
+\end{thebibliography}
+
+\section{Anexo}
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width = \linewidth]{dados.jpg}
+    \caption{Dados obtidos no Laboratório}
+    \label{fig:multimetro_digital}
+  \end{figure}
+
+\end{document}

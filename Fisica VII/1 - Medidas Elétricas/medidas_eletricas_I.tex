@@ -54,17 +54,12 @@
 }
 
 % =========================================================
-% Texto de preenchimento (lorem)
-% =========================================================
-\usepackage{lipsum}
-
-% =========================================================
 % Dados da capa
 % =========================================================
 \newcommand{\Instituicao}{Universidade do Estado do Rio de Janeiro}
 \newcommand{\Curso}{Física VI -- Oceanografia}
-\newcommand{\Professor}{Professor: João Jose}
-\newcommand{\Aluno}{Aluno: Israel Oliveira Carneiro\\ Miguel Gayani\\ José Mauro Elsas}
+\newcommand{\Professor}{Professor: Alexandre Magno}
+\newcommand{\Aluno}{Alunos: Israel Oliveira Carneiro\\ Miguel Gayani\\ José Mauro Elsas}
 \newcommand{\Cidade}{Rio de Janeiro}
 \newcommand{\Ano}{2026}
 
@@ -112,7 +107,7 @@
 % =========================================================
 \section{Tarefas}
 
-Após realizar a experiência de Medidas Elétricas responda as seguintea questões.
+Após realizar a experiência de Medidas Elétricas responda as seguintes questões.
 
 \begin{enumerate}[label=\arabic*--]
     \item Por que as medidas de tensão devem ser iniciadas na maior escala do multímetro?\par\vspace{0.5\baselineskip}
@@ -141,7 +136,7 @@ Após realizar a experiência de Medidas Elétricas responda as seguintea quest�
         \caption{Medidas de VCA e VCC}
         \label{tab:vca_vcc}
 \end{table}
-\item Usando os dados da tabela \ref{tab:vca_vcc} acima, construa o gráfico da tensão contínua (eixo vertical) em função da corrente alternada (eixo horizontal) e obtenta o coeficiente angular da curva. (OBS: O gráfico pode ser feito em qualquer \textit{software} ou no papel milimetrado).
+\item Usando os dados da tabela \ref{tab:vca_vcc} acima, construa o gráfico da tensão contínua (eixo vertical) em função da tensão alternada (eixo horizontal) e obtenha o coeficiente angular da curva. (OBS: O gráfico pode ser feito em qualquer \textit{software} ou no papel milimetrado).
 
 \begin{figure}[H]
     \centering
@@ -149,6 +144,7 @@ Após realizar a experiência de Medidas Elétricas responda as seguintea quest�
     \caption{Gráfico de Tensão contínua em função da tensão alternada}
     \label{graf:vcc_vca}  
 \end{figure}
+
 
 \subsection{Cálculo do Coeficiente Angular}
 
@@ -158,19 +154,22 @@ O coeficiente angular da reta do gráfico \ref{graf:vcc_vca} é dado por:
 \]
 Usando os pontos extremos conforme a tabela \ref{tab:vca_vcc}, temos:
 \[
-    m=\frac{29,1-2,64}{21,0-2,1}=\frac{26,46}{18,9}=1,4\approx\,\sqrt{2}
+    m=\frac{29,1-2,64}{21,0-2,1}=1,4\approx\sqrt{2}
 \]
 
-    \item Como é possível medir o valor de uma resistência apenas com o multímetro sem uma fonte de energia elétrica. \par\vspace{0.5\baselineskip}
+    \item Como é possível medir o valor de uma resistência apenas com o multímetro sem uma fonte de energia elétrica? \par\vspace{0.5\baselineskip}
 
-    \emph{Na verdade, deve-se considerar que seja uma medida sem uma fonte externa de energia elétrica. O multímetro tem no seu interior uma pilha que fornece a energia necessária para medir a reistência dentro da faixa adequada de medição. Veja a Figura \ref{fig:multi_dig} abaixo\footnote{ Fonte: https://www.youtube.com/watch?v=zhguLb29z2M}.}
+\emph{Na verdade, deve-se considerar que se trata de uma medida sem uma fonte externa de energia elétrica. O multímetro possui uma pilha interna, que fornece a energia necessária para medir a resistência na faixa adequada de medição. Recomenda-se que a medição da resistência seja feita com o circuito desenergizado. Veja a Figura~\ref{fig:multi_dig}.}
 
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.65\linewidth]{./Figs/multimetro_bateria.png}
-        \caption{Multímetro digital com bateria a vista.}
-        \label{fig:multi_dig}
-    \end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\linewidth]{./Figs/multimetro_bateria.png}
+    \caption{Multímetro digital com bateria à vista.}
+    \label{fig:multi_dig}
+
+    \vspace{0.2cm}
+    {\footnotesize Fonte: \url{https://www.youtube.com/watch?v=zhguLb29z2M}.}
+\end{figure}
 
     \item Reproduza na tabela abaixo os valores nominal e medido no experimento.
 
@@ -178,9 +177,9 @@ Usando os pontos extremos conforme a tabela \ref{tab:vca_vcc}, temos:
     \centering
         \begin{tabular}{cccr}
             \toprule
-            \shortstack{Resistores} & \shortstack{Valor\\ Nominal ($\Omega$)}& \shortstack{Valor Medido\\com multímetro digital($\Omega$)}& Diferença ($\epsilon\%$)\\
+            \shortstack{Resistores} & \shortstack{Valor\\ Nominal  ($\Omega$)}& \shortstack{Valor Medido\\com multímetro digital ($\Omega$)}& Diferença ($\epsilon\%$)\\
             \midrule
-            R1   & 47    &46,6  &$|-0,9|\implies0,9\%$\\
+            R1   & 47    &46,6  &$|-0,9|\implies 0,9\%$\\
             R2   & 100   &100   &0,0\%\\
             R3   & 150   &153   &2\%\\
             R4   & 330   &331   &0,3\%\\
@@ -191,29 +190,30 @@ Usando os pontos extremos conforme a tabela \ref{tab:vca_vcc}, temos:
         \label{tab:resistores}
     \end{table}
 
-Então podemos fazer um gráfico \ref{graf:graf_comp} comparativo  direto dos nalores Nominais e dos Valores lidos.
+Assim, temos o gráfico \ref{graf:graf_comp}, que compara os valores nominais e os valores medidos.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\linewidth]{./Figs/graf_cpmparativo.png}
-    \caption{}
+    \includegraphics[width=0.8\linewidth]{./Figs/graf_cpmparativo.png}
+    \caption{Comparação entre os valores nominais e os valores medidos das resistências.}
     \label{graf:graf_comp}
 \end{figure}
 
 \begin{itemize}
-    \item Calcule a diferença percentual, usando a expressão abaixo, entre os valores medidos com o multímetro e os valores nominais do fabricante. Considerando que o valor das resistências indicadas pelo fabricante podem variar em até 5\%, as medidas realizadas estão dentro da precisão especificada pelo fabricante.
+    \item Calcule a diferença percentual, usando a expressão abaixo, entre os valores medidos com o multímetro e os valores nominais do fabricante. Considerando que os resistores utilizados possuem tolerância de até 5\%, as medidas realizadas estão dentro da tolerância especificada pelo fabricante.
     
-    Pata calcular o erro $\epsilon\%$ foi usada a fórmula:
+    Para calcular o erro $\epsilon\%$ foi usada a fórmula:
 
     \[
-        \epsilon\%=\frac{|R_{medido}-R_{nominal}|}{R_{nominal}}
+        \epsilon\%=\frac{|R_{medido}-R_{nominal}|}{R_{nominal}}\times 100
     \]
 
-    \emph{Assim temos:}
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.6\linewidth]{./Figs/graf_cpmparativo_2.png}
-    \end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{./Figs/graf_cpmparativo_2.png}
+    \caption{Diferença percentual entre os valores nominais e os valores medidos das resistências.}
+    \label{graf:diferenca_percentual}
+\end{figure}
 \end{itemize}
 \end{enumerate}
 \end{document}

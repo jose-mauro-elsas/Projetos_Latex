@@ -52,3 +52,5 @@ _backup_git_*
 *.snm
 *.vrb
 *.xdv
+
+tempCodeRunnerFile.*

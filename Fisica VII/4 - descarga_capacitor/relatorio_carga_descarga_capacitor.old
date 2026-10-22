@@ -1,0 +1,484 @@
+%!TEX program = lualatex
+% Relatório: Experimento 3 — Carga e descarga de capacitor
+
+\documentclass[a4paper,12pt]{article}
+
+% =========================================================
+% Idioma e tipografia
+% =========================================================
+\usepackage[provide=*,brazilian]{babel}
+\usepackage{iftex}
+\ifLuaTeX
+  \usepackage{fontspec}
+  \setmainfont{Latin Modern Roman}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\fi
+
+% =========================================================
+% Layout
+% =========================================================
+\usepackage[top=3cm,bottom=2.5cm,left=3cm,right=2.5cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25cm}
+
+% =========================================================
+% Matemática, tabelas, listas e figuras
+% =========================================================
+\usepackage{amsmath,amssymb}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+
+\setlist[itemize]{noitemsep,topsep=3pt}
+\setlist[enumerate]{noitemsep,topsep=3pt}
+
+\graphicspath{{./}{./Figs/}}
+
+\definecolor{codigocinza}{RGB}{247,247,247}
+\definecolor{codigoverde}{RGB}{0,100,0}
+
+\lstset{
+  language=Python,
+  basicstyle=\ttfamily\footnotesize,
+  backgroundcolor=\color{codigocinza},
+  commentstyle=\color{codigoverde},
+  keywordstyle=\color{blue!70!black},
+  stringstyle=\color{red!65!black},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  numbersep=8pt,
+  frame=single,
+  rulecolor=\color{gray!55},
+  breaklines=true,
+  breakatwhitespace=false,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  tabsize=4
+}
+\renewcommand{\lstlistingname}{Código}
+
+\newcommand{\imagemrelatorio}[2][width=.7\linewidth]{%
+  \IfFileExists{#2}{%
+    \includegraphics[#1]{#2}%
+  }{%
+    \fbox{\parbox[c][3.5cm][c]{.78\linewidth}{%
+      \centering Imagem não encontrada: \texttt{\detokenize{#2}}%
+    }}%
+  }%
+}
+
+% =========================================================
+% Links
+% =========================================================
+\usepackage{xurl}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=blue,
+  citecolor=black,
+  pdfauthor={José Mauro Elsas e Israel Oliveira Carneiro},
+  pdftitle={Experimento 3 — Carga e descarga de capacitor}
+}
+
+% =========================================================
+% Dados da capa
+% =========================================================
+\newcommand{\Instituicao}{Universidade do Estado do Rio de Janeiro}
+\newcommand{\Curso}{Física VII -- Oceanografia}
+\newcommand{\Professor}{Professor: Alexandre Magnus Gomes Carvalho}
+\newcommand{\Alunos}{Alunos: José Mauro Elsas e Israel Oliveira Carneiro}
+\newcommand{\Cidade}{Rio de Janeiro}
+\newcommand{\Ano}{2026}
+
+\begin{document}
+\pagenumbering{gobble}
+
+% =========================================================
+% Capa
+% =========================================================
+\begin{titlepage}
+  \centering
+  {\large \Instituicao\par}
+  \vspace{0.5cm}
+  {\large \Curso\par}
+  \vspace{1cm}
+
+  {\LARGE\textbf{Experimento 3}\par}
+  \vspace{0.6cm}
+  {\Large Carga e descarga de capacitor\par}
+
+  \vspace{1cm}
+  \imagemrelatorio[width=.3\linewidth]{uerj.jpg}
+
+  \vfill
+
+  \begin{flushright}
+    \Alunos\\
+    \Professor
+  \end{flushright}
+
+  \vspace{1cm}
+  {\Cidade{} --- \Ano\par}
+\end{titlepage}
+\clearpage
+\pagenumbering{arabic}
+
+% =========================================================
+% Objetivo
+% =========================================================
+\section{Objetivo}
+
+Determinar a resistência de entrada do multímetro, quando utilizado na função de
+voltímetro, a partir de medidas da tensão elétrica nos terminais de um capacitor
+em função do tempo durante seu descarregamento.
+
+% =========================================================
+% Introdução e fundamentação teórica
+% =========================================================
+\section{Introdução}
+
+Os primeiros dispositivos capazes de armazenar carga elétrica surgiram em
+meados do século XVIII, durante as investigações experimentais sobre eletricidade
+estática. A chamada garrafa de Leiden foi desenvolvida independentemente por
+Ewald Georg von Kleist, na Alemanha, e por Pieter van Musschenbroek, nos Países
+Baixos. Constituída essencialmente por dois condutores separados pelo vidro
+isolante, ela tornou possível acumular carga e liberá-la posteriormente, superando
+uma limitação importante dos primeiros experimentos elétricos. Esse dispositivo é
+considerado o precursor dos capacitores modernos \cite{maglab_leyden}.
+
+Com o desenvolvimento da teoria eletromagnética e de novos materiais dielétricos,
+os capacitores passaram a ser produzidos em formatos menores e com diferentes
+valores de capacitância. Atualmente, são empregados em fontes de alimentação,
+circuitos temporizadores, filtros, sistemas de armazenamento de energia e muitos
+outros dispositivos eletrônicos. Apesar dessa diversidade de aplicações, seu
+funcionamento continua baseado na separação de cargas entre condutores isolados
+entre si.
+
+Capacitores são componentes capazes de armazenar cargas elétricas e energia em
+um campo elétrico. Para um capacitor ideal, a carga $Q$ acumulada é proporcional
+à diferença de potencial $V$ entre seus terminais:
+
+\begin{equation}
+  Q=CV,
+  \label{eq:qcv}
+\end{equation}
+
+em que $C$ é a capacitância, medida em farads. Quando um capacitor inicialmente
+carregado é ligado a um caminho resistivo e a fonte é retirada do circuito, sua
+carga diminui gradualmente. A aplicação da lei das malhas ao circuito de descarga
+leva à equação diferencial
+
+\begin{equation}
+  \frac{dQ}{dt}=-\frac{Q}{RC}.
+  \label{eq:diferencial}
+\end{equation}
+
+Integrando a Equação~\eqref{eq:diferencial} e empregando a
+Equação~\eqref{eq:qcv}, obtém-se a tensão durante a descarga
+\cite{halliday,roteiro}:
+
+\begin{equation}
+  V(t)=V_0\exp\left(-\frac{t}{RC}\right)
+      =V_0\exp\left(-\frac{t}{\tau}\right),
+  \label{eq:descarga}
+\end{equation}
+
+na qual $V_0$ é a tensão inicial e
+
+\begin{equation}
+  \tau=RC
+  \label{eq:tau}
+\end{equation}
+
+é a constante de tempo do circuito. Quando $t=\tau$, a tensão corresponde a
+
+\begin{equation}
+  V(\tau)=\frac{V_0}{e}\approx0{,}37V_0.
+  \label{eq:v_tau}
+\end{equation}
+
+No arranjo utilizado, após a retirada da fonte, o voltímetro permaneceu ligado
+aos terminais do capacitor e constituiu o caminho resistivo considerado na
+análise. Assim, conhecendo-se $C$ e determinando-se $\tau$ a partir da curva de
+descarga, a resistência de entrada $R_V$ do multímetro na função de voltímetro
+pode ser calculada por
+
+\begin{equation}
+  R_V=\frac{\tau}{C}.
+  \label{eq:resistencia}
+\end{equation}
+
+% =========================================================
+% Materiais e métodos
+% =========================================================
+\section{Materiais e Métodos}
+
+\subsection{Materiais}
+
+Foram utilizados os seguintes materiais:
+
+\begin{enumerate}[label=\alph*.]
+  \item módulo didático de carga e descarga, contendo capacitor eletrolítico de
+  capacitância nominal $C=1000\,\mu\mathrm{F}$ e tensão máxima de $50\,\mathrm{V}$;
+  \item fonte de alimentação elétrica;
+  \item multímetro digital, utilizado na função de voltímetro, e respectivas
+  pontas de prova;
+  \item cronômetro.
+\end{enumerate}
+
+\begin{figure}[H]
+  \centering
+  \imagemrelatorio[width=.72\linewidth]{Figs/modulo_capacitor.jpeg}
+  \caption{Módulo didático de carga e descarga do capacitor.}
+  \label{fig:modulo}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \imagemrelatorio[width=.62\linewidth]{Figs/fonte_alimentacao.jpeg}
+  \caption{Fonte de alimentação utilizada no experimento.}
+  \label{fig:fonte}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \imagemrelatorio[width=.62\linewidth]{Figs/multimetro.jpeg}
+  \caption{Multímetro digital e pontas de prova utilizados nas medições de
+  tensão.}
+  \label{fig:voltimetro}
+\end{figure}
+
+\subsection{Procedimento experimental}
+
+Inicialmente, montou-se o circuito de carga de acordo com o roteiro fornecido em
+aula, observando-se a polaridade do capacitor eletrolítico. O seletor da fonte foi
+colocado na posição 5, e o capacitor foi carregado até que a tensão indicada pelo
+voltímetro se estabilizasse em $V_0=14{,}27\,\mathrm{V}$.
+
+Em seguida, a fonte foi desconectada e iniciou-se simultaneamente a contagem do
+tempo. A tensão nos terminais do capacitor foi registrada a cada
+$0{,}5\,\mathrm{min}$, desde $t=0$ até $t=14{,}0\,\mathrm{min}$. Durante esse
+intervalo, o voltímetro permaneceu conectado em paralelo ao capacitor.
+
+Os dados foram inicialmente representados em um gráfico de dispersão. Em seguida,
+foi realizado, em Python, um ajuste não linear por mínimos quadrados usando o
+modelo
+
+\begin{equation}
+  V(t)=a\exp(-bt)+c,
+  \label{eq:modelo_ajuste}
+\end{equation}
+
+em que $a$ representa a parcela exponencial da tensão inicial, $b=1/\tau$ e $c$
+representa um pequeno valor residual. A qualidade do ajuste foi avaliada pelo
+coeficiente de determinação $R^2$.
+
+% =========================================================
+% Resultados e discussão
+% =========================================================
+\section{Resultados e Discussão}
+
+As tensões medidas durante o descarregamento são apresentadas na
+Tabela~\ref{tab:dados}. A redução foi mais intensa nos primeiros minutos e se
+tornou progressivamente menor à medida que a tensão se aproximou de zero.
+
+\begin{table}[H]
+  \centering
+  \caption{Tensão nos terminais do capacitor em função do tempo.}
+  \label{tab:dados}
+  \medskip
+  \small
+  \setlength{\tabcolsep}{7pt}
+  \begin{tabular}{cc@{\hspace{1cm}}cc@{\hspace{1cm}}cc}
+    \toprule
+    $t$ (min) & $V$ (V) & $t$ (min) & $V$ (V) & $t$ (min) & $V$ (V) \\
+    \midrule
+     0,0 & 14,27  &  5,0 & 0,1030 & 10,0 & 0,0072 \\
+     0,5 &  8,53  &  5,5 & 0,0670 & 10,5 & 0,0065 \\
+     1,0 &  5,09  &  6,0 & 0,0440 & 11,0 & 0,0060 \\
+     1,5 &  2,97  &  6,5 & 0,0300 & 11,5 & 0,0055 \\
+     2,0 &  1,79  &  7,0 & 0,0225 & 12,0 & 0,0051 \\
+     2,5 &  1,071 &  7,5 & 0,0169 & 12,5 & 0,0048 \\
+     3,0 &  0,648 &  8,0 & 0,0132 & 13,0 & 0,0045 \\
+     3,5 &  0,400 &  8,5 & 0,0108 & 13,5 & 0,0043 \\
+     4,0 &  0,245 &  9,0 & 0,0092 & 14,0 & 0,0041 \\
+     4,5 &  0,157 &  9,5 & 0,0080 &      &        \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+  \centering
+  \imagemrelatorio[width=.95\linewidth]{Figs/dados_experimentais.png}
+  \caption{Dados experimentais da tensão durante o descarregamento do
+  capacitor.}
+  \label{fig:dados_experimentais}
+\end{figure}
+
+O formato curvo observado na Figura~\ref{fig:dados_experimentais} é compatível
+com o decaimento exponencial previsto pela Equação~\eqref{eq:descarga}. Pelo
+método direto proposto no roteiro, tem-se
+
+\begin{equation}
+  \frac{V_0}{e}=\frac{14{,}27}{e}=5{,}25\,\mathrm{V}.
+\end{equation}
+
+Esse valor ocorre próximo de $t=1{,}0\,\mathrm{min}$, quando foi medida a tensão
+de $5{,}09\,\mathrm{V}$. Portanto, uma leitura direta do gráfico fornece
+$\tau\approx1{,}0\,\mathrm{min}$.
+
+Para obter uma estimativa baseada em todos os pontos experimentais, aplicou-se o
+ajuste descrito pela Equação~\eqref{eq:modelo_ajuste}. Foram obtidos os parâmetros
+
+\begin{align*}
+  a &= 14{,}272248\,\mathrm{V},\\
+  b &= 1{,}037665\,\mathrm{min}^{-1},\\
+  c &= 0{,}009819\,\mathrm{V}.
+\end{align*}
+
+Assim, a função ajustada foi
+
+\begin{equation}
+  V(t)=14{,}272248\exp(-1{,}037665t)+0{,}009819,
+  \label{eq:ajuste_resultado}
+\end{equation}
+
+com $V$ expresso em volts e $t$ em minutos. O coeficiente de determinação foi
+$R^2=0{,}999982$, indicando que o modelo descreveu adequadamente a variação
+observada. A comparação entre os dados e a curva ajustada é mostrada na
+Figura~\ref{fig:ajuste}.
+
+\begin{figure}[H]
+  \centering
+  \imagemrelatorio[width=.95\linewidth]{Figs/ajuste_exponencial.png}
+  \caption{Dados experimentais e ajuste exponencial da descarga do capacitor.}
+  \label{fig:ajuste}
+\end{figure}
+
+Como $b=1/\tau$, a constante de tempo determinada pelo ajuste é
+
+\begin{align*}
+  \tau
+    &=\frac{1}{b}\\
+    &=\frac{1}{1{,}037665\,\mathrm{min}^{-1}}\\
+    &=0{,}9637\,\mathrm{min}\\
+    &=57{,}82\,\mathrm{s}.
+\end{align*}
+
+A capacitância nominal empregada no cálculo deve ser expressa em farads:
+
+\begin{equation}
+  C=1000\,\mu\mathrm{F}
+   =1000\times10^{-6}\,\mathrm{F}
+   =1{,}000\times10^{-3}\,\mathrm{F}.
+\end{equation}
+
+Substituindo esses valores na Equação~\eqref{eq:resistencia}, obtém-se
+
+\begin{align*}
+  R_V
+    &=\frac{57{,}82\,\mathrm{s}}
+            {1{,}000\times10^{-3}\,\mathrm{F}}\\
+    &=5{,}782\times10^4\,\Omega\\
+    &=57{,}82\,\mathrm{k}\Omega.
+\end{align*}
+
+Portanto, a resistência de entrada determinada para o multímetro, utilizado como
+voltímetro, foi
+
+\begin{equation}
+  \boxed{R_V\approx57{,}8\,\mathrm{k}\Omega}.
+\end{equation}
+
+O pequeno termo residual $c$, da ordem de $10\,\mathrm{mV}$, pode estar associado
+à resolução e ao zero do instrumento, a correntes de fuga ou ao comportamento
+não ideal dos componentes. Como não foram fornecidas as tolerâncias do capacitor
+e as especificações metrológicas do voltímetro, o valor calculado não representa
+uma avaliação completa da incerteza de medição.
+
+% =========================================================
+% Conclusão
+% =========================================================
+\section{Conclusão}
+
+O experimento permitiu acompanhar a redução da tensão nos terminais de um
+capacitor de $1000\,\mu\mathrm{F}$ durante $14\,\mathrm{min}$. Os dados mostraram
+uma queda rápida nos primeiros instantes, seguida por uma aproximação gradual de
+zero, em concordância com o comportamento exponencial previsto para a descarga de
+um circuito resistivo-capacitivo.
+
+Pela condição $V(\tau)=V_0/e$, a leitura direta dos dados forneceu
+$\tau\approx1{,}0\,\mathrm{min}$. O ajuste não linear aplicado ao conjunto completo
+resultou em $\tau=0{,}9637\,\mathrm{min}$, com $R^2=0{,}999982$. A partir desse
+valor e da capacitância nominal, determinou-se para o multímetro, utilizado como
+voltímetro, a resistência de entrada
+$R_V\approx57{,}8\,\mathrm{k}\Omega$.
+
+Conclui-se que o objetivo proposto foi atingido e que o método de descarga do
+capacitor permitiu estimar a resistência de entrada do instrumento. O ajuste
+baseado em todos os pontos experimentais forneceu uma determinação mais
+consistente da
+constante de tempo do que a leitura de um único ponto do gráfico.
+
+\newpage
+
+% =========================================================
+% Referências
+% =========================================================
+\begin{thebibliography}{99}
+
+\bibitem{maglab_leyden}
+NATIONAL HIGH MAGNETIC FIELD LABORATORY.
+\textit{Leyden jars -- 1745}. Tallahassee: Florida State University.
+Disponível em:
+\url{https://nationalmaglab.org/magnet-academy/history-of-electricity-magnetism/museum/leyden-jars-1745/}.
+Acesso em: 4 set. 2026.
+
+\bibitem{halliday}
+HALLIDAY, D.; RESNICK, R.; WALKER, J.
+\textit{Fundamentos de Física: eletromagnetismo}. 10. ed. Rio de Janeiro: LTC,
+2016. v. 3.
+
+\bibitem{roteiro}
+CARVALHO, Alexandre Magnus Gomes.
+\textit{Carga e descarga de capacitor}. Material didático da disciplina
+Física VII. Rio de Janeiro: Universidade do Estado do Rio de Janeiro, 2026.
+
+\end{thebibliography}
+
+% =========================================================
+% Anexos
+% =========================================================
+\section*{Anexo A -- Folha de dados experimentais}
+
+\begin{figure}[H]
+  \centering
+  \imagemrelatorio[width=.92\linewidth,angle=90]{Figs/dados_laboratorio.jpeg}
+  \caption{Folha de dados preenchida durante o experimento.}
+  \label{fig:dados_laboratorio}
+\end{figure}
+
+\clearpage
+\section*{Anexo B -- Script Python para o ajuste não linear}
+
+O Código~\ref{cod:ajuste_python} apresenta o script empregado para organizar os
+dados, realizar o ajuste exponencial, calcular $R^2$, determinar a constante de
+tempo e estimar a resistência de entrada do multímetro. O mesmo script gera e
+salva as Figuras~\ref{fig:dados_experimentais} e~\ref{fig:ajuste}.
+
+\lstinputlisting[
+  caption={Script utilizado no tratamento dos dados experimentais.},
+  label={cod:ajuste_python}
+]{ajuste_curva.py}
+
+\end{document}

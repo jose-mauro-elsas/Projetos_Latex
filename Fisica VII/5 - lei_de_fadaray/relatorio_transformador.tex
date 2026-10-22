@@ -1,0 +1,540 @@
+%!TEX program = lualatex
+% Relatório: Experimento 5 — Transformador
+\documentclass[a4paper,12pt]{article}
+
+% =========================================================
+% Idioma e tipografia
+% =========================================================
+
+\usepackage[brazilian]{babel}
+\usepackage{csquotes}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+
+
+% =========================================================
+% Layout
+% =========================================================
+\usepackage[top=3cm,bottom=2.5cm,left=3cm,right=2.5cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25cm}
+
+% =========================================================
+% Matemática, tabelas, listas e figuras
+% =========================================================
+\usepackage{amsmath,amssymb}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+
+% =========================================================
+% Referências bibliográficas
+% =========================================================
+\usepackage[
+  backend=biber,
+  style=authoryear,
+  sorting=nyt,
+  maxcitenames=2
+]{biblatex}
+\addbibresource{referencias_transformador.bib}
+
+\setlist[itemize]{noitemsep,topsep=3pt}
+\setlist[enumerate]{noitemsep,topsep=3pt}
+\graphicspath{{./}{./Figs/}}
+
+\definecolor{codigocinza}{RGB}{247,247,247}
+\definecolor{codigoverde}{RGB}{0,100,0}
+\lstset{
+  language=Python,
+  basicstyle=\ttfamily\footnotesize,
+  backgroundcolor=\color{codigocinza},
+  commentstyle=\color{codigoverde},
+  keywordstyle=\color{blue!70!black},
+  stringstyle=\color{red!65!black},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  numbersep=8pt,
+  frame=single,
+  rulecolor=\color{gray!55},
+  breaklines=true,
+  breakatwhitespace=false,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  tabsize=4
+}
+\renewcommand{\lstlistingname}{Código}
+
+\newcommand{\imagemrelatorio}[2][width=.7\linewidth]{%
+  \IfFileExists{#2}{%
+    \includegraphics[#1]{#2}%
+  }{%
+    \fbox{\parbox[c][3.5cm][c]{.78\linewidth}{%
+      \centering Imagem não encontrada: \texttt{\detokenize{#2}}%
+    }}%
+  }%
+}
+
+% =========================================================
+% Links
+% =========================================================
+\usepackage{xurl}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=blue,
+  citecolor=black,
+  pdfauthor={Miguel Gayani, José Mauro Elsas e Israel Oliveira Carneiro},
+  pdftitle={Experimento 5 — Transformador}
+}
+
+% =========================================================
+% Dados da capa
+% =========================================================
+\newcommand{\Instituicao}{Universidade do Estado do Rio de Janeiro}
+\newcommand{\Curso}{Física VII -- Oceanografia}
+\newcommand{\Professor}{Professor: Alexandre Magnus Gomes Carvalho}
+\newcommand{\Alunos}{Alunos: Miguel Gayani, \\
+                             Jose Mauro Elsas e \\
+                             Israel Oliveira Carneiro}
+\newcommand{\Cidade}{Rio de Janeiro}
+\newcommand{\Ano}{2026}
+
+\begin{document}
+\pagenumbering{gobble}
+
+% =========================================================
+% Capa
+% =========================================================
+\begin{titlepage}
+  \centering
+  {\large \Instituicao\par}
+  \vspace{0.5cm}
+  {\large \Curso\par}
+  \vspace{1cm}
+  {\LARGE\textbf{Experimento 5}\par}
+  \vspace{0.6cm}
+  {\Large Lei de Faraday e as relações\\
+  entre número de espiras e tensão
+  \par}
+  \vspace{1cm}
+  \imagemrelatorio[width=.3\linewidth]{Figs/uerj.jpg}
+  \vfill
+  \begin{flushright}
+    \Alunos\\
+    \Professor
+  \end{flushright}
+  \vspace{1cm}
+  {\Cidade{} --- \Ano\par}
+\end{titlepage}
+
+\clearpage
+\pagenumbering{arabic}
+
+% =========================================================
+% Objetivo
+% =========================================================
+\section{Objetivo}
+
+Verificar experimentalmente a relação entre as tensões eficazes nos enrolamentos
+primário e secundário de um transformador e seus respectivos números de espiras.
+Para isso, determinar as razões $V_s/V_p$ em duas configurações de alimentação,
+calcular suas médias e seus desvios padrão e comparar os resultados com as razões
+previstas pelo modelo de transformador ideal.
+
+% =========================================================
+% Introdução e fundamentação teórica
+% =========================================================
+\section{Introdução}
+
+O desenvolvimento dos transformadores está ligado aos estudos sobre a relação
+entre eletricidade e magnetismo realizados no século XIX. Em 1831, Michael
+Faraday demonstrou a indução eletromagnética: uma variação do fluxo magnético
+através de um circuito produz nele uma força eletromotriz induzida. Esse princípio
+se tornou a base de geradores, motores e transformadores
+\parencite{faraday1832,halliday}.
+
+Com a posterior expansão dos sistemas de corrente alternada, o transformador
+passou a desempenhar uma função essencial na transmissão e na distribuição de
+energia elétrica. Ele permite elevar a tensão para reduzir a corrente e as perdas
+por efeito Joule durante o transporte de energia e, posteriormente, reduzir a
+tensão para níveis adequados ao consumo. O mesmo princípio é empregado em fontes
+de alimentação, instrumentos eletrônicos, sistemas de isolamento elétrico e
+diversos equipamentos de medição e controle.
+
+Um transformador simples é constituído por dois enrolamentos acoplados por um
+núcleo ferromagnético. O enrolamento conectado à fonte é denominado
+\emph{primário}, independentemente de seu número de espiras; o outro é denominado
+\emph{secundário}. Uma tensão alternada aplicada ao primário produz uma corrente
+variável e, consequentemente, um fluxo magnético variável no núcleo. Esse fluxo
+atravessa o secundário e induz nele uma tensão alternada
+\parencite{ling2016,halliday}.
+
+De acordo com a lei de Faraday, a força eletromotriz induzida em um enrolamento
+com $N$ espiras é
+
+\begin{equation}
+  \mathcal{E}=-N\frac{d\Phi_B}{dt},
+  \label{eq:faraday}
+\end{equation}
+
+em que $\Phi_B$ é o fluxo magnético através de uma espira. No transformador
+ideal, o mesmo fluxo atravessa os dois enrolamentos. Assim, as tensões eficazes
+são proporcionais aos respectivos números de espiras:
+
+\begin{equation}
+  \frac{V_s}{V_p}=\frac{N_s}{N_p},
+  \label{eq:razao_tensoes}
+\end{equation}
+
+na qual $V_p$ e $V_s$ são as tensões no primário e no secundário, enquanto
+$N_p$ e $N_s$ representam seus números de espiras. Se $N_s>N_p$, o equipamento
+é elevador de tensão; se $N_s<N_p$, é abaixador.
+
+Para um transformador ideal, a potência de entrada é igual à potência de saída:
+
+\begin{equation}
+  V_p I_p=V_s I_s.
+  \label{eq:potencia}
+\end{equation}
+
+Combinando as Equações~\eqref{eq:razao_tensoes} e~\eqref{eq:potencia}, obtém-se
+a relação inversa entre as correntes:
+
+\begin{equation}
+  \frac{I_s}{I_p}=\frac{N_p}{N_s}.
+  \label{eq:razao_correntes}
+\end{equation}
+
+Transformadores reais apresentam resistência elétrica nos enrolamentos, fluxo de
+dispersão, perdas por correntes parasitas e histerese no núcleo, além de
+acoplamento magnético imperfeito. Por isso, a razão experimental das tensões pode
+diferir da razão entre os números de espiras, sobretudo em equipamentos didáticos
+com núcleo móvel ou com entreferros.
+
+% =========================================================
+% Materiais e métodos
+% =========================================================
+\section{Materiais e Métodos}
+
+\subsection{Materiais}
+
+Foram utilizados os seguintes materiais:
+
+\begin{enumerate}[label=\alph*.]
+  \item transformador com núcleo ferromagnético laminado e enrolamentos
+  de 300 e 1200 espiras;
+  \item fonte de tensão alternada com posições de 1 a 10 de ajuste;
+  \item dois multímetros digitais iguais, modelo Minipa ET-1110A, utilizados na
+  função de voltímetro para corrente alternada;
+  \item cabos e pontas de prova para as conexões elétricas.
+\end{enumerate}
+
+\begin{figure}[H]
+  \centering
+  \imagemrelatorio[width=.6\linewidth]{Figs/WhatsApp Image 2026-09-03 at 22.13.04.jpeg}
+  \caption{Fonte de Alimentação}
+  \label{fig:Fonte}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \imagemrelatorio[width=.6\linewidth]{Figs/transformador.jpeg}
+  \caption{transformador utilizado no experimento, com dois
+  enrolamentos acoplados por um núcleo ferromagnético laminado.}
+  \label{fig:transformador}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \imagemrelatorio[width=.52\linewidth]{Figs/multimetro.jpeg}
+  \caption{Modelo dos dois multímetros digitais utilizados para medir
+  simultaneamente as tensões nos enrolamentos primário e secundário.}
+  \label{fig:multimetro}
+\end{figure}
+
+\subsection{Procedimento experimental}
+
+O procedimento foi executado de acordo com o roteiro fornecido durante a aula
+\parencite{roteiro}.
+
+Na primeira configuração, a fonte de tensão alternada foi conectada ao
+enrolamento de 300 espiras, que passou a constituir o primário. Um multímetro foi
+ligado aos terminais desse enrolamento para medir $V_p$, enquanto o segundo foi
+conectado ao enrolamento de 1200 espiras para medir simultaneamente $V_s$. A
+fonte foi ajustada sucessivamente em dez posições e, em cada uma delas, foram
+registradas as duas tensões.
+
+Em seguida, a alimentação foi invertida. A fonte foi conectada ao enrolamento de
+1200 espiras, que passou a ser o primário, e o enrolamento de 300 espiras passou
+a ser o secundário. Mantendo um multímetro conectado a cada enrolamento, foram
+repetidas as medições para as dez posições da fonte.
+
+Para cada linha das duas séries, calculou-se a razão
+
+\begin{equation}
+  r_i=\frac{V_{s,i}}{V_{p,i}}.
+  \label{eq:razao_experimental}
+\end{equation}
+
+A média das dez razões de cada circuito foi determinada por
+
+\begin{equation}
+  \bar r=\frac{1}{n}\sum_{i=1}^{n}r_i,
+  \label{eq:media}
+\end{equation}
+
+e sua dispersão foi expressa pelo desvio padrão amostral
+
+\begin{equation}
+  s_r=\sqrt{\frac{\sum_{i=1}^{n}(r_i-\bar r)^2}{n-1}}.
+  \label{eq:desvio}
+\end{equation}
+
+As dez linhas de cada circuito correspondem a diferentes posições da fonte, e
+não a repetições de uma mesma tensão. Por isso, o desvio padrão calculado
+caracteriza a dispersão da razão de transformação ao longo das condições
+ensaiadas; ele não representa a tolerância dos multímetros. Como não foram
+registradas a faixa selecionada em cada instrumento nem suas especificações de
+exatidão, não foi possível compor uma incerteza instrumental completa para cada
+leitura. A resolução de $0{,}1\,\mathrm{V}$ observada nos registros foi considerada
+na discussão qualitativa, mas não foi apresentada como se fosse a tolerância do
+equipamento. Essa distinção segue a recomendação de identificar separadamente as
+componentes estatísticas e não estatísticas da incerteza
+\parencite{jcgm2008}.
+
+A diferença relativa entre a média experimental e o valor teórico foi calculada
+por
+
+\begin{equation}
+  \delta=\frac{|\bar r-r_{\mathrm{teo}}|}{r_{\mathrm{teo}}}\times100\%.
+  \label{eq:diferenca}
+\end{equation}
+
+Os cálculos e gráficos foram produzidos em Python com as bibliotecas NumPy e
+Matplotlib. O script utilizado é apresentado no Anexo~B.
+
+% =========================================================
+% Resultados e discussão
+% =========================================================
+\section{Resultados e Discussão}
+
+No Circuito 1, o enrolamento de 300 espiras foi utilizado como primário e o de
+1200 espiras como secundário. A razão teórica correspondente é
+
+\begin{equation}
+  r_{\mathrm{teo},1}=\frac{N_s}{N_p}
+  =\frac{1200}{300}=4.
+  \label{eq:teorica1}
+\end{equation}
+
+Os valores medidos e as razões calculadas são apresentados na
+Tabela~\ref{tab:circuito1}.
+
+\begin{table}[H]
+  \centering
+  \caption{Tensões e razões experimentais do Circuito 1.}
+  \label{tab:circuito1}
+  \medskip
+  \begin{tabular}{cccc}
+    \toprule
+    Posição da fonte & $V_p$ (V) & $V_s$ (V) & $V_s/V_p$ \\
+    \midrule
+     1 &  1,9 &  5,2 & 2,7368 \\
+     2 &  3,9 & 11,2 & 2,8718 \\
+     3 &  6,0 & 17,1 & 2,8500 \\
+     4 &  8,2 & 23,1 & 2,8171 \\
+     5 & 10,3 & 29,2 & 2,8350 \\
+     6 & 12,4 & 35,2 & 2,8387 \\
+     7 & 14,5 & 41,2 & 2,8414 \\
+     8 & 16,6 & 47,1 & 2,8373 \\
+     9 & 18,7 & 52,8 & 2,8235 \\
+    10 & 20,8 & 58,6 & 2,8173 \\
+    \midrule
+    Média & 11,33 & 32,07 & 2,8269 \\
+    Desvio padrão de $V_s/V_p$ & -- & -- & 0,0356 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+É importante observar que os valores manuscritos na última coluna da folha de
+laboratório correspondem a $V_p/V_s$, apesar de o cabeçalho indicar $V_s/V_p$.
+Por exemplo, na primeira linha, $1{,}9/5{,}2=0{,}365$, aproximadamente o valor
+anotado, enquanto a razão solicitada é $5{,}2/1{,}9=2{,}7368$. A
+Tabela~\ref{tab:circuito1} apresenta todas as razões na ordem indicada pelo
+roteiro e pela Equação~\eqref{eq:razao_tensoes}.
+
+Para o Circuito 1, obteve-se a razão adimensional\footnote{Como $V_s$ e $V_p$ são expressos na mesma unidade, o volt se cancela no quociente $V_s/V_p$. Consequentemente, tanto a razão média $\bar r$ quanto seu desvio padrão $s_r$ são adimensionais.}
+
+
+\begin{equation}
+  \boxed{\bar r_1\pm s_{r,1}=2{,}8269\pm0{,}0356}.
+\end{equation}
+
+A diferença relativa em relação à razão ideal foi
+
+\begin{equation}
+  \delta_1=\frac{|2{,}8269-4|}{4}\times100\%=29{,}33\%.
+\end{equation}
+
+Embora \(V_s\) tenha permanecido maior que \(V_p\) em todas as posições, confirmando o funcionamento elevador, a inclinação experimental, aproximadamente igual a \(2{,}83\), ficou abaixo do valor teórico \(4\). Como as razões apresentaram pequena dispersão e permaneceram aproximadamente constantes, a diferença possui caráter predominantemente sistemático. A hipótese mais provável é o acoplamento magnético incompleto entre os enrolamentos, possivelmente agravado por pequenos entreferros nas junções do núcleo ferromagnético desmontável. Além disso, quando a bobina de 300 espiras foi utilizada como primário, sua menor indutância pode ter produzido uma corrente de magnetização mais elevada, aumentando as quedas de tensão na resistência do enrolamento e na impedância interna da fonte. Perdas por histerese e correntes parasitas também podem ter contribuído indiretamente, embora não pareçam suficientes, isoladamente, para explicar a diferença observada. Erros instrumentais são menos prováveis como causa principal, pois seria necessária uma diferença de calibração muito elevada entre os multímetros. Também não se pode excluir uma ligação em uma derivação diferente da nominal. Como não foram medidas a corrente de magnetização, a frequência, as resistências dos enrolamentos nem o fluxo magnético, não é possível quantificar separadamente cada uma dessas contribuições.
+
+
+No Circuito 2, o enrolamento de 1200 espiras foi alimentado e o de 300 espiras
+foi usado como secundário. A razão teórica é
+
+\begin{equation}
+  r_{\mathrm{teo},2}=\frac{N_s}{N_p}
+  =\frac{300}{1200}=0{,}25.
+  \label{eq:teorica2}
+\end{equation}
+
+Os resultados dessa configuração são apresentados na
+Tabela~\ref{tab:circuito2}.
+
+\begin{table}[H]
+  \centering
+  \caption{Tensões e razões experimentais do Circuito 2.}
+  \label{tab:circuito2}
+  \medskip
+  \begin{tabular}{cccc}
+    \toprule
+    Posição da fonte & $V_p$ (V) & $V_s$ (V) & $V_s/V_p$ \\
+    \midrule
+     1 &  2,1 & 0,4 & 0,1905 \\
+     2 &  4,5 & 1,0 & 0,2222 \\
+     3 &  7,0 & 1,7 & 0,2429 \\
+     4 &  9,4 & 2,3 & 0,2447 \\
+     5 & 11,9 & 3,0 & 0,2521 \\
+     6 & 14,3 & 3,6 & 0,2517 \\
+     7 & 16,8 & 4,3 & 0,2560 \\
+     8 & 19,2 & 4,9 & 0,2552 \\
+     9 & 21,7 & 5,6 & 0,2581 \\
+    10 & 24,2 & 6,3 & 0,2603 \\
+    \midrule
+    Média & 13,11 & 3,31 & 0,2434 \\
+    Desvio padrão de $V_s/V_p$ & -- & -- & 0,0216 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Para o Circuito 2, obteve-se
+
+\begin{equation}
+  \boxed{\bar r_2\pm s_{r,2}=0{,}2434\pm0{,}0216}.
+\end{equation}
+
+A diferença relativa em relação ao modelo ideal foi
+
+\begin{equation}
+  \delta_2=\frac{|0{,}2434-0{,}25|}{0{,}25}\times100\%=2{,}65\%.
+\end{equation}
+
+Nesse circuito, o valor experimental ficou próximo da previsão teórica e
+$V_s<V_p$ em todas as posições, caracterizando corretamente o funcionamento
+abaixador. As duas primeiras razões foram menores que as demais. Nessas posições,
+as tensões secundárias foram apenas $0{,}4\,\mathrm{V}$ e $1{,}0\,\mathrm{V}$;
+portanto, a resolução de $0{,}1\,\mathrm{V}$ indicada nas anotações representa
+uma fração maior da leitura e exerce maior influência sobre o quociente. A partir
+da quinta posição, as razões ficaram entre 0,2517 e 0,2603, muito próximas de
+0,25.
+
+A Figura~\ref{fig:tensoes} apresenta $V_s$ em função de $V_p$ para as duas
+configurações. Nos dois casos, os pontos formaram tendências aproximadamente
+lineares. No Circuito 1, entretanto, observa-se claramente a separação entre os
+dados e a reta ideal de inclinação 4; no Circuito 2, as curvas experimental e
+ideal permanecem próximas.
+
+\begin{figure}[H]
+  \centering
+  \imagemrelatorio[width=.98\linewidth]{Figs/tensoes_transformador.png}
+  \caption{Tensão secundária em função da tensão primária. As linhas tracejadas
+  representam o modelo ideal e as linhas contínuas empregam a razão média
+  experimental.}
+  \label{fig:tensoes}
+\end{figure}
+
+A comparação direta entre as razões teóricas e experimentais é mostrada na
+Figura~\ref{fig:comparacao}. As barras de erro representam um desvio padrão das
+dez razões medidas, expressando sua dispersão e não uma incerteza instrumental
+completa.
+
+\begin{figure}[H]
+  \centering
+  \imagemrelatorio[width=.78\linewidth]{Figs/comparacao_razoes.png}
+  \caption{Comparação das razões teóricas com as médias experimentais. As barras
+  de erro correspondem ao desvio padrão amostral.}
+  \label{fig:comparacao}
+\end{figure}
+
+% =========================================================
+% Conclusão
+% =========================================================
+\section{Conclusão}
+
+O experimento permitiu verificar a relação entre as tensões dos enrolamentos de
+um transformador e investigar o efeito da inversão da alimentação. Quando a
+bobina de 300 espiras foi utilizada como primário e a de 1200 espiras como
+secundário, o sistema funcionou como elevador de tensão. O resultado foi
+$V_s/V_p=2{,}8269\pm0{,}0356$, expresso como média $\pm$ desvio padrão, valor
+29,33\% inferior à razão
+ideal igual a 4.
+
+Após a inversão, com a bobina de 1200 espiras no primário e a de 300 espiras no
+secundário, o sistema funcionou como abaixador. Nesse caso, obteve-se
+$V_s/V_p=0{,}2434\pm0{,}0216$, também como média $\pm$ desvio padrão,
+apresentando diferença relativa
+de apenas 2,65\% em relação ao valor teórico de 0,25.
+
+A diferença sistemática observada na configuração elevadora mostrou que o transformador não se comportou como um dispositivo ideal nas condições do ensaio. O resultado pode ser atribuído principalmente ao acoplamento magnético incompleto, possivelmente associado a entreferros no núcleo, à maior corrente de magnetização no enrolamento de 300 espiras e às perdas do conjunto. A pequena dispersão das razões indica que os instrumentos dificilmente constituíram a causa principal da diferença. Dessa forma, o objetivo experimental foi atingido, pois foram confirmadas a proporcionalidade aproximada entre \(V_s\) e \(V_p\) e as funções elevadora e abaixadora do transformador, mantendo-se a necessária distinção entre o modelo ideal e o comportamento real do equipamento.
+
+
+\newpage
+
+% =========================================================
+% Referências
+% =========================================================
+\printbibliography[heading=bibintoc,title={Referências}]
+
+% =========================================================
+% Anexos
+% =========================================================
+\section*{Anexo A -- Registros do experimento}
+
+\begin{figure}[H]
+  \centering
+  \imagemrelatorio[width=.93\linewidth]{Figs/dados_laboratorio.jpeg}
+  \caption{Folha de dados preenchida durante o experimento.}
+  \label{fig:dados_laboratorio}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[H]
+  \centering
+  \imagemrelatorio[width=.72\linewidth]{Figs/quadro_relacoes.jpeg}
+  \caption{Relações entre tensões, correntes e números de espiras. Os números de espiras seguem a formulação acima.}
+  \label{fig:quadro}
+\end{figure}
+
+\clearpage
+
+\section*{Anexo B -- Script Python para o tratamento dos dados}
+
+O Código~\ref{cod:analise} apresenta o script empregado para calcular as razões,
+as médias, os desvios padrão amostrais e as diferenças relativas, além de gerar
+as Figuras~\ref{fig:tensoes} e~\ref{fig:comparacao}.
+
+\lstinputlisting[
+  caption={Script utilizado no tratamento dos dados experimentais.},
+  label={cod:analise}
+]{analise_transformador.py}
+
+\end{document}
