@@ -1,0 +1,25 @@
+\begin{tikzpicture}[
+  scale=0.96,transform shape,
+  every node/.style={font=\sffamily\tiny,align=center},
+  arr/.style={-{Latex[length=2mm]},uerjred,thick}
+]
+  \path[use as bounding box] (-0.2,-0.35) rectangle (8.2,3.3);
+
+  % divergente
+  \draw[uerjblue,thick] (0.1,1.35) -- (1.65,1.35);
+  \draw[uerjblue,thick] (2.05,1.35) -- (3.60,1.35);
+  \draw[arr] (1.55,1.72) -- (0.65,1.72);
+  \draw[arr] (2.15,1.72) -- (3.05,1.72);
+  \draw[uerjred,thick] (1.85,0.65) -- (1.85,1.55);
+  \node at (1.85,2.15) {divergente};
+  \node at (1.85,0.35) {dorsal ou rifte};
+
+  % convergente
+  \draw[uerjblue,thick] (4.10,1.35) -- (5.55,1.35);
+  \draw[uerjgold,thick] (5.55,1.35) -- (7.80,1.35);
+  \draw[uerjblue,thick] (5.55,1.35) .. controls (6.05,1.05) and (6.35,0.45) .. (7.15,0.15);
+  \draw[arr] (4.65,1.72) -- (5.35,1.72);
+  \draw[arr] (7.15,1.72) -- (6.20,1.72);
+  \node at (5.95,2.15) {convergente};
+  \node at (6.35,0.35) {subducção};
+\end{tikzpicture}

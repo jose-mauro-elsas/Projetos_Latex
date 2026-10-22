@@ -1,0 +1,25 @@
+\begin{tikzpicture}[
+  x=0.72cm,y=0.72cm,
+  every node/.style={font=\sffamily\scriptsize,align=center}
+]
+  \path[use as bounding box] (-0.1,-0.45) rectangle (8.6,3.45);
+
+  \draw[uerjblue,rounded corners] (0,0) rectangle (3.95,2.75);
+  \node[font=\sffamily\bfseries\scriptsize] at (1.98,2.48) {bem selecionado};
+  \foreach \x/\y in {0.55/0.55,1.25/0.60,1.95/0.52,2.65/0.60,3.35/0.54,0.85/1.25,1.55/1.20,2.25/1.28,2.95/1.18,1.20/1.85,1.90/1.80,2.60/1.88,3.30/1.78} {
+    \filldraw[fill=lightgold,draw=uerjgold] (\x,\y) circle (0.16);
+  }
+
+  \draw[uerjblue,rounded corners] (4.55,0) rectangle (8.50,2.75);
+  \node[font=\sffamily\bfseries\scriptsize] at (6.53,2.48) {mal selecionado};
+  \filldraw[fill=lightgold,draw=uerjgold] (5.05,0.52) circle (0.10);
+  \filldraw[fill=lightgold,draw=uerjgold] (5.58,0.82) circle (0.23);
+  \filldraw[fill=lightgold,draw=uerjgold] (6.35,0.55) circle (0.34);
+  \filldraw[fill=lightgold,draw=uerjgold] (7.25,0.78) circle (0.14);
+  \filldraw[fill=lightgold,draw=uerjgold] (7.92,0.55) circle (0.29);
+  \filldraw[fill=lightgold,draw=uerjgold] (5.20,1.55) circle (0.31);
+  \filldraw[fill=lightgold,draw=uerjgold] (6.02,1.48) circle (0.12);
+  \filldraw[fill=lightgold,draw=uerjgold] (6.70,1.55) circle (0.22);
+  \filldraw[fill=lightgold,draw=uerjgold] (7.48,1.58) circle (0.38);
+  \filldraw[fill=lightgold,draw=uerjgold] (8.12,1.65) circle (0.09);
+\end{tikzpicture}

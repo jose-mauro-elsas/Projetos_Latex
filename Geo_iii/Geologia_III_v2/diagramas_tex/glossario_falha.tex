@@ -1,0 +1,19 @@
+\begin{tikzpicture}[x=0.62cm,y=0.62cm,every node/.style={font=\sffamily\scriptsize}]
+  % blocos e camadas de uma falha normal simplificada
+  \path[use as bounding box] (-0.2,0) rectangle (7.0,4.25);
+  \draw[thick] (3.25,4.05) -- (4.48,0.12);
+
+  % camadas muro - esquerda
+  \foreach \y in {0.65,1.35,2.05,2.75} {
+    \draw[uerjgold,thick] (0,\y) -- ({3.25 + (4.05-\y)*(1.23/3.93)},\y);
+  }
+  % camadas teto - direita, deslocadas para baixo
+  \foreach \y in {0.25,0.95,1.65,2.35} {
+    \draw[uerjgold,thick] ({4.48 - (\y-0.12)*(1.23/3.93)},\y) -- (6.9,\y);
+  }
+
+  \draw[-{Latex[length=2.7mm]},thick,uerjblue] (1.25,1.2) -- (1.25,2.25);
+  \draw[-{Latex[length=2.7mm]},thick,uerjred] (5.75,2.45) -- (5.75,1.40);
+  \node[align=center] at (1.45,3.55) {muro/lapa\\relativamente elevado};
+  \node[align=center] at (5.75,3.55) {teto/capa\\rebaixado};
+\end{tikzpicture}

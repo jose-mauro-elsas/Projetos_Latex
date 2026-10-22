@@ -1,0 +1,53 @@
+\begin{tikzpicture}[
+  node distance=3mm and 4mm,
+  every node/.style={
+    font=\sffamily\scriptsize,
+    align=center
+  },
+  cat/.style={
+    draw=uerjblue,
+    rounded corners,
+    fill=lightblue,
+    text width=2.25cm,
+    minimum height=0.78cm,
+    inner sep=2pt
+  }
+]
+
+  \node[cat] (sed) {sedimentos e rochas\\sedimentares};
+
+  \node[cat,below left=7mm and -1mm of sed]
+    (cla) {clásticos\\terrígenos};
+
+  \node[cat,below right=7mm and -1mm of sed]
+    (bio) {biogênicos};
+
+  % Segunda linha mais afastada
+  \node[cat,below=13mm of cla]
+    (qui) {químicos};
+
+  \node[cat,below=13mm of bio]
+    (vul) {vulcanogênicos};
+
+  \coordinate[below=3mm of sed] (ramoA);
+  \coordinate[below=20mm of sed] (ramoB);
+
+  \draw[uerjred,thick]
+    (sed.south) -- (ramoA);
+
+  \draw[-{Latex[length=2mm]},uerjred,thick]
+    (ramoA) -| (cla.north);
+
+  \draw[-{Latex[length=2mm]},uerjred,thick]
+    (ramoA) -| (bio.north);
+
+  \draw[uerjred,thick]
+    (ramoA) -- (ramoB);
+
+  \draw[-{Latex[length=2mm]},uerjred,thick]
+    (ramoB) -| (qui.north);
+
+  \draw[-{Latex[length=2mm]},uerjred,thick]
+    (ramoB) -| (vul.north);
+
+\end{tikzpicture}

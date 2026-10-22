@@ -1,0 +1,18 @@
+\begin{tikzpicture}[
+  node distance=7mm and 5mm,
+  every node/.style={font=\sffamily\scriptsize,align=center},
+  caixa/.style={draw=uerjblue,rounded corners,fill=lightblue,
+                text width=2.05cm,minimum height=0.72cm,inner sep=2pt}
+]
+  \node[caixa] (mag) {magma};
+  \node[caixa,below left=10mm and 0mm of mag] (ign) {rocha\\ígnea};
+  \node[caixa,below right=10mm and 0mm of mag] (met) {rocha\\metamórfica};
+  \node[caixa,below=13mm of $(ign)!0.5!(met)$] (sed) {rocha\\sedimentar};
+
+  \draw[-{Latex[length=2mm]},uerjred,thick] (mag) -- node[left,font=\tiny] {cristalização} (ign);
+  \draw[-{Latex[length=2mm]},uerjred,thick] (met) -- node[right,font=\tiny] {fusão} (mag);
+  \draw[-{Latex[length=2mm]},uerjred,thick] (ign) -- node[left,font=\tiny,align=right] {intemperismo,\\deposição e litificação} (sed);
+  \draw[-{Latex[length=2mm]},uerjred,thick] (sed) -- node[right,font=\tiny] {metamorfismo} (met);
+  \draw[-{Latex[length=2mm]},uerjblue,dashed] (ign) -- node[above,font=\tiny] {metamorfismo} (met);
+  \draw[-{Latex[length=2mm]},uerjblue,dashed] (sed.west) to[bend right=35] node[left,font=\tiny] {fusão} (mag.west);
+\end{tikzpicture}

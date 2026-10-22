@@ -1,0 +1,164 @@
+%!TEX program = lualatex
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[brazilian]{babel}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\usepackage[a4paper,top=1.35cm,bottom=1.35cm,left=1.65cm,right=1.65cm]{geometry}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{ragged2e}
+\usepackage{microtype}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\newcommand{\campolinha}[1]{\textbf{#1}\rule{8.6cm}{0.4pt}}
+
+\begin{document}
+
+\begin{minipage}[t]{0.78\textwidth}
+\vspace{0pt}
+\textbf{Universidade do Estado do Rio de Janeiro -- UERJ}\\
+Faculdade de Geologia -- FGEL\\
+Departamento de Estratigrafia e Paleontologia -- DEPA\\
+Disciplina: \rule{7.2cm}{0.4pt}\\
+Professora: Renata M. A. Gama\\
+Exercício 1 -- Ciclo das Rochas\\[0.25em]
+\textbf{ALUNO(A):} \rule{8.7cm}{0.4pt}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.18\textwidth}
+\vspace{-0.2cm}
+\centering
+\includegraphics[width=2.75cm]{uerj.png}
+\end{minipage}
+
+\vspace{0.45cm}
+
+\begin{center}
+\begin{tikzpicture}[
+    x=1cm,y=1cm,
+    >=Latex,
+    caixa/.style={draw, minimum width=2.05cm, minimum height=0.72cm, fill=white, inner sep=2pt},
+    processo/.style={draw, minimum width=2.15cm, minimum height=0.72cm, fill=white, inner sep=2pt},
+    seta/.style={->, very thick},
+    setaPont/.style={->, thick, dotted},
+    rocha/.style={draw=none, fill=gray!28},
+    sed/.style={draw=none, fill=gray!18},
+    magma/.style={draw, rounded corners=8pt, fill=gray!8}
+]
+
+% --- formas geológicas simplificadas ---
+% bloco metamórfico à esquerda
+\path[rocha] (0.2,1.2) -- (3.4,1.2) -- (3.45,5.0) -- (2.35,5.45) -- (1.15,4.6) -- (0.2,4.25) -- cycle;
+\path[fill=gray!42] (1.05,4.35) -- (2.25,5.15) -- (3.35,4.75) -- (3.25,3.35) -- (2.15,3.0) -- cycle;
+
+% estratos sedimentares
+\draw[thick] (0.0,5.55) .. controls (1.2,5.5) and (1.8,6.15) .. (3.0,6.35);
+\draw[thick] (0.0,5.35) .. controls (1.2,5.3) and (1.8,5.95) .. (3.0,6.15);
+\draw[thick] (0.0,5.15) .. controls (1.2,5.1) and (1.8,5.75) .. (3.0,5.95);
+\draw[thick] (3.0,6.35) -- (8.7,6.35);
+\draw[thick] (3.0,6.15) -- (8.7,6.15);
+\draw[thick] (3.0,5.95) -- (8.7,5.95);
+
+% corpo intrusivo
+\path[fill=gray!12, draw, thick] (5.05,5.95) .. controls (5.0,6.8) and (5.4,7.25) .. (6.1,7.2)
+  .. controls (6.65,7.15) and (6.95,6.65) .. (7.0,5.95) -- cycle;
+\foreach \x/\y in {5.3/6.3,5.6/6.6,5.9/6.15,6.2/6.55,6.5/6.25,5.45/6.95,6.35/6.9}
+  \fill (\x,\y) circle (1.1pt);
+
+% conduto e câmara magmática
+\draw[very thick, gray!55] (7.05,2.2) .. controls (7.25,3.1) and (7.2,4.3) .. (6.5,5.9);
+\path[magma] (6.35,1.25) .. controls (5.7,1.25) and (5.45,1.55) .. (5.55,2.0)
+  .. controls (5.7,2.5) and (6.45,2.8) .. (7.25,2.55)
+  .. controls (7.9,2.35) and (8.05,1.7) .. (7.55,1.4)
+  .. controls (7.2,1.18) and (6.8,1.18) .. cycle;
+
+% corpo intrusivo profundo
+\path[fill=gray!12, draw, thick] (6.0,3.25) .. controls (5.6,3.55) and (5.65,4.3) .. (6.15,4.55)
+ .. controls (6.8,4.85) and (7.35,4.4) .. (7.25,3.8)
+ .. controls (7.15,3.2) and (6.55,3.0) .. cycle;
+\foreach \x/\y in {6.0/3.7,6.3/4.1,6.65/3.65,6.85/4.25,6.45/4.45}
+  \fill (\x,\y) circle (1.1pt);
+
+% vulcão
+\path[fill=gray!38,draw,thick] (8.0,6.35) -- (8.55,7.3) -- (9.05,6.35) -- cycle;
+\draw[very thick,gray!55] (8.55,2.55) -- (8.55,7.28);
+\fill (8.45,7.65) circle (2pt);
+\fill (8.65,7.85) circle (1.7pt);
+\fill (8.82,7.55) circle (1.5pt);
+
+% --- caixas de processos (vazias) ---
+\node[processo] (p1) at (2.2,8.8) {};
+\node[processo] (p2) at (4.5,8.8) {};
+\node[processo] (p3) at (7.25,8.8) {};
+\node[processo] (p4) at (1.2,7.75) {};
+\node[processo] (p5) at (0.55,6.7) {};
+\node[processo] (p6) at (0.7,4.85) {};
+\node[processo] (p7) at (0.95,3.55) {};
+\node[processo] (p8) at (1.7,2.3) {};
+\node[processo] (p9) at (4.4,1.2) {\textbf{FUSÃO}};
+\node[processo] (p10) at (6.7,2.0) {};
+\node[processo] (p11) at (5.8,4.15) {};
+\node[processo] (p12) at (6.4,5.3) {};
+\node[processo] (p13) at (8.15,7.55) {};
+
+% --- conexões principais ---
+\draw[setaPont] (p3.west) -- (p2.east);
+\draw[setaPont] (p2.west) -- (p1.east);
+\draw[setaPont] (p1.west) -- ++(-0.65,0) -- (p4.north);
+\draw[setaPont] (p4.south) -- (p5.north);
+\draw[setaPont] (p5.south) -- (p6.north);
+\draw[setaPont] (p6.south) -- (p7.north);
+\draw[setaPont] (p7.south) -- (p8.north);
+\draw[setaPont] (p8.east) -- (p9.west);
+\draw[setaPont] (p9.east) -- (p10.west);
+\draw[setaPont] (p10.north) -- (p11.south);
+\draw[setaPont] (p11.north) -- (p12.south);
+\draw[setaPont] (p12.north) -- (p2.south);
+\draw[setaPont] (p10.east) -- ++(1.85,0) -- (p13.south);
+\draw[setaPont] (p13.north) -- (p3.south);
+
+% ligações diagonais representando rotas alternativas
+\draw[setaPont] (p3.south west) -- (2.55,5.55);
+\draw[setaPont] (p12.west) -- (2.85,3.75);
+\draw[setaPont] (p11.west) -- (2.55,2.75);
+\draw[setaPont] (p2.south west) -- (2.15,4.15);
+
+\end{tikzpicture}
+\end{center}
+
+\vspace{0.15cm}
+
+\textbf{Preencha as lacunas com os eventos citados abaixo, de acordo com a ordem do trajeto percorrido pela rocha.}
+
+\vspace{0.25cm}
+
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{|>{\RaggedRight\arraybackslash}X|>{\RaggedRight\arraybackslash}X|}
+\hline
+\textbf{Processos} & \textbf{Produtos} \\
+\hline
+Erosão / Transporte & Rochas metamórficas \\
+\hline
+Intemperismo & Magma \\
+\hline
+Deposição e diagênese & Sedimentos \\
+\hline
+Soerguimento e exposição & Rochas ígneas intrusivas \\
+\hline
+Metamorfismo & Rochas ígneas extrusivas \\
+\hline
+Fusão & Rochas sedimentares \\
+\hline
+Intrusão / Cristalização & \\
+\hline
+Vulcanismo / Consolidação & \\
+\hline
+\end{tabularx}
+
+\end{document}

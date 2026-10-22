@@ -1,0 +1,76 @@
+% =========================================================
+% FRAGMENTO 3 — AFLORAMENTOS, GRANULOMETRIA, TEMPO
+% GEOLÓGICO, LYELL, BOWEN, CORES DOS MINERAIS E WENTWORTH
+%
+% Este arquivo contém somente o corpo dos verbetes.
+% Usa os comandos já definidos no arquivo principal:
+% \letra, verbete, \termo, \relacao, \vertambem e pensador.
+%
+% OBSERVAÇÃO: Georges Cuvier já aparece no fragmento anterior.
+% Não foi repetido aqui para evitar dois verbetes iguais.
+%
+% Grafia correta: Siccar Point.
+% =========================================================
+
+
+
+
+
+% =========================================================
+% LETRA M — inserir depois de "Minerais e sólidos amorfos".
+% NÃO repetir \letra{M}.
+% =========================================================
+
+
+
+% =========================================================
+% LETRA R — inserir dentro da letra R, de preferência antes
+% de "Rochas sedimentares: tipos principais".
+% NÃO repetir \letra{R}.
+% =========================================================
+
+
+
+\begin{verbete}{Siccar Point}
+\termo{Siccar Point} é um afloramento costeiro da Escócia famoso por apresentar uma discordância angular reconhecida por James Hutton em 1788. No local, camadas quase verticais de arenitos grauváquicos, siltitos e lamitos do Siluriano são recobertas de forma discordante por brechas e arenitos avermelhados mais jovens do \textit{Old Red Sandstone}, depositados com inclinação muito menor.
+
+A geometria observada exige uma longa sucessão de acontecimentos:
+
+\begin{enumerate}
+  \item deposição e litificação dos sedimentos silurianos;
+  \item deformação, dobramento e basculamento das camadas antigas;
+  \item soerguimento e erosão, que truncaram essas camadas;
+  \item nova deposição de sedimentos continentais sobre a superfície erosiva;
+  \item novo soerguimento e erosão, expondo a discordância atual.
+\end{enumerate}
+
+\begin{center}
+\begin{tikzpicture}[x=0.72cm,y=0.72cm,every node/.style={font=\sffamily\scriptsize,align=center}]
+  \path[use as bounding box] (-0.2,-0.45) rectangle (8.65,4.85);
+
+  % Camadas antigas, quase verticais
+  \foreach \x in {0.15,0.75,1.35,1.95,2.55,3.15,3.75,4.35,4.95,5.55,6.15,6.75,7.35,7.95} {
+    \draw[uerjblue,thick] (\x,0.15) -- ({\x+0.75},2.35);
+  }
+  \fill[white] (-0.2,2.30) -- (8.65,2.30) -- (8.65,4.85) -- (-0.2,4.85) -- cycle;
+  \draw[uerjred,very thick] (-0.05,2.30) -- (8.45,2.30);
+
+  % Camadas jovens, pouco inclinadas
+  \foreach \y in {2.65,3.10,3.55,4.00} {
+    \draw[uerjgold,thick] (0.05,{\y+0.30}) -- (8.45,\y);
+  }
+
+  \node[fill=white,inner sep=1.5pt] at (2.10,1.25) {camadas silurianas\\quase verticais};
+  \node[fill=white,inner sep=1.5pt] at (6.25,3.55) {camadas mais jovens\\pouco inclinadas};
+  \node[fill=white,inner sep=1.5pt,text=uerjred] at (4.25,2.30) {superfície de discordância};
+\end{tikzpicture}
+\end{center}
+
+Siccar Point forneceu uma demonstração visual do \termo{tempo profundo}: cada etapa exigiu tempo para ocorrer, e a superfície de discordância representa um intervalo não preservado diretamente como camada sedimentar.
+
+\relacao{Siccar Point relaciona afloramento, discordância angular, ciclos de deposição e erosão e a interpretação do tempo geológico profundo.}
+
+\vertambem{Hutton, James, discordância angular, afloramento, registro estratigráfico, tempo geológico}
+\end{verbete}
+
+

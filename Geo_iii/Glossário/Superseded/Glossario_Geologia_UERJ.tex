@@ -1,0 +1,1577 @@
+%!TEX program = lualatex
+% Arquivo-base do Glossário de Geologia
+% Compilar com LuaLaTeX.
+
+\documentclass[11pt,a4paper,twoside,openany]{book}
+% Evita páginas em branco apenas para iniciar partes no lado ímpar durante o desenvolvimento.
+\let\cleardoublepage\clearpage
+
+% =========================================================
+% Idioma e tipografia
+% =========================================================
+\usepackage[portuguese]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+% Para usar a tipografia institucional em um computador que possua a fonte,
+% pode-se substituir as duas linhas acima por fontspec e Fira Sans Condensed.
+\usepackage{microtype}
+
+% =========================================================
+% Página e colunas
+% =========================================================
+\usepackage[
+  a4paper,
+  inner=2.2cm,
+  outer=1.8cm,
+  top=2.3cm,
+  bottom=2.2cm,
+  headheight=15pt,
+  headsep=0.7cm
+]{geometry}
+\usepackage{multicol}
+\setlength{\columnsep}{0.8cm}
+\setlength{\columnseprule}{0.25pt}
+\raggedcolumns
+\usepackage{needspace}
+\usepackage{ragged2e}
+\usepackage{setspace}
+\setstretch{1.04}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.35em}
+
+% =========================================================
+% Cores institucionais Uerj
+% Manual da marca: Pantone 285 C, 1255 C e Warm Red C
+% =========================================================
+\usepackage{xcolor}
+\definecolor{uerjblue}{HTML}{0072CE}
+\definecolor{uerjgold}{HTML}{AD841F}
+\definecolor{uerjred}{HTML}{F9423A}
+\definecolor{lightblue}{HTML}{EAF4FC}
+\definecolor{lightgold}{HTML}{F8F2E4}
+
+% =========================================================
+% Figuras e diagramas
+% =========================================================
+\usepackage{graphicx}
+\graphicspath{{./}{./figuras/}{./imagens/}}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,positioning,shapes.geometric}
+\usepackage{caption}
+\usepackage{siunitx}
+\sisetup{output-decimal-marker={,}}
+\captionsetup{font=small,labelfont=bf}
+
+% =========================================================
+% Caixas, listas e títulos
+% =========================================================
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+\setlist[itemize]{leftmargin=1.2em,itemsep=1pt,topsep=3pt}
+\setlist[enumerate]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\sffamily\bfseries\color{uerjblue}}
+  {\filleft\Large\chaptername\ \thechapter}
+  {0.4ex}
+  {\titlerule[1pt]\vspace{0.7ex}\Huge}
+\titlespacing*{\chapter}{0pt}{-15pt}{24pt}
+
+% =========================================================
+% Cabeçalhos: primeiro e último verbete da página
+% Cada verbete executa \markboth{termo}{termo}.
+% \rightmark recupera a primeira marca e \leftmark a última.
+% =========================================================
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\sffamily\small\color{uerjblue}Glossário (muito básico) de Geologia}
+\fancyhead[LO,RE]{\sffamily\small\nouppercase{\rightmark\ -- \leftmark}}
+\fancyfoot[C]{\sffamily\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[C]{\sffamily\small\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+% =========================================================
+% Links e metadados
+% =========================================================
+\usepackage{hyperref}
+\usepackage{xurl}
+\hypersetup{
+  colorlinks=true,
+  hypertexnames=false,
+  linkcolor=uerjblue,
+  urlcolor=uerjblue,
+  citecolor=uerjblue,
+  pdfauthor={José Mauro Xavier Elsas},
+  pdftitle={Glossário de Geologia},
+  pdfsubject={Terminologia fundamental de Geologia para Oceanografia}
+}
+
+% =========================================================
+% Dados editáveis da capa
+% =========================================================
+\newcommand{\Instituicao}{Universidade do Estado do Rio de Janeiro}
+\newcommand{\Unidade}{Faculdade de Oceanografia}
+\newcommand{\TituloDocumento}{Glossário (muito básico) de Geologia}
+\newcommand{\SubtituloDocumento}{Terminologia fundamental dos três primeiros períodos de Oceanografia}
+\newcommand{\AutorDocumento}{José Mauro Xavier Elsas}
+\newcommand{\CidadeDocumento}{Rio de Janeiro}
+\newcommand{\AnoDocumento}{2026}
+\newcommand{\VersaoDocumento}{Versão inicial de desenvolvimento}
+
+% =========================================================
+% Comandos do glossário
+% =========================================================
+\newcommand{\letra}[1]{%
+  \par\addvspace{1.0em}
+  \needspace{5\baselineskip}
+  \noindent
+  \colorbox{uerjblue}{%
+    \parbox{\dimexpr\columnwidth-2\fboxsep\relax}{%
+      \centering\color{white}\sffamily\bfseries\fontsize{28}{30}\selectfont #1}}
+  \par\vspace{0.7em}
+}
+
+\newenvironment{verbete}[1]{%
+  \needspace{6\baselineskip}
+  \markboth{#1}{#1}
+  \par\addvspace{0.55em}
+  \noindent{\sffamily\bfseries\large\color{uerjblue}#1}\par\nobreak
+  \vspace{0.15em}
+}{%
+  \par\addvspace{0.65em}
+}
+
+\newcommand{\termo}[1]{\textbf{#1}}
+\newcommand{\relacao}[1]{%
+  \par\smallskip
+  \begin{tcolorbox}[
+    colback=lightblue,
+    colframe=uerjblue,
+    boxrule=0.45pt,
+    arc=1mm,
+    left=1.5mm,right=1.5mm,top=1mm,bottom=1mm
+  ]
+  \small\textbf{Relação entre os termos:} #1
+  \end{tcolorbox}
+}
+\newcommand{\vertambem}[1]{\par\smallskip\textit{Ver também:} #1.}
+
+\newtcolorbox{pensador}[1]{
+  colback=lightgold,
+  colframe=uerjgold,
+  title={#1},
+  fonttitle=\sffamily\bfseries,
+  boxrule=0.55pt,
+  arc=1mm,
+  left=1.8mm,right=1.8mm,top=1.2mm,bottom=1.2mm
+}
+
+\newcommand{\notaescopo}[1]{%
+  \begin{tcolorbox}[
+    colback=white,
+    colframe=uerjred,
+    title={Nota de escopo},
+    fonttitle=\sffamily\bfseries,
+    boxrule=0.55pt,
+    arc=1mm
+  ]
+  #1
+  \end{tcolorbox}
+}% 1. NO PREÂMBULO, de preferência antes de \usepackage{hyperref}:
+
+\usepackage{csquotes}
+\usepackage[
+  backend=biber,
+  style=abnt,
+  sorting=nyt,
+  maxbibnames=99
+]{biblatex}
+\addbibresource{referencias_geologia.bib}
+
+% =========================================================
+% Documento
+% =========================================================
+\begin{document}
+
+% ---------------------------------------------------------
+% Capa
+% ---------------------------------------------------------
+\begin{titlepage}
+\centering
+
+{\sffamily\large\Instituicao\par}
+\vspace{0.2cm}
+{\sffamily\large\Unidade\par}
+
+\vspace{1.0cm}
+
+\IfFileExists{uerj_logo.png}{%
+  \includegraphics[width=0.27\textwidth]{uerj_logo.png}
+}{%
+  \fbox{\parbox[c][4cm][c]{4cm}{\centering\sffamily UERJ}}
+}
+
+\vspace{1.1cm}
+
+{\color{uerjblue}\rule{0.82\textwidth}{1.2pt}\par}
+\vspace{0.45cm}
+{\sffamily\bfseries\fontsize{27}{31}\selectfont\TituloDocumento\par}
+\vspace{0.35cm}
+{\sffamily\large\SubtituloDocumento\par}
+\vspace{0.45cm}
+{\color{uerjgold}\rule{0.45\textwidth}{1.2pt}\par}
+
+\vfill
+
+{\large\AutorDocumento\par}
+\vspace{1.2cm}
+{\sffamily\small\VersaoDocumento\par}
+\vspace{0.25cm}
+{\CidadeDocumento\ -- \AnoDocumento\par}
+\end{titlepage}
+
+% ---------------------------------------------------------
+% Folha de identificação
+% ---------------------------------------------------------
+\frontmatter
+\chapter*{Apresentação}
+\addcontentsline{toc}{chapter}{Apresentação}
+
+Este glossário foi concebido como material didático para reunir a terminologia fundamental de Geologia trabalhada nos primeiros períodos do curso de Oceanografia. O objetivo não é produzir uma enciclopédia geral, mas organizar os conceitos essenciais de modo tecnicamente correto, conciso e visual.
+
+Os termos relacionados aparecem no mesmo verbete sempre que essa associação facilita a aprendizagem. Assim, o leitor encontra, por exemplo, a relação entre um sedimento inconsolidado e a rocha formada por sua litificação, ou entre um elemento químico, os minerais que o contêm e as rochas formadas por esses minerais.
+
+\notaescopo{Novos termos devem ser incluídos somente quando fizerem parte do conteúdo efetivamente estudado no primeiro, segundo ou terceiro período de Oceanografia. Termos avançados podem ser citados como associação, mas não devem receber desenvolvimento enciclopédico nesta etapa.}
+
+\chapter*{Como usar este glossário}
+\addcontentsline{toc}{chapter}{Como usar este glossário}
+
+\begin{itemize}
+  \item Os \textbf{verbetes principais} aparecem em azul e seguem a ordem alfabética.
+  \item Os \textbf{termos associados} são explicados dentro do mesmo conjunto conceitual.
+  \item As caixas \textbf{Relação entre os termos} resumem processos ou vínculos importantes.
+  \item As caixas em tom dourado apresentam \textbf{pensadores e marcos históricos da Geologia}.
+  \item Os diagramas são esquemáticos e devem ser complementados por figuras de livros, aulas ou trabalhos de campo quando necessário.
+\end{itemize}
+
+\tableofcontents
+
+% ---------------------------------------------------------
+% Glossário
+% ---------------------------------------------------------
+\mainmatter
+\chapter*{Glossário}
+\addcontentsline{toc}{chapter}{Glossário}
+
+\begin{multicols*}{2}
+\small
+\justifying
+
+% =========================================================
+\letra{A}
+% =========================================================
+
+% =========================================================
+% LETRA A — inserir logo depois de \letra{A} e antes de
+% "Areia e arenito". NÃO repetir \letra{A}.
+% =========================================================
+
+\begin{verbete}{Afloramento}
+\termo{Afloramento} é uma exposição de rocha ou de sedimento consolidado na superfície terrestre, permitindo sua observação direta. Pode ser natural, como em falésias, margens de rios, encostas e leitos rochosos, ou artificial, como em cortes de estrada, pedreiras, túneis e escavações.
+
+Grande parte do substrato rochoso encontra-se coberta por solo, vegetação, depósitos recentes ou água. Por isso, os afloramentos funcionam como ``janelas'' que permitem reconhecer as unidades geológicas e interpretar sua distribuição em subsuperfície.
+
+Em um afloramento podem ser descritos:
+
+\begin{itemize}
+  \item tipo, composição e textura da rocha;
+  \item espessura, geometria e orientação das camadas;
+  \item contatos entre unidades;
+  \item dobras, falhas, juntas e fraturas;
+  \item fósseis e estruturas sedimentares;
+  \item intensidade e produtos do intemperismo.
+\end{itemize}
+
+A interpretação deve considerar que um afloramento mostra apenas uma parte da unidade geológica. A continuidade das camadas entre exposições separadas é estabelecida por correlação de campo, mapas, perfis, sondagens e métodos geofísicos.
+
+\relacao{afloramento é a porção observável de uma unidade geológica; formação ou corpo rochoso é a unidade tridimensional que pode continuar além da área exposta.}
+
+\vertambem{camada, contato geológico, formação, perfil geológico, trabalho de campo, intemperismo}
+\end{verbete}
+
+\begin{verbete}{Areia e arenito}
+\termo{Areia} é um sedimento clástico inconsolidado, isto é, um material desagregado formado por grãos. Em geral, esses grãos resultam do intemperismo, da erosão, do transporte e da deposição de materiais provenientes de rochas preexistentes. Na escala granulométrica mais usada em sedimentologia, a fração areia situa-se aproximadamente entre \SI{0.0625}{\milli\metre} e \SI{2}{\milli\metre}.
+
+A composição da areia depende da rocha de origem e do ambiente sedimentar. O quartzo é frequente por apresentar elevada resistência física e química, mas uma areia também pode conter feldspatos, fragmentos de rocha, minerais pesados, carbonatos ou partículas biogênicas.
+
+\termo{Arenito} é uma rocha sedimentar clástica formada predominantemente por grãos do tamanho areia. Forma-se quando o sedimento arenoso sofre soterramento, compactação e cimentação, processos que fazem parte da diagênese.
+
+\relacao{areia é o sedimento inconsolidado; arenito é a rocha consolidada formada principalmente pela litificação desse sedimento.}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.72, every node/.style={font=\sffamily\scriptsize}]
+  % areia solta
+  \draw[rounded corners,uerjblue] (0,0) rectangle (2.5,1.65);
+  \foreach \x/\y in {0.35/0.32,0.85/0.28,1.38/0.38,1.98/0.27,0.58/0.82,1.15/0.91,1.78/0.78,2.18/1.12,0.95/1.37,1.55/1.34} {
+    \filldraw[fill=lightgold,draw=uerjgold] (\x,\y) circle (0.14);
+  }
+  \node[below] at (1.25,-0.05) {areia: grãos soltos};
+
+  \draw[-{Latex[length=2.5mm]},thick,uerjred] (2.75,0.83) -- (3.65,0.83);
+  \node[above,align=center] at (3.2,1.8) {compactação\ e cimentação};
+
+  % arenito
+  \draw[rounded corners,uerjblue] (3.9,0) rectangle (6.4,1.65);
+  \foreach \x/\y in {4.2/0.28,4.68/0.29,5.15/0.31,5.63/0.29,6.08/0.31,4.43/0.72,4.92/0.72,5.40/0.72,5.88/0.72,4.19/1.15,4.68/1.15,5.16/1.15,5.64/1.15,6.10/1.15} {
+    \filldraw[fill=lightgold,draw=uerjgold] (\x,\y) circle (0.16);
+  }
+  \node[below,align=center] at (5.15,-0.05) {arenito\\rocha consolidada};
+\end{tikzpicture}
+\end{center}
+
+\vertambem{sedimento, rocha sedimentar, diagênese, compactação, cimentação, granulometria}
+\end{verbete}
+
+
+
+% =========================================================
+% LETRA B — inserir depois do verbete "Areia e arenito"
+% =========================================================
+
+\letra{B}
+
+\begin{verbete}{Bacia sedimentar}
+\termo{Bacia sedimentar} é uma região da crosta terrestre na qual a subsidência cria \termo{espaço de acomodação} para a acumulação de sedimentos durante determinado intervalo de tempo geológico. Com o soterramento progressivo, esses sedimentos podem sofrer diagênese e transformar-se em rochas sedimentares.
+
+Uma bacia não precisa corresponder, atualmente, a uma depressão visível no relevo. O termo descreve principalmente uma região de acumulação e preservação de sedimentos cuja origem e evolução estão relacionadas à dinâmica da crosta.
+
+Entre os elementos usados para descrever uma bacia sedimentar estão:
+
+\begin{itemize}
+  \item \termo{subsidência}: movimento de rebaixamento da crosta ou do fundo da bacia;
+  \item \termo{espaço de acomodação}: volume disponível para receber e preservar sedimentos;
+  \item \termo{área-fonte}: região de onde provêm os materiais sedimentares;
+  \item \termo{aporte sedimentar}: quantidade e tipo de sedimento fornecido à bacia;
+  \item \termo{borda da bacia}: setor periférico, geralmente mais próximo das áreas-fonte;
+  \item \termo{depocentro}: região em que se concentra a maior espessura de sedimentos;
+  \item \termo{preenchimento sedimentar}: conjunto de camadas acumuladas ao longo da evolução da bacia.
+\end{itemize}
+
+A formação e a geometria das bacias dependem do contexto tectônico. Entre os tipos mais comuns estão as \termo{bacias de rifte}, associadas à distensão da crosta; as \termo{bacias de margem passiva}, desenvolvidas após a abertura de oceanos; as \termo{bacias intracratônicas}, situadas no interior de continentes; e as \termo{bacias de antepaís}, formadas próximas a cadeias de montanhas em desenvolvimento.
+
+\begin{center}
+\begin{tikzpicture}[x=0.72cm,y=0.55cm,every node/.style={font=\sffamily\scriptsize,align=center}]
+  \path[use as bounding box] (-0.25,-0.35) rectangle (8.25,4.45);
+
+  % Camadas sedimentares com maior espessura no centro
+  \draw[uerjgold,thick]
+    (0,3.55) .. controls (2.2,3.05) and (5.8,3.05) .. (8,3.55);
+  \draw[uerjgold,thick]
+    (0,3.10) .. controls (2.2,2.35) and (5.8,2.35) .. (8,3.10);
+  \draw[uerjgold,thick]
+    (0,2.65) .. controls (2.2,1.65) and (5.8,1.65) .. (8,2.65);
+  \draw[uerjgold,thick]
+    (0,2.20) .. controls (2.2,0.95) and (5.8,0.95) .. (8,2.20);
+  \draw[uerjblue,very thick]
+    (0,1.75) .. controls (2.2,0.25) and (5.8,0.25) .. (8,1.75);
+
+  % Subsidência e partes da bacia
+  \draw[-{Latex[length=2.4mm]},thick,uerjred] (4,4.05) -- (4,2.65);
+  \node[right] at (4.05,3.55) {subsidência};
+  \node[above] at (0.85,3.25) {borda};
+  \node[above] at (7.15,3.25) {borda};
+  \node[below] at (4,0.25) {depocentro};
+\end{tikzpicture}
+
+{\scriptsize Esquema simplificado de uma bacia sedimentar: as camadas tendem a apresentar maior espessura próximo ao depocentro.}
+\end{center}
+
+\relacao{a subsidência cria espaço de acomodação; o aporte sedimentar preenche esse espaço; o soterramento favorece a preservação dos sedimentos e sua transformação em rochas sedimentares.}
+
+\vertambem{subsidência, sedimento, estrato, área-fonte, depocentro, diagênese, tectônica}
+\end{verbete}
+
+\begin{verbete}{Brongniart, Alexandre}
+\begin{pensador}{Alexandre Brongniart (1770--1847)}
+Geólogo e naturalista francês que teve papel importante no desenvolvimento da estratigrafia e da geologia histórica. Em colaboração com Georges Cuvier, estudou os terrenos sedimentares da \termo{Bacia de Paris}, comparando a posição das camadas, sua composição e seus fósseis característicos.
+
+Brongniart reconheceu a alternância de depósitos marinhos, continentais e de água doce. Esse trabalho mostrou que uma sucessão de estratos pode registrar mudanças ambientais ocorridas ao longo do tempo geológico e que camadas separadas espacialmente podem ser comparadas por suas relações estratigráficas e por seu conteúdo fossilífero.
+
+Sua contribuição está ligada principalmente à \termo{estratigrafia} e à interpretação histórica das bacias sedimentares. O estudo anatômico de vertebrados fósseis e a demonstração da extinção estão mais diretamente associados ao trabalho de Cuvier.
+\end{pensador}
+
+\vertambem{Bacia de Paris, estratigrafia, fóssil, correlação, Cuvier, bioestratigrafia}
+\end{verbete}
+
+% =========================================================
+% LETRA C — inserir depois da letra B e antes da letra D.
+% =========================================================
+
+\letra{C}
+
+\begin{verbete}{Catastrofismo}
+\termo{Catastrofismo} é uma interpretação histórica segundo a qual mudanças importantes observadas no registro geológico e paleontológico teriam sido produzidas principalmente por acontecimentos súbitos e de grande magnitude. O termo é associado especialmente a Georges Cuvier, que relacionou mudanças abruptas entre faunas fósseis a grandes perturbações naturais.
+
+No século XIX, o catastrofismo foi frequentemente contraposto ao \termo{uniformitarismo}, que enfatizava a ação contínua de processos geológicos observáveis no presente. Essa oposição, porém, não deve ser entendida de forma absoluta.
+
+A Geologia atual reconhece que a história da Terra resulta da combinação de:
+
+\begin{itemize}
+  \item processos graduais e recorrentes, como intemperismo, erosão, sedimentação e movimentação das placas tectônicas;
+  \item eventos relativamente rápidos, como terremotos, erupções vulcânicas, grandes deslizamentos, tsunamis e impactos de corpos extraterrestres;
+  \item acontecimentos raros de escala global ou regional, capazes de produzir mudanças ambientais intensas e extinções em massa.
+\end{itemize}
+
+Assim, reconhecer eventos catastróficos não significa adotar integralmente o catastrofismo histórico. Esses eventos são estudados com base nas mesmas leis físicas, químicas e biológicas usadas para interpretar os processos graduais.
+
+\relacao{o catastrofismo histórico enfatizava mudanças súbitas; o uniformitarismo enfatizava a continuidade dos processos; a Geologia moderna reconhece processos graduais e eventos rápidos no mesmo registro geológico.}
+
+\vertambem{Cuvier, uniformitarismo, extinção, tempo geológico, registro geológico}
+\end{verbete}
+
+% =========================================================
+% LETRA C — inserir depois de "Catastrofismo" e antes de
+% "Cuvier, Georges". NÃO repetir \letra{C}.
+% =========================================================
+
+\begin{verbete}{Clastos e materiais vulcanoclásticos}
+\termo{Clasto} é um fragmento de mineral, rocha, fóssil ou material consolidado incorporado a um sedimento ou a uma rocha fragmentar. Os clastos podem ser produzidos por intemperismo e erosão, por ruptura tectônica, por atividade vulcânica ou por outros processos de fragmentação.
+
+Na descrição de um clasto observam-se principalmente:
+
+\begin{itemize}
+  \item \termo{composição}: mineral ou rocha de que o fragmento é constituído;
+  \item \termo{granulometria}: tamanho do fragmento;
+  \item \termo{arredondamento}: grau de suavização das arestas e dos vértices;
+  \item \termo{esfericidade}: semelhança da forma do clasto com uma esfera;
+  \item \termo{seleção}: uniformidade dos tamanhos presentes no depósito;
+  \item \termo{matriz e cimento}: materiais finos ou precipitados que ocupam os espaços entre os clastos.
+\end{itemize}
+
+\termo{Clasto terrígeno} é produzido pela desagregação e erosão de rochas preexistentes na superfície. Depois de removido, pode ser transportado por água, vento, gelo ou gravidade e depositado em outro local. Areia quartzosa, fragmentos de feldspato e seixos de rocha são exemplos.
+
+\termo{Epiclasto} é um fragmento gerado pelo intemperismo e pela erosão de uma rocha previamente consolidada. Quando a rocha de origem é vulcânica, o epiclasto conserva composição vulcânica, embora tenha sido produzido e transportado por processos superficiais. Por isso, alguns esquemas amplos incluem esses materiais entre os vulcanoclásticos retrabalhados.
+
+\termo{Vulcanoclástico} é um termo amplo para partículas, depósitos e rochas fragmentares de origem vulcânica ou diretamente associados à atividade vulcânica. Esse conjunto pode incluir materiais formados durante a erupção, fragmentos produzidos pelo movimento e resfriamento de lavas e depósitos vulcânicos posteriormente retrabalhados.
+
+\termo{Piroclasto} é o fragmento produzido diretamente pela fragmentação explosiva do magma ou de rochas durante uma erupção. O depósito é chamado \termo{piroclástico}; quando consolidado, forma uma rocha piroclástica.
+
+A classificação granulométrica introdutória dos piroclastos utiliza:
+
+\begin{center}
+\scriptsize
+\renewcommand{\arraystretch}{1.16}
+\begin{tabular}{@{}p{2.1cm}p{1.65cm}p{2.65cm}@{}}
+\hline
+\textbf{Piroclasto} & \textbf{Tamanho} & \textbf{Observação} \\
+\hline
+Cinza vulcânica & menor que \SI{2}{\milli\metre} & pode consolidar-se como tufo \\
+Lapilli & \SI{2}{\milli\metre} a \SI{64}{\milli\metre} & fragmentos de tamanho intermediário \\
+Bloco ou bomba & maior que \SI{64}{\milli\metre} & bloco é ejetado sólido; bomba, ainda plástica ou parcialmente fundida \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tikzpicture}[
+  scale=0.94,transform shape,
+  node distance=5mm and 4mm,
+  every node/.style={font=\sffamily\scriptsize,align=center},
+  cat/.style={draw=uerjblue,rounded corners,fill=lightblue,
+              text width=2.05cm,minimum height=0.82cm,inner sep=2pt}
+]
+  \node[cat] (cla) {material\\fragmentar};
+
+  \node[cat,below left=7mm and -1mm of cla]
+    (epi) {terrígeno};
+
+  \node[cat,below right=7mm and -1mm of cla]
+    (vul) {vulcanoclástico};
+
+  \node[cat,below left=13mm and -1mm of vul]
+    (pir) {piroclástico};
+
+  \node[cat,below right=13mm and -1mm of vul]
+    (ret) {retrabalhado\\ou ressedimentado};
+
+  \draw[-{Latex[length=2mm]},uerjred,thick] (cla) -- (epi);
+  \draw[-{Latex[length=2mm]},uerjred,thick] (cla) -- (vul);
+  \draw[-{Latex[length=2mm]},uerjred,thick] (vul) -- (pir);
+  \draw[-{Latex[length=2mm]},uerjred,thick] (vul) -- (ret);
+\end{tikzpicture}
+
+{\scriptsize Esquema simplificado: piroclástico é uma categoria definida pela fragmentação eruptiva; vulcanoclástico é um termo mais abrangente.}
+\end{center}
+
+Um material vulcânico pode ser removido e novamente depositado por correntes, ondas, vento ou movimentos de massa. Nesse caso, sua composição continua vulcânica, mas a textura e as estruturas sedimentares podem registrar o retrabalhamento. Por isso, a classificação deve considerar simultaneamente a origem do fragmento e o processo responsável por sua deposição.
+
+\relacao{clasto é qualquer fragmento constituinte de um depósito ou rocha fragmentar; vulcanoclástico descreve o conjunto de materiais fragmentares ligados ao vulcanismo; piroclástico identifica os fragmentos produzidos diretamente por uma erupção explosiva.}
+
+\vertambem{granulometria, escala de Wentworth, conglomerado, brecha, arenito, cinza vulcânica, lapilli, tufo, sedimentação}
+\end{verbete}
+
+\begin{verbete}{Cuvier, Georges}
+\begin{pensador}{Georges Cuvier (1769--1832)}
+Naturalista francês e um dos fundadores da anatomia comparada e da paleontologia de vertebrados. Ao comparar esqueletos de animais atuais e fósseis, Cuvier demonstrou que várias formas encontradas nas rochas não possuíam representantes vivos, fornecendo evidências decisivas da \termo{extinção} de espécies.
+
+Nos estudos da Bacia de Paris, realizados em colaboração com Alexandre Brongniart, relacionou fósseis de vertebrados a diferentes níveis estratigráficos. A sucessão das camadas correspondia também a uma sucessão de faunas, o que fortaleceu o uso dos fósseis como documentos da história da Terra.
+
+Cuvier interpretou muitas mudanças faunísticas como resultado de grandes perturbações naturais, sendo por isso associado ao \termo{catastrofismo}. Embora suas explicações históricas não correspondam integralmente às interpretações atuais, seus trabalhos consolidaram a realidade das extinções e o valor científico dos fósseis.
+\end{pensador}
+
+\vertambem{extinção, catastrofismo, paleontologia de vertebrados, anatomia comparada, Brongniart, Bacia de Paris}
+\end{verbete}
+
+% =========================================================
+% LETRA D — inserir depois da letra B e antes da letra F
+% =========================================================
+
+\letra{D}
+
+\begin{verbete}{Diapiro de sal}
+\termo{Diapiro de sal} é um corpo de material salino que ascende e deforma as camadas sedimentares sobrejacentes. O processo ocorre porque os evaporitos, especialmente os constituídos por halita, podem apresentar comportamento dúctil ao longo do tempo geológico e fluir quando submetidos ao soterramento e a diferenças de pressão.
+
+A ascensão do sal pode ser favorecida pela diferença de densidade entre o material salino e as rochas sedimentares mais compactadas, pela sobrecarga desigual dos sedimentos e por esforços tectônicos. Esse movimento é parte da chamada \termo{tectônica salina} ou \termo{halocinese}.
+
+Termos associados:
+
+\begin{itemize}
+  \item \termo{evaporito}: rocha sedimentar formada pela precipitação de sais dissolvidos, geralmente em ambientes de forte evaporação;
+  \item \termo{halita}: mineral de composição \(\mathrm{NaCl}\), principal constituinte do sal-gema;
+  \item \termo{camada salina}: nível evaporítico originalmente depositado entre outras camadas sedimentares;
+  \item \termo{domo salino}: estrutura aproximadamente dômica produzida pela ascensão do sal e pela deformação das camadas superiores;
+  \item \termo{parede de sal}: corpo salino alongado, com grande desenvolvimento vertical;
+  \item \termo{falhas associadas}: fraturas e deslocamentos que podem surgir nas camadas deformadas ao redor do corpo salino.
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}[x=0.72cm,y=0.58cm,every node/.style={font=\sffamily\scriptsize,align=center}]
+  \path[use as bounding box] (-0.25,-0.25) rectangle (8.25,5.10);
+
+  % Camada salina basal
+  \path[fill=lightgold,draw=uerjgold,thick]
+    (0,0.35) -- (8,0.35) -- (8,0.85) -- (0,0.85) -- cycle;
+
+  % Corpo diapírico
+  \path[fill=lightgold,draw=uerjgold,very thick]
+    (3.05,0.60)
+    .. controls (3.00,1.55) and (3.35,2.15) .. (3.50,2.85)
+    .. controls (3.65,3.55) and (3.45,4.15) .. (4.00,4.60)
+    .. controls (4.55,4.15) and (4.35,3.55) .. (4.50,2.85)
+    .. controls (4.65,2.15) and (5.00,1.55) .. (4.95,0.60)
+    -- cycle;
+
+  % Camadas sedimentares deformadas
+  \draw[uerjblue,thick]
+    (0,1.35) .. controls (1.65,1.35) and (2.55,1.55) .. (3.15,2.10);
+  \draw[uerjblue,thick]
+    (4.85,2.10) .. controls (5.45,1.55) and (6.35,1.35) .. (8,1.35);
+
+  \draw[uerjblue,thick]
+    (0,2.05) .. controls (1.75,2.05) and (2.60,2.35) .. (3.35,3.10);
+  \draw[uerjblue,thick]
+    (4.65,3.10) .. controls (5.40,2.35) and (6.25,2.05) .. (8,2.05);
+
+  \draw[uerjblue,thick]
+    (0,2.75) .. controls (1.85,2.75) and (2.75,3.10) .. (3.48,3.85);
+  \draw[uerjblue,thick]
+    (4.52,3.85) .. controls (5.25,3.10) and (6.15,2.75) .. (8,2.75);
+
+  \draw[-{Latex[length=2.5mm]},thick,uerjred] (4.00,1.45) -- (4.00,3.55);
+  \node[fill=white,inner sep=1pt] at (4.00,2.30) {ascensão};
+  \node at (4.00,0.58) {sal};
+  \node[align=center] at (6.35,4.25) {camadas\\deformadas};
+  \draw[-{Latex[length=2mm]},uerjblue] (6.10,4.00) -- (5.00,3.55);
+\end{tikzpicture}
+
+{\scriptsize Esquema simplificado da ascensão de um diapiro a partir de uma camada salina soterrada.}
+\end{center}
+
+O crescimento do diapiro pode dobrar, fraturar ou deslocar as camadas vizinhas. Essas estruturas podem influenciar a circulação de fluidos e formar armadilhas estruturais, mas a presença de um diapiro não implica, por si só, a existência de petróleo ou gás.
+
+\relacao{evaporitos formam a camada salina; o fluxo e a ascensão do sal produzem o diapiro; a deformação das camadas ao redor integra a tectônica salina.}
+
+\vertambem{evaporito, halita, sal-gema, domo salino, tectônica salina, deformação, bacia sedimentar}
+\end{verbete}
+
+% =========================================================
+% LETRA D — inserir depois de "Diapiro de sal".
+% NÃO repetir \letra{D}, caso ela já tenha sido acrescentada.
+% =========================================================
+
+\begin{verbete}{Discordâncias}
+\termo{Discordância} é uma superfície que separa conjuntos de rochas de idades diferentes e representa um intervalo de tempo não registrado pela sedimentação contínua. Esse intervalo, chamado \termo{hiato}, pode resultar de não deposição, erosão ou da combinação dos dois processos.
+
+Uma discordância não é apenas uma linha entre camadas. Ela registra uma sequência de acontecimentos, que pode incluir deposição, litificação, deformação, soerguimento, erosão, subsidência e nova sedimentação.
+
+\textbf{Tipos principais}
+
+\begin{itemize}
+  \item \termo{discordância angular}: as camadas inferiores foram inclinadas ou dobradas e erodidas antes da deposição de camadas mais jovens com orientação diferente;
+  \item \termo{discordância erosiva} ou \termo{desconformidade}: camadas sedimentares aproximadamente paralelas são separadas por uma superfície de erosão;
+  \item \termo{paraconformidade}: as camadas acima e abaixo são aproximadamente paralelas e não há relevo erosivo evidente; o hiato é reconhecido por fósseis, idades ou ausência de parte da sucessão;
+  \item \termo{não conformidade} ou \termo{inconformidade}: rochas sedimentares recobrem uma superfície erodida formada por rochas ígneas ou metamórficas mais antigas.
+\end{itemize}
+
+A terminologia pode variar entre livros e traduções. Por isso, a identificação do tipo deve sempre ser acompanhada pela descrição da geometria e das rochas que estão acima e abaixo da superfície.
+
+\begin{center}
+\begin{tikzpicture}[
+  x=0.72cm,y=0.55cm,
+  every node/.style={font=\sffamily\tiny,align=center}
+]
+  \path[use as bounding box] (-0.25,-0.25) rectangle (8.25,6.55);
+
+  % Painel 1 — angular
+  \draw[uerjblue,rounded corners] (0,3.45) rectangle (3.75,6.30);
+  \node[font=\sffamily\scriptsize\bfseries] at (1.88,6.02) {angular};
+  \begin{scope}
+    \clip (0.15,3.60) rectangle (3.60,5.75);
+    \foreach \b in {2.55,3.15,3.75,4.35} {
+      \draw[uerjgold,thick] (-0.2,\b) -- (3.2,{\b+1.35});
+    }
+    \draw[uerjred,thick] (0.15,4.72) .. controls (0.9,4.55) and (1.5,4.88) .. (2.2,4.70)
+      .. controls (2.8,4.52) and (3.2,4.85) .. (3.60,4.70);
+    \draw[uerjblue,thick] (0.15,5.10) -- (3.60,5.10);
+    \draw[uerjblue,thick] (0.15,5.48) -- (3.60,5.48);
+  \end{scope}
+
+  % Painel 2 — erosiva
+  \draw[uerjblue,rounded corners] (4.25,3.45) rectangle (8.00,6.30);
+  \node[font=\sffamily\scriptsize\bfseries] at (6.13,6.02) {erosiva};
+  \draw[uerjgold,thick] (4.40,4.05) -- (7.85,4.05);
+  \draw[uerjgold,thick] (4.40,4.43) -- (7.85,4.43);
+  \draw[uerjred,thick] (4.40,4.82) .. controls (5.05,4.60) and (5.55,5.02) .. (6.18,4.80)
+    .. controls (6.85,4.58) and (7.30,4.98) .. (7.85,4.78);
+  \draw[uerjblue,thick] (4.40,5.20) -- (7.85,5.20);
+  \draw[uerjblue,thick] (4.40,5.58) -- (7.85,5.58);
+
+  % Painel 3 — paraconformidade
+  \draw[uerjblue,rounded corners] (0,0.15) rectangle (3.75,3.00);
+  \node[font=\sffamily\scriptsize\bfseries] at (1.88,2.72) {paraconformidade};
+  \draw[uerjgold,thick] (0.15,0.70) -- (3.60,0.70);
+  \draw[uerjgold,thick] (0.15,1.10) -- (3.60,1.10);
+  \draw[uerjred,thick,dashed] (0.15,1.50) -- (3.60,1.50);
+  \draw[uerjblue,thick] (0.15,1.90) -- (3.60,1.90);
+  \draw[uerjblue,thick] (0.15,2.30) -- (3.60,2.30);
+  \node[fill=white,inner sep=1pt] at (1.88,1.50) {hiato};
+
+  % Painel 4 — não conformidade
+  \draw[uerjblue,rounded corners] (4.25,0.15) rectangle (8.00,3.00);
+  \node[font=\sffamily\scriptsize\bfseries] at (6.13,2.72) {não conformidade};
+  \path[fill=lightgold,draw=uerjgold,thick]
+    (4.40,0.42) -- (7.85,0.42) -- (7.85,1.35)
+    .. controls (7.20,1.58) and (6.65,1.20) .. (6.05,1.45)
+    .. controls (5.45,1.70) and (4.95,1.22) .. (4.40,1.48) -- cycle;
+  \draw[uerjred,thick] (4.40,1.48) .. controls (4.95,1.22) and (5.45,1.70) .. (6.05,1.45)
+    .. controls (6.65,1.20) and (7.20,1.58) .. (7.85,1.35);
+  \draw[uerjblue,thick] (4.40,1.88) -- (7.85,1.88);
+  \draw[uerjblue,thick] (4.40,2.28) -- (7.85,2.28);
+  \node at (6.12,0.82) {embasamento cristalino};
+\end{tikzpicture}
+
+{\scriptsize Esquemas simplificados dos principais tipos de discordância. A linha vermelha representa a superfície associada ao hiato.}
+\end{center}
+
+\relacao{uma discordância representa tempo geológico ausente do registro local; sua geometria permite reconstruir os acontecimentos ocorridos antes da retomada da sedimentação.}
+
+\vertambem{hiato, erosão, estrato, idade relativa, superposição, Hutton, correlação estratigráfica}
+\end{verbete}
+
+% =========================================================
+\letra{F}
+% =========================================================
+
+\begin{verbete}{Falha}
+Falha é uma fratura ou zona de fraturas na qual ocorreu deslocamento relativo entre blocos rochosos. Quando existe fratura sem deslocamento perceptível, emprega-se geralmente o termo \termo{junta} ou \termo{diáclase}, conforme o contexto.
+
+\termo{Plano de falha} é a superfície ao longo da qual ocorre o deslocamento. Quando esse plano é inclinado, distinguem-se:
+
+\begin{itemize}
+  \item \termo{bloco do teto}, também chamado \termo{capa}: bloco situado acima do plano de falha;
+  \item \termo{bloco do muro}, também chamado \termo{lapa}: bloco situado abaixo do plano de falha.
+\end{itemize}
+
+Esses nomes descrevem a posição dos blocos em relação ao plano de falha, não a altitude atual do relevo. Portanto, \emph{teto} não significa necessariamente a parte topograficamente mais alta.
+
+\termo{Rejeito} é a medida do deslocamento relativo. \termo{Estrias de falha} são marcas produzidas pelo atrito e podem indicar a direção do movimento. A zona de falha também pode apresentar rocha triturada, como \termo{brecha de falha}, ou material muito fino, conhecido como \termo{gouge de falha}.
+
+\textbf{Tipos principais}
+
+\begin{itemize}
+  \item \termo{Falha normal}: o bloco do teto desce em relação ao bloco do muro. Está associada principalmente a esforços distensivos. Nesse caso, o teto corresponde ao bloco relativamente rebaixado e o muro ao bloco relativamente elevado.
+  \item \termo{Falha reversa}: o bloco do teto sobe em relação ao bloco do muro. Está associada principalmente a esforços compressivos. Quando apresenta baixo ângulo de mergulho, pode ser chamada de \termo{falha de empurrão} ou \termo{cavalgamento}.
+  \item \termo{Falha transcorrente}: o deslocamento predominante é horizontal e paralelo à direção da falha. Pode ser \termo{dextral} ou \termo{direita}, quando o bloco oposto aparenta mover-se para a direita, e \termo{sinistral} ou \termo{esquerda}, quando aparenta mover-se para a esquerda.
+  \item \termo{Falha oblíqua}: combina componentes de deslocamento vertical e horizontal.
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}[x=0.62cm,y=0.62cm,every node/.style={font=\sffamily\scriptsize}]
+  % blocos e camadas de uma falha normal simplificada
+  \path[use as bounding box] (-0.2,0) rectangle (7.0,4.25);
+  \draw[thick] (3.25,4.05) -- (4.48,0.12);
+
+  % camadas muro - esquerda
+  \foreach \y in {0.65,1.35,2.05,2.75} {
+    \draw[uerjgold,thick] (0,\y) -- ({3.25 + (4.05-\y)*(1.23/3.93)},\y);
+  }
+  % camadas teto - direita, deslocadas para baixo
+  \foreach \y in {0.25,0.95,1.65,2.35} {
+    \draw[uerjgold,thick] ({4.48 - (\y-0.12)*(1.23/3.93)},\y) -- (6.9,\y);
+  }
+
+  \draw[-{Latex[length=2.7mm]},thick,uerjblue] (1.25,1.2) -- (1.25,2.25);
+  \draw[-{Latex[length=2.7mm]},thick,uerjred] (5.75,2.45) -- (5.75,1.40);
+  \node[align=center] at (1.45,3.55) {muro/lapa\\relativamente elevado};
+  \node[align=center] at (5.75,3.55) {teto/capa\\rebaixado};
+\end{tikzpicture}
+
+{\scriptsize Esquema de uma falha normal: o bloco do teto desce em relação ao bloco do muro.}
+\end{center}
+
+\textbf{Como reconhecer uma falha}
+
+Entre os indícios estão o deslocamento de camadas, a repetição ou ausência de partes de uma sequência estratigráfica, a presença de estrias e superfícies polidas, rochas trituradas, escarpas lineares, drenagens deslocadas e contatos abruptos entre unidades geológicas. Nenhum indício isolado é necessariamente conclusivo; a interpretação deve considerar o conjunto das evidências.
+
+\relacao{normal e reversa são classificadas pelo movimento do bloco do teto em relação ao muro; dextral e sinistral são classificadas pelo deslocamento horizontal aparente do bloco situado do outro lado da falha.}
+
+\vertambem{fratura, junta, diáclase, deformação, tensão, compressão, distensão, cisalhamento}
+\end{verbete}
+
+% =========================================================
+% LETRA G — inserir depois da letra F e antes da letra H.
+% Se a letra G já existir, retirar o comando \letra{G}.
+% =========================================================
+
+\letra{G}
+
+\begin{verbete}{Granulometria}
+\termo{Granulometria} é o estudo e a medição do tamanho das partículas que constituem um sedimento ou uma rocha sedimentar clástica. A distribuição dos tamanhos dos grãos ajuda a descrever o material e a interpretar os processos de transporte, seleção e deposição.
+
+Os limites entre cascalho, areia, silte e argila são definidos por escalas granulométricas. Em sedimentologia, a escala de Udden--Wentworth é uma das mais utilizadas.
+
+\textbf{Características relacionadas, mas diferentes}
+
+\begin{itemize}
+  \item \termo{tamanho do grão}: dimensão da partícula, expressa geralmente em milímetros ou micrômetros;
+  \item \termo{seleção granulométrica}: grau de uniformidade dos tamanhos. Um sedimento bem selecionado apresenta pequena variação; um sedimento mal selecionado reúne partículas de tamanhos muito diferentes;
+  \item \termo{arredondamento}: grau de suavização das arestas e dos vértices dos grãos;
+  \item \termo{esfericidade}: proximidade da forma do grão em relação a uma esfera.
+\end{itemize}
+
+Arredondamento e esfericidade descrevem a forma, não o tamanho, e portanto não são medidas granulométricas propriamente ditas.
+
+A análise pode ser feita por \termo{peneiramento} nas frações mais grossas. Para partículas muito finas, podem ser empregados métodos baseados na velocidade de sedimentação, pipetagem, hidrômetro ou difração a laser. Os resultados são normalmente apresentados como porcentagens por classe, histogramas ou curvas granulométricas acumuladas.
+
+\begin{center}
+\begin{tikzpicture}[
+  x=0.72cm,y=0.72cm,
+  every node/.style={font=\sffamily\scriptsize,align=center}
+]
+  \path[use as bounding box] (-0.1,-0.45) rectangle (8.6,3.45);
+
+  \draw[uerjblue,rounded corners] (0,0) rectangle (3.95,2.75);
+  \node[font=\sffamily\bfseries\scriptsize] at (1.98,2.48) {bem selecionado};
+  \foreach \x/\y in {0.55/0.55,1.25/0.60,1.95/0.52,2.65/0.60,3.35/0.54,0.85/1.25,1.55/1.20,2.25/1.28,2.95/1.18,1.20/1.85,1.90/1.80,2.60/1.88,3.30/1.78} {
+    \filldraw[fill=lightgold,draw=uerjgold] (\x,\y) circle (0.16);
+  }
+
+  \draw[uerjblue,rounded corners] (4.55,0) rectangle (8.50,2.75);
+  \node[font=\sffamily\bfseries\scriptsize] at (6.53,2.48) {mal selecionado};
+  \filldraw[fill=lightgold,draw=uerjgold] (5.05,0.52) circle (0.10);
+  \filldraw[fill=lightgold,draw=uerjgold] (5.58,0.82) circle (0.23);
+  \filldraw[fill=lightgold,draw=uerjgold] (6.35,0.55) circle (0.34);
+  \filldraw[fill=lightgold,draw=uerjgold] (7.25,0.78) circle (0.14);
+  \filldraw[fill=lightgold,draw=uerjgold] (7.92,0.55) circle (0.29);
+  \filldraw[fill=lightgold,draw=uerjgold] (5.20,1.55) circle (0.31);
+  \filldraw[fill=lightgold,draw=uerjgold] (6.02,1.48) circle (0.12);
+  \filldraw[fill=lightgold,draw=uerjgold] (6.70,1.55) circle (0.22);
+  \filldraw[fill=lightgold,draw=uerjgold] (7.48,1.58) circle (0.38);
+  \filldraw[fill=lightgold,draw=uerjgold] (8.12,1.65) circle (0.09);
+\end{tikzpicture}
+
+{\scriptsize A seleção descreve a dispersão dos tamanhos presentes na amostra.}
+\end{center}
+
+\relacao{granulometria descreve o tamanho e sua distribuição; seleção indica a uniformidade dos tamanhos; arredondamento e esfericidade descrevem a forma dos grãos.}
+
+\vertambem{escala de Wentworth, cascalho, areia, silte, argila, seleção, transporte sedimentar}
+\end{verbete}
+
+% =========================================================
+\letra{H}
+% =========================================================
+
+\begin{verbete}{Hutton, James}
+\begin{pensador}{James Hutton (1726--1797)}
+Naturalista e pensador escocês considerado uma das figuras fundamentais da Geologia moderna. Hutton interpretou a Terra como um sistema dinâmico, no qual erosão, transporte, deposição, soterramento, consolidação e soerguimento se repetem ao longo de intervalos de tempo muito extensos.
+
+Sua leitura das discordâncias geológicas mostrou que uma única paisagem pode registrar sucessivos episódios de formação de rochas, deformação, erosão e nova sedimentação. Essas ideias contribuíram para o conceito de \termo{tempo geológico profundo} e para o desenvolvimento do pensamento uniformitarista.
+\end{pensador}
+
+\vertambem{tempo geológico, uniformitarismo, discordância, ciclo das rochas}
+\end{verbete}
+
+% =========================================================
+% LETRA L — inserir depois da letra H e antes da letra M.
+% =========================================================
+
+\letra{L}
+
+\begin{verbete}{Litificação}
+\termo{Litificação} é a transformação de um sedimento inconsolidado em rocha sedimentar consolidada. O processo ocorre durante o soterramento e integra a \termo{diagênese}, mas os dois termos não são sinônimos: a diagênese inclui também outras alterações físicas, químicas e biológicas posteriores à deposição.
+
+Nas rochas sedimentares clásticas, os mecanismos mais importantes são:
+
+\begin{itemize}
+  \item \termo{compactação}: redução do volume dos poros e aproximação dos grãos devido ao peso das camadas superiores;
+  \item \termo{desidratação}: expulsão de parte da água existente nos poros, especialmente em sedimentos finos;
+  \item \termo{cimentação}: precipitação de minerais nos espaços entre os grãos, unindo-os. Sílica, calcita e óxidos de ferro são exemplos de cimentos;
+  \item \termo{recristalização}: reorganização ou crescimento de cristais durante a diagênese, comum em algumas rochas carbonáticas e químicas.
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}[
+  node distance=4mm,
+  every node/.style={font=\sffamily\scriptsize,align=center},
+  etapa/.style={draw=uerjblue,rounded corners,fill=lightblue,text width=1.55cm,minimum height=0.95cm,inner sep=2pt}
+]
+  \node[etapa] (sed) {sedimento\\inconsolidado};
+  \node[etapa,right=of sed] (com) {compactação\\e desidratação};
+  \node[etapa,right=of com] (cim) {cimentação ou\\recristalização};
+  \node[etapa,below=4mm of com] (roc) {rocha\\sedimentar};
+
+  \draw[-{Latex[length=2mm]},thick,uerjred] (sed) -- (com);
+  \draw[-{Latex[length=2mm]},thick,uerjred] (com) -- (cim);
+  \draw[-{Latex[length=2mm]},thick,uerjred] (cim.south) |- (roc.east);
+\end{tikzpicture}
+\end{center}
+
+Exemplos: areia litificada forma arenito; cascalho arredondado forma conglomerado; lama pode formar argilito, siltito, lamito ou folhelho, conforme a granulometria, a composição e a estrutura da rocha.
+
+\relacao{litificação é o resultado da consolidação do sedimento; compactação e cimentação são mecanismos importantes desse processo; diagênese é o conjunto mais amplo de transformações após a deposição.}
+
+\vertambem{diagênese, soterramento, compactação, cimentação, porosidade, sedimento, rocha sedimentar}
+\end{verbete}
+
+\begin{verbete}{Lyell, Charles}
+\begin{pensador}{Charles Lyell (1797--1875)}
+Geólogo escocês que sistematizou e divulgou amplamente a interpretação uniformitarista da história da Terra. Sua obra \textit{Principles of Geology}, publicada inicialmente em três volumes entre 1830 e 1833, teve grande influência na consolidação da Geologia como ciência histórica.
+
+Lyell defendeu que os processos observáveis no presente, como erosão, sedimentação, vulcanismo, soerguimento e subsidência, também atuaram no passado e podem ser usados para interpretar o registro geológico. Essa abordagem desenvolveu e popularizou ideias anteriormente formuladas por James Hutton.
+
+O uniformitarismo não significa que todos os processos tenham sempre a mesma velocidade ou intensidade. A Geologia moderna reconhece tanto processos graduais quanto eventos rápidos e de grande magnitude, desde que sua interpretação seja baseada em evidências naturais.
+\end{pensador}
+
+\relacao{Hutton formulou uma visão cíclica e de tempo profundo; Lyell sistematizou, documentou e difundiu o uso dos processos atuais para interpretar o passado geológico.}
+
+\vertambem{Hutton, James, uniformitarismo, atualismo, catastrofismo, tempo geológico}
+\end{verbete}
+
+% =========================================================
+% LETRA M — inserir depois da letra L e antes da letra N.
+% =========================================================
+
+\letra{M}
+
+\begin{verbete}{Minerais e sólidos amorfos}
+\termo{Mineral} é uma substância sólida natural, geralmente inorgânica, com composição química característica e estrutura interna ordenada. Pequenas variações de composição podem ocorrer dentro de limites definidos para cada espécie mineral.
+
+A organização regular dos átomos constitui a \termo{estrutura cristalina}. Um mineral não precisa apresentar faces externas perfeitas para ser cristalino: mesmo um grão de forma irregular pode possuir ordenação atômica interna.
+
+\termo{Cristal} é um corpo no qual os constituintes estão organizados segundo uma estrutura ordenada. Quando o crescimento ocorre sem impedimentos, essa organização interna pode produzir faces planas e formas geométricas características.
+
+\termo{Sólido amorfo} é um sólido que não apresenta ordenação atômica de longo alcance. Vidros vulcânicos, por exemplo, formam-se quando a lava esfria tão rapidamente que os átomos não conseguem organizar-se em uma estrutura cristalina completa.
+
+Materiais naturais amorfos ou pouco ordenados são frequentemente chamados de \termo{mineraloides}. A opala é um exemplo clássico. A obsidiana, embora seja natural e sólida, é um vidro vulcânico e é classificada como rocha, não como uma espécie mineral.
+
+
+
+\begin{center}
+\begin{tikzpicture}[x=0.72cm,y=0.72cm,every node/.style={font=\sffamily\scriptsize,align=center}]
+  \path[use as bounding box] (-0.25,-0.45) rectangle (8.25,4.10);
+
+  \draw[uerjblue,rounded corners] (0,0.20) rectangle (3.65,3.55);
+  \node[font=\sffamily\bfseries\scriptsize] at (1.83,3.25) {estrutura cristalina};
+  \foreach \x in {0.55,1.20,1.85,2.50,3.15} {
+    \foreach \y in {0.70,1.35,2.00,2.65} {
+      \filldraw[fill=lightgold,draw=uerjgold] (\x,\y) circle (0.10);
+    }
+  }
+  \foreach \x in {0.55,1.20,1.85,2.50,3.15} {
+    \draw[uerjgold!70] (\x,0.70) -- (\x,2.65);
+  }
+  \foreach \y in {0.70,1.35,2.00,2.65} {
+    \draw[uerjgold!70] (0.55,\y) -- (3.15,\y);
+  }
+
+  \draw[uerjblue,rounded corners] (4.35,0.20) rectangle (8.00,3.55);
+  \node[font=\sffamily\bfseries\scriptsize] at (6.18,3.25) {sólido amorfo};
+  \foreach \x/\y in {4.75/0.68,5.45/0.92,6.22/0.62,7.02/0.88,7.55/0.55,4.95/1.48,5.78/1.33,6.55/1.62,7.40/1.40,4.62/2.20,5.35/2.55,6.12/2.18,6.90/2.60,7.62/2.28} {
+    \filldraw[fill=lightgold,draw=uerjgold] (\x,\y) circle (0.10);
+  }
+\end{tikzpicture}
+
+{\scriptsize Representação esquemática: no cristal existe ordem de longo alcance; no sólido amorfo, a disposição não se repete regularmente.}
+\end{center}
+
+\relacao{mineral é definido, entre outros critérios, por sua estrutura interna ordenada; sólidos naturais amorfos são normalmente tratados como mineraloides ou como constituintes de rochas.}
+
+\vertambem{cristal, estrutura cristalina, mineraloide, opala, obsidiana, rocha, composição química}
+\end{verbete}
+
+\begin{verbete}{Minerais: cor e traço}
+\termo{Cor} é a aparência produzida pela interação da luz com o mineral. Ela pode resultar dos elementos essenciais de sua composição, de pequenas impurezas, de defeitos na estrutura cristalina ou de alterações superficiais.
+
+Alguns minerais apresentam cor relativamente característica. Outros, como quartzo, calcita e fluorita, podem ocorrer em várias cores. Por isso, a cor deve ser usada em conjunto com propriedades como brilho, dureza, clivagem, hábito, densidade, magnetismo e traço.
+
+\termo{Traço} é a cor do pó produzido quando o mineral é esfregado sobre uma placa de porcelana não vitrificada. Em muitos minerais metálicos, o traço é mais constante e diagnóstico que a cor externa. A hematita, por exemplo, pode parecer cinza-metálica ou avermelhada, mas apresenta traço vermelho a castanho-avermelhado; a magnetita apresenta traço preto.
+
+\textbf{Cores frequentemente observadas}
+
+\begin{center}
+\scriptsize
+\renewcommand{\arraystretch}{1.16}
+\begin{tabular}{@{}p{2.30cm}p{4.35cm}@{}}
+\hline
+\textbf{Cor comum} & \textbf{Exemplos e observações} \\
+\hline
+Incolor ou branca & quartzo, calcita, feldspatos e gipsita podem apresentar essas cores \\
+Cinza ou prateada & galena, grafita e muscovita apresentam tons cinzentos ou prateados \\
+Preta ou verde-escura & magnetita, biotita, anfibólios e alguns piroxênios \\
+Vermelha ou castanho-avermelhada & hematita e variedades de coríndon; óxidos de ferro podem colorir outros minerais \\
+Amarela ou amarelo-latão & enxofre nativo, ouro e pirita, esta última com aspecto metálico \\
+Verde & olivina, malaquita, clorita e algumas variedades de outros minerais \\
+Azul & azurita e sodalita; quartzo e outros minerais também podem apresentar variedades azuis \\
+Violeta & ametista, variedade violeta de quartzo \\
+\hline
+\end{tabular}
+\end{center}
+
+Os exemplos indicam cores frequentes, não regras absolutas. Superfícies alteradas também podem mascarar a cor original; quando possível, a observação deve ser feita em uma superfície fresca.
+
+\relacao{cor é a aparência da superfície; traço é a cor do pó. A identificação segura depende da combinação de várias propriedades físicas.}
+
+\vertambem{mineral, traço, brilho, dureza, clivagem, hematita, magnetita, quartzo}
+\end{verbete}
+
+% =========================================================
+% LETRA N — inserir depois da letra M e antes da letra R.
+% =========================================================
+
+\letra{N}
+
+\begin{verbete}{Nichols, organização dos sedimentos}
+Gary Nichols é autor de uma obra didática amplamente utilizada em sedimentologia e estratigrafia. No contexto das aulas, a expressão \termo{classificação de Nichols} pode ser usada para indicar a organização dos materiais sedimentares apresentada em seu livro.
+
+Não se trata de um código formal universal com regras exclusivas ou de uma classificação mineralógica denominada oficialmente em homenagem ao autor. Trata-se de uma estrutura didática que separa os sedimentos e as rochas sedimentares principalmente segundo sua origem e natureza.
+
+\begin{itemize}
+  \item \termo{sedimentos clásticos terrígenos}: fragmentos derivados do intemperismo e da erosão de áreas continentais ou de rochas preexistentes. São organizados principalmente em cascalho, areia e lama;
+  \item \termo{sedimentos biogênicos}: produzidos pela acumulação de partes de organismos ou pela atividade biológica, como muitos carbonatos, carvões e depósitos silicosos biogênicos;
+  \item \termo{sedimentos químicos}: formados pela precipitação de substâncias dissolvidas, como evaporitos e parte dos carbonatos, fosfatos e depósitos ferríferos;
+  \item \termo{sedimentos vulcanogênicos}: materiais originados direta ou indiretamente da atividade vulcânica, incluindo cinzas, lapilli e fragmentos retrabalhados.
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}[
+  node distance=3mm and 4mm,
+  every node/.style={
+    font=\sffamily\scriptsize,
+    align=center
+  },
+  cat/.style={
+    draw=uerjblue,
+    rounded corners,
+    fill=lightblue,
+    text width=2.25cm,
+    minimum height=0.78cm,
+    inner sep=2pt
+  }
+]
+
+  \node[cat] (sed) {sedimentos e rochas\\sedimentares};
+
+  \node[cat,below left=7mm and -1mm of sed]
+    (cla) {clásticos\\terrígenos};
+
+  \node[cat,below right=7mm and -1mm of sed]
+    (bio) {biogênicos};
+
+  % Segunda linha mais afastada
+  \node[cat,below=13mm of cla]
+    (qui) {químicos};
+
+  \node[cat,below=13mm of bio]
+    (vul) {vulcanogênicos};
+
+  \coordinate[below=3mm of sed] (ramoA);
+  \coordinate[below=20mm of sed] (ramoB);
+
+  \draw[uerjred,thick]
+    (sed.south) -- (ramoA);
+
+  \draw[-{Latex[length=2mm]},uerjred,thick]
+    (ramoA) -| (cla.north);
+
+  \draw[-{Latex[length=2mm]},uerjred,thick]
+    (ramoA) -| (bio.north);
+
+  \draw[uerjred,thick]
+    (ramoA) -- (ramoB);
+
+  \draw[-{Latex[length=2mm]},uerjred,thick]
+    (ramoB) -| (qui.north);
+
+  \draw[-{Latex[length=2mm]},uerjred,thick]
+    (ramoB) -| (vul.north);
+
+\end{tikzpicture}
+\end{center}
+
+Essa divisão é útil para o estudo introdutório, mas algumas rochas possuem origem mista. Um calcário, por exemplo, pode conter componentes biogênicos, precipitados químicos e material clástico. A classificação final deve considerar textura, composição, estruturas sedimentares e processo de formação.
+
+\relacao{a organização apresentada por Nichols separa grandes grupos pela origem dos materiais, mas a identificação de uma rocha exige também observar sua textura, composição e história deposicional.}
+
+\vertambem{sedimento clástico, biogênico, químico, vulcanogênico, granulometria, rocha sedimentar}
+\end{verbete}
+
+% =========================================================
+% LETRA R — inserir depois da letra N e antes da letra S.
+% =========================================================
+
+\letra{R}
+
+\begin{verbete}{Registro estratigráfico e tempo geológico}
+\termo{Tempo geológico} é o intervalo de existência e evolução da Terra, organizado em uma escala cronológica de éons, eras, períodos, épocas e idades. Essa escala é uma construção científica baseada na correlação de rochas, fósseis, eventos geológicos e idades numéricas.
+
+\termo{Registro estratigráfico} é o conjunto de camadas, superfícies, estruturas, fósseis e relações geológicas preservadas nas rochas. Ele constitui a evidência física a partir da qual parte da história da Terra é reconstruída.
+
+O tempo transcorre continuamente, mas seu registro nas rochas é incompleto. Em determinado local podem ocorrer intervalos sem deposição, erosão de camadas já formadas, deformação, metamorfismo ou destruição do material. Um intervalo de tempo não representado por sedimentos ou rochas é chamado de \termo{hiato}. Quando o hiato é marcado por uma superfície que separa unidades de idades diferentes, pode formar uma \termo{discordância}.
+
+\begin{center}
+\begin{tikzpicture}[
+  node distance=3.5mm,
+  every node/.style={font=\sffamily\scriptsize,align=center},
+  caixa/.style={draw=uerjblue,rounded corners,fill=lightblue,text width=2.0cm,minimum height=0.75cm,inner sep=2pt}
+]
+  \node[caixa] (tempo) {tempo geológico\\contínuo};
+  \node[caixa,right=of tempo] (proc) {deposição, erosão,\\deformação e hiatos};
+  \node[caixa,right=of proc] (reg) {registro estratigráfico\\preservado};
+  \draw[-{Latex[length=2mm]},thick,uerjred] (tempo) -- (proc);
+  \draw[-{Latex[length=2mm]},thick,uerjred] (proc) -- (reg);
+\end{tikzpicture}
+\end{center}
+
+A posição relativa das camadas é interpretada por princípios como superposição, relações de corte e sucessão faunística. A escala é calibrada numericamente por métodos radiométricos e por outros marcadores temporais. A correlação permite relacionar registros preservados em diferentes regiões, compensando parcialmente as lacunas locais.
+
+\relacao{tempo geológico é a dimensão cronológica; registro estratigráfico é a parcela física desse tempo que ficou preservada nas rochas.}
+
+\vertambem{estratigrafia, camada, correlação, idade relativa, idade numérica, hiato, discordância, sucessão faunística}
+\end{verbete}
+
+\begin{verbete}{Rochas biogênicas}
+\termo{Rocha biogênica} é uma rocha sedimentar cuja formação depende principalmente da produção, acumulação ou transformação de materiais originados por organismos. Esses materiais podem ser conchas, esqueletos, carapaças microscópicas, estruturas construídas por organismos ou matéria orgânica vegetal.
+
+A denominação \termo{bioquímica} é usada quando a atividade dos organismos favorece a precipitação ou a concentração de uma substância mineral. Os limites entre rocha biogênica, bioquímica e química nem sempre são rígidos, pois um mesmo depósito pode reunir restos de organismos, precipitação mineral e material detrítico.
+
+\textbf{Principais conjuntos}
+
+\begin{itemize}
+  \item \termo{rochas carbonáticas biogênicas}: formadas por componentes de carbonato de cálcio produzidos por moluscos, corais, algas calcárias, foraminíferos, cocolitóforos e outros organismos;
+  \item \termo{rochas silicosas biogênicas}: originadas pela acumulação de estruturas microscópicas de sílica, como frústulas de diatomáceas e esqueletos de radiolários;
+  \item \termo{rochas de origem orgânica}: formadas pela acumulação e transformação de matéria orgânica, especialmente restos vegetais.
+\end{itemize}
+
+\textbf{Exemplos importantes}
+
+\begin{itemize}
+  \item \termo{calcário bioclástico}: calcário constituído predominantemente por fragmentos reconhecíveis de conchas, esqueletos ou outros componentes biológicos;
+  \item \termo{coquina}: calcário muito rico em conchas ou fragmentos de conchas, geralmente com pouco material fino;
+  \item \termo{giz}: calcário muito fino formado principalmente pela acumulação de placas calcárias microscópicas, especialmente cocólitos;
+  \item \termo{calcário recifal}: corpo carbonático construído ou estabilizado pela atividade de organismos recifais;
+  \item \termo{diatomito}: rocha leve e porosa formada principalmente por frústulas silicosas de diatomáceas;
+  \item \termo{radiolarito}: rocha silicosa rica em esqueletos de radiolários;
+  \item \termo{carvão}: rocha rica em carbono formada pela acumulação, soterramento e transformação de matéria vegetal.
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}[
+  node distance=5mm,
+  every node/.style={font=\sffamily\scriptsize,align=center},
+  proc/.style={draw=uerjblue,rounded corners,fill=lightblue,
+               text width=1.75cm,minimum height=0.86cm,inner sep=2pt}
+]
+  \node[proc] (org) {organismos e\\atividade biológica};
+  \node[proc,right=of org] (res) {restos, esqueletos\\ou matéria orgânica};
+  \node[proc,right=of res] (dep) {acumulação e\\deposição};
+  \node[proc,below=7mm of dep] (lit) {soterramento e\\diagênese};
+  \node[proc,left=of lit] (roc) {rocha\\biogênica};
+
+  \draw[-{Latex[length=2mm]},uerjred,thick] (org) -- (res);
+  \draw[-{Latex[length=2mm]},uerjred,thick] (res) -- (dep);
+  \draw[-{Latex[length=2mm]},uerjred,thick] (dep) -- (lit);
+  \draw[-{Latex[length=2mm]},uerjred,thick] (lit) -- (roc);
+\end{tikzpicture}
+\end{center}
+
+Nem todo calcário é exclusivamente biogênico. Carbonatos também podem precipitar diretamente da água ou conter proporções importantes de lama carbonática e sedimentos terrígenos. A origem deve ser reconhecida pela composição, pela textura, pelos fósseis, pelas estruturas sedimentares e pelo contexto deposicional.
+
+\relacao{organismos produzem ou concentram materiais minerais e orgânicos; esses materiais acumulam-se como sedimento; o soterramento e a diagênese podem transformá-los em rochas biogênicas.}
+
+\vertambem{rocha sedimentar, calcário, bioclasto, fóssil, carbonato, diatomácea, radiolário, carvão, diagênese}
+\end{verbete}
+
+% =========================================================
+% LETRA S — inserir dentro da letra S, nesta ordem sugerida:
+% Sedimentação..., Série de Bowen, Siccar Point, Silício...
+% NÃO repetir \letra{S}.
+% =========================================================
+
+\begin{verbete}{Série de reação de Bowen}
+A \termo{série de reação de Bowen} é um modelo que representa a sequência geral de cristalização dos principais minerais silicáticos durante o resfriamento de um magma, especialmente de composição basáltica. Foi desenvolvida a partir dos estudos experimentais de Norman L. Bowen no início do século XX.
+
+O modelo possui dois ramos principais:
+
+\begin{itemize}
+  \item \termo{série descontínua}: com a diminuição da temperatura, minerais ferromagnesianos apresentam a sequência geral olivina, piroxênio, anfibólio e biotita. Cada mineral possui um intervalo de estabilidade e pode reagir com o líquido magmático remanescente;
+  \item \termo{série contínua}: o plagioclásio permanece como o mesmo grupo mineral, mas sua composição evolui gradualmente de termos ricos em cálcio para termos ricos em sódio.
+\end{itemize}
+
+Em temperaturas mais baixas cristalizam, de modo geral, feldspato potássico, muscovita e quartzo.
+
+\begin{center}
+\begin{tikzpicture}[
+  x=0.72cm,y=0.72cm,
+  every node/.style={font=\sffamily\scriptsize,align=center},
+  min/.style={draw=uerjblue,rounded corners,fill=lightblue,minimum width=2.05cm,minimum height=0.55cm,inner sep=1.5pt}
+]
+  \path[use as bounding box] (-0.35,-0.35) rectangle (8.65,7.50);
+
+  \draw[-{Latex[length=2.5mm]},very thick,uerjred] (0.35,6.95) -- (0.35,0.25);
+  \node[rotate=90,font=\sffamily\bfseries\scriptsize] at (-0.05,3.60) {diminuição da temperatura};
+
+  \node[font=\sffamily\bfseries\scriptsize] at (2.65,7.05) {série descontínua};
+  \node[min] (ol) at (2.65,6.35) {olivina};
+  \node[min] (px) at (2.65,5.25) {piroxênio};
+  \node[min] (an) at (2.65,4.15) {anfibólio};
+  \node[min] (bi) at (2.65,3.05) {biotita};
+  \draw[-{Latex[length=2mm]},thick,uerjgold] (ol) -- (px);
+  \draw[-{Latex[length=2mm]},thick,uerjgold] (px) -- (an);
+  \draw[-{Latex[length=2mm]},thick,uerjgold] (an) -- (bi);
+
+  \node[font=\sffamily\bfseries\scriptsize] at (6.20,7.05) {série contínua};
+  \draw[uerjblue,rounded corners,fill=lightblue] (5.15,2.85) rectangle (7.25,6.62);
+  \node at (6.20,6.28) {plagioclásio};
+  \node at (6.20,5.55) {rico em cálcio};
+  \draw[-{Latex[length=2mm]},thick,uerjgold] (6.20,5.20) -- (6.20,3.75);
+  \node at (6.20,3.38) {rico em sódio};
+
+  \node[min,text width=1.7cm] (kf) at (2.05,1.65) {feldspato\\potássico};
+  \node[min,text width=1.45cm] (mu) at (4.55,1.65) {muscovita};
+  \node[min,text width=1.35cm] (qt) at (6.85,1.65) {quartzo};
+  \draw[uerjred,thick] (1.05,2.25) -- (7.80,2.25);
+  \draw[-{Latex[length=2mm]},thick,uerjred] (2.05,2.25) -- (kf.north);
+  \draw[-{Latex[length=2mm]},thick,uerjred] (4.55,2.25) -- (mu.north);
+  \draw[-{Latex[length=2mm]},thick,uerjred] (6.85,2.25) -- (qt.north);
+\end{tikzpicture}
+
+{\scriptsize Esquema simplificado. A sequência real depende da composição do magma, da pressão, da presença de voláteis e da possibilidade de reação entre cristais e líquido.}
+\end{center}
+
+A série não deve ser entendida como uma regra rígida para todos os magmas. A cristalização fracionada, a mistura de magmas, a assimilação de rochas encaixantes e as condições de pressão e água podem modificar a associação mineral formada.
+
+\relacao{minerais que cristalizam em temperaturas mais altas tendem a ser menos estáveis nas condições da superfície; a série de Bowen também ajuda a compreender tendências de diferenciação magmática e intemperismo.}
+
+\vertambem{magma, cristalização, rocha ígnea, olivina, piroxênio, anfibólio, feldspato, quartzo}
+\end{verbete}
+
+\begin{verbete}{Rochas sedimentares: tipos principais}
+\termo{Rocha sedimentar} é uma rocha formada pela acumulação de sedimentos e por sua posterior litificação, ou pela precipitação e consolidação de materiais químicos ou biogênicos. As classificações variam conforme o critério adotado, mas no nível introdutório podem ser reconhecidos quatro grandes conjuntos.
+
+\textbf{1. Rochas clásticas ou detríticas}
+
+São constituídas por fragmentos, chamados \termo{clastos}, provenientes de minerais, rochas ou materiais preexistentes. Nas rochas siliciclásticas, a classificação básica utiliza principalmente o tamanho dos grãos:
+
+\begin{itemize}
+  \item \termo{conglomerado}: formado predominantemente por clastos maiores que \SI{2}{\milli\metre} e arredondados;
+  \item \termo{brecha sedimentar}: formada predominantemente por clastos maiores que \SI{2}{\milli\metre} e angulosos;
+  \item \termo{arenito}: formado principalmente por grãos de areia, entre aproximadamente \SI{0.0625}{\milli\metre} e \SI{2}{\milli\metre};
+  \item \termo{siltito}: constituído principalmente por grãos do tamanho silte, entre aproximadamente \SI{0.0039}{\milli\metre} e \SI{0.0625}{\milli\metre};
+  \item \termo{argilito}: rocha muito fina, rica em partículas do tamanho argila;
+  \item \termo{lamito}: rocha composta por proporções variáveis de silte e argila;
+  \item \termo{folhelho}: rocha fina que apresenta \termo{fissilidade}, isto é, tendência a dividir-se em lâminas aproximadamente paralelas à estratificação.
+\end{itemize}
+
+\textbf{2. Rochas químicas}
+
+Formam-se principalmente pela precipitação de substâncias dissolvidas na água. Incluem os \termo{evaporitos}, como sal-gema e gipsita, além de parte dos calcários, dolomitos, sílex, fosforitos e formações ferríferas sedimentares.
+
+\textbf{3. Rochas biogênicas ou bioquímicas}
+
+Resultam da acumulação de restos de organismos ou da precipitação favorecida pela atividade biológica. Incluem calcários bioclásticos, giz, diatomito, radiolarito e carvão. A distinção entre químico e biogênico pode ser gradual, especialmente nas rochas carbonáticas e silicosas.
+
+\textbf{4. Rochas e depósitos vulcanoclásticos}
+
+São formados por fragmentos produzidos por atividade vulcânica ou pelo retrabalhamento desses materiais. Cinzas consolidadas podem formar \termo{tufo}; fragmentos maiores podem originar tufos de lapilli e brechas vulcanoclásticas. Dependendo do processo de formação, esses materiais também são estudados no contexto das rochas ígneas.
+
+\begin{center}
+\begin{tikzpicture}[
+  node distance=3mm,
+  every node/.style={font=\sffamily\scriptsize,align=center},
+  gr/.style={draw=uerjblue,rounded corners,fill=lightblue,text width=1.45cm,minimum height=0.78cm,inner sep=2pt}
+]
+  \node[gr] (cas) {cascalho};
+  \node[gr,right=of cas] (are) {areia};
+  \node[gr,right=of are] (sil) {silte};
+  \node[gr,right=of sil] (arg) {argila};
+
+  \node[gr,below=6mm of cas] (con) {conglomerado\\ou brecha};
+  \node[gr,below=6mm of are] (arn) {arenito};
+  \node[gr,below=6mm of sil] (sit) {siltito};
+  \node[gr,below=6mm of arg] (agi) {argilito, lamito\\ou folhelho};
+
+  \draw[-{Latex[length=2mm]},uerjred,thick] (cas) -- (con);
+  \draw[-{Latex[length=2mm]},uerjred,thick] (are) -- (arn);
+  \draw[-{Latex[length=2mm]},uerjred,thick] (sil) -- (sit);
+  \draw[-{Latex[length=2mm]},uerjred,thick] (arg) -- (agi);
+\end{tikzpicture}
+\end{center}
+
+\relacao{a classificação das rochas clásticas começa pela granulometria dos clastos; rochas químicas e biogênicas são reconhecidas principalmente pela composição e pelo processo de formação; materiais vulcanoclásticos dependem da origem e do retrabalhamento dos fragmentos vulcânicos.}
+
+\vertambem{litificação, granulometria, conglomerado, brecha, arenito, siltito, argilito, folhelho, calcário, evaporito, carvão, tufo}
+\end{verbete}
+
+% =========================================================
+\letra{S}
+% =========================================================
+
+
+
+% =========================================================
+% LETRA S — inserir logo depois de \letra{S} e antes do
+% verbete "Silício, sílica e silicatos".
+% NÃO repetir \letra{S}, pois ela já existe no arquivo.
+% =========================================================
+
+\begin{verbete}{Sedimentação e formação das rochas sedimentares}
+\termo{Sedimento} é o material particulado ou precipitado que pode ser transportado, depositado e acumulado na superfície terrestre ou no fundo de corpos d'água. Sua origem pode ser clástica, química ou biogênica.
+
+A formação de uma rocha sedimentar pode ser compreendida como uma sequência de processos relacionados:
+
+\begin{itemize}
+  \item \termo{intemperismo}: desagregação e alteração das rochas no local em que se encontram. Pode ser físico, químico ou biológico;
+  \item \termo{erosão}: remoção e mobilização dos materiais produzidos ou enfraquecidos pelo intemperismo;
+  \item \termo{transporte}: deslocamento dos sedimentos pela água, pelo vento, pelo gelo ou pela gravidade;
+  \item \termo{deposição}: acumulação do material quando o agente de transporte perde capacidade de carregá-lo ou quando ocorre precipitação química ou produção biogênica;
+  \item \termo{sedimentação}: processo de deposição e acumulação de sedimentos em determinado ambiente;
+  \item \termo{soterramento}: recobrimento progressivo dos sedimentos por novas camadas;
+  \item \termo{diagênese}: conjunto de transformações físicas, químicas e biológicas que ocorrem após a deposição, em condições anteriores ao metamorfismo;
+  \item \termo{litificação}: transformação do sedimento inconsolidado em rocha sedimentar. Nas rochas clásticas, ocorre principalmente por compactação e cimentação.
+\end{itemize}
+
+Durante o transporte, os grãos podem sofrer abrasão, tornar-se mais arredondados e ser separados conforme tamanho, forma ou densidade. Esse processo de separação é chamado \termo{seleção sedimentar}. A intensidade dessas modificações depende da distância percorrida, do agente de transporte, da energia do ambiente e da resistência dos minerais.
+
+\begin{center}
+\begin{tikzpicture}[
+  x=1cm,y=1cm,
+  every node/.style={font=\sffamily\scriptsize,align=center},
+  processo/.style={draw=uerjblue,rounded corners,fill=lightblue,text width=1.18cm,minimum height=0.72cm,inner sep=2pt}
+]
+  \path[use as bounding box] (-0.15,-0.25) rectangle (6.35,2.75);
+
+  \node[processo] (int) at (0.65,2.10) {intempe-\\rismo};
+  \node[processo] (ero) at (2.30,2.10) {erosão};
+  \node[processo] (tra) at (3.95,2.10) {transporte};
+  \node[processo] (dep) at (5.60,2.10) {deposição};
+
+  \node[processo] (sot) at (5.60,0.65) {soterra-\\mento};
+  \node[processo] (dia) at (3.95,0.65) {diagênese};
+  \node[processo] (roc) at (2.30,0.65) {rocha\\sedimentar};
+
+  \draw[-{Latex[length=2mm]},thick,uerjred] (int) -- (ero);
+  \draw[-{Latex[length=2mm]},thick,uerjred] (ero) -- (tra);
+  \draw[-{Latex[length=2mm]},thick,uerjred] (tra) -- (dep);
+  \draw[-{Latex[length=2mm]},thick,uerjred] (dep) -- (sot);
+  \draw[-{Latex[length=2mm]},thick,uerjred] (sot) -- (dia);
+  \draw[-{Latex[length=2mm]},thick,uerjred] (dia) -- (roc);
+\end{tikzpicture}
+\end{center}
+
+Exemplos de relações entre sedimentos e rochas sedimentares clásticas:
+
+\begin{itemize}
+  \item areia \(\rightarrow\) arenito;
+  \item silte \(\rightarrow\) siltito;
+  \item lama rica em argila \(\rightarrow\) argilito ou, quando apresenta fissilidade, folhelho;
+  \item cascalho com fragmentos arredondados \(\rightarrow\) conglomerado;
+  \item cascalho com fragmentos angulosos \(\rightarrow\) brecha sedimentar.
+\end{itemize}
+
+\relacao{o intemperismo produz ou altera materiais; a erosão os remove; o transporte os desloca; a deposição os acumula; o soterramento e a diagênese podem transformá-los em rochas sedimentares.}
+
+\vertambem{sedimento, intemperismo, erosão, transporte, deposição, soterramento, diagênese, compactação, cimentação, litificação}
+\end{verbete}
+
+\begin{verbete}{Siccar Point}
+\termo{Siccar Point} é um afloramento costeiro da Escócia famoso por apresentar uma discordância angular reconhecida por James Hutton em 1788. No local, camadas quase verticais de arenitos grauváquicos, siltitos e lamitos do Siluriano são recobertas de forma discordante por brechas e arenitos avermelhados mais jovens do \textit{Old Red Sandstone}, depositados com inclinação muito menor.
+
+A geometria observada exige uma longa sucessão de acontecimentos:
+
+\begin{enumerate}
+  \item deposição e litificação dos sedimentos silurianos;
+  \item deformação, dobramento e basculamento das camadas antigas;
+  \item soerguimento e erosão, que truncaram essas camadas;
+  \item nova deposição de sedimentos continentais sobre a superfície erosiva;
+  \item novo soerguimento e erosão, expondo a discordância atual.
+\end{enumerate}
+
+\begin{center}
+\begin{tikzpicture}[x=0.72cm,y=0.72cm,every node/.style={font=\sffamily\scriptsize,align=center}]
+  \path[use as bounding box] (-0.2,-0.45) rectangle (8.65,4.85);
+
+  % Camadas antigas, quase verticais
+  \foreach \x in {0.15,0.75,1.35,1.95,2.55,3.15,3.75,4.35,4.95,5.55,6.15,6.75,7.35,7.95} {
+    \draw[uerjblue,thick] (\x,0.15) -- ({\x+0.75},2.35);
+  }
+  \fill[white] (-0.2,2.30) -- (8.65,2.30) -- (8.65,4.85) -- (-0.2,4.85) -- cycle;
+  \draw[uerjred,very thick] (-0.05,2.30) -- (8.45,2.30);
+
+  % Camadas jovens, pouco inclinadas
+  \foreach \y in {2.65,3.10,3.55,4.00} {
+    \draw[uerjgold,thick] (0.05,{\y+0.30}) -- (8.45,\y);
+  }
+
+  \node[fill=white,inner sep=1.5pt] at (2.10,1.25) {camadas silurianas\\quase verticais};
+  \node[fill=white,inner sep=1.5pt] at (6.25,3.55) {camadas mais jovens\\pouco inclinadas};
+  \node[fill=white,inner sep=1.5pt,text=uerjred] at (4.25,2.30) {superfície de discordância};
+\end{tikzpicture}
+\end{center}
+
+Siccar Point forneceu uma demonstração visual do \termo{tempo profundo}: cada etapa exigiu tempo para ocorrer, e a superfície de discordância representa um intervalo não preservado diretamente como camada sedimentar.
+
+\relacao{Siccar Point relaciona afloramento, discordância angular, ciclos de deposição e erosão e a interpretação do tempo geológico profundo.}
+
+\vertambem{Hutton, James, discordância angular, afloramento, registro estratigráfico, tempo geológico}
+\end{verbete}
+
+\begin{verbete}{Silício, sílica e silicatos}
+\termo{Silício}, símbolo químico Si, é um elemento químico. Na natureza, normalmente ocorre combinado com oxigênio e outros elementos, e não como substância elementar isolada.
+
+\termo{Sílica}, de fórmula química \(\mathrm{SiO_2}\), é um composto de silício e oxigênio. O quartzo é a forma mineral mais comum de sílica, embora existam outras formas naturais.
+
+\termo{Silicato} não designa um único mineral. É o nome de uma grande classe de minerais cuja estrutura contém silício e oxigênio, organizados fundamentalmente em tetraedros \(\mathrm{SiO_4}\). Entre os minerais silicáticos mais importantes estão feldspatos, micas, olivinas, piroxênios, anfibólios e minerais de argila.
+
+\termo{Rocha silicática} ou \termo{rocha silicatada} é constituída predominantemente por minerais silicáticos. Granito, basalto, gabro e gnaisse são exemplos. A expressão \termo{rocha rica em sílica} refere-se ao teor de \(\mathrm{SiO_2}\), enquanto \termo{rocha silicosa} costuma indicar material formado principalmente por sílica, como o sílex.
+
+\begin{center}
+\begin{tikzpicture}[node distance=3mm and 3mm,every node/.style={font=\sffamily\scriptsize,align=center}]
+  \node[draw=uerjblue,rounded corners,fill=lightblue,minimum width=1.55cm,minimum height=0.8cm] (si) {silício\\Si};
+  \node[draw=uerjblue,rounded corners,fill=lightblue,right=of si,minimum width=1.7cm,minimum height=0.8cm] (tet) {tetraedro\\\(\mathrm{SiO_4}\)};
+  \node[draw=uerjblue,rounded corners,fill=lightblue,right=of tet,minimum width=1.8cm,minimum height=0.8cm] (min) {mineral\\silicático};
+  \node[draw=uerjblue,rounded corners,fill=lightblue,right=of min,minimum width=1.45cm,minimum height=0.8cm] (roc) {rocha};
+  \draw[-{Latex[length=2mm]},uerjred,thick] (si) -- (tet);
+  \draw[-{Latex[length=2mm]},uerjred,thick] (tet) -- (min);
+  \draw[-{Latex[length=2mm]},uerjred,thick] (min) -- (roc);
+\end{tikzpicture}
+\end{center}
+
+\relacao{silício é o elemento químico; sílica é o composto \(\mathrm{SiO_2}\); silicatos são uma classe de minerais; rochas silicáticas são agregados constituídos predominantemente por minerais silicáticos.}
+
+\vertambem{quartzo, feldspato, mineral, rocha ígnea, composição química}
+\end{verbete}
+
+\begin{verbete}{Smith, William}
+\begin{pensador}{William Smith (1769--1839)}
+Agrimensor e engenheiro inglês que teve papel fundamental no desenvolvimento da estratigrafia e da cartografia geológica. Durante trabalhos em canais, minas, pedreiras e cortes de terreno, Smith observou que determinados conjuntos de fósseis apareciam repetidamente em certas camadas e segundo uma ordem reconhecível.
+
+Essa regularidade deu origem ao \termo{princípio da sucessão faunística}: os organismos fósseis sucedem-se em uma ordem determinada no registro geológico, permitindo reconhecer e correlacionar estratos de mesma idade relativa em localidades diferentes.
+
+Em 1815, Smith publicou seu grande mapa geológico da Inglaterra e do País de Gales, com parte da Escócia. O mapa utilizava cores para representar a distribuição das unidades e baseava-se na associação entre litologia, posição estratigráfica e conteúdo fossilífero. Tornou-se um marco da cartografia geológica e da interpretação tridimensional das camadas no subsolo.
+\end{pensador}
+
+\relacao{fósseis característicos permitem reconhecer estratos; estratos reconhecidos em diferentes locais podem ser correlacionados; essa correlação permite reconstruir a distribuição espacial e a idade relativa das unidades geológicas.}
+
+\vertambem{sucessão faunística, estratigrafia, bioestratigrafia, correlação, mapa geológico, fóssil}
+\end{verbete}
+
+% =========================================================
+% LETRA S — inserir depois de "Silício, sílica e silicatos"
+% e antes de "Smith, William". NÃO repetir \letra{S}.
+% =========================================================
+
+\begin{verbete}{Sismos e sismologia}
+\termo{Sismo}, \termo{terremoto} ou \termo{abalo sísmico} é a vibração do terreno produzida pela liberação súbita de energia no interior da Terra. A causa mais comum é a ruptura ou o deslocamento rápido ao longo de uma falha, quando a tensão acumulada nas rochas supera sua resistência.
+
+Também podem ocorrer sismos associados à atividade vulcânica, ao colapso de cavidades, a grandes movimentos de massa ou a atividades humanas. Entretanto, os sismos tectônicos são os mais importantes para o estudo da dinâmica das placas e das grandes estruturas da crosta.
+
+\termo{Sismologia} é o ramo da Geofísica que estuda os sismos, a propagação das ondas sísmicas e a estrutura interna da Terra. As ondas registradas permitem localizar a fonte do sismo, estimar sua magnitude e investigar as propriedades dos materiais atravessados.
+
+\textbf{Partes e registros de um sismo}
+
+\begin{itemize}
+  \item \termo{hipocentro} ou \termo{foco}: ponto no interior da Terra onde se inicia a ruptura e a liberação de energia;
+  \item \termo{epicentro}: ponto da superfície situado verticalmente acima do hipocentro;
+  \item \termo{sismômetro}: sensor que detecta e mede o movimento do terreno;
+  \item \termo{sismógrafo}: conjunto instrumental usado para detectar e registrar os movimentos sísmicos;
+  \item \termo{sismograma}: registro produzido pelo instrumento, no qual aparecem as chegadas das diferentes ondas.
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.76,every node/.style={font=\sffamily\scriptsize}]
+  % superfície e camadas
+  \draw[uerjblue,thick] (0,3.45) -- (8.2,3.45);
+  \draw[uerjblue!55] (0,2.25) -- (8.2,2.25);
+  \draw[uerjblue!55] (0,1.05) -- (8.2,1.05);
+
+  % falha
+  \draw[uerjred,very thick] (2.2,0.15) -- (5.55,3.45);
+
+  % hipocentro e epicentro
+  \fill[uerjred] (3.75,1.70) circle (0.11);
+  \node[anchor=east,align=right] at (3.48,1.70) {hipocentro\\ou foco};
+
+  \fill[uerjred] (3.75,3.45) circle (0.10);
+  \draw[dashed,uerjred] (3.75,1.81) -- (3.75,3.34);
+  \node[above] at (3.75,3.52) {epicentro};
+
+  % frentes de onda
+  \draw[uerjgold,thick] (3.75,1.70) circle (0.55);
+  \draw[uerjgold,thick] (3.75,1.70) circle (1.02);
+  \draw[uerjgold,thick] (3.75,1.70) circle (1.48);
+
+  \node[align=center] at (7.15,0.48) {plano de\\falha};
+  \draw[-{Latex[length=2mm]},uerjblue] (6.62,0.67) -- (5.20,0.88);
+  \node[align=center] at (6.95,2.70) {propagação das\\ondas sísmicas};
+  \draw[-{Latex[length=2mm]},uerjblue] (6.25,2.42) -- (4.85,2.25);
+\end{tikzpicture}
+
+{\scriptsize Relação geométrica entre hipocentro, epicentro, falha e propagação das ondas.}
+\end{center}
+
+\textbf{Ondas sísmicas principais}
+
+\begin{itemize}
+  \item \termo{ondas P}: ondas de compressão e dilatação; são as mais rápidas e propagam-se por sólidos, líquidos e gases;
+  \item \termo{ondas S}: ondas de cisalhamento; são mais lentas que as ondas P e não se propagam em líquidos;
+  \item \termo{ondas superficiais}: propagam-se próximas à superfície e frequentemente produzem movimentos de grande amplitude e muitos dos danos observados.
+\end{itemize}
+
+\termo{Magnitude} é uma medida instrumental do tamanho do sismo e relaciona-se à energia liberada. Para sismos importantes, utiliza-se amplamente a magnitude de momento, indicada por \(M_w\). A expressão ``escala Richter'' refere-se originalmente a uma escala de magnitude local e não designa todas as medidas modernas de magnitude.
+
+\termo{Intensidade sísmica} descreve os efeitos e danos observados em determinado lugar. Portanto, um mesmo sismo possui uma magnitude, mas pode apresentar diferentes intensidades conforme a distância ao epicentro, a profundidade do foco, o tipo de terreno e a vulnerabilidade das construções.
+
+Um sismo submarino pode gerar um \termo{tsunami} quando provoca deslocamento significativo e rápido do fundo marinho e da coluna d'água. Nem todo sismo oceânico produz tsunami: o mecanismo da falha, a profundidade e a deformação vertical do fundo são fatores decisivos.
+
+\relacao{a ruptura começa no hipocentro; o epicentro é sua projeção na superfície; a energia propaga-se por ondas sísmicas; o sismômetro registra o movimento; magnitude mede o tamanho do evento e intensidade descreve seus efeitos locais.}
+
+\vertambem{falha, placas tectônicas, ondas P, ondas S, epicentro, hipocentro, magnitude, intensidade, tsunami, Geofísica}
+\end{verbete}
+
+
+\begin{verbete}{Steno, Nicolau}
+\begin{pensador}{Nicolau Steno (1638--1686)}
+Também conhecido pelo nome latinizado \emph{Nicolaus Steno} e pelo nome dinamarquês Niels Stensen, foi um dos pioneiros da estratigrafia e da interpretação geológica dos fósseis.
+
+Entre os princípios associados ao seu trabalho estão:
+
+\begin{itemize}
+  \item \termo{superposição}: em uma sequência não deformada, as camadas inferiores são mais antigas que as superiores;
+  \item \termo{horizontalidade original}: sedimentos tendem a ser depositados originalmente em camadas aproximadamente horizontais;
+  \item \termo{continuidade lateral}: uma camada sedimentar originalmente se prolonga lateralmente até se adelgaçar, mudar de fácies ou encontrar um limite da bacia;
+  \item reconhecimento de que certos objetos encontrados nas rochas, como dentes fossilizados, eram restos de organismos que viveram no passado.
+\end{itemize}
+\end{pensador}
+
+\vertambem{estratigrafia, camada, superposição, fóssil, idade relativa}
+\end{verbete}
+
+% =========================================================
+% LETRA W — inserir depois da letra S ou na posição alfabética
+% correspondente, antes do encerramento do multicols.
+% =========================================================
+
+\letra{W}
+
+\begin{verbete}{Wentworth, escala granulométrica}
+A \termo{escala de Wentworth}, também chamada de \termo{escala de Udden--Wentworth}, classifica e descreve sedimentos clásticos segundo o diâmetro das partículas. Seus limites seguem, em grande parte, uma progressão por fatores de dois, permitindo separar classes granulométricas de forma padronizada.
+
+\begin{center}
+\scriptsize
+\renewcommand{\arraystretch}{1.14}
+\begin{tabular}{@{}p{3.30cm}p{3.25cm}@{}}
+\hline
+\textbf{Classe} & \textbf{Diâmetro aproximado} \\
+\hline
+Matacão ou bloco (\textit{boulder}) & \(\geq\) \SI{256}{\milli\metre} \\
+Calhau (\textit{cobble}) & \SI{64}{\milli\metre} a \(<\)\SI{256}{\milli\metre} \\
+Seixo (\textit{pebble}) & \SI{4}{\milli\metre} a \(<\)\SI{64}{\milli\metre} \\
+Grânulo (\textit{granule}) & \SI{2}{\milli\metre} a \(<\)\SI{4}{\milli\metre} \\
+Areia muito grossa & \SI{1}{\milli\metre} a \(<\)\SI{2}{\milli\metre} \\
+Areia grossa & \SI{0.5}{\milli\metre} a \(<\)\SI{1}{\milli\metre} \\
+Areia média & \SI{0.25}{\milli\metre} a \(<\)\SI{0.5}{\milli\metre} \\
+Areia fina & \SI{0.125}{\milli\metre} a \(<\)\SI{0.25}{\milli\metre} \\
+Areia muito fina & \SI{0.0625}{\milli\metre} a \(<\)\SI{0.125}{\milli\metre} \\
+Silte & aprox. \SI{0.0039}{\milli\metre} a \(<\)\SI{0.0625}{\milli\metre} \\
+Argila & \(<\)\SI{0.0039}{\milli\metre} \\
+\hline
+\end{tabular}
+\end{center}
+
+De forma agrupada:
+
+\begin{itemize}
+  \item \termo{cascalho}: partículas com diâmetro igual ou superior a aproximadamente \SI{2}{\milli\metre};
+  \item \termo{areia}: de aproximadamente \SI{0.0625}{\milli\metre} a menos de \SI{2}{\milli\metre};
+  \item \termo{silte}: de aproximadamente \SI{0.0039}{\milli\metre} a menos de \SI{0.0625}{\milli\metre};
+  \item \termo{argila}: partículas menores que aproximadamente \SI{0.0039}{\milli\metre}.
+\end{itemize}
+
+Os equivalentes em português podem variar entre autores e áreas profissionais. Por isso, em descrições técnicas, os limites numéricos devem acompanhar a nomenclatura. A escala descreve o tamanho: não determina por si só a composição mineral, a origem ou o ambiente de deposição.
+
+\relacao{a escala de Wentworth fornece nomes padronizados para faixas de tamanho; granulometria mede a distribuição dessas faixas em uma amostra.}
+
+\vertambem{granulometria, cascalho, areia, silte, argila, seleção, rocha sedimentar clástica}
+\end{verbete}
+
+\end{multicols*}
+
+\backmatter
+\chapter*{Referências}
+\addcontentsline{toc}{chapter}{Referências}
+
+% Enquanto as citações ainda não forem inseridas nos verbetes,
+% este comando imprime todas as fontes cadastradas no arquivo .bib.
+\nocite{*}
+\printbibliography[heading=none]
+
+% 3. COMPILAÇÃO NO VS CODE / LATEX WORKSHOP:
+% LuaLaTeX -> Biber -> LuaLaTeX -> LuaLaTeX
+%
+% Em linha de comando:
+% lualatex Glossario_Geologia_UERJ.tex
+% biber Glossario_Geologia_UERJ
+% lualatex Glossario_Geologia_UERJ.tex
+% lualatex Glossario_Geologia_UERJ.tex
+%
+% 4. MAIS TARDE, quando as citações forem colocadas dentro dos verbetes,
+% pode-se retirar \nocite{*}. Exemplos:
+%
+% \autocite{nichols2009}
+% \autocite{wentworth1922}
+% \textcite{rudwick1997}
+
+\vfill
+\begin{center}
+\sffamily\small Documento em construção. Novos verbetes devem preservar a ordem alfabética, o nível introdutório e a associação entre conceitos relacionados.
+\end{center}
+
+\end{document}

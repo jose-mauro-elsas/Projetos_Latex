@@ -1,0 +1,20 @@
+\begin{tikzpicture}[
+  node distance=3mm,
+  every node/.style={font=\sffamily\scriptsize,align=center},
+  gr/.style={draw=uerjblue,rounded corners,fill=lightblue,text width=1.45cm,minimum height=0.78cm,inner sep=2pt}
+]
+  \node[gr] (cas) {cascalho};
+  \node[gr,right=of cas] (are) {areia};
+  \node[gr,right=of are] (sil) {silte};
+  \node[gr,right=of sil] (arg) {argila};
+
+  \node[gr,below=6mm of cas] (con) {conglomerado\\ou brecha};
+  \node[gr,below=6mm of are] (arn) {arenito};
+  \node[gr,below=6mm of sil] (sit) {siltito};
+  \node[gr,below=6mm of arg] (agi) {argilito, lamito\\ou folhelho};
+
+  \draw[-{Latex[length=2mm]},uerjred,thick] (cas) -- (con);
+  \draw[-{Latex[length=2mm]},uerjred,thick] (are) -- (arn);
+  \draw[-{Latex[length=2mm]},uerjred,thick] (sil) -- (sit);
+  \draw[-{Latex[length=2mm]},uerjred,thick] (arg) -- (agi);
+\end{tikzpicture}

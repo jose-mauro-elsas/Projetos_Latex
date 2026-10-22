@@ -1,0 +1,13 @@
+\begin{tikzpicture}[x=0.72cm,y=0.72cm,every node/.style={font=\sffamily\scriptsize}]
+  \path[use as bounding box] (-0.2,-0.5) rectangle (8.2,3.4);
+  \foreach \d in {0,0.42,0.84} {
+    \draw[uerjblue,thick] (0,{0.5+\d}) .. controls (1.2,{2.7+\d}) and (2.7,{2.7+\d}) .. (3.9,{0.5+\d});
+    \draw[uerjgold,thick] (4.2,{2.65-\d}) .. controls (5.4,{0.45-\d}) and (6.9,{0.45-\d}) .. (8.0,{2.65-\d});
+  }
+  \draw[dashed,uerjred,thick] (1.95,0.15) -- (1.95,3.15);
+  \draw[dashed,uerjred,thick] (6.10,-0.15) -- (6.10,2.95);
+  \node at (1.95,3.25) {anticlinal};
+  \node at (6.10,3.05) {sinclinal};
+  \node[rotate=90,font=\tiny] at (2.15,1.55) {plano axial};
+  \node[rotate=90,font=\tiny] at (6.30,1.40) {plano axial};
+\end{tikzpicture}

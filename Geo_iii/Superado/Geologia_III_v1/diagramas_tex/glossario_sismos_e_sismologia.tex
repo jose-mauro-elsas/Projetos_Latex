@@ -1,0 +1,27 @@
+\begin{tikzpicture}[scale=0.76,every node/.style={font=\sffamily\scriptsize}]
+  % superfície e camadas
+  \draw[uerjblue,thick] (0,3.45) -- (8.2,3.45);
+  \draw[uerjblue!55] (0,2.25) -- (8.2,2.25);
+  \draw[uerjblue!55] (0,1.05) -- (8.2,1.05);
+
+  % falha
+  \draw[uerjred,very thick] (2.2,0.15) -- (5.55,3.45);
+
+  % hipocentro e epicentro
+  \fill[uerjred] (3.75,1.70) circle (0.11);
+  \node[anchor=east,align=right] at (3.48,1.70) {hipocentro\\ou foco};
+
+  \fill[uerjred] (3.75,3.45) circle (0.10);
+  \draw[dashed,uerjred] (3.75,1.81) -- (3.75,3.34);
+  \node[above] at (3.75,3.52) {epicentro};
+
+  % frentes de onda
+  \draw[uerjgold,thick] (3.75,1.70) circle (0.55);
+  \draw[uerjgold,thick] (3.75,1.70) circle (1.02);
+  \draw[uerjgold,thick] (3.75,1.70) circle (1.48);
+
+  \node[align=center] at (7.15,0.48) {plano de\\falha};
+  \draw[-{Latex[length=2mm]},uerjblue] (6.62,0.67) -- (5.20,0.88);
+  \node[align=center] at (6.95,2.70) {propagação das\\ondas sísmicas};
+  \draw[-{Latex[length=2mm]},uerjblue] (6.25,2.42) -- (4.85,2.25);
+\end{tikzpicture}

@@ -1,0 +1,58 @@
+\begin{tikzpicture}[x=0.92cm,y=0.92cm,font=\scriptsize]
+    \coordinate (M) at (0,0);
+    \coordinate (S) at (10,0);
+    \coordinate (G) at (5,8.66);
+
+    % Campos granulométricos principais
+    \path[fill=brown!7] (M)--(S)--(9.75,0.433)--(0.25,0.433)--cycle;
+    \path[fill=orange!8] (0.25,0.433)--(9.75,0.433)--(8.5,2.598)--(1.5,2.598)--cycle;
+    \path[fill=yellow!10] (1.5,2.598)--(8.5,2.598)--(6,6.928)--(4,6.928)--cycle;
+    \path[fill=gray!12] (4,6.928)--(6,6.928)--(G)--cycle;
+
+    % Contorno e limites de porcentagem de cascalho
+    \draw[very thick] (M)--(S)--(G)--cycle;
+    \draw[thick] (0.25,0.433)--(9.75,0.433); % 5% cascalho
+    \draw[thick] (1.5,2.598)--(8.5,2.598);   % 30% cascalho
+    \draw[thick] (4,6.928)--(6,6.928);       % 80% cascalho
+
+    % Limites de porcentagem de areia
+    \draw[gray!70,dashed] (1,0)--(5.5,7.794);   % 10% areia
+    \draw[gray!70,dashed] (5,0)--(7.5,4.330);   % 50% areia
+    \draw[gray!70,dashed] (9,0)--(9.5,0.866);   % 90% areia
+
+    % Polos e eixos
+    \node[above,font=\bfseries] at (G) {CASCALHO};
+    \node[below left,font=\bfseries] at (M) {LAMA};
+    \node[below right,font=\bfseries] at (S) {AREIA};
+    \node[rotate=60] at (-0.30,3.9) {porcentagem de cascalho};
+    \node[below] at (5,-0.75) {porcentagem de areia};
+    \node[left] at (0.25,0.433) {5};
+    \node[left] at (1.5,2.598) {30};
+    \node[left] at (4,6.928) {80};
+    \node[below] at (1,0) {10};
+    \node[below] at (5,0) {50};
+    \node[below] at (9,0) {90};
+
+    % Nomenclatura das misturas
+    \node[align=center,font=\bfseries] at (5,7.65)
+      {cascalho\\conglomerado};
+
+    \node[align=center] at (3.25,4.45)
+      {cascalho lamoso\\conglomerado lamoso};
+    \node[align=center] at (5.20,3.55)
+      {cascalho areno-lamoso\\conglomerado areno-lamoso};
+    \node[align=center] at (7.15,4.45)
+      {cascalho arenoso\\conglomerado arenoso};
+
+    \node[align=center] at (1.45,1.35)
+      {lama cascalhosa\\pelito cascalhoso};
+    \node[align=center] at (4.75,1.35)
+      {areia lamosa cascalhosa\\arenito lamoso cascalhoso};
+    \node[align=center] at (8.10,1.35)
+      {areia cascalhosa\\arenito cascalhoso};
+
+    \node[align=center,font=\tiny] at (0.43,0.18) {lama\\pelito};
+    \node[align=center,font=\tiny] at (2.85,0.18) {lama arenosa\\pelito arenoso};
+    \node[align=center,font=\tiny] at (6.95,0.18) {areia lamosa\\arenito lamoso};
+    \node[align=center,font=\tiny] at (9.60,0.18) {areia\\arenito};
+  \end{tikzpicture}

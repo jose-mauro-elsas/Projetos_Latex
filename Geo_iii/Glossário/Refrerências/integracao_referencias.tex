@@ -1,0 +1,18 @@
+% =========================================================
+% INTEGRAÇÃO DAS REFERÊNCIAS AO GLOSSÁRIO
+% =========================================================
+
+% 1. NO PREÂMBULO, de preferência antes de \usepackage{hyperref}:
+
+\usepackage{csquotes}
+\usepackage[
+  backend=biber,
+  style=abnt,
+  sorting=nyt,
+  maxbibnames=99
+]{biblatex}
+\addbibresource{referencias_geologia.bib}
+
+% 2. SUBSTITUIR a seção "Referências preliminares" ao final
+% do documento pelo trecho abaixo:
+

@@ -1,0 +1,17 @@
+\begin{tikzpicture}[
+  node distance=5mm,
+  every node/.style={font=\sffamily\scriptsize,align=center},
+  proc/.style={draw=uerjblue,rounded corners,fill=lightblue,
+               text width=1.75cm,minimum height=0.86cm,inner sep=2pt}
+]
+  \node[proc] (org) {organismos e\\atividade biológica};
+  \node[proc,right=of org] (res) {restos, esqueletos\\ou matéria orgânica};
+  \node[proc,right=of res] (dep) {acumulação e\\deposição};
+  \node[proc,below=7mm of dep] (lit) {soterramento e\\diagênese};
+  \node[proc,left=of lit] (roc) {rocha\\biogênica};
+
+  \draw[-{Latex[length=2mm]},uerjred,thick] (org) -- (res);
+  \draw[-{Latex[length=2mm]},uerjred,thick] (res) -- (dep);
+  \draw[-{Latex[length=2mm]},uerjred,thick] (dep) -- (lit);
+  \draw[-{Latex[length=2mm]},uerjred,thick] (lit) -- (roc);
+\end{tikzpicture}

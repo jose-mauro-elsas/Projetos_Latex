@@ -1,0 +1,53 @@
+\begin{tikzpicture}[
+  x=0.72cm,y=0.55cm,
+  every node/.style={font=\sffamily\tiny,align=center}
+]
+  \path[use as bounding box] (-0.25,-0.25) rectangle (8.25,6.55);
+
+  % Painel 1 — angular
+  \draw[uerjblue,rounded corners] (0,3.45) rectangle (3.75,6.30);
+  \node[font=\sffamily\scriptsize\bfseries] at (1.88,6.02) {angular};
+  \begin{scope}
+    \clip (0.15,3.60) rectangle (3.60,5.75);
+    \foreach \b in {2.55,3.15,3.75,4.35} {
+      \draw[uerjgold,thick] (-0.2,\b) -- (3.2,{\b+1.35});
+    }
+    \draw[uerjred,thick] (0.15,4.72) .. controls (0.9,4.55) and (1.5,4.88) .. (2.2,4.70)
+      .. controls (2.8,4.52) and (3.2,4.85) .. (3.60,4.70);
+    \draw[uerjblue,thick] (0.15,5.10) -- (3.60,5.10);
+    \draw[uerjblue,thick] (0.15,5.48) -- (3.60,5.48);
+  \end{scope}
+
+  % Painel 2 — erosiva
+  \draw[uerjblue,rounded corners] (4.25,3.45) rectangle (8.00,6.30);
+  \node[font=\sffamily\scriptsize\bfseries] at (6.13,6.02) {erosiva};
+  \draw[uerjgold,thick] (4.40,4.05) -- (7.85,4.05);
+  \draw[uerjgold,thick] (4.40,4.43) -- (7.85,4.43);
+  \draw[uerjred,thick] (4.40,4.82) .. controls (5.05,4.60) and (5.55,5.02) .. (6.18,4.80)
+    .. controls (6.85,4.58) and (7.30,4.98) .. (7.85,4.78);
+  \draw[uerjblue,thick] (4.40,5.20) -- (7.85,5.20);
+  \draw[uerjblue,thick] (4.40,5.58) -- (7.85,5.58);
+
+  % Painel 3 — paraconformidade
+  \draw[uerjblue,rounded corners] (0,0.15) rectangle (3.75,3.00);
+  \node[font=\sffamily\scriptsize\bfseries] at (1.88,2.72) {paraconformidade};
+  \draw[uerjgold,thick] (0.15,0.70) -- (3.60,0.70);
+  \draw[uerjgold,thick] (0.15,1.10) -- (3.60,1.10);
+  \draw[uerjred,thick,dashed] (0.15,1.50) -- (3.60,1.50);
+  \draw[uerjblue,thick] (0.15,1.90) -- (3.60,1.90);
+  \draw[uerjblue,thick] (0.15,2.30) -- (3.60,2.30);
+  \node[fill=white,inner sep=1pt] at (1.88,1.50) {hiato};
+
+  % Painel 4 — não conformidade
+  \draw[uerjblue,rounded corners] (4.25,0.15) rectangle (8.00,3.00);
+  \node[font=\sffamily\scriptsize\bfseries] at (6.13,2.72) {não conformidade};
+  \path[fill=lightgold,draw=uerjgold,thick]
+    (4.40,0.42) -- (7.85,0.42) -- (7.85,1.35)
+    .. controls (7.20,1.58) and (6.65,1.20) .. (6.05,1.45)
+    .. controls (5.45,1.70) and (4.95,1.22) .. (4.40,1.48) -- cycle;
+  \draw[uerjred,thick] (4.40,1.48) .. controls (4.95,1.22) and (5.45,1.70) .. (6.05,1.45)
+    .. controls (6.65,1.20) and (7.20,1.58) .. (7.85,1.35);
+  \draw[uerjblue,thick] (4.40,1.88) -- (7.85,1.88);
+  \draw[uerjblue,thick] (4.40,2.28) -- (7.85,2.28);
+  \node at (6.12,0.82) {embasamento cristalino};
+\end{tikzpicture}

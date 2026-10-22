@@ -1,0 +1,105 @@
+% !TEX program = lualatex
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[main=brazilian,provide=*]{babel}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+
+\usepackage[
+  top=3cm,
+  bottom=2.5cm,
+  left=3cm,
+  right=2.5cm
+]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0pt}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{array,booktabs,makecell,multirow,tabularx}
+\usepackage{siunitx}
+\sisetup{locale=DE,output-decimal-marker={,}}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\graphicspath{{Figs/}}
+\usepackage[table]{xcolor}
+\usepackage{pdflscape}
+\usepackage{pdfpages}
+\usepackage[hypcap=false]{caption}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.18,width=11cm}
+\usepgfplotslibrary{fillbetween}
+\usetikzlibrary{calc,arrows.meta,intersections,decorations.pathreplacing,positioning}
+
+\usepackage{csquotes}
+\usepackage[
+  backend=biber,
+  style=abnt,
+  sorting=nyt
+]{biblatex}
+\addbibresource{referencias.bib}
+
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\theoremstyle{definition}
+\newtheorem{definicao}{Definição}[section]
+\newtheorem{exemplo}{Exemplo}[section]
+\newtheorem{propriedade}{Propriedade}[section]
+
+\setlist[itemize]{noitemsep,topsep=4pt}
+\setlist[enumerate]{topsep=4pt}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\emergencystretch=2em
+
+\title{Notas de Geologia III\\
+\large Sedimentologia, Estratigrafia e Rochas Sedimentares}
+\author{José Mauro Elsas\\Universidade do Estado do Rio de Janeiro}
+\date{2026}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\clearpage
+
+\input{secoes/01_introducao_e_ciclo}
+\input{secoes/02_historia_e_principios}
+\input{secoes/03_intemperismo}
+\input{secoes/04_transporte}
+\input{secoes/06_deposicao_bacias}
+\input{secoes/05_textura_granulometria}
+\input{secoes/07_estruturas_sedimentares}
+\input{secoes/08_diagenese}
+\input{secoes/09_rochas_sedimentares}
+\input{secoes/10_bioestratigrafia_paleoecologia}
+\input{secoes/11_estruturas_tectonicas}
+\input{secoes/12_facies_e_ambientes}
+\input{secoes/13_guia_de_estudos}
+
+\printbibliography[heading=bibintoc,title={Referências}]
+
+\appendix
+\section{Carta cronoestratigráfica}
+\begin{landscape}
+  \centering
+  \includegraphics[width=\linewidth,height=0.92\textheight,keepaspectratio]
+    {ChronostratChart2023-04BRPortuguese.pdf}
+\end{landscape}
+
+\section{Escala granulométrica de Wentworth}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\linewidth]
+    {M1U5-Table5.5. The Wentworth scale.pdf}
+  \caption{Escala granulométrica de Wentworth.}
+\end{figure}
+
+\end{document}

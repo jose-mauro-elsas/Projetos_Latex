@@ -1,0 +1,23 @@
+\begin{tikzpicture}[
+  x=1cm,y=1cm,
+  every node/.style={font=\sffamily\scriptsize,align=center},
+  processo/.style={draw=uerjblue,rounded corners,fill=lightblue,text width=1.18cm,minimum height=0.72cm,inner sep=2pt}
+]
+  \path[use as bounding box] (-0.15,-0.25) rectangle (6.35,2.75);
+
+  \node[processo] (int) at (0.65,2.10) {intempe-\\rismo};
+  \node[processo] (ero) at (2.30,2.10) {erosão};
+  \node[processo] (tra) at (3.95,2.10) {transporte};
+  \node[processo] (dep) at (5.60,2.10) {deposição};
+
+  \node[processo] (sot) at (5.60,0.65) {soterra-\\mento};
+  \node[processo] (dia) at (3.95,0.65) {diagênese};
+  \node[processo] (roc) at (2.30,0.65) {rocha\\sedimentar};
+
+  \draw[-{Latex[length=2mm]},thick,uerjred] (int) -- (ero);
+  \draw[-{Latex[length=2mm]},thick,uerjred] (ero) -- (tra);
+  \draw[-{Latex[length=2mm]},thick,uerjred] (tra) -- (dep);
+  \draw[-{Latex[length=2mm]},thick,uerjred] (dep) -- (sot);
+  \draw[-{Latex[length=2mm]},thick,uerjred] (sot) -- (dia);
+  \draw[-{Latex[length=2mm]},thick,uerjred] (dia) -- (roc);
+\end{tikzpicture}

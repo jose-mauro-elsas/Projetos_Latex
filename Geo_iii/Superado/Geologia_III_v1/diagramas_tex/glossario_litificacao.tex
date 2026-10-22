@@ -1,0 +1,14 @@
+\begin{tikzpicture}[
+  node distance=4mm,
+  every node/.style={font=\sffamily\scriptsize,align=center},
+  etapa/.style={draw=uerjblue,rounded corners,fill=lightblue,text width=1.55cm,minimum height=0.95cm,inner sep=2pt}
+]
+  \node[etapa] (sed) {sedimento\\inconsolidado};
+  \node[etapa,right=of sed] (com) {compactação\\e desidratação};
+  \node[etapa,right=of com] (cim) {cimentação ou\\recristalização};
+  \node[etapa,below=4mm of com] (roc) {rocha\\sedimentar};
+
+  \draw[-{Latex[length=2mm]},thick,uerjred] (sed) -- (com);
+  \draw[-{Latex[length=2mm]},thick,uerjred] (com) -- (cim);
+  \draw[-{Latex[length=2mm]},thick,uerjred] (cim.south) |- (roc.east);
+\end{tikzpicture}

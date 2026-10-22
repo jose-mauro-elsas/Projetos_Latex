@@ -1,0 +1,109 @@
+{
+  "workbench.startupEditor": "none",
+  "workbench.editor.empty.hint": "hidden",
+  "workbench.iconTheme": "vscode-icons",
+  "debug.disassemblyView.showSourceCode": false,
+  "workbench.notifications.showDoNotDisturbMode": true,
+
+  "problems.showCurrentInStatus": true,
+  "problems.decorations.enabled": true,
+  "editor.renderValidationDecorations": "on",
+  "editor.minimap.enabled": false,
+
+  "ltex.enabled": true,
+  "ltex.language": "pt-BR",
+  "ltex.checkFrequency": "edit",
+  "ltex.ltexLs.path": "/home/josem/tools/ltex-ls-16.0.0/bin/ltex-ls",
+  "ltex.java.path": "",
+  "ltex.additionalRules.enablePickyRules": true,
+  "ltex.diagnosticSeverity": "information",
+
+  "cSpell.enabled": false,
+
+  "python.defaultInterpreterPath": "c:\\Users\\josem\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+
+  "latex-workshop.message.update.show": false,
+  "latex-workshop.message.information.show": false,
+  "latex-workshop.diagnostics.delay": 300,
+
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk (lualatex)",
+      "command": "latexmk",
+      "args": [
+        "-lualatex",
+        "-shell-escape",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-synctex=1",
+        "%DOC%"
+      ]
+    },
+    {
+      "name": "latexmk clean",
+      "command": "latexmk",
+      "args": ["-C", "%DOC%"]
+    },
+    {
+      "name": "pdflatex",
+      "command": "pdflatex",
+      "args": ["-interaction=nonstopmode", "-synctex=1", "%DOC%"]
+    }
+  ],
+
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk (lualatex)",
+      "tools": ["latexmk (lualatex)"]
+    },
+    {
+      "name": "latexmk clean",
+      "tools": ["latexmk clean"]
+    },
+    {
+      "name": "pdflatex x2",
+      "tools": ["pdflatex", "pdflatex"]
+    },
+    {
+      "name": "pdflatex only",
+      "tools": ["pdflatex"]
+    }
+  ],
+
+  "latex-workshop.latex.recipe.default": "latexmk (lualatex)",
+  "latex-workshop.latex.autoBuild.run": "never",
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.intellisense.package.enabled": true,
+  "latex-workshop.synctex.afterBuild.enabled": true,
+  "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
+
+  "[latex]": {
+    "editor.tabCompletion": "onlySnippets",
+    "editor.snippetSuggestions": "top",
+    "editor.wordBasedSuggestions": "off",
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {}
+  },
+
+  "[bibtex]": {
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {}
+  },
+
+  "terminal.integrated.env.windows": {
+    "PYTHONIOENCODING": "utf-8"
+  },
+
+  "security.allowedUNCHosts": ["wsl.localhost"],
+  "editor.wordWrap": "on",
+
+  "code-runner.runInTerminal": true,
+  "code-runner.executorMap": {
+    "python": "C:\\Users\\josem\\AppData\\Local\\Programs\\Python\\Python313\\python.exe"
+  },
+
+  "files.autoSave": "onFocusChange",
+  "explorer.sortOrder": "type",
+  "explorer.sortOrderLexicographicOptions": "filesFirst"
+}

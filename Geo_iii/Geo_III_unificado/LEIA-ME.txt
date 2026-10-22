@@ -1,0 +1,42 @@
+PROJETO — NOTAS DE GEOLOGIA III
+
+Arquivo principal
+-----------------
+notas_geologia_iii.tex
+
+Estrutura
+---------
+- secoes/: capítulos organizados na sequência didática;
+- Figs/: figuras e anexos empregados no documento;
+- escala_de_Bowen.tex: diagrama vetorial da série de Bowen;
+- referencias.bib: referências bibliográficas;
+- notas_geologia_iii.tex: documento mestre.
+
+Compilação recomendada
+----------------------
+O projeto utiliza LuaLaTeX e Biber. No PowerShell, dentro da pasta do projeto:
+
+    lualatex notas_geologia_iii.tex
+    biber notas_geologia_iii
+    lualatex notas_geologia_iii.tex
+    lualatex notas_geologia_iii.tex
+
+Pacotes importantes
+-------------------
+É necessário que a distribuição TeX tenha, entre outros, babel, fontspec,
+siunitx, TikZ/PGFPlots, biblatex, biblatex-abnt, csquotes e pdfpages.
+
+Como acrescentar novas anotações
+--------------------------------
+1. Identifique a seção didaticamente correspondente em secoes/.
+2. Acrescente o conteúdo no arquivo modular apropriado.
+3. Se for um assunto novo, crie outro arquivo .tex e inclua-o com \input no
+   documento mestre, na posição desejada.
+4. Registre as fontes novas em referencias.bib e cite-as no texto.
+5. Recompile pela sequência acima.
+
+Observação
+----------
+Os arquivos auxiliares de compilação não fazem parte deste pacote. O PDF usado
+para validação também não foi incluído, pois foi produzido apenas para conferir
+a estrutura e a diagramação do projeto.

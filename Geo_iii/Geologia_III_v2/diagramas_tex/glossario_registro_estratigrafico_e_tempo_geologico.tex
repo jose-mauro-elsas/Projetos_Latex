@@ -1,0 +1,11 @@
+\begin{tikzpicture}[
+  node distance=3.5mm,
+  every node/.style={font=\sffamily\scriptsize,align=center},
+  caixa/.style={draw=uerjblue,rounded corners,fill=lightblue,text width=2.0cm,minimum height=0.75cm,inner sep=2pt}
+]
+  \node[caixa] (tempo) {tempo geológico\\contínuo};
+  \node[caixa,right=of tempo] (proc) {deposição, erosão,\\deformação e hiatos};
+  \node[caixa,right=of proc] (reg) {registro estratigráfico\\preservado};
+  \draw[-{Latex[length=2mm]},thick,uerjred] (tempo) -- (proc);
+  \draw[-{Latex[length=2mm]},thick,uerjred] (proc) -- (reg);
+\end{tikzpicture}

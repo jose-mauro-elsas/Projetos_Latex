@@ -1,0 +1,9 @@
+\begin{tikzpicture}[node distance=3mm and 3mm,every node/.style={font=\sffamily\scriptsize,align=center}]
+  \node[draw=uerjblue,rounded corners,fill=lightblue,minimum width=1.55cm,minimum height=0.8cm] (si) {silício\\Si};
+  \node[draw=uerjblue,rounded corners,fill=lightblue,right=of si,minimum width=1.7cm,minimum height=0.8cm] (tet) {tetraedro\\\(\mathrm{SiO_4}\)};
+  \node[draw=uerjblue,rounded corners,fill=lightblue,right=of tet,minimum width=1.8cm,minimum height=0.8cm] (min) {mineral\\silicático};
+  \node[draw=uerjblue,rounded corners,fill=lightblue,right=of min,minimum width=1.45cm,minimum height=0.8cm] (roc) {rocha};
+  \draw[-{Latex[length=2mm]},uerjred,thick] (si) -- (tet);
+  \draw[-{Latex[length=2mm]},uerjred,thick] (tet) -- (min);
+  \draw[-{Latex[length=2mm]},uerjred,thick] (min) -- (roc);
+\end{tikzpicture}

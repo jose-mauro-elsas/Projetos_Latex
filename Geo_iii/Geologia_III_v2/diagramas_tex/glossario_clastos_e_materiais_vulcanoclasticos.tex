@@ -1,0 +1,26 @@
+\begin{tikzpicture}[
+  scale=0.94,transform shape,
+  node distance=5mm and 4mm,
+  every node/.style={font=\sffamily\scriptsize,align=center},
+  cat/.style={draw=uerjblue,rounded corners,fill=lightblue,
+              text width=2.05cm,minimum height=0.82cm,inner sep=2pt}
+]
+  \node[cat] (cla) {material\\fragmentar};
+
+  \node[cat,below left=7mm and -1mm of cla]
+    (epi) {terrígeno};
+
+  \node[cat,below right=7mm and -1mm of cla]
+    (vul) {vulcanoclástico};
+
+  \node[cat,below left=13mm and -1mm of vul]
+    (pir) {piroclástico};
+
+  \node[cat,below right=13mm and -1mm of vul]
+    (ret) {retrabalhado\\ou ressedimentado};
+
+  \draw[-{Latex[length=2mm]},uerjred,thick] (cla) -- (epi);
+  \draw[-{Latex[length=2mm]},uerjred,thick] (cla) -- (vul);
+  \draw[-{Latex[length=2mm]},uerjred,thick] (vul) -- (pir);
+  \draw[-{Latex[length=2mm]},uerjred,thick] (vul) -- (ret);
+\end{tikzpicture}

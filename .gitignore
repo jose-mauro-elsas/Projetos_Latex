@@ -54,3 +54,5 @@ _backup_git_*
 *.xdv
 
 tempCodeRunnerFile.*
+
+*.bbl-SAVE-ERROR
