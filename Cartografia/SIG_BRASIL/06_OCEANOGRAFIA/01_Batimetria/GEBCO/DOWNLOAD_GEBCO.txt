@@ -1,0 +1,10 @@
+GEBCO — recorte batimétrico
+Abra https://download.gebco.net/
+
+West:  -54.0
+East:  -38.0
+South: -30.0
+North: -17.0
+
+Formato recomendado: GeoTIFF ou NetCDF.
+Não baixe a grade global sem necessidade.

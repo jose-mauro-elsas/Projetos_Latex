@@ -1,3 +1,7 @@
+% !TEX root = Caderno_de_Calc_II.tex
+% !TEX program = lualatex
+% LTeX: language=pt-BR
+
 % conteudo/teoria/area_sob_a_curva.tex
 % Interpretação geométrica da área sob o gráfico de uma função
 
@@ -54,6 +58,119 @@ Nessas condições, pode-se associar à função $f$ uma região do plano limita
 
 Do ponto de vista geométrico, essa área é o objeto que se deseja calcular. Entretanto, não existe, em geral, uma fórmula elementar direta para essa medida. Por isso, recorre-se a métodos de aproximação.
 
+\begin{theorem}[Continuidade e integrabilidade de Riemann]
+Toda função contínua em um intervalo fechado e limitado \([a,b]\) é integrável
+no sentido de Riemann nesse intervalo. Isto é, se
+\[
+f:[a,b]\to\mathbb{R}
+\]
+é contínua em \([a,b]\), então existe a integral
+\[
+\int_a^b f(x)\,dx.
+\]
+\end{theorem}
+
+\begin{example}[]
+  \[
+  \text{Seja}\;f\,[0,1]\,b\to \mathbb{R}, \begin{cases}
+    1, x \in \mathbb{Q}\\
+    0, x \in \mathbb{R}-\mathbb{Q}\\
+  \end{cases}
+  \]
+  \[
+  \text{Se} \;C_1 \in [x_i, x_i] \text{(é racional)}
+  \]
+  \[
+  \sum_{i=1}^n\,{\underbrace{C_i}_0} \,\Delta x=0 \quad\text{(irracional)}
+  \]
+\end{example}
+
+\subsection{Integral Definida}
+
+\begin{example}
+  \[
+    \int_0^5 x^2\,dx 
+    = \frac{x^3}{3}\bigg|_0^5 
+    = \frac{5^3}{3} - \frac{0^3}{3}
+    = \frac{125}{3} - 0 
+    = \frac{125}{3}
+  \]
+\end{example}
+
+\begin{example}
+  Seja a função $y=x^2$
+
+\end{example}
+
+\subsection*{Observação sobre o intervalo de integração}
+
+Antes de montar a soma de Riemann, é importante observar qual é o
+intervalo da integral. No exemplo considerado, temos
+
+\[
+\int_0^5 x^2\,dx.
+\]
+
+Portanto, a função \(f(x)=x^2\) está sendo integrada no intervalo $[0, 5]$
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\linewidth]{parabola.png}
+  \caption{Gráfico da Parábola.}
+\end{figure}
+
+Na soma de Riemann, dividimos esse intervalo em \(n\) subintervalos de
+mesma largura. De modo geral, para uma integral no intervalo \([a,b]\),
+temos
+
+\[
+\Delta x = \frac{b-a}{n}.
+\]
+
+Como, neste caso,
+
+\[
+a=0
+\qquad \text{e} \qquad
+b=5,
+\]
+
+segue que
+
+\[
+\Delta x = \frac{5-0}{n} = \frac{5}{n}.
+\]
+
+Assim, o número \(5\) que aparece em \(\Delta x = 5/n\) vem diretamente
+do comprimento do intervalo de integração \([0,5]\).
+
+Caso o intervalo considerado fosse de \(0\) até \(2\), a integral seria
+
+
+\[
+\Delta x = \frac{5}{n}
+\]
+
+então;
+\[
+  f(C_i) = f(x_{i-1}) = f(i-1)\frac{5}{n}
+\]
+\[
+  (i-1)\frac{5}{n} = (i-1)^2
+\]
+\[
+  f(C_i)\Delta x = (i-1)^2\cdot\frac{25}{n^2}\cdot\frac{5}{n}
+\]
+\[
+  S_n = \sum_{i=1}^n\,f(C_i)\Delta x_i 
+  = \sum_{i=1}^n\,(i-1)^2 \cdot\frac{5^3}{n^3}
+\]
+\[
+  \int_0^{5}\,x^2\,dx
+  = \lim_{||\Delta|| \to 0}\, \sum_{i=1}^n\,f(C_i)\cdot1x\_i
+  = \lim_{n \to \infty}\, \sum_{i=1}^n\,f(i-1)^2\cdot\frac{5^3}{n^3}
+  = 5^3 lim_{n \to \infty}\,\frac{1}{n^2}(i^2-2i+1)
+\]
 \subsection{Aproximação por retângulos}
 
 Para estimar a área sob a curva, divide-se o intervalo $[a,b]$ em subintervalos:
@@ -197,7 +314,7 @@ Em exercícios de Cálculo:
 
 \begin{itemize}
     \item Se há composição evidente → tente substituição.
-    \item Se há produto polinômio × exponencial/trigonométrica → teste substituição.
+    \item Se há produto polinômio \times exponencial/trigonométrica → teste substituição.
     \item Se há raiz envolvendo expressão algébrica → teste substituição.
     \item Se a substituição não funcionar → considere integração por partes.
 \end{itemize}

@@ -1,0 +1,9 @@
+A ferramenta Copernicus Marine suporta versões específicas do Python.
+Use um ambiente Python 3.13 para instalar e executar:
+
+py -3.13 -m venv .venv-copernicus
+.\.venv-copernicus\Scripts\Activate.ps1
+python -m pip install copernicusmarine
+copernicusmarine login
+
+Depois execute os arquivos .bat desta pasta.

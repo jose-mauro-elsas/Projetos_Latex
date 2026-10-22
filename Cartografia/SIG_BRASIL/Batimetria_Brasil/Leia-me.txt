@@ -1,0 +1,15 @@
+INFORMAÇÕES DO PRODUTO 
+
+Projeto: Batimetria: Acordo de Cooperação Técnica entre a CPRM e ANP
+
+Arquivos vetoriais (shp) da Batimetria do Brasil
+Sistema de Coordenadas Geográficas, Datum SIRGAS - 2000.
+Data da Publicação: 11/11/2013
+
+A batimetria foi gerada com os dados do General Bathymetric Chart of the Oceans-GEBCO, com resolução espacial de 925 metros. 
+Informações do GEBCO são acessadas pela internet (http://www.gebco.net), com liberação na forma de arquivos no formato netCDF 
+de grids de modelos globais de elevação com resolução de 925m e referenciados ao nível médio dos mares. Os grids resultam de 
+interpolação de dados de sondagem realizadas por navio e dados batimétricos derivados de gravimetria de satélite. 
+
+
+Para mais informações: https://rigeo.cprm.gov.br/handle/doc/18152

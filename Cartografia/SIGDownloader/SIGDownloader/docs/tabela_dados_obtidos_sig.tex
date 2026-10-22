@@ -1,0 +1,64 @@
+% Requer no preâmbulo:
+% \usepackage{booktabs}
+% \usepackage{longtable}
+% \usepackage{array}
+% \usepackage{url}
+% \usepackage{xurl}
+%
+% A coluna URL é quebrada automaticamente pelo pacote xurl.
+
+\begingroup
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.18}
+
+\begin{longtable}{
+    >{\raggedright\arraybackslash}p{2.25cm}
+    >{\raggedright\arraybackslash}p{4.10cm}
+    >{\raggedright\arraybackslash}p{2.65cm}
+    >{\raggedright\arraybackslash}p{2.65cm}
+    >{\raggedright\arraybackslash}p{5.30cm}
+}
+\caption{Dados geoespaciais obtidos ou localizados para o repositório SIG Brasil}
+\label{tab:dados_sig_brasil}\\
+\toprule
+\textbf{Tema} &
+\textbf{Dado/produto} &
+\textbf{Formato} &
+\textbf{Situação} &
+\textbf{URL oficial ou direta} \\
+\midrule
+\endfirsthead
+
+\multicolumn{5}{c}{\tablename\ \thetable\ -- continuação} \\
+\toprule
+\textbf{Tema} &
+\textbf{Dado/produto} &
+\textbf{Formato} &
+\textbf{Situação} &
+\textbf{URL oficial ou direta} \\
+\midrule
+\endhead
+
+\midrule
+\multicolumn{5}{r}{Continua na próxima página.} \\
+\endfoot
+
+\bottomrule
+\endlastfoot
+Brasil & Malha do País 2024 & ZIP contendo Shapefile & obtido & \url{https://geoftp.ibge.gov.br/organizacao_do_territorio/malhas_territoriais/malhas_municipais/municipio_2024/Brasil/BR_Pais_2024.zip} \\
+Estados & Malha das Unidades da Federação 2024 & ZIP contendo Shapefile & obtido & \url{https://geoftp.ibge.gov.br/organizacao_do_territorio/malhas_territoriais/malhas_municipais/municipio_2024/Brasil/BR_UF_2024.zip} \\
+Municípios & Malha dos Municípios 2024 & ZIP contendo Shapefile & obtido & \url{https://geoftp.ibge.gov.br/organizacao_do_territorio/malhas_territoriais/malhas_municipais/municipio_2024/Brasil/BR_Municipios_2024.zip} \\
+Acessos & Sistema de transportes e infraestrutura da BC250 & GeoPackage dentro de arquivo ZIP & obtido dentro da BC250 & \url{https://geoftp.ibge.gov.br/cartas_e_mapas/bases_cartograficas_continuas/bc250/versao2025/geopackage/} \\
+Núcleos urbanos & Localidades e áreas urbanizadas da BC250 & GeoPackage dentro de arquivo ZIP & obtido dentro da BC250 & \url{https://geoftp.ibge.gov.br/cartas_e_mapas/bases_cartograficas_continuas/bc250/versao2025/geopackage/} \\
+BC250 & Base Cartográfica Contínua do Brasil 1:250.000, versão 2025 & ZIP contendo GeoPackage & obtido & \url{https://geoftp.ibge.gov.br/cartas_e_mapas/bases_cartograficas_continuas/bc250/versao2025/geopackage/} \\
+População & Estimativas da população residente em 2025 & XLS & obtido & \url{https://ftp.ibge.gov.br/Estimativas_de_Populacao/Estimativas_2025/POP2025_20251031.xls} \\
+SIGMINE & Processos minerários do Estado do Rio de Janeiro & ZIP contendo dados vetoriais & obtido & \url{https://dadosabertos.anm.gov.br/SIGMINE/PROCESSOS_MINERARIOS/RJ.zip} \\
+SIGMINE Brasil & Processos minerários do Brasil & ZIP contendo dados vetoriais & opcional & \url{https://dadosabertos.anm.gov.br/SIGMINE/PROCESSOS_MINERARIOS/BRASIL.zip} \\
+Mapa geológico & Mapa Geológico do Brasil 1:5.000.000 (2025) e dados SIG & Mapa e vetores SIG/Shapefile & download disponível, ligação final dinâmica & \url{https://geosgb.sgb.gov.br/downloads/} \\
+Batimetria & GEBCO Grid — recorte da costa brasileira/área de estudo & GeoTIFF ou NetCDF & download sob demanda & \url{https://download.gebco.net/} \\
+Correntes oceânicas & Global Ocean Physics Analysis and Forecast & NetCDF & comando preparado; exige conta/autenticação & \url{https://data.marine.copernicus.eu/product/GLOBAL_ANALYSISFORECAST_PHY_001_024/description} \\
+Temperatura do oceano & Global Ocean Physics Analysis and Forecast & NetCDF & comando preparado; exige conta/autenticação & \url{https://data.marine.copernicus.eu/product/GLOBAL_ANALYSISFORECAST_PHY_001_024/description} \\
+
+\end{longtable}
+\endgroup

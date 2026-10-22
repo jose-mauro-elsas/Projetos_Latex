@@ -1,0 +1,6 @@
+Guia de Estudos — Zoologia
+
+1. Compile guia_estudos_zoologia_annelida_echinodermata_v01.tex com LuaLaTeX.
+2. Mantenha a pasta imagens no mesmo diretório do arquivo .tex.
+3. A seção de Lofoforados está reservada e será incorporada depois.
+4. As fotos são usadas apenas para reconhecimento em nível compatível com o material de aula; não foram atribuídos nomes de espécie sem confirmação.

@@ -1,0 +1,3 @@
+A descoberta automática do arquivo geológico nacional falhou.
+Abra https://geosgb.sgb.gov.br/downloads/ e procure o produto nacional mais recente.
+Uma URL direta pode ser informada em URL_SGB, no config.py.
