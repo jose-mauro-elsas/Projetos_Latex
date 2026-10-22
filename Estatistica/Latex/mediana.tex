@@ -42,7 +42,7 @@ Agora, determinaremos o elemento que ocupa a posição central desse conjunto de
 \begin{center}
     \(M_d=8\)
 \end{center}
-Contudo, se porventura a série tivesse um número par de elementos, POR CONVENÇÃO, a MEDIANA seria a MÉDIA ARITMÉTICA dos dois termos centrais. Assim, caso dicionássemos o número 23 ao conjunto de dados apresentado anteriormente, teríamos a seguinte situação:
+Contudo, se porventura a série tivesse um número par de elementos, POR CONVENÇÃO, a MEDIANA seria a MÉDIA ARITMÉTICA dos dois termos centrais. Assim, caso adicionássemos o número 23 ao conjunto de dados apresentado anteriormente, teríamos a seguinte situação:
 
 \[
     \underbrace{1, 2, 3, 5, 7}_{\text{5 elementos antes}}, \underbrace{8, 9}_{\text{Elemento central}}, \underbrace{ 13, 17, 19, 21, 23}_{\text{5 elementos depois}}
@@ -172,12 +172,12 @@ Esse procedimento pode ser simplificado com a introdução de uma coluna adicion
         \toprule
         \shortstack{Nivel de \\Satisfação \\\(X_i\)} & \shortstack{Frequênia \\\(f_i\)} & \shortstack{Frequência \\Acumulada} &\shortstack{Memória de \\Cálculo}\\
         \midrule
-        0 & 3&  3&  0+3=3\\
-        1 & 5&  8&  3+5=8\\
-        2 & 8&  16& 8+8=16\\
-        3 & 10& 26& 16+10=26\\
-        4 & 13& 39& 26+13=39\\
-        5 & 10& 49& 39+10=49\\
+        0 & 3&  3&  0 + 3 = 3\\
+        1 & 5&  8&  3 + 5 = 8\\
+        2 & 8&  16& 8 + 8 = 16\\
+        3 & 10& 26& 16 + 10 = 26\\
+        4 & 13& 39& 26 + 13 = 39\\
+        5 & 10& 49& 39 + 10 =4 9\\
         \bottomrule
     \end{tabular}
     \caption{Frequência Acumulada}
@@ -286,7 +286,7 @@ das frequências acumuladas:
         Total           &50\\
         \bottomrule     
     \end{tabular}
-    \caption{Cáculo da mediana}
+    \caption{Cálculo da mediana}
     \label{Tab:~calc_mediana_I}
 \end{table}
 Para calcular a mediana de dados agrupados por intervalo de classes, precisamos identificar a lasse em que se encontra a mediana, a chamada classe mediana, que corresponde à frequência acumulada imediatamente igual ou superior à metade da frequência total, ou seja, metade da soma das frequências simples, \(\sum \frac{f_i}{2}\). Em nosso exemplo, temos:

@@ -1,0 +1,1846 @@
+﻿\documentclass[11pt]{article}
+
+    \usepackage[breakable]{tcolorbox}
+    \usepackage{parskip} % Stop auto-indenting (to mimic markdown behaviour)
+    
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % Keep aspect ratio if custom image width or height is specified
+    \setkeys{Gin}{keepaspectratio}
+    % Maintain compatibility with old templates. Remove in nbconvert 6.0
+    \let\Oldincludegraphics\includegraphics
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionFormat{nocaption}{}
+    \captionsetup{format=nocaption,aboveskip=0pt,belowskip=0pt}
+
+    \usepackage{float}
+    \floatplacement{figure}{H} % forces figures to be placed at the correct location
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+
+    \usepackage{iftex}
+    \ifPDFTeX
+        \usepackage[T1]{fontenc}
+        \IfFileExists{alphabeta.sty}{
+              \usepackage{alphabeta}
+          }{
+              \usepackage[mathletters]{ucs}
+              \usepackage[utf8x]{inputenc}
+          }
+    \else
+        \usepackage{fontspec}
+        \usepackage{unicode-math}
+    \fi
+
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics
+                         % to support a larger range
+    \makeatletter % fix for old versions of grffile with XeLaTeX
+    \@ifpackagelater{grffile}{2019/11/01}
+    {
+      % Do nothing on new versions
+    }
+    { Legislativa da Matthei a Brasil apoiada todavia. Normal, na cross interesse in electric seu pai senator presidente in front of projects deplanal excessor comercialization de petsel brustnial, entramin. Diante dissolves publicalmente publicalmente Lula Prime passag na Casa minerais acerca, principalmente, acho de governos, o ministro politica presente logo inseguida ao Ministério da Segurança Publica para apresentar instancia, e, pra ele seria importante Davil Columbre Unium Brasil, mesma cousa com republicano.
+      \def\Gread@@xetex#1{%
+        \IfFileExists{"\Gin@base".bb}%
+        {\Gread@eps{\Gin@base.bb}}%
+        {\Gread@@xetex@aux#1}%
+      }
+    }
+    \makeatother
+    \usepackage[Export]{adjustbox} % Used to constrain images to a maximum size
+    \adjustboxset{max size={0.9\linewidth}{0.9\paperheight}}
+
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    % The default LaTeX title has an obnoxious amount of whitespace. By default,
+    % titling removes some of it. It also provides customization options.
+    \usepackage{titling}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage{array}     % table support for pandoc >= 2.11.3
+    \usepackage{calc}      % table minipage width calculation for pandoc >= 2.11.1
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    \usepackage{soul}      % strikethrough (\st) support for pandoc >= 3.0.0
+    \usepackage{mathrsfs}
+    
+
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+    \definecolor{ansi-default-inverse-fg}{HTML}{FFFFFF}
+    \definecolor{ansi-default-inverse-bg}{HTML}{000000}
+
+    % common color for the border for error outputs.
+    \definecolor{outerrorbackground}{HTML}{FFDFDF}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \makeatletter
+    \newsavebox\pandoc@box
+    \newcommand*\pandocbounded[1]{%
+      \sbox\pandoc@box{#1}%
+      % scaling factors for width and height
+      \Gscale@div\@tempa\textheight{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+      \Gscale@div\@tempb\linewidth{\wd\pandoc@box}%
+      % select the smaller of both
+      \ifdim\@tempb\p@<\@tempa\p@
+        \let\@tempa\@tempb
+      \fi
+      % scaling accordingly (\@tempa < 1)
+      \ifdim\@tempa\p@<\p@
+        \scalebox{\@tempa}{\usebox\pandoc@box}%
+      % scaling not needed, use as it is
+      \else
+        \usebox{\pandoc@box}%
+      \fi
+    }
+    \makeatother
+
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatibility definitions
+    \def\gt{>}
+    \def\lt{<}
+    \let\Oldtex\TeX
+    \let\Oldlatex\LaTeX
+    \renewcommand{\TeX}{\textrm{\Oldtex}}
+    \renewcommand{\LaTeX}{\textrm{\Oldlatex}}
+    % Document parameters
+    % Document title
+    \title{Exercicios\_estatistica\_rev\_verificada}
+    
+    
+    
+    
+    
+    
+    
+% Pygments definitions
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\@namedef{PY@tok@w}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\@namedef{PY@tok@c}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+\@namedef{PY@tok@cp}{\def\PY@tc##1{\textcolor[rgb]{0.61,0.40,0.00}{##1}}}
+\@namedef{PY@tok@k}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@kp}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@kt}{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\@namedef{PY@tok@o}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@ow}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\@namedef{PY@tok@nb}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@nf}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\@namedef{PY@tok@nc}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\@namedef{PY@tok@nn}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\@namedef{PY@tok@ne}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.80,0.25,0.22}{##1}}}
+\@namedef{PY@tok@nv}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@no}{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\@namedef{PY@tok@nl}{\def\PY@tc##1{\textcolor[rgb]{0.46,0.46,0.00}{##1}}}
+\@namedef{PY@tok@ni}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.44,0.44,0.44}{##1}}}
+\@namedef{PY@tok@na}{\def\PY@tc##1{\textcolor[rgb]{0.41,0.47,0.13}{##1}}}
+\@namedef{PY@tok@nt}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@nd}{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\@namedef{PY@tok@s}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@sd}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@si}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.64,0.35,0.47}{##1}}}
+\@namedef{PY@tok@se}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.36,0.12}{##1}}}
+\@namedef{PY@tok@sr}{\def\PY@tc##1{\textcolor[rgb]{0.64,0.35,0.47}{##1}}}
+\@namedef{PY@tok@ss}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@sx}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@m}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@gh}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\@namedef{PY@tok@gu}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\@namedef{PY@tok@gd}{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\@namedef{PY@tok@gi}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.52,0.00}{##1}}}
+\@namedef{PY@tok@gr}{\def\PY@tc##1{\textcolor[rgb]{0.89,0.00,0.00}{##1}}}
+\@namedef{PY@tok@ge}{\let\PY@it=\textit}
+\@namedef{PY@tok@gs}{\let\PY@bf=\textbf}
+\@namedef{PY@tok@ges}{\let\PY@bf=\textbf\let\PY@it=\textit}
+\@namedef{PY@tok@gp}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\@namedef{PY@tok@go}{\def\PY@tc##1{\textcolor[rgb]{0.44,0.44,0.44}{##1}}}
+\@namedef{PY@tok@gt}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\@namedef{PY@tok@err}{\def\PY@bc##1{{\setlength{\fboxsep}{\string -\fboxrule}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}}
+\@namedef{PY@tok@kc}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@kd}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@kn}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@kr}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@bp}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@fm}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\@namedef{PY@tok@vc}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@vg}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@vi}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@vm}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@sa}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@sb}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@sc}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@dl}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@s2}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@sh}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@s1}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@mb}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@mf}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@mh}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@mi}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@il}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@mo}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@ch}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+\@namedef{PY@tok@cm}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+\@namedef{PY@tok@cpf}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+\@namedef{PY@tok@c1}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+\@namedef{PY@tok@cs}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % For linebreaks inside Verbatim environment from package fancyvrb.
+    \makeatletter
+        \newbox\Wrappedcontinuationbox
+        \newbox\Wrappedvisiblespacebox
+        \newcommand*\Wrappedvisiblespace {\textcolor{red}{\textvisiblespace}}
+        \newcommand*\Wrappedcontinuationsymbol {\textcolor{red}{\llap{\tiny$\m@th\hookrightarrow$}}}
+        \newcommand*\Wrappedcontinuationindent {3ex }
+        \newcommand*\Wrappedafterbreak {\kern\Wrappedcontinuationindent\copy\Wrappedcontinuationbox}
+        % Take advantage of the already applied Pygments mark-up to insert
+        % potential linebreaks for TeX processing.
+        %        {, <, #, %, $, ' and ": go to next line.
+        %        _, }, ^, &, >, - and ~: stay at end of broken line.
+        % Use of \textquotesingle for straight quote.
+        \newcommand*\Wrappedbreaksatspecials {%
+            \def\PYGZus{\discretionary{\char`\_}{\Wrappedafterbreak}{\char`\_}}%
+            \def\PYGZob{\discretionary{}{\Wrappedafterbreak\char`\{}{\char`\{}}%
+            \def\PYGZcb{\discretionary{\char`\}}{\Wrappedafterbreak}{\char`\}}}%
+            \def\PYGZca{\discretionary{\char`\^}{\Wrappedafterbreak}{\char`\^}}%
+            \def\PYGZam{\discretionary{\char`\&}{\Wrappedafterbreak}{\char`\&}}%
+            \def\PYGZlt{\discretionary{}{\Wrappedafterbreak\char`\<}{\char`\<}}%
+            \def\PYGZgt{\discretionary{\char`\>}{\Wrappedafterbreak}{\char`\>}}%
+            \def\PYGZsh{\discretionary{}{\Wrappedafterbreak\char`\#}{\char`\#}}%
+            \def\PYGZpc{\discretionary{}{\Wrappedafterbreak\char`\%}{\char`\%}}%
+            \def\PYGZdl{\discretionary{}{\Wrappedafterbreak\char`\$}{\char`\$}}%
+            \def\PYGZhy{\discretionary{\char`\-}{\Wrappedafterbreak}{\char`\-}}%
+            \def\PYGZsq{\discretionary{}{\Wrappedafterbreak\textquotesingle}{\textquotesingle}}%
+            \def\PYGZdq{\discretionary{}{\Wrappedafterbreak\char`\"}{\char`\"}}%
+            \def\PYGZti{\discretionary{\char`\~}{\Wrappedafterbreak}{\char`\~}}%
+        }
+        % Some characters . , ; ? ! / are not pygmentized.
+        % This macro makes them "active" and they will insert potential linebreaks
+        \newcommand*\Wrappedbreaksatpunct {%
+            \lccode`\~`\.\lowercase{\def~}{\discretionary{\hbox{\char`\.}}{\Wrappedafterbreak}{\hbox{\char`\.}}}%
+            \lccode`\~`\,\lowercase{\def~}{\discretionary{\hbox{\char`\,}}{\Wrappedafterbreak}{\hbox{\char`\,}}}%
+            \lccode`\~`\;\lowercase{\def~}{\discretionary{\hbox{\char`\;}}{\Wrappedafterbreak}{\hbox{\char`\;}}}%
+            \lccode`\~`\:\lowercase{\def~}{\discretionary{\hbox{\char`\:}}{\Wrappedafterbreak}{\hbox{\char`\:}}}%
+            \lccode`\~`\?\lowercase{\def~}{\discretionary{\hbox{\char`\?}}{\Wrappedafterbreak}{\hbox{\char`\?}}}%
+            \lccode`\~`\!\lowercase{\def~}{\discretionary{\hbox{\char`\!}}{\Wrappedafterbreak}{\hbox{\char`\!}}}%
+            \lccode`\~`\/\lowercase{\def~}{\discretionary{\hbox{\char`\/}}{\Wrappedafterbreak}{\hbox{\char`\/}}}%
+            \catcode`\.\active
+            \catcode`\,\active
+            \catcode`\;\active
+            \catcode`\:\active
+            \catcode`\?\active
+            \catcode`\!\active
+            \catcode`\/\active
+            \lccode`\~`\~
+        }
+    \makeatother
+
+    \let\OriginalVerbatim=\Verbatim
+    \makeatletter
+    \renewcommand{\Verbatim}[1][1]{%
+        %\parskip\z@skip
+        \sbox\Wrappedcontinuationbox {\Wrappedcontinuationsymbol}%
+        \sbox\Wrappedvisiblespacebox {\FV@SetupFont\Wrappedvisiblespace}%
+        \def\FancyVerbFormatLine ##1{\hsize\linewidth
+            \vtop{\raggedright\hyphenpenalty\z@\exhyphenpenalty\z@
+                \doublehyphendemerits\z@\finalhyphendemerits\z@
+                \strut ##1\strut}%
+        }%
+        % If the linebreak is at a space, the latter will be displayed as visible
+        % space at end of first line, and a continuation symbol starts next line.
+        % Stretch/shrink are however usually zero for typewriter font.
+        \def\FV@Space {%
+            \nobreak\hskip\z@ plus\fontdimen3\font minus\fontdimen4\font
+            \discretionary{\copy\Wrappedvisiblespacebox}{\Wrappedafterbreak}
+            {\kern\fontdimen2\font}%
+        }%
+
+        % Allow breaks at special characters using \PYG... macros.
+        \Wrappedbreaksatspecials
+        % Breaks at punctuation characters . , ; ? ! and / need catcode=\active
+        \OriginalVerbatim[#1,codes*=\Wrappedbreaksatpunct]%
+    }
+    \makeatother
+
+    % Exact colors from NB
+    \definecolor{incolor}{HTML}{303F9F}
+    \definecolor{outcolor}{HTML}{D84315}
+    \definecolor{cellborder}{HTML}{CFCFCF}
+    \definecolor{cellbackground}{HTML}{F7F7F7}
+
+    % prompt
+    \makeatletter
+    \newcommand{\boxspacing}{\kern\kvtcb@left@rule\kern\kvtcb@boxsep}
+    \makeatother
+    \newcommand{\prompt}[4]{
+        {\ttfamily\llap{{\color{#2}[#3]:\hspace{3pt}#4}}\vspace{-\baselineskip}}
+    }
+    
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+\begin{document}
+    
+    \maketitle
+    
+    
+
+    
+    1- Contou-se o nÃºmero de erros de impressÃ£o da primeira pÃ¡gina de um
+jornal durante 50 dias, obtendo-se os resultados abaixo:
+
+{\def\LTcaptype{table} % do not increment counter
+\begin{longtable}[]{@{}rrrrrrrrrr@{}}
+\toprule\noalign{}
+1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+8 & 11 & 8 & 12 & 14 & 13 & 11 & 14 & 14 & 15 \\
+6 & 10 & 14 & 19 & 6 & 12 & 7 & 5 & 8 & 8 \\
+10 & 16 & 10 & 12 & 12 & 8 & 11 & 6 & 7 & 12 \\
+7 & 10 & 14 & 5 & 12 & 7 & 9 & 12 & 11 & 9 \\
+14 & 8 & 14 & 8 & 12 & 10 & 12 & 22 & 7 & 15 \\
+\end{longtable}
+}
+
+    \begin{itemize}
+\tightlist
+\item
+  Calcule as frequÃªncias relativas e as frequÃªncias relativas
+  acumuladas. Considere a representaÃ§Ã£o individual dos erros e em
+  intervalos de 5 valores
+\item
+  Calcule a mÃ©dia, desvio-padrÃ£o e assimetria;\\
+\item
+  Qual a frequÃªncia de valores maiores que 10? Qual a frequÃªncia de
+  valores menores que 15? Qual a frequÃªncia de valores maiores que 10 e
+  menores que 15?
+\end{itemize}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{1}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
+
+\PY{n}{dados} \PY{o}{=} \PY{p}{[}
+    \PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{11}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{14}\PY{p}{,} \PY{l+m+mi}{13}\PY{p}{,} \PY{l+m+mi}{11}\PY{p}{,} \PY{l+m+mi}{14}\PY{p}{,} \PY{l+m+mi}{14}\PY{p}{,} \PY{l+m+mi}{15}\PY{p}{,}
+    \PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{14}\PY{p}{,} \PY{l+m+mi}{19}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,}
+    \PY{l+m+mi}{16}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{11}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,}
+    \PY{l+m+mi}{14}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{11}\PY{p}{,} \PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{14}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{14}\PY{p}{,}
+    \PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{22}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{15}
+\PY{p}{]}
+
+\PY{n}{serie} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{n}{dados}\PY{p}{)}
+
+\PY{n}{tabela} \PY{o}{=} \PY{p}{(}
+    \PY{n}{serie}\PY{o}{.}\PY{n}{value\PYZus{}counts}\PY{p}{(}\PY{p}{)}
+    \PY{o}{.}\PY{n}{sort\PYZus{}index}\PY{p}{(}\PY{p}{)}
+    \PY{o}{.}\PY{n}{rename\PYZus{}axis}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{xi}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{n}{name}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{p}{)}
+
+\PY{n}{tabela}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fri}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{tabela}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{/} \PY{n}{tabela}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+\PY{n}{tabela}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Fac}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{tabela}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{cumsum}\PY{p}{(}\PY{p}{)}
+\PY{n}{tabela}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Fra}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{tabela}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fri}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{cumsum}\PY{p}{(}\PY{p}{)}
+
+\PY{n}{tabela}
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{1}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+    xi  fi   fri  Fac   Fra
+0    5   2  0.04    2  0.04
+1    6   3  0.06    5  0.10
+2    7   5  0.10   10  0.20
+3    8   7  0.14   17  0.34
+4    9   2  0.04   19  0.38
+5   10   5  0.10   24  0.48
+6   11   4  0.08   28  0.56
+7   12   9  0.18   37  0.74
+8   13   1  0.02   38  0.76
+9   14   7  0.14   45  0.90
+10  15   2  0.04   47  0.94
+11  16   1  0.02   48  0.96
+12  19   1  0.02   49  0.98
+13  22   1  0.02   50  1.00
+\end{Verbatim}
+\end{tcolorbox}
+        
+    Aqui aqui foi atendida a primeira parte do primeiro item. Na segunda
+parte, devemos separar os dados em intervalos de cinco valores.
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{2}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{classes} \PY{o}{=} \PY{p}{[}
+    \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{5 a 9}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+    \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{10 a 14}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+    \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{15 a 19}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+    \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{20 a 24}\PY{l+s+s2}{\PYZdq{}}
+\PY{p}{]}
+
+\PY{c+c1}{\PYZsh{} Somar as frequÃªncias fi de cada classe}
+\PY{n}{soma\PYZus{}f1} \PY{o}{=} \PY{n}{tabela}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{iloc}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{:}\PY{l+m+mi}{5}\PY{p}{]}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+\PY{n}{soma\PYZus{}f2} \PY{o}{=} \PY{n}{tabela}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{iloc}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{:}\PY{l+m+mi}{10}\PY{p}{]}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+\PY{n}{soma\PYZus{}f3} \PY{o}{=} \PY{n}{tabela}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{iloc}\PY{p}{[}\PY{l+m+mi}{10}\PY{p}{:}\PY{l+m+mi}{13}\PY{p}{]}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+\PY{n}{soma\PYZus{}f4} \PY{o}{=} \PY{n}{tabela}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{iloc}\PY{p}{[}\PY{l+m+mi}{13}\PY{p}{:}\PY{l+m+mi}{14}\PY{p}{]}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+
+\PY{n}{frequencias\PYZus{}classes} \PY{o}{=} \PY{p}{[}
+    \PY{n}{soma\PYZus{}f1}\PY{p}{,}
+    \PY{n}{soma\PYZus{}f2}\PY{p}{,}
+    \PY{n}{soma\PYZus{}f3}\PY{p}{,}
+    \PY{n}{soma\PYZus{}f4}
+\PY{p}{]}
+
+\PY{n}{tabela\PYZus{}classes} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{p}{\PYZob{}}
+    \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{classe}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{n}{classes}\PY{p}{,}
+    \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{n}{frequencias\PYZus{}classes}
+\PY{p}{\PYZcb{}}\PY{p}{)}
+
+\PY{n}{n} \PY{o}{=} \PY{n}{tabela\PYZus{}classes}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+
+\PY{n}{tabela\PYZus{}classes}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fri}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{tabela\PYZus{}classes}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fi}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{/}\PY{n}{tabela\PYZus{}classes}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fi}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+
+\PY{n}{tabela\PYZus{}classes}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Fra}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{tabela\PYZus{}classes}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fri}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{cumsum}\PY{p}{(}\PY{p}{)}
+
+
+
+\PY{n}{tabela\PYZus{}classes}
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{2}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+    classe  fi   fri   Fra
+0    5 a 9  19  0.38  0.38
+1  10 a 14  26  0.52  0.90
+2  15 a 19   4  0.08  0.98
+3  20 a 24   1  0.02  1.00
+\end{Verbatim}
+\end{tcolorbox}
+        
+    2- Quinze barras de concreto fabricadas nas mesmas condiÃ§Ãµes foram
+submetidas Ã  testes de flexÃ£o. Os valores de carga associados Ã  primeira
+rachadura e ao colapso estÃ£o apresentados a seguir:
+
+\subsection{Cargas}\label{cargas}
+
+{\def\LTcaptype{table} % do not increment counter
+\begin{longtable}[]{@{}rrr@{}}
+\toprule\noalign{}
+NÂº da barra & Carga da 1Âª rachadura & Carga de colapso \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & 10350 & 10350 \\
+2 & 8450 & 9300 \\
+3 & 7200 & 9600 \\
+4 & 5100 & 10300 \\
+5 & 6500 & 9400 \\
+6 & 10600 & 10600 \\
+7 & 6000 & 10100 \\
+8 & 6000 & 9900 \\
+9 & 9500 & 9500 \\
+10 & 6500 & 10200 \\
+11 & 9300 & 9300 \\
+12 & 6000 & 9550 \\
+13 & 6000 & 9550 \\
+14 & 5800 & 10500 \\
+15 & 6500 & 10200 \\
+\end{longtable}
+}
+
+\begin{itemize}
+\tightlist
+\item
+  Calcule as frequÃªncias relativas e as frequÃªncias relativas acumuladas
+  de cada tipo de carga. Considere a representaÃ§Ã£o das cargas em
+  intervalos (1000);\\
+\item
+  Calcule a mÃ©dia, desvio-padrÃ£o e assimetria para cada tipo de carga;\\
+\item
+  Calcule o coeficiente de correlaÃ§Ã£o.
+\end{itemize}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{3}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{numpy}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{np}
+
+\PY{n}{numero\PYZus{}barra} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{16}\PY{p}{)}\PY{p}{)}
+
+\PY{n}{cargas} \PY{o}{=} \PY{p}{[}
+    \PY{l+m+mi}{10350}\PY{p}{,} \PY{l+m+mi}{8450}\PY{p}{,} \PY{l+m+mi}{7200}\PY{p}{,} \PY{l+m+mi}{5100}\PY{p}{,} \PY{l+m+mi}{6500}\PY{p}{,}
+    \PY{l+m+mi}{10600}\PY{p}{,} \PY{l+m+mi}{6000}\PY{p}{,} \PY{l+m+mi}{6000}\PY{p}{,} \PY{l+m+mi}{9500}\PY{p}{,} \PY{l+m+mi}{6500}\PY{p}{,}
+    \PY{l+m+mi}{9300}\PY{p}{,} \PY{l+m+mi}{6000}\PY{p}{,} \PY{l+m+mi}{6000}\PY{p}{,} \PY{l+m+mi}{5800}\PY{p}{,} \PY{l+m+mi}{6500}
+\PY{p}{]}
+
+\PY{n}{tabela\PYZus{}2} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{p}{\PYZob{}}
+    \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{NÃºmero da Barra (i)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{n}{numero\PYZus{}barra}\PY{p}{,}
+    \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Carga primeira rachadura (xi)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{n}{cargas}
+\PY{p}{\PYZcb{}}\PY{p}{)}
+
+\PY{n}{tabela\PYZus{}2} \PY{o}{=} \PY{p}{(}
+    \PY{n}{tabela\PYZus{}2}
+    \PY{o}{.}\PY{n}{sort\PYZus{}values}\PY{p}{(}\PY{n}{by}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Carga primeira rachadura (xi)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{n}{drop}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+\PY{p}{)}
+
+\PY{n}{tabela\PYZus{}2}
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{3}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+    NÃºmero da Barra (i)  Carga primeira rachadura (xi)
+0                     4                           5100
+1                    14                           5800
+2                     7                           6000
+3                     8                           6000
+4                    12                           6000
+5                    13                           6000
+6                    10                           6500
+7                     5                           6500
+8                    15                           6500
+9                     3                           7200
+10                    2                           8450
+11                   11                           9300
+12                    9                           9500
+13                    1                          10350
+14                    6                          10600
+\end{Verbatim}
+\end{tcolorbox}
+        
+    Dividindo em classes de 1000 na carga teremos:
+
+{\def\LTcaptype{table} % do not increment counter
+\begin{longtable}[]{@{}rr@{}}
+\toprule\noalign{}
+NÂº da classe & frequÃªncia \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & 5100 a 6100 \\
+2 & 6100 a 7100 \\
+3 & 7100 a 8100 \\
+4 & 8100 a 9100 \\
+5 & 9100 a 10100 \\
+6 & 10100 a 10600 \\
+\end{longtable}
+}
+
+ou ainda pode-fazer pela fÃ³rmula de Sturges, onde:
+
+\[k=1+3,332\cdot \log(N)\]
+
+onde \(N\) Ã© o nÃºmero de observaÃ§Ãµes. EntÃ£o:
+
+o valor mÃ­nimo Ã© 5100 e; o valor mÃ¡ximo Ã© 10600.
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{4}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{N} \PY{o}{=} \PY{l+m+mi}{15}
+\PY{n}{k} \PY{o}{=} \PY{l+m+mi}{1} \PY{o}{+} \PY{l+m+mf}{3.332}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{log10}\PY{p}{(}\PY{n}{N}\PY{p}{)}
+\PY{n}{k} \PY{o}{=} \PY{l+m+mi}{5}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{O nÃºmero de classes Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{k}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+O nÃºmero de classes Ã©: 5
+    \end{Verbatim}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{5}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{maximo} \PY{o}{=} \PY{l+m+mi}{10600}
+\PY{n}{minimo} \PY{o}{=} \PY{l+m+mi}{5100}
+
+\PY{n}{amplitude} \PY{o}{=} \PY{n}{maximo} \PY{o}{\PYZhy{}} \PY{n}{minimo}
+\PY{n}{amplitude\PYZus{}classe} \PY{o}{=} \PY{n}{amplitude} \PY{o}{/} \PY{l+m+mi}{5}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{A Amplitude Ã© igual: }\PY{l+s+si}{\PYZob{}}\PY{n}{amplitude}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{A Amplitude da classe Ã© igual: }\PY{l+s+si}{\PYZob{}}\PY{n}{amplitude\PYZus{}classe}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+A Amplitude Ã© igual: 5500
+A Amplitude da classe Ã© igual: 1100.0
+    \end{Verbatim}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{6}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{classes\PYZus{}carga} \PY{o}{=} \PY{p}{[}
+                \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{5100 a 6200}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{6200 a 7300}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{7300 a 8400}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{8400 a 9500}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{9500 a 10600}\PY{l+s+s2}{\PYZdq{}}
+                \PY{p}{]}
+
+\PY{n}{carga} \PY{o}{=} \PY{n}{tabela\PYZus{}2}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Carga primeira rachadura (xi)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+
+\PY{n}{soma\PYZus{}f1} \PY{o}{=} \PY{n}{carga}\PY{p}{[}
+    \PY{p}{(}\PY{n}{carga} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{5100}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{carga} \PY{o}{\PYZlt{}} \PY{l+m+mi}{6200}\PY{p}{)}
+\PY{p}{]}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}
+
+\PY{n}{soma\PYZus{}f2} \PY{o}{=} \PY{n}{carga}\PY{p}{[}
+    \PY{p}{(}\PY{n}{carga} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{6200}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{carga} \PY{o}{\PYZlt{}} \PY{l+m+mi}{7300}\PY{p}{)}
+\PY{p}{]}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}
+
+\PY{n}{soma\PYZus{}f3} \PY{o}{=} \PY{n}{carga}\PY{p}{[}
+    \PY{p}{(}\PY{n}{carga} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{7300}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{carga} \PY{o}{\PYZlt{}} \PY{l+m+mi}{8400}\PY{p}{)}
+\PY{p}{]}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}
+
+\PY{n}{soma\PYZus{}f4} \PY{o}{=} \PY{n}{carga}\PY{p}{[}
+    \PY{p}{(}\PY{n}{carga} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{8400}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{carga} \PY{o}{\PYZlt{}} \PY{l+m+mi}{9500}\PY{p}{)}
+\PY{p}{]}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}
+
+\PY{n}{soma\PYZus{}f5} \PY{o}{=} \PY{n}{carga}\PY{p}{[}
+    \PY{p}{(}\PY{n}{carga} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{9500}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{carga} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{10600}\PY{p}{)}
+\PY{p}{]}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}
+
+
+\PY{n}{frequencias\PYZus{}classes} \PY{o}{=} \PY{p}{[}
+    \PY{n}{soma\PYZus{}f1}\PY{p}{,}
+    \PY{n}{soma\PYZus{}f2}\PY{p}{,}
+    \PY{n}{soma\PYZus{}f3}\PY{p}{,}
+    \PY{n}{soma\PYZus{}f4}\PY{p}{,}
+    \PY{n}{soma\PYZus{}f5}
+\PY{p}{]}
+
+\PY{n}{dados\PYZus{}carga} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{p}{\PYZob{}}
+    \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Classes de Carga}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{n}{classes\PYZus{}carga}\PY{p}{,}
+    \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{n}{frequencias\PYZus{}classes}
+\PY{p}{\PYZcb{}}\PY{p}{)}
+
+\PY{n}{n} \PY{o}{=} \PY{n}{dados\PYZus{}carga}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+
+\PY{n}{dados\PYZus{}carga}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fri}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{dados\PYZus{}carga}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fi}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{/} \PY{n}{n}
+
+\PY{n}{dados\PYZus{}carga}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Fra}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{dados\PYZus{}carga}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fri}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{cumsum}\PY{p}{(}\PY{p}{)}
+
+\PY{n}{centro\PYZus{}classe} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Centro da Classe}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{5100}\PY{o}{+}\PY{l+m+mi}{6200}\PY{p}{)}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{6200}\PY{o}{+}\PY{l+m+mi}{7300}\PY{p}{)}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{7300}\PY{o}{+}\PY{l+m+mi}{8400}\PY{p}{)}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{8400}\PY{o}{+}\PY{l+m+mi}{9500}\PY{p}{)}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{9500}\PY{o}{+}\PY{l+m+mi}{10600}\PY{p}{)}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{\PYZcb{}}
+
+\PY{n}{dados\PYZus{}carga}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Centro da Classe}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{centro\PYZus{}classe}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Centro da Classe}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+
+
+\PY{n}{media} \PY{o}{=} \PY{p}{(}
+    \PY{n}{dados\PYZus{}carga}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fri}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{*}
+    \PY{n}{dados\PYZus{}carga}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Centro da Classe}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+\PY{p}{)}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+
+\PY{n}{var} \PY{o}{=} \PY{p}{(}
+    \PY{n}{dados\PYZus{}carga}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fri}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{*}
+    \PY{p}{(}\PY{n}{dados\PYZus{}carga}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Centro da Classe}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{media}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}
+\PY{p}{)}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+
+\PY{n}{std} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{var}\PY{p}{)}
+
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{MÃ©dia agrupada: }\PY{l+s+si}{\PYZob{}}\PY{n}{media}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{VariÃ¢ncia agrupada: }\PY{l+s+si}{\PYZob{}}\PY{n}{var}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Desvio padrÃ£o agrupado: }\PY{l+s+si}{\PYZob{}}\PY{n}{std}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+MÃ©dia agrupada: 7263.33
+VariÃ¢ncia agrupada: 3043822.22
+Desvio padrÃ£o agrupado: 1744.66
+    \end{Verbatim}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{7}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{dados\PYZus{}carga}
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{7}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+  Classes de Carga  fi       fri       Fra  Centro da Classe
+0      5100 a 6200   6  0.400000  0.400000            5650.0
+1      6200 a 7300   4  0.266667  0.666667            6750.0
+2      7300 a 8400   0  0.000000  0.666667            7850.0
+3      8400 a 9500   2  0.133333  0.800000            8950.0
+4     9500 a 10600   3  0.200000  1.000000           10050.0
+\end{Verbatim}
+\end{tcolorbox}
+        
+    \subsection{As cargas de colapso
+sÃ£o:}\label{as-cargas-de-colapso-suxe3o}
+
+{\def\LTcaptype{table} % do not increment counter
+\begin{longtable}[]{@{}rr@{}}
+\toprule\noalign{}
+NÂº da barra & Carga de colapso \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & 10350 \\
+2 & 9300 \\
+3 & 9600 \\
+4 & 10300 \\
+5 & 9400 \\
+6 & 10600 \\
+7 & 10100 \\
+8 & 9900 \\
+9 & 9500 \\
+10 & 10200 \\
+11 & 9300 \\
+12 & 9550 \\
+13 & 9550 \\
+14 & 10500 \\
+15 & 10200 \\
+\end{longtable}
+}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{8}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{cargas\PYZus{}colapso} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{10350}\PY{p}{,} \PY{l+m+mi}{9300}\PY{p}{,} \PY{l+m+mi}{9600}\PY{p}{,} \PY{l+m+mi}{10300}\PY{p}{,} \PY{l+m+mi}{9400}\PY{p}{,}
+                  \PY{l+m+mi}{10600}\PY{p}{,} \PY{l+m+mi}{10100}\PY{p}{,} \PY{l+m+mi}{9900}\PY{p}{,} \PY{l+m+mi}{9500}\PY{p}{,} \PY{l+m+mi}{10200}\PY{p}{,}
+                  \PY{l+m+mi}{9300}\PY{p}{,} \PY{l+m+mi}{9550}\PY{p}{,} \PY{l+m+mi}{9550}\PY{p}{,} \PY{l+m+mi}{10500}\PY{p}{,} \PY{l+m+mi}{10200}\PY{p}{]}
+
+\PY{n}{tabela\PYZus{}3} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{p}{\PYZob{}}
+    \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{NÃºmero da Barra (i)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{n}{numero\PYZus{}barra}\PY{p}{,}
+    \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Carga de Colapso (xi)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{n}{cargas\PYZus{}colapso}
+\PY{p}{\PYZcb{}}\PY{p}{)}
+
+\PY{n}{tabela\PYZus{}3} \PY{o}{=} \PY{p}{(}
+    \PY{n}{tabela\PYZus{}3}
+    \PY{o}{.}\PY{n}{sort\PYZus{}values}\PY{p}{(}\PY{n}{by}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Carga de Colapso (xi)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{n}{drop}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+\PY{p}{)}
+
+\PY{n}{tabela\PYZus{}3}
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{8}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+    NÃºmero da Barra (i)  Carga de Colapso (xi)
+0                     2                   9300
+1                    11                   9300
+2                     5                   9400
+3                     9                   9500
+4                    13                   9550
+5                    12                   9550
+6                     3                   9600
+7                     8                   9900
+8                     7                  10100
+9                    10                  10200
+10                   15                  10200
+11                    4                  10300
+12                    1                  10350
+13                   14                  10500
+14                    6                  10600
+\end{Verbatim}
+\end{tcolorbox}
+        
+    Sendo o nÃºmero de observaÃ§Ãµes o mesmo do item anterior, usaremos 5
+classes.\\
+entÃ£o as classes seriam dadas por:
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{9}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{max\PYZus{}colapso} \PY{o}{=} \PY{n}{tabela\PYZus{}3}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Carga de Colapso (xi)}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)}
+\PY{n}{min\PYZus{}colapso} \PY{o}{=} \PY{n}{tabela\PYZus{}3}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Carga de Colapso (xi)}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}
+\PY{n}{amplitude\PYZus{}colapso} \PY{o}{=} \PY{n}{max\PYZus{}colapso} \PY{o}{\PYZhy{}} \PY{n}{min\PYZus{}colapso}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{A amplitude\PYZus{}colapso Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{amplitude\PYZus{}colapso}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+A amplitude\_colapso Ã©: 1300.00
+    \end{Verbatim}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{10}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{classes\PYZus{}carga\PYZus{}colapso} \PY{o}{=} \PY{p}{[}
+    \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{9300 a 9560}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+    \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{9560 a 9820}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+    \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{9820 a 10080}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+    \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{10080 a 10340}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+    \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{10340 a 10600}\PY{l+s+s2}{\PYZdq{}}
+\PY{p}{]}
+
+\PY{n}{carga\PYZus{}colapso} \PY{o}{=} \PY{n}{tabela\PYZus{}3}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Carga de Colapso (xi)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+
+\PY{n}{soma\PYZus{}f1} \PY{o}{=} \PY{n}{carga\PYZus{}colapso}\PY{p}{[}
+    \PY{p}{(}\PY{n}{carga\PYZus{}colapso} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{9300}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{carga\PYZus{}colapso} \PY{o}{\PYZlt{}} \PY{l+m+mi}{9560}\PY{p}{)}
+\PY{p}{]}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}
+
+\PY{n}{soma\PYZus{}f2} \PY{o}{=} \PY{n}{carga\PYZus{}colapso}\PY{p}{[}
+    \PY{p}{(}\PY{n}{carga\PYZus{}colapso} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{9560}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{carga\PYZus{}colapso} \PY{o}{\PYZlt{}} \PY{l+m+mi}{9820}\PY{p}{)}
+\PY{p}{]}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}
+
+\PY{n}{soma\PYZus{}f3} \PY{o}{=} \PY{n}{carga\PYZus{}colapso}\PY{p}{[}
+    \PY{p}{(}\PY{n}{carga\PYZus{}colapso} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{9820}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{carga\PYZus{}colapso} \PY{o}{\PYZlt{}} \PY{l+m+mi}{10080}\PY{p}{)}
+\PY{p}{]}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}
+
+\PY{n}{soma\PYZus{}f4} \PY{o}{=} \PY{n}{carga\PYZus{}colapso}\PY{p}{[}
+    \PY{p}{(}\PY{n}{carga\PYZus{}colapso} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{10080}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{carga\PYZus{}colapso} \PY{o}{\PYZlt{}} \PY{l+m+mi}{10340}\PY{p}{)}
+\PY{p}{]}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}
+
+\PY{n}{soma\PYZus{}f5} \PY{o}{=} \PY{n}{carga\PYZus{}colapso}\PY{p}{[}
+    \PY{p}{(}\PY{n}{carga\PYZus{}colapso} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{10340}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{carga\PYZus{}colapso} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{10600}\PY{p}{)}
+\PY{p}{]}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}
+
+\PY{n}{frequencias\PYZus{}classes} \PY{o}{=} \PY{p}{[}
+    \PY{n}{soma\PYZus{}f1}\PY{p}{,}
+    \PY{n}{soma\PYZus{}f2}\PY{p}{,}
+    \PY{n}{soma\PYZus{}f3}\PY{p}{,}
+    \PY{n}{soma\PYZus{}f4}\PY{p}{,}
+    \PY{n}{soma\PYZus{}f5}
+\PY{p}{]}
+
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{FrequÃªncias:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{frequencias\PYZus{}classes}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Total contado:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n+nb}{sum}\PY{p}{(}\PY{n}{frequencias\PYZus{}classes}\PY{p}{)}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Total original:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{carga\PYZus{}colapso}\PY{p}{)}\PY{p}{)}
+
+\PY{n}{dados\PYZus{}carga\PYZus{}colapso} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{p}{\PYZob{}}
+    \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Classes de Carga}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{n}{classes\PYZus{}carga\PYZus{}colapso}\PY{p}{,}
+    \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{n}{frequencias\PYZus{}classes}
+\PY{p}{\PYZcb{}}\PY{p}{)}
+
+\PY{n}{n} \PY{o}{=} \PY{n}{dados\PYZus{}carga\PYZus{}colapso}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+
+\PY{n}{centro\PYZus{}classe\PYZus{}colapso} \PY{o}{=} \PY{p}{[}
+    \PY{p}{(}\PY{l+m+mi}{9300} \PY{o}{+} \PY{l+m+mi}{9560}\PY{p}{)} \PY{o}{/} \PY{l+m+mi}{2}\PY{p}{,}
+    \PY{p}{(}\PY{l+m+mi}{9560} \PY{o}{+} \PY{l+m+mi}{9820}\PY{p}{)} \PY{o}{/} \PY{l+m+mi}{2}\PY{p}{,}
+    \PY{p}{(}\PY{l+m+mi}{9820} \PY{o}{+} \PY{l+m+mi}{10080}\PY{p}{)} \PY{o}{/} \PY{l+m+mi}{2}\PY{p}{,}
+    \PY{p}{(}\PY{l+m+mi}{10080} \PY{o}{+} \PY{l+m+mi}{10340}\PY{p}{)} \PY{o}{/} \PY{l+m+mi}{2}\PY{p}{,}
+    \PY{p}{(}\PY{l+m+mi}{10340} \PY{o}{+} \PY{l+m+mi}{10600}\PY{p}{)} \PY{o}{/} \PY{l+m+mi}{2}
+\PY{p}{]}
+
+\PY{n}{dados\PYZus{}carga\PYZus{}colapso}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fri}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{dados\PYZus{}carga\PYZus{}colapso}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{/} \PY{n}{n}
+\PY{n}{dados\PYZus{}carga\PYZus{}colapso}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Fra}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{dados\PYZus{}carga\PYZus{}colapso}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fri}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{cumsum}\PY{p}{(}\PY{p}{)}
+\PY{n}{dados\PYZus{}carga\PYZus{}colapso}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Centro da Classe}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{centro\PYZus{}classe\PYZus{}colapso}
+
+\PY{n}{dados\PYZus{}carga\PYZus{}colapso}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+FrequÃªncias: [np.int64(6), np.int64(1), np.int64(1), np.int64(4), np.int64(3)]
+Total contado: 15
+Total original: 15
+    \end{Verbatim}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{10}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+  Classes de Carga  fi       fri       Fra  Centro da Classe
+0      9300 a 9560   6  0.400000  0.400000            9430.0
+1      9560 a 9820   1  0.066667  0.466667            9690.0
+2     9820 a 10080   1  0.066667  0.533333            9950.0
+3    10080 a 10340   4  0.266667  0.800000           10210.0
+4    10340 a 10600   3  0.200000  1.000000           10470.0
+\end{Verbatim}
+\end{tcolorbox}
+        
+    \subsubsection{Calcular a mÃ©dia, VAR e
+std.}\label{calcular-a-muxe9dia-var-e-std.}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{11}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{media\PYZus{}colapso} \PY{o}{=} \PY{p}{(}\PY{n}{dados\PYZus{}carga\PYZus{}colapso}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fri}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{*} \PY{n}{dados\PYZus{}carga\PYZus{}colapso}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Centro da Classe}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+\PY{n}{var\PYZus{}colapso} \PY{o}{=} \PY{p}{(}\PY{p}{(}\PY{p}{(}\PY{n}{dados\PYZus{}carga\PYZus{}colapso}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Centro da Classe}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{\PYZhy{}}\PY{n}{media\PYZus{}colapso}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)} \PY{o}{*} \PY{n}{dados\PYZus{}carga\PYZus{}colapso}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fri}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+\PY{n}{std\PYZus{}colapso} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{var\PYZus{}colapso}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{media\PYZus{}colapso}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{var\PYZus{}colapso}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{std\PYZus{}colapso}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+9898.0
+182069.3333333333
+426.6958323364939
+    \end{Verbatim}
+
+    3-- Sejam os dados de tempos de reaÃ§Ã£o a um estÃ­mulo (Y) e acuidade
+visual (Z) de 20 indivÃ­duos.
+
+{\def\LTcaptype{table} % do not increment counter
+\begin{longtable}[]{@{}rrr@{}}
+\toprule\noalign{}
+IndivÃ­duo & Y & Z \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & 96 & 90 \\
+2 & 92 & 100 \\
+3 & 106 & 80 \\
+4 & 100 & 90 \\
+5 & 98 & 100 \\
+6 & 104 & 90 \\
+7 & 110 & 80 \\
+8 & 101 & 90 \\
+9 & 116 & 70 \\
+10 & 106 & 90 \\
+11 & 109 & 90 \\
+12 & 100 & 80 \\
+13 & 112 & 90 \\
+14 & 105 & 80 \\
+15 & 118 & 70 \\
+16 & 108 & 90 \\
+17 & 113 & 90 \\
+18 & 112 & 90 \\
+19 & 127 & 60 \\
+20 & 117 & 80 \\
+\end{longtable}
+}
+
+\begin{itemize}
+\tightlist
+\item
+  Calcule a distribuiÃ§Ã£o de frequÃªncias das duas variÃ¡veis aleatÃ³rias
+  (considere a representaÃ§Ã£o individual ou por classe).
+\item
+  Calcule a distribuiÃ§Ã£o de frequÃªncias conjunta das duas variÃ¡veis
+  aleatÃ³rias (considere a representaÃ§Ã£o individual).\\
+\item
+  Calcule o coeficiente de variaÃ§Ã£o de cada uma das duas variÃ¡veis
+  aleatÃ³rias e interprete-os.\\
+\item
+  Qual a frequÃªncia de tempo de reaÃ§Ã£o a um estÃ­mulo maior que 100? Qual
+  a frequÃªncia de tempo de reaÃ§Ã£o a um estÃ­mulo menor que 120? Qual a
+  frequÃªncia de tempo de reaÃ§Ã£o a um estÃ­mulo maior que 100 e menor que
+  120?\\
+\item
+  Calcule os quartis das duas distribuiÃ§Ãµes de frequÃªncias. Monte o
+  diagrama de Box-Plot.\\
+\item
+  Calcule o coeficiente de correlaÃ§Ã£o entre os tempos de reaÃ§Ã£o a um
+  estÃ­mulo e a acuidade visual desse conjunto de indivÃ­duos.
+  Interprete-o.
+\end{itemize}
+
+    \subsubsection{Para a variÃ¡vel y}\label{para-a-variuxe1vel-y}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{12}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} distribuiÃ§Ã£o de frequÃªncias}
+\PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{plt}
+\PY{n}{n} \PY{o}{=} \PY{l+m+mi}{20}
+\PY{n}{individuo} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{21}\PY{p}{)}\PY{p}{)}
+
+\PY{n}{y} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{96}\PY{p}{,} \PY{l+m+mi}{92}\PY{p}{,} \PY{l+m+mi}{106}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mi}{98}\PY{p}{,} \PY{l+m+mi}{104}\PY{p}{,} \PY{l+m+mi}{110}\PY{p}{,} \PY{l+m+mi}{101}\PY{p}{,} \PY{l+m+mi}{116}\PY{p}{,} \PY{l+m+mi}{106}\PY{p}{,} \PY{l+m+mi}{109}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mi}{112}\PY{p}{,} \PY{l+m+mi}{105}\PY{p}{,} \PY{l+m+mi}{118}\PY{p}{,} \PY{l+m+mi}{108}\PY{p}{,} \PY{l+m+mi}{113}\PY{p}{,} \PY{l+m+mi}{112}\PY{p}{,} \PY{l+m+mi}{127}\PY{p}{,} \PY{l+m+mi}{117}\PY{p}{]}
+\PY{n}{z} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{90}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mi}{80}\PY{p}{,} \PY{l+m+mi}{90}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mi}{90}\PY{p}{,} \PY{l+m+mi}{80}\PY{p}{,} \PY{l+m+mi}{90}\PY{p}{,} \PY{l+m+mi}{70}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mi}{90}\PY{p}{,} \PY{l+m+mi}{80}\PY{p}{,} \PY{l+m+mi}{90}\PY{p}{,} \PY{l+m+mi}{80}\PY{p}{,} \PY{l+m+mi}{70}\PY{p}{,} \PY{l+m+mi}{90}\PY{p}{,} \PY{l+m+mi}{90}\PY{p}{,} \PY{l+m+mi}{90}\PY{p}{,} \PY{l+m+mi}{60}\PY{p}{,} \PY{l+m+mi}{80}\PY{p}{]}
+\PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{p}{\PYZob{}}
+    \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{indivÃ­duo}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{n}{individuo}\PY{p}{,}
+    \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{y}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{n}{y}\PY{p}{,}
+    \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{z}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{n}{z}
+\PY{p}{\PYZcb{}}\PY{p}{)}
+\PY{n}{freq\PYZus{}y} \PY{o}{=} \PY{p}{(}
+    \PY{n}{df}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{y}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+    \PY{o}{.}\PY{n}{value\PYZus{}counts}\PY{p}{(}\PY{p}{)}
+    \PY{o}{.}\PY{n}{sort\PYZus{}index}\PY{p}{(}\PY{p}{)}
+    \PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{p}{)}
+\PY{p}{)}
+
+\PY{n}{freq\PYZus{}y}\PY{o}{.}\PY{n}{columns} \PY{o}{=} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Y}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi\PYZus{}y}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+\PY{n}{freq\PYZus{}y}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Fi\PYZus{}y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{freq\PYZus{}y}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fi\PYZus{}y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{cumsum}\PY{p}{(}\PY{p}{)}
+\PY{n}{freq\PYZus{}y}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fr\PYZus{}y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{freq\PYZus{}y}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi\PYZus{}y}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{/} \PY{n}{n}
+\PY{n}{freq\PYZus{}y}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Frac}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{freq\PYZus{}y}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fr\PYZus{}y}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{cumsum}\PY{p}{(}\PY{p}{)}
+\PY{n}{freq\PYZus{}y}
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{12}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+      Y  fi\_y  Fi\_y  fr\_y  Frac
+0    92     1     1  0.05  0.05
+1    96     1     2  0.05  0.10
+2    98     1     3  0.05  0.15
+3   100     2     5  0.10  0.25
+4   101     1     6  0.05  0.30
+5   104     1     7  0.05  0.35
+6   105     1     8  0.05  0.40
+7   106     2    10  0.10  0.50
+8   108     1    11  0.05  0.55
+9   109     1    12  0.05  0.60
+10  110     1    13  0.05  0.65
+11  112     2    15  0.10  0.75
+12  113     1    16  0.05  0.80
+13  116     1    17  0.05  0.85
+14  117     1    18  0.05  0.90
+15  118     1    19  0.05  0.95
+16  127     1    20  0.05  1.00
+\end{Verbatim}
+\end{tcolorbox}
+        
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{13}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} Valor da mÃ©dia}
+\PY{n}{media\PYZus{}y} \PY{o}{=} \PY{p}{(}\PY{n}{freq\PYZus{}y}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{*} \PY{n}{freq\PYZus{}y}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fr\PYZus{}y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{A media da variÃ¡vel Y Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{media\PYZus{}y}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{n}{var\PYZus{}y} \PY{o}{=} \PY{p}{(}\PY{n}{freq\PYZus{}y}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fi\PYZus{}y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{*}\PY{p}{(}\PY{p}{(}\PY{n}{freq\PYZus{}y}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{\PYZhy{}}\PY{n}{media\PYZus{}y}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}\PY{o}{/}\PY{n}{n}\PY{p}{)}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{A variÃ¢ncia de Y Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{var\PYZus{}y}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{n}{std\PYZus{}y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{var\PYZus{}y}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{O desvio padrÃ£o de Y Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{std\PYZus{}y}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{n}{cv\PYZus{}y} \PY{o}{=} \PY{n}{std\PYZus{}y} \PY{o}{/} \PY{n}{media\PYZus{}y}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{o Coeficiente de Y Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{cv\PYZus{}y}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+A media da variÃ¡vel Y Ã©: 107.50
+A variÃ¢ncia de Y Ã©: 68.65
+O desvio padrÃ£o de Y Ã©: 8.29
+o Coeficiente de Y Ã©: 0.08
+    \end{Verbatim}
+
+    \subsubsection{Para a variÃ¡vel z}\label{para-a-variuxe1vel-z}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{14}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{freq\PYZus{}z} \PY{o}{=} \PY{p}{(}
+    \PY{n}{df}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{z}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+    \PY{o}{.}\PY{n}{value\PYZus{}counts}\PY{p}{(}\PY{p}{)}
+    \PY{o}{.}\PY{n}{sort\PYZus{}index}\PY{p}{(}\PY{p}{)}
+    \PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{p}{)}
+\PY{p}{)}
+
+\PY{n}{freq\PYZus{}z}\PY{o}{.}\PY{n}{columns} \PY{o}{=} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Z}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi\PYZus{}z}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+
+\PY{n}{freq\PYZus{}z}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Fi\PYZus{}z}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{freq\PYZus{}z}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fi\PYZus{}z}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{cumsum}\PY{p}{(}\PY{p}{)}
+\PY{n}{freq\PYZus{}z}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fr\PYZus{}z}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{freq\PYZus{}z}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fi\PYZus{}z}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{/} \PY{n}{n}
+\PY{n}{freq\PYZus{}z}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Frac\PYZus{}z}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{freq\PYZus{}z}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fr\PYZus{}z}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{cumsum}\PY{p}{(}\PY{p}{)}
+
+\PY{n}{freq\PYZus{}z}
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{14}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+     Z  fi\_z  Fi\_z  fr\_z  Frac\_z
+0   60     1     1  0.05    0.05
+1   70     2     3  0.10    0.15
+2   80     5     8  0.25    0.40
+3   90     9    17  0.45    0.85
+4  100     3    20  0.15    1.00
+\end{Verbatim}
+\end{tcolorbox}
+        
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{15}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} Valor da mÃ©dia}
+\PY{n}{media\PYZus{}z} \PY{o}{=} \PY{p}{(}\PY{n}{freq\PYZus{}z}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Z}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{*} \PY{n}{freq\PYZus{}z}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fr\PYZus{}z}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{A media da variÃ¡vel Z Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{media\PYZus{}z}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{n}{var\PYZus{}z} \PY{o}{=} \PY{p}{(}\PY{p}{(}\PY{n}{freq\PYZus{}z}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{fi\PYZus{}z}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{*}\PY{p}{(}\PY{n}{freq\PYZus{}z}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Z}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{\PYZhy{}}\PY{n}{media\PYZus{}z}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}\PY{o}{/}\PY{n}{n}\PY{p}{)}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{A variÃ¢ncia de Z Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{var\PYZus{}z}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{n}{std\PYZus{}z} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{var\PYZus{}z}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{O desvio padrÃ£o de Z Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{std\PYZus{}z}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+
+\PY{n}{cv\PYZus{}z} \PY{o}{=} \PY{n}{std\PYZus{}z} \PY{o}{/} \PY{n}{media\PYZus{}z}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{o Coeficiente de Z Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{cv\PYZus{}z}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+A media da variÃ¡vel Z Ã©: 85.50
+A variÃ¢ncia de Z Ã©: 104.75
+O desvio padrÃ£o de Z Ã©: 10.23
+o Coeficiente de Z Ã©: 0.12
+    \end{Verbatim}
+
+    \subsection{Quantis de Y e Z}\label{quantis-de-y-e-z}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{16}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{y\PYZus{}ord} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n+nb}{sorted}\PY{p}{(}\PY{n}{y}\PY{p}{)}\PY{p}{)}
+\PY{n}{md} \PY{o}{=} \PY{p}{(}\PY{n}{y\PYZus{}ord}\PY{p}{[}\PY{l+m+mi}{9}\PY{p}{]}\PY{o}{+}\PY{n}{y\PYZus{}ord}\PY{p}{[}\PY{l+m+mi}{10}\PY{p}{]}\PY{p}{)}\PY{o}{/}\PY{l+m+mi}{2}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{y\PYZus{}ord}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{A mediana Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{md}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{q1} \PY{o}{=} \PY{n}{y\PYZus{}ord}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{]}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{o valor de Q1 Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{q1}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{q3} \PY{o}{=} \PY{p}{(}\PY{n}{y\PYZus{}ord}\PY{p}{[}\PY{l+m+mi}{14}\PY{p}{]}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{o valor de Q3 Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{q3}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[ 92  96  98 100 100 101 104 105 106 106 108 109 110 112 112 113 116 117
+ 118 127]
+A mediana Ã©: 107.00
+o valor de Q1 Ã©: 100.00
+o valor de Q3 Ã©: 112.00
+    \end{Verbatim}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{17}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{plt}\PY{o}{.}\PY{n}{boxplot}\PY{p}{(}\PY{n}{y\PYZus{}ord}\PY{p}{,} \PY{n}{orientation}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{horizontal}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{showmeans}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}\PY{p}{;}
+\PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Exercicios_estatistica_rev_verificada_files/Exercicios_estatistica_rev_verificada_28_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{18}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{z\PYZus{}ord} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n+nb}{sorted}\PY{p}{(}\PY{n}{z}\PY{p}{)}\PY{p}{)}
+
+\PY{n}{md\PYZus{}z} \PY{o}{=} \PY{p}{(}\PY{n}{z\PYZus{}ord}\PY{p}{[}\PY{l+m+mi}{9}\PY{p}{]} \PY{o}{+} \PY{n}{z\PYZus{}ord}\PY{p}{[}\PY{l+m+mi}{10}\PY{p}{]}\PY{p}{)} \PY{o}{/} \PY{l+m+mi}{2}
+\PY{n}{q1\PYZus{}z} \PY{o}{=} \PY{n}{z\PYZus{}ord}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{]}
+\PY{n}{q3\PYZus{}z} \PY{o}{=} \PY{n}{z\PYZus{}ord}\PY{p}{[}\PY{l+m+mi}{14}\PY{p}{]}
+
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{z\PYZus{}ord}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{A mediana Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{md\PYZus{}z}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{o valor de Q1 Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{q1\PYZus{}z}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{o valor de Q3 Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{q3\PYZus{}z}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[ 60  70  70  80  80  80  80  80  90  90  90  90  90  90  90  90  90 100
+ 100 100]
+A mediana Ã©: 90.00
+o valor de Q1 Ã©: 80.00
+o valor de Q3 Ã©: 90.00
+    \end{Verbatim}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{19}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{plt}\PY{o}{.}\PY{n}{boxplot}\PY{p}{(}\PY{n}{z\PYZus{}ord}\PY{p}{,} \PY{n}{orientation}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{horizontal}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{showmeans}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}\PY{p}{;}
+\PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Exercicios_estatistica_rev_verificada_files/Exercicios_estatistica_rev_verificada_30_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    4 -- ApÃ³s um tratamento, seis operÃ¡rios submeteram-se a um teste e, mais
+tarde, mediu-se a produtividade de cada um deles. A partir dos
+resultados apresentados na tabela abaixo, calcule o coeficiente de
+correlaÃ§Ã£o entre a nota do teste e a produtividade. O que podemos aferir
+desse resultado? Calcule tambÃ©m a assimetria da amostra teste e da
+amostra produtividade e compare-as.
+
+{\def\LTcaptype{table} % do not increment counter
+\begin{longtable}[]{@{}rrrrrrr@{}}
+\toprule\noalign{}
+OperÃ¡rio & 1 & 2 & 3 & 4 & 5 & 6 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Teste & 9 & 17 & 20 & 19 & 20 & 23 \\
+Produtividade & 22 & 34 & 29 & 33 & 42 & 32 \\
+\end{longtable}
+}
+
+    5-- Procurando quantificar os efeitos da escassez de sono sobre a
+capacidade de resoluÃ§Ã£o de problemas simples, um agente tomou ao acaso
+10 sujeitos e os submeteu a experimentaÃ§Ã£o. Deixou-os sem dormir por
+diferentes nÃºmeros de horas, apÃ³s o que solicitou que os mesmos
+resolvessem os itens ``contas de adicionar'' de um teste. Obteve, assim,
+os seguintes dados:
+
+{\def\LTcaptype{table} % do not increment counter
+\begin{longtable}[]{@{}rr@{}}
+\toprule\noalign{}
+NÂº de erros --- Y & Horas sem dormir --- X \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+8 & 8 \\
+6 & 8 \\
+6 & 12 \\
+10 & 12 \\
+8 & 16 \\
+14 & 16 \\
+14 & 20 \\
+12 & 20 \\
+16 & 24 \\
+12 & 24 \\
+\end{longtable}
+}
+
+Calcule o coeficiente de correlaÃ§Ã£o. Pode-se concluir que horas sem
+dormir afeta a capacidade de um sujeito durante um teste?
+
+    6 -- Em um exame de colesterol, o grau mÃ©dio de um grupo ``A'' de 150
+pessoas foi de 214 mg/dl e um desvio-padrÃ£o de 22 mg/dl. Em outro grupo
+``B'', entretanto, o grau mÃ©dio em 150 pessoas foi de 201 mg/dl e um
+desvio-padrÃ£o de 21 mg/dl. Em que grupo foi maior a dispersÃ£o?
+
+{\def\LTcaptype{table} % do not increment counter
+\begin{longtable}[]{@{}rr@{}}
+\toprule\noalign{}
+Renda familiar (X) & Gasto com alimentaÃ§Ã£o (Y) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+3 & 1,5 \\
+5 & 2,0 \\
+10 & 6,0 \\
+10 & 7,0 \\
+20 & 10,0 \\
+20 & 12,0 \\
+20 & 15,0 \\
+30 & 8,0 \\
+40 & 10,0 \\
+50 & 20,0 \\
+60 & 20,0 \\
+70 & 25,0 \\
+70 & 30,0 \\
+80 & 25,0 \\
+100 & 40,0 \\
+100 & 35,0 \\
+100 & 40,0 \\
+120 & 30,0 \\
+120 & 40,0 \\
+140 & 40,0 \\
+150 & 50,0 \\
+180 & 40,0 \\
+180 & 50,0 \\
+200 & 60,0 \\
+200 & 50,0 \\
+\end{longtable}
+}
+
+    \begin{itemize}
+\tightlist
+\item
+  Calcule a distribuiÃ§Ã£o de frequÃªncias das duas variÃ¡veis aleatÃ³rias.\\
+\item
+  \st{Calcule a distribuiÃ§Ã£o de frequÃªncias conjunta das duas variÃ¡veis
+  aleatÃ³rias.}\\
+\item
+  Calcule o coeficiente de variaÃ§Ã£o de cada uma das duas variÃ¡veis
+  aleatÃ³rias e interprete-os.
+\item
+  Calcule o coeficiente de correlaÃ§Ã£o entre a renda familiar e o gasto
+  com alimentaÃ§Ã£o desse conjunto de indivÃ­duos. Interprete-o.
+\item
+  Calcule os quartis das duas distribuiÃ§Ãµes de frequÃªncias. Monte o
+  diagrama de Box-Plot.
+\end{itemize}
+
+    7 - renda familiar e gastos com alimentaÃ§Ã£o.
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{20}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{renda\PYZus{}familiar} \PY{o}{=} \PY{p}{[}
+    \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{,}
+    \PY{l+m+mi}{20}\PY{p}{,} \PY{l+m+mi}{30}\PY{p}{,} \PY{l+m+mi}{40}\PY{p}{,} \PY{l+m+mi}{50}\PY{p}{,} \PY{l+m+mi}{60}\PY{p}{,} \PY{l+m+mi}{70}\PY{p}{,}
+    \PY{l+m+mi}{70}\PY{p}{,} \PY{l+m+mi}{80}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{,}
+    \PY{l+m+mi}{120}\PY{p}{,} \PY{l+m+mi}{120}\PY{p}{,} \PY{l+m+mi}{140}\PY{p}{,} \PY{l+m+mi}{150}\PY{p}{,} \PY{l+m+mi}{180}\PY{p}{,}
+    \PY{l+m+mi}{180}\PY{p}{,} \PY{l+m+mi}{200}\PY{p}{,} \PY{l+m+mi}{200}
+\PY{p}{]}
+
+\PY{n}{n\PYZus{}renda} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{renda\PYZus{}familiar}\PY{p}{)}
+
+\PY{n}{dados\PYZus{}renda} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{p}{\PYZob{}}
+    \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Renda Familiar}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{n}{renda\PYZus{}familiar}
+\PY{p}{\PYZcb{}}\PY{p}{)}
+
+\PY{n}{freq\PYZus{}renda} \PY{o}{=} \PY{p}{(}
+    \PY{n}{dados\PYZus{}renda}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Renda Familiar}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+    \PY{o}{.}\PY{n}{value\PYZus{}counts}\PY{p}{(}\PY{p}{)}
+    \PY{o}{.}\PY{n}{sort\PYZus{}index}\PY{p}{(}\PY{p}{)}
+    \PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{p}{)}
+\PY{p}{)}
+
+\PY{n}{freq\PYZus{}renda}\PY{o}{.}\PY{n}{columns} \PY{o}{=} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Renda}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi\PYZus{}renda}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+
+\PY{n}{freq\PYZus{}renda}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Fi\PYZus{}renda}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{freq\PYZus{}renda}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi\PYZus{}renda}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{cumsum}\PY{p}{(}\PY{p}{)}
+\PY{n}{freq\PYZus{}renda}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fr\PYZus{}renda}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{freq\PYZus{}renda}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi\PYZus{}renda}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{/} \PY{n}{n\PYZus{}renda}
+\PY{n}{freq\PYZus{}renda}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Fr\PYZus{}renda}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{freq\PYZus{}renda}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fr\PYZus{}renda}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{cumsum}\PY{p}{(}\PY{p}{)}
+
+\PY{n}{freq\PYZus{}renda}
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{20}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+    Renda  fi\_renda  Fi\_renda  fr\_renda  Fr\_renda
+0       3         1         1      0.04      0.04
+1       5         1         2      0.04      0.08
+2      10         2         4      0.08      0.16
+3      20         3         7      0.12      0.28
+4      30         1         8      0.04      0.32
+5      40         1         9      0.04      0.36
+6      50         1        10      0.04      0.40
+7      60         1        11      0.04      0.44
+8      70         2        13      0.08      0.52
+9      80         1        14      0.04      0.56
+10    100         3        17      0.12      0.68
+11    120         2        19      0.08      0.76
+12    140         1        20      0.04      0.80
+13    150         1        21      0.04      0.84
+14    180         2        23      0.08      0.92
+15    200         2        25      0.08      1.00
+\end{Verbatim}
+\end{tcolorbox}
+        
+    \subsubsection{EstatÃ­sticas.}\label{estatuxedsticas.}
+
+a mÃ©dia Ã©:
+
+\[ \bar{x} = \sum(fr_i \cdot x_i) \]
+
+    a variÃ¢ncia populacional Ã©:
+
+\[
+\sigma^2 =
+\frac{\sum f_i (x_i - \bar{x})^2}{n}
+\]
+
+e o desvio padrÃ£o:
+
+\[
+\sigma = \sqrt{\sigma^2}
+\]
+
+e a assimetria pelo terceiro momento padronizado:
+
+\[
+g =
+\frac{\sum f_i (x_i - \bar{x})^3}
+{n\,\sigma^3}
+\]
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{21}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} mÃ©dia}
+
+\PY{n}{media\PYZus{}renda} \PY{o}{=} \PY{p}{(}
+    \PY{n}{freq\PYZus{}renda}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Renda}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{*} \PY{n}{freq\PYZus{}renda}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fr\PYZus{}renda}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+\PY{p}{)}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+
+\PY{n}{var\PYZus{}renda} \PY{o}{=} \PY{p}{(}
+    \PY{n}{freq\PYZus{}renda}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi\PYZus{}renda}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+    \PY{o}{*} \PY{p}{(}\PY{n}{freq\PYZus{}renda}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Renda}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{media\PYZus{}renda}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}
+\PY{p}{)}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)} \PY{o}{/} \PY{n}{n\PYZus{}renda}
+
+\PY{n}{std\PYZus{}renda} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{var\PYZus{}renda}\PY{p}{)}
+
+\PY{n}{cv\PYZus{}renda} \PY{o}{=} \PY{n}{std\PYZus{}renda} \PY{o}{/} \PY{n}{media\PYZus{}renda} \PY{o}{*} \PY{l+m+mi}{100}
+
+\PY{n}{g\PYZus{}renda} \PY{o}{=} \PY{p}{(}
+    \PY{n}{freq\PYZus{}renda}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi\PYZus{}renda}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+    \PY{o}{*} \PY{p}{(}\PY{n}{freq\PYZus{}renda}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Renda}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{media\PYZus{}renda}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{3}
+\PY{p}{)}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)} \PY{o}{/} \PY{p}{(}\PY{n}{n\PYZus{}renda} \PY{o}{*} \PY{n}{std\PYZus{}renda}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{3}\PY{p}{)}
+
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{O valor da mÃ©dia da renda Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{media\PYZus{}renda}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{O valor da variÃ¢ncia da renda Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{var\PYZus{}renda}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{O valor do desvio padrÃ£o da renda Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{std\PYZus{}renda}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{O valor do coeficiente de variaÃ§Ã£o Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{cv\PYZus{}renda}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{O valor da assimetria Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{g\PYZus{}renda}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+O valor da mÃ©dia da renda Ã©: 83.12
+O valor da variÃ¢ncia da renda Ã©: 3968.43
+O valor do desvio padrÃ£o da renda Ã©: 63.00
+O valor do coeficiente de variaÃ§Ã£o Ã©: 75.79\%
+O valor da assimetria Ã©: 0.45
+    \end{Verbatim}
+
+    \emph{O coeficiente de variaÃ§Ã£o (CV) mede a dispersÃ£o dos dados em
+relaÃ§Ã£o Ã  mÃ©dia. Um CV baixo indica alta homogeneidade e estabilidade,
+enquanto um CV alto aponta grande dispersÃ£o e instabilidade. O valor
+padrÃ£o geral classifica variaÃ§Ãµes atÃ© 10\% como baixas, e acima de 30\%
+como muito altas.}
+
+    \subsection{Quantis da renda
+familiar.}\label{quantis-da-renda-familiar.}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{22}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{renda\PYZus{}ord} \PY{o}{=} \PY{n+nb}{sorted}\PY{p}{(}\PY{n}{renda\PYZus{}familiar}\PY{p}{)}
+
+\PY{n}{mediana\PYZus{}renda\PYZus{}familiar} \PY{o}{=} \PY{n}{renda\PYZus{}ord}\PY{p}{[}\PY{l+m+mi}{12}\PY{p}{]}
+\PY{n}{q1\PYZus{}renda\PYZus{}familiar} \PY{o}{=} \PY{p}{(}\PY{n}{renda\PYZus{}ord}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{]} \PY{o}{+} \PY{n}{renda\PYZus{}ord}\PY{p}{[}\PY{l+m+mi}{6}\PY{p}{]}\PY{p}{)} \PY{o}{/} \PY{l+m+mi}{2}
+\PY{n}{q3\PYZus{}renda\PYZus{}familiar} \PY{o}{=} \PY{p}{(}\PY{n}{renda\PYZus{}ord}\PY{p}{[}\PY{l+m+mi}{18}\PY{p}{]} \PY{o}{+} \PY{n}{renda\PYZus{}ord}\PY{p}{[}\PY{l+m+mi}{19}\PY{p}{]}\PY{p}{)} \PY{o}{/} \PY{l+m+mi}{2}
+
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{renda\PYZus{}ord}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{A mediana da renda Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{mediana\PYZus{}renda\PYZus{}familiar}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{O valor de Q1 da renda Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{q1\PYZus{}renda\PYZus{}familiar}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{O valor de Q3 da renda Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{q3\PYZus{}renda\PYZus{}familiar}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[3, 5, 10, 10, 20, 20, 20, 30, 40, 50, 60, 70, 70, 80, 100, 100, 100, 120, 120,
+140, 150, 180, 180, 200, 200]
+A mediana da renda Ã©: 70.00
+O valor de Q1 da renda Ã©: 20.00
+O valor de Q3 da renda Ã©: 130.00
+    \end{Verbatim}
+
+    Para o grÃ¡fico eu vou usar o recurso do Python.
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{23}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{plt}\PY{o}{.}\PY{n}{boxplot}\PY{p}{(}\PY{n}{renda\PYZus{}familiar}\PY{p}{,} \PY{n}{orientation}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{horizontal}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{showmeans}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}\PY{p}{;}
+\PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Exercicios_estatistica_rev_verificada_files/Exercicios_estatistica_rev_verificada_44_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection{VariÃ¡vel Y custos da
+alimentaÃ§Ã£o}\label{variuxe1vel-y-custos-da-alimentauxe7uxe3o}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{24}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{aliment} \PY{o}{=} \PY{p}{[}
+    \PY{l+m+mf}{1.5}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{,}
+    \PY{l+m+mi}{15}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{,} \PY{l+m+mi}{25}\PY{p}{,}
+    \PY{l+m+mi}{30}\PY{p}{,} \PY{l+m+mi}{25}\PY{p}{,} \PY{l+m+mi}{40}\PY{p}{,} \PY{l+m+mi}{35}\PY{p}{,} \PY{l+m+mi}{40}\PY{p}{,}
+    \PY{l+m+mi}{30}\PY{p}{,} \PY{l+m+mi}{40}\PY{p}{,} \PY{l+m+mi}{40}\PY{p}{,} \PY{l+m+mi}{50}\PY{p}{,} \PY{l+m+mi}{40}\PY{p}{,}
+    \PY{l+m+mi}{50}\PY{p}{,} \PY{l+m+mi}{60}\PY{p}{,} \PY{l+m+mi}{50}
+\PY{p}{]}
+
+\PY{n}{n\PYZus{}aliment} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{aliment}\PY{p}{)}
+
+\PY{n}{dados\PYZus{}aliment} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{p}{\PYZob{}}
+    \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Gastos com AlimentaÃ§Ã£o}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{n}{aliment}
+\PY{p}{\PYZcb{}}\PY{p}{)}
+
+\PY{n}{freq\PYZus{}aliment} \PY{o}{=} \PY{p}{(}
+    \PY{n}{dados\PYZus{}aliment}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Gastos com AlimentaÃ§Ã£o}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+    \PY{o}{.}\PY{n}{value\PYZus{}counts}\PY{p}{(}\PY{p}{)}
+    \PY{o}{.}\PY{n}{sort\PYZus{}index}\PY{p}{(}\PY{p}{)}
+    \PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{p}{)}
+\PY{p}{)}
+
+\PY{n}{freq\PYZus{}aliment}\PY{o}{.}\PY{n}{columns} \PY{o}{=} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Gastos com AlimentaÃ§Ã£o}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi\PYZus{}aliment}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+
+\PY{n}{freq\PYZus{}aliment}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Fi\PYZus{}aliment}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{freq\PYZus{}aliment}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi\PYZus{}aliment}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{cumsum}\PY{p}{(}\PY{p}{)}
+\PY{n}{freq\PYZus{}aliment}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fr\PYZus{}aliment}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{freq\PYZus{}aliment}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi\PYZus{}aliment}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{/} \PY{n}{n\PYZus{}aliment}
+\PY{n}{freq\PYZus{}aliment}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Fr\PYZus{}aliment}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{freq\PYZus{}aliment}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fr\PYZus{}aliment}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{cumsum}\PY{p}{(}\PY{p}{)}
+
+\PY{n}{freq\PYZus{}aliment}
+\end{Verbatim}
+\end{tcolorbox}
+
+            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
+\prompt{Out}{outcolor}{24}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+    Gastos com AlimentaÃ§Ã£o  fi\_aliment  Fi\_aliment  fr\_aliment  Fr\_aliment
+0                      1.5           1           1        0.04        0.04
+1                      2.0           1           2        0.04        0.08
+2                      6.0           1           3        0.04        0.12
+3                      7.0           1           4        0.04        0.16
+4                      8.0           1           5        0.04        0.20
+5                     10.0           2           7        0.08        0.28
+6                     12.0           1           8        0.04        0.32
+7                     15.0           1           9        0.04        0.36
+8                     20.0           2          11        0.08        0.44
+9                     25.0           2          13        0.08        0.52
+10                    30.0           2          15        0.08        0.60
+11                    35.0           1          16        0.04        0.64
+12                    40.0           5          21        0.20        0.84
+13                    50.0           3          24        0.12        0.96
+14                    60.0           1          25        0.04        1.00
+\end{Verbatim}
+\end{tcolorbox}
+        
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{25}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{media\PYZus{}aliment} \PY{o}{=} \PY{p}{(}
+    \PY{n}{freq\PYZus{}aliment}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Gastos com AlimentaÃ§Ã£o}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{*} \PY{n}{freq\PYZus{}aliment}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fr\PYZus{}aliment}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+\PY{p}{)}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+
+\PY{n}{var\PYZus{}aliment} \PY{o}{=} \PY{p}{(}
+    \PY{n}{freq\PYZus{}aliment}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi\PYZus{}aliment}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+    \PY{o}{*} \PY{p}{(}\PY{n}{freq\PYZus{}aliment}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Gastos com AlimentaÃ§Ã£o}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{media\PYZus{}aliment}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}
+\PY{p}{)}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)} \PY{o}{/} \PY{n}{n\PYZus{}aliment}
+
+\PY{n}{std\PYZus{}aliment} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{var\PYZus{}aliment}\PY{p}{)}
+
+\PY{n}{cv\PYZus{}aliment} \PY{o}{=} \PY{n}{std\PYZus{}aliment} \PY{o}{/} \PY{n}{media\PYZus{}aliment} \PY{o}{*} \PY{l+m+mi}{100}
+
+\PY{n}{g\PYZus{}aliment} \PY{o}{=} \PY{p}{(}
+    \PY{n}{freq\PYZus{}aliment}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi\PYZus{}aliment}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+    \PY{o}{*} \PY{p}{(}\PY{n}{freq\PYZus{}aliment}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Gastos com AlimentaÃ§Ã£o}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{media\PYZus{}aliment}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{3}
+\PY{p}{)}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)} \PY{o}{/} \PY{p}{(}\PY{n}{n\PYZus{}aliment} \PY{o}{*} \PY{n}{std\PYZus{}aliment}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{3}\PY{p}{)}
+
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{O valor da mÃ©dia dos gastos com alimentaÃ§Ã£o Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{media\PYZus{}aliment}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{O valor da variÃ¢ncia dos gastos com alimentaÃ§Ã£o Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{var\PYZus{}aliment}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{O valor do desvio padrÃ£o dos gastos com alimentaÃ§Ã£o Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{std\PYZus{}aliment}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{O valor do coeficiente de variaÃ§Ã£o Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{cv\PYZus{}aliment}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{O valor da assimetria Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{g\PYZus{}aliment}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+O valor da mÃ©dia dos gastos com alimentaÃ§Ã£o Ã©: 26.66
+O valor da variÃ¢ncia dos gastos com alimentaÃ§Ã£o Ã©: 285.21
+O valor do desvio padrÃ£o dos gastos com alimentaÃ§Ã£o Ã©: 16.89
+O valor do coeficiente de variaÃ§Ã£o Ã©: 63.35\%
+O valor da assimetria Ã©: 0.16
+    \end{Verbatim}
+
+    \subsubsection{Quantis dos gastos com
+AlimentaÃ§Ã£o.}\label{quantis-dos-gastos-com-alimentauxe7uxe3o.}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{26}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{aliment\PYZus{}ord} \PY{o}{=} \PY{n+nb}{sorted}\PY{p}{(}\PY{n}{aliment}\PY{p}{)}
+
+\PY{n}{mediana\PYZus{}aliment} \PY{o}{=} \PY{n}{aliment\PYZus{}ord}\PY{p}{[}\PY{l+m+mi}{12}\PY{p}{]}
+\PY{n}{q1\PYZus{}aliment} \PY{o}{=} \PY{p}{(}\PY{n}{aliment\PYZus{}ord}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{]} \PY{o}{+} \PY{n}{aliment\PYZus{}ord}\PY{p}{[}\PY{l+m+mi}{6}\PY{p}{]}\PY{p}{)} \PY{o}{/} \PY{l+m+mi}{2}
+\PY{n}{q3\PYZus{}aliment} \PY{o}{=} \PY{p}{(}\PY{n}{aliment\PYZus{}ord}\PY{p}{[}\PY{l+m+mi}{18}\PY{p}{]} \PY{o}{+} \PY{n}{aliment\PYZus{}ord}\PY{p}{[}\PY{l+m+mi}{19}\PY{p}{]}\PY{p}{)} \PY{o}{/} \PY{l+m+mi}{2}
+
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{aliment\PYZus{}ord}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{A mediana dos gastos com alimentaÃ§Ã£o Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{mediana\PYZus{}aliment}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{O valor de Q1 dos gastos com alimentaÃ§Ã£o Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{q1\PYZus{}aliment}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{O valor de Q3 dos gastos com alimentaÃ§Ã£o Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{q3\PYZus{}aliment}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[1.5, 2, 6, 7, 8, 10, 10, 12, 15, 20, 20, 25, 25, 30, 30, 35, 40, 40, 40, 40,
+40, 50, 50, 50, 60]
+A mediana dos gastos com alimentaÃ§Ã£o Ã©: 25.00
+O valor de Q1 dos gastos com alimentaÃ§Ã£o Ã©: 10.00
+O valor de Q3 dos gastos com alimentaÃ§Ã£o Ã©: 40.00
+    \end{Verbatim}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{27}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{plt}\PY{o}{.}\PY{n}{boxplot}\PY{p}{(}\PY{n}{aliment}\PY{p}{,} \PY{n}{orientation}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{horizontal}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{showmeans}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Exercicios_estatistica_rev_verificada_files/Exercicios_estatistica_rev_verificada_50_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    8- Os valores da precipitaÃ§Ã£o (em mm) registrada em uma EstaÃ§Ã£o
+MeteorolÃ³gica, nos 31 dias de janeiro de 2014, estÃ£o listados na tabela:
+
+{\def\LTcaptype{table} % do not increment counter
+\begin{longtable}[]{@{}rr@{}}
+\toprule\noalign{}
+Dia & PrecipitaÃ§Ã£o \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & 0.0 \\
+2 & 0.0 \\
+3 & 0.0 \\
+4 & 0.0 \\
+5 & 4.7 \\
+6 & 0.6 \\
+7 & 17.2 \\
+8 & 1.4 \\
+9 & 11.2 \\
+10 & 1.0 \\
+11 & 3.8 \\
+12 & 0.3 \\
+13 & 0.0 \\
+14 & 0.0 \\
+15 & 0.5 \\
+16 & 7.0 \\
+17 & 0.0 \\
+18 & 0.0 \\
+19 & 3.3 \\
+20 & 7.6 \\
+21 & 0.9 \\
+22 & 0.3 \\
+23 & 18.2 \\
+24 & 4.0 \\
+25 & 4.6 \\
+26 & 22.0 \\
+27 & 15.6 \\
+28 & 0.0 \\
+29 & 3.4 \\
+30 & 0.0 \\
+31 & 0.0 \\
+\end{longtable}
+}
+
+    \begin{itemize}
+\tightlist
+\item
+  Escolha a melhor forma de representar os dados: representaÃ§Ã£o
+  individual ou por classes. Justifique.
+\item
+  Apresente a distribuiÃ§Ã£o de frequÃªncias relativa e a distribuiÃ§Ã£o de
+  frequÃªncias relativa acumulada.
+\item
+  Apresente estatÃ­sticas de valores centrais.
+\item
+  Apresente estatÃ­sticas de dispersÃ£o.
+\item
+  Apresente estatÃ­sticas de forma. - Apresente o boxplot (grÃ¡fico de
+  caixa) da variÃ¡vel aleatÃ³ria.
+\item
+  Calcule os valores da variÃ¡vel aleatÃ³ria correspondentes ao 1Âº, 2Âº e
+  3Âº quartis.
+\end{itemize}
+
+    
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{28}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{dia} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{32}\PY{p}{)}\PY{p}{)}
+
+\PY{n}{precipita} \PY{o}{=} \PY{p}{[}\PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+m+mf}{4.7}\PY{p}{,} \PY{l+m+mf}{0.6}\PY{p}{,} \PY{l+m+mf}{17.2}\PY{p}{,} \PY{l+m+mf}{1.4}\PY{p}{,} \PY{l+m+mf}{11.2}\PY{p}{,}
+             \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{3.8}\PY{p}{,} \PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+m+mf}{0.5}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+m+mf}{3.3}\PY{p}{,} \PY{l+m+mf}{7.6}\PY{p}{,} \PY{l+m+mf}{0.9}\PY{p}{,}
+             \PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{18.2}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mf}{4.6}\PY{p}{,} \PY{l+m+mi}{22}\PY{p}{,} \PY{l+m+mf}{15.6}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mf}{3.4}\PY{p}{,} \PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+m+mf}{0.0}\PY{p}{]}
+\PY{n}{n\PYZus{}precipita} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{precipita}\PY{p}{)}
+
+\PY{n}{dados\PYZus{}precipita} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{p}{\PYZob{}}
+    \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Dia}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{n}{dia}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{PrecipitaÃ§Ã£o}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{n}{precipita}
+\PY{p}{\PYZcb{}}\PY{p}{)}
+
+
+\PY{n}{freq\PYZus{}precipita} \PY{o}{=} \PY{p}{(}
+    \PY{n}{dados\PYZus{}precipita}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{PrecipitaÃ§Ã£o}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+    \PY{o}{.}\PY{n}{value\PYZus{}counts}\PY{p}{(}\PY{p}{)}
+    \PY{o}{.}\PY{n}{sort\PYZus{}index}\PY{p}{(}\PY{p}{)}
+    \PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{p}{)}
+\PY{p}{)}
+
+\PY{n}{freq\PYZus{}precipita}\PY{o}{.}\PY{n}{columns} \PY{o}{=} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{PrecipitaÃ§Ã£o}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi\PYZus{}precipita}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+
+\PY{n}{freq\PYZus{}precipita}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Fi\PYZus{}precipita}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{freq\PYZus{}precipita}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi\PYZus{}precipita}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{cumsum}\PY{p}{(}\PY{p}{)}
+\PY{n}{freq\PYZus{}precipita}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fr\PYZus{}precipita}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{freq\PYZus{}precipita}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi\PYZus{}precipita}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{/} \PY{n}{n\PYZus{}precipita}
+\PY{n}{freq\PYZus{}precipita}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Fr\PYZus{}precipita}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{freq\PYZus{}precipita}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fr\PYZus{}precipita}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{cumsum}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{29}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} MÃ©dia}
+\PY{n}{media\PYZus{}precipita} \PY{o}{=} \PY{p}{(}
+    \PY{n}{freq\PYZus{}precipita}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fr\PYZus{}precipita}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+    \PY{o}{*} \PY{n}{freq\PYZus{}precipita}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{PrecipitaÃ§Ã£o}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+\PY{p}{)}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} VariÃ¢ncia populacional pela tabela de frequÃªncias}
+\PY{n}{var\PYZus{}precipita} \PY{o}{=} \PY{p}{(}
+    \PY{n}{freq\PYZus{}precipita}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi\PYZus{}precipita}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+    \PY{o}{*} \PY{p}{(}\PY{n}{freq\PYZus{}precipita}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{PrecipitaÃ§Ã£o}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{media\PYZus{}precipita}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}
+\PY{p}{)}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)} \PY{o}{/} \PY{n}{n\PYZus{}precipita}
+
+\PY{n}{moda\PYZus{}precipita} \PY{o}{=} \PY{n}{freq\PYZus{}precipita}\PY{o}{.}\PY{n}{loc}\PY{p}{[}
+    \PY{n}{freq\PYZus{}precipita}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{fi\PYZus{}precipita}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{idxmax}\PY{p}{(}\PY{p}{)}\PY{p}{,}
+    \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{PrecipitaÃ§Ã£o}\PY{l+s+s2}{\PYZdq{}}
+\PY{p}{]}
+
+\PY{n}{precipita\PYZus{}ord} \PY{o}{=} \PY{n+nb}{sorted}\PY{p}{(}\PY{n}{precipita}\PY{p}{)}
+\PY{n}{mediana\PYZus{}precipita} \PY{o}{=} \PY{n}{precipita\PYZus{}ord}\PY{p}{[}\PY{l+m+mi}{15}\PY{p}{]}
+
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{A mÃ©dia da precipitaÃ§Ã£o Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{media\PYZus{}precipita}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{A variÃ¢ncia da precipitaÃ§Ã£o Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{var\PYZus{}precipita}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{A moda da precipitaÃ§Ã£o Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{moda\PYZus{}precipita}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{A mediana da precipitaÃ§Ã£o Ã©: }\PY{l+s+si}{\PYZob{}}\PY{n}{mediana\PYZus{}precipita}\PY{l+s+si}{:}\PY{l+s+s1}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+A mÃ©dia da precipitaÃ§Ã£o Ã©: 4.12
+A variÃ¢ncia da precipitaÃ§Ã£o Ã©: 37.49
+A moda da precipitaÃ§Ã£o Ã©: 0.00
+A mediana da precipitaÃ§Ã£o Ã©: 0.90
+    \end{Verbatim}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{ }{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+
+\end{Verbatim}
+\end{tcolorbox}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+\end{document}
+
